@@ -37,7 +37,7 @@ public class Statistiche {
             varianza += Math.pow(temp.get(i)[0]-media,2)*temp.get(i)[1];
         }
 
-        return varianza/temp.size();
+        return Math.sqrt(varianza/temp.size());
     }
     public double calcolaMediaUmidita(Date inizio,Date fine,int idCitta){
         Convertitore conv = new Convertitore();
@@ -98,6 +98,6 @@ public class Statistiche {
             varianza += Math.pow(temp.get(i)[0]-media,2)*temp.get(i)[1];
         }
 
-        return varianza/temp.size();
+        return Math.sqrt(varianza/temp.size());
     }
 }
