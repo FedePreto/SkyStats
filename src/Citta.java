@@ -16,6 +16,7 @@ public class Citta {
         this.umidita = umidita;
         this.pressione = pressione;
         this.data = data;
+
     }
 
     public int getId() {
