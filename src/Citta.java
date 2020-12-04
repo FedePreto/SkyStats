@@ -5,11 +5,11 @@ public class Citta {
     private int id;
     private String nome;
     private String meteo;
-    private float umidita;
-    private float pressione;
+    private double umidita;
+    private double pressione;
     private Date data;
 
-    public Citta(int id, String nome, String meteo, float umidita, float pressione, Date data) {
+    public Citta(int id, String nome, String meteo, double umidita, double pressione, Date data) {
         this.id = id;
         this.nome = nome;
         this.meteo = meteo;
@@ -43,7 +43,7 @@ public class Citta {
         this.meteo = meteo;
     }
 
-    public float getUmidita() {
+    public double getUmidita() {
         return umidita;
     }
 
@@ -51,7 +51,7 @@ public class Citta {
         this.umidita = umidita;
     }
 
-    public float getPressione() {
+    public double getPressione() {
         return pressione;
     }
 
