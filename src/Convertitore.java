@@ -38,7 +38,7 @@ public class Convertitore {
 
     public void salva(ArrayList<Citta> c,String nome){
         Gson gson = new Gson();
-        JSONObject jo = new JSONObject();
+        //JSONObject jo = new JSONObject();
        /* for(int i = 0; i< c.size();i++){
 
             jo.put("id",c.get(i).getId());

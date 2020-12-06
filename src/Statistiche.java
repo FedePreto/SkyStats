@@ -6,6 +6,7 @@ public class Statistiche {
     public Statistiche(String nomeFile){
         this.nomeFile = nomeFile;
     }
+
     public double calcolaVarianzaUmidità(Date inizio,Date fine,int idCitta){
 
         Convertitore conv = new Convertitore();
@@ -18,8 +19,8 @@ public class Statistiche {
             if(c.get(i).getId()==idCitta && c.get(i).getData().before(fine) && c.get(i).getData().after(inizio)){//se il risultato corrisponde con la citta e con il range di date...
                 boolean trovato = false;
                 for(int j = 0; j<temp.size();j++){
-                    if(temp.get(i)[0]==c.get(i).getUmidita()) {//vede se quel dato si trova in temp
-                        temp.get(i)[1]++;//se c'è incrementa il contatore
+                    if(temp.get(j)[0]==c.get(i).getUmidita()) {//vede se quel dato si trova in temp
+                        temp.get(j)[1]++;//se c'è incrementa il contatore
                         trovato = true;
                     }
                 }
