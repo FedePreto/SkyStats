@@ -38,20 +38,10 @@ public class Convertitore {
 
     public void salva(ArrayList<Citta> c,String nome){
         Gson gson = new Gson();
-        //JSONObject jo = new JSONObject();
-       /* for(int i = 0; i< c.size();i++){
-
-            jo.put("id",c.get(i).getId());
-            jo.put("nome",c.get(i).getNome());
-            jo.put("meteo",c.get(i).getMeteo());
-            jo.put("umidita",c.get(i).getUmidita());
-            jo.put("pressione",c.get(i).getPressione());
-            jo.put("data",c.get(i).getData());
-        }*/
-
         try {
             BufferedWriter buf = new BufferedWriter(new FileWriter(nome));
             for(int i = 0; i<c.size();i++){
+                //buf.write("{\"Citta\":");
                 buf.write(gson.toJson(c.get(i)));
                 buf.write("\n");
 
@@ -62,4 +52,16 @@ public class Convertitore {
             e.printStackTrace();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

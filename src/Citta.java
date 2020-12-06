@@ -7,16 +7,29 @@ public class Citta {
     private String meteo;
     private double umidita;
     private double pressione;
+    private double temperatura;
     private Date data;
 
-    public Citta(int id, String nome, String meteo, double umidita, double pressione, Date data) {
+    public Citta(int id, String nome, String meteo, double umidita, double pressione,double temperatura, Date data) {
         this.id = id;
         this.nome = nome;
         this.meteo = meteo;
         this.umidita = umidita;
         this.pressione = pressione;
+        this.temperatura=temperatura;
         this.data = data;
 
+    }
+    public Citta(){
+        data = new Date();
+    }
+
+    public double getTemperatura() {
+        return temperatura;
+    }
+
+    public void setTemperatura(double temperatura) {
+        this.temperatura = temperatura;
     }
 
     public int getId() {
@@ -47,7 +60,7 @@ public class Citta {
         return umidita;
     }
 
-    public void setUmidita(float umidita) {
+    public void setUmidita(double umidita) {
         this.umidita = umidita;
     }
 
@@ -55,7 +68,7 @@ public class Citta {
         return pressione;
     }
 
-    public void setPressione(float pressione) {
+    public void setPressione(double pressione) {
         this.pressione = pressione;
     }
 
