@@ -28,11 +28,11 @@ public class CittaAdapter  extends TypeAdapter<Citta>{
                 token = reader.peek();
                 citta.setNome(reader.nextString());
             }
-            if("humidity".equals(field)){
+            if("weather".equals(field)){
                 token = reader.peek();
                 citta.setUmidita(Double.parseDouble(reader.nextString()));
             }
-            if("pression".equals(field)){
+            if("main".equals(field)){
                 token = reader.peek();
                 citta.setPressione(Double.parseDouble(reader.nextString()));
             }

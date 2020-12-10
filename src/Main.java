@@ -21,24 +21,6 @@ public class Main {
 
         //c = conv.JsonToCitta(nomeFile);
 
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(Citta.class,new CittaAdapter());
-        builder.setPrettyPrinting();
-        Gson gson = builder.create();
-        String json = "";
-        try {
-            BufferedReader buf = new BufferedReader(new FileReader("D:\\Documenti\\Programmazione\\Progetto\\src\\prova2.json"));
-            json = buf.readLine();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        c.add(gson.fromJson(json,Citta.class));
-
-        for(int i = 0; i<c.size();i++){
-            System.out.println(c.get(i).toString());
-        }
+        conv.stampaCitta(conv.getClassFromCall("{\"coord\":{\"lon\":13.72,\"lat\":43.16},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"cielo sereno\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":8.54,\"feels_like\":7.14,\"temp_min\":6.67,\"temp_max\":10.56,\"pressure\":1009,\"humidity\":88},\"visibility\":10000,\"wind\":{\"speed\":0.89,\"deg\":296,\"gust\":1.79},\"clouds\":{\"all\":0},\"dt\":1607593456,\"sys\":{\"type\":3,\"id\":2001734,\"country\":\"IT\",\"sunrise\":1607581584,\"sunset\":1607614198},\"timezone\":3600,\"id\":3177099,\"name\":\"Fermo\",\"cod\":200}",true));
     }
 }
