@@ -1,0 +1,153 @@
+package com.example.demo.src;
+import com.example.demo.*;
+import com.example.demo.controller.CercaMeteo;
+import com.example.demo.controller.Ricerca;
+import com.example.demo.statistiche.Stat;
+import com.example.demo.statistiche.Statistiche;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import org.apache.logging.log4j.util.StringBuilderFormattable;
+
+
+public class Main {
+   
+    public static void main(String[] args){
+        
+        Convertitore conv = new Convertitore();
+        int scelta;
+        Scanner in = new Scanner(System.in);
+        Ricerca r = new Ricerca();
+        
+     do {
+    	     
+        	System.out.println("\n=======================\n"+
+        	                   "         Menu          \n"+
+        			           "=======================\n"+
+        	                   "1) Meteo Città\n"+
+        			           "2) Statistiche\n"+
+        	                   "3) Crea storico di oggi\n"+
+        			           "4) Aggiungi ai preferiti\n"+
+        	                   "5) Stampa favoriti\n"+
+        	                   "0) Esci\n");
+        	
+        	System.out.print("\nFai la tua scelta: ");
+        	scelta = in.nextInt();
+ 
+        	switch(scelta) {
+        	
+        	case 1:
+        		cercaMeteo();
+        		break;
+        		
+        	case 2:
+        		Date inizio = null;
+        		Date fine = null;
+        		//String start;
+        		//String end;
+        		String Id;
+        		System.out.print("\nInserisci l'ID della città da cercare: ");
+        		Id = in.next();
+        		System.out.println("Inserisci la data inizio [gg/mm/yy HH:mm]: ");
+        		inizio = getData();
+        		System.out.println("Inserisci la data di fine [gg/mm/yy HH:mm]: ");
+        		fine = getData();
+        	   /* System.out.println("\nInserisci la data di inizio e fine con la seguente formattazione [gg/mm/yyyy]: ");
+        	    System.out.print("\nInizio: ");
+        	    start = in.next();
+        	    System.out.print("\nFine: ");
+        	    end = in.next();
+        	       try{
+        	           DateFormat formatoData = DateFormat.getDateInstance(DateFormat.FULL, Locale.ITALY);    
+        	           formatoData.setLenient(false);           
+        	           inizio = formatoData.parse(start);
+        	           fine = formatoData.parse(end);
+        	       } catch (ParseException e) {
+        	           System.out.println("Formato data non valido.");
+        	       }*/
+        	       Stat stat = new Stat();
+        	       double mediaP = stat.getMedia(stat.getValues(inizio, fine, Id, true));
+        	       double mediaU = stat.getMedia(stat.getValues(inizio, fine, Id, false));
+        	       System.out.println("La Media della pressione è: " + mediaP);
+        	       System.out.println("La Varianza dell'pressione è: " + stat.getVarianza(stat.getValues(inizio, fine, Id, true), mediaP));
+        	       System.out.println("La Media dell'umidità è: " + mediaU);
+        	       System.out.println("La Varianza della umidita è: " + stat.getVarianza(stat.getValues(inizio, fine, Id, false), mediaU));
+        	       break;
+        	       
+        	case 3:
+        	    r.salvataggioAutomatico();
+        	    break;
+        	case 4:
+        		System.out.println("Inserisci il Nome della citta da aggiungere ai preferiti");
+        		r.addFavoriti(in.next());
+        		r.stampaPreferiti();
+        		break;
+        	case 5:
+        		r.stampaPreferiti();
+        		break;
+        	case 0: 
+        		System.out.println("Alla prossima");
+        		break;
+        	}
+        
+        	
+     }while(scelta!=0);
+
+        
+    
+    }
+    
+    public static Date getData() {
+    	 String s;
+    	 Date d = null;
+         do {
+             //si procura la data sotto forma di una stringa nel formato SHORT
+             
+             Scanner in = new Scanner(System.in);
+             s = in.nextLine();
+             try{
+                 //converte la stringa della data in un oggetto di classe Date
+                 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy HH:mm");
+                 d = formato.parse(s);
+                 //crea un oggetto 'formattatore' fissando un pattern
+                 formato = new SimpleDateFormat("'alle ore' HH:mm 'del' dd/MM/yyyy");
+                 //visualizza la data formattata secondo il pattern fissato
+                 System.out.println("OUTPUT: " + formato.format(d));
+                 break; //esce dal ciclo       
+             } catch (ParseException e) {
+                 System.out.println("Formato data non valido.");
+             }
+         } while(true);
+         return d;
+    }
+    
+    
+    public static void cercaMeteo() {
+    	Scanner in = new Scanner(System.in);
+    	Convertitore conv = new Convertitore();
+    	String url;
+		System.out.print("\nInserisci il nome o l'ID della città da cercare: ");   
+		String city = in.next();
+		Citta c = conv.findInJson(city);
+		if(c==null) {
+			try {
+				int  ID = Integer.parseInt(city);
+				url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
+				
+			} catch (NumberFormatException e) {
+				
+				url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",IT&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
+				
+			}
+			System.out.println(conv.getClassFromCall(CercaMeteo.getMeteo(url),true));
+		}else {
+			System.out.println(c);
+		}
+    }
+}
