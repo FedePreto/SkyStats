@@ -1,5 +1,12 @@
 package com.example.demo.controller;
 
+
+
+//Classe non utilizzata momentaneamente (Serve per gestire le call da Postaman alla nostra API)
+
+
+
+/*
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,3 +37,4 @@ public class Controller {
 	
 	}
 }
+*/

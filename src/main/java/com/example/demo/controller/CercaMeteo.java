@@ -21,11 +21,8 @@ public class CercaMeteo {
 		try {
 
 			URLConnection openConnection = (URLConnection)new URL(url).openConnection();
-			Scanner in  =  new Scanner(new BufferedReader(new InputStreamReader(/*new FileInputStream(url)*/openConnection.getInputStream())));
+			Scanner in  =  new Scanner(new BufferedReader(new InputStreamReader(openConnection.getInputStream())));
 					meteo_citta = in.nextLine(); 
-					System.out.println(meteo_citta);
-			//	JSONObject obj = (JSONObject)JSONValue.parseWithException(meteo_citta);
-			//	System.out.println(obj);
 		} catch (IOException e)
 		{
     		System.out.println("ERRORE. OPERAZIONE I/O.");
