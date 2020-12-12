@@ -35,7 +35,7 @@ public class Ricerca {
 	
 	public Ricerca() {
 		favoriti = new ArrayList<String>();
-		
+		//dummy();
 		aggiornaArray();
 	}
 	
@@ -59,13 +59,14 @@ public class Ricerca {
 		try {
 			BufferedReader buf = new BufferedReader(new FileReader(new File(config)));
 			
-			
+			String prova = buf.readLine();
+			//System.out.println(prova);
 			jsonParser = new JsonParser();
-	        jsonTree = jsonParser.parse(buf.readLine());
+	        jsonTree = jsonParser.parse(prova);
 	        
 	        if(jsonTree.isJsonObject()){
-	        	JsonArray ar = jsonTree.getAsJsonArray();
-	        	//JsonArray ar = jsonObject.getAsJsonArray();
+	        	JsonObject jo = jsonTree.getAsJsonObject();
+	        	JsonArray ar = jo.get("favoriti").getAsJsonArray();
 	        	
 	        	for(int i = 0; i<ar.size();i++) {
 	        		favoriti.add(ar.get(i).getAsString());
@@ -85,6 +86,7 @@ public class Ricerca {
 		}
 		
 	}
+	
 	public void salvaArray() {
 		ArrayList<String> file = new ArrayList<String>();
 		try {
@@ -99,7 +101,7 @@ public class Ricerca {
 			e.printStackTrace();
 		}
 		Gson gson = new Gson();
-		file.set(0, gson.toJson(favoriti, new TypeToken<ArrayList<String>>() {}.getType()));
+		file.set(0,"{\"favoriti\":"+ gson.toJson(favoriti, new TypeToken<ArrayList<String>>() {}.getType())+"}");
 		
 		
 		
@@ -128,6 +130,10 @@ public class Ricerca {
 	public void dummy() {
 		String[] prova ={"L'Aquila","Potenza","Catanzaro", "Napoli","Bologna","Trieste","Roma","Genova","Milano","Ancona","Campobasso","Torino","Bari","Cagliari","Palermo","Firenze","Trento","Perugia","Aosta","Venezia"};
 		favoriti = new ArrayList<>(Arrays.asList(prova));
+		salvaArray();
+	}
+	public void removeFavoriti(String val) {
+		favoriti.remove(val);
 		salvaArray();
 	}
 }

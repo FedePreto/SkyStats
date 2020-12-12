@@ -125,7 +125,8 @@ public class Convertitore {
     	try {
     		int id = Integer.parseInt(val);
     		for(int i = 0;i<c.size();i++) {
-    			if(c.get(i).getId()==id && differenzaDiDate(c.get(i).getData(), now, TimeUnit.HOURS)<5) {
+    			//System.out.println(c.get(i).getNome()+"  Data = "+c.get(i).getData().toString()+" difference by now = "+ differenzaDiDate(c.get(i).getData(), now, TimeUnit.MINUTES)+" minuti");
+    			if(c.get(i).getId()==id && differenzaDiDate(c.get(i).getData(), now, TimeUnit.MINUTES)<300) {
     				if(differenzaDiDate(c.get(maxRecent).getData(), now, TimeUnit.HOURS)>differenzaDiDate(c.get(i).getData(), now, TimeUnit.HOURS)) {
     					citta = c.get(i);
     					maxRecent=i;
@@ -135,8 +136,9 @@ public class Convertitore {
     	}
     	catch(Exception e){
     		for(int i = 0;i<c.size();i++) {
-    			if(c.get(i).getNome().equals(val) && differenzaDiDate(c.get(i).getData(), now, TimeUnit.HOURS)<5) {
-    				if(differenzaDiDate(c.get(maxRecent).getData(), now, TimeUnit.HOURS)<differenzaDiDate(c.get(i).getData(), now, TimeUnit.HOURS)) {
+    			//System.out.println(c.get(i).getNome()+"  Data = "+c.get(i).getData().toString()+" difference by now = "+ differenzaDiDate(c.get(i).getData(), now, TimeUnit.MINUTES)+" minuti");
+    			if(c.get(i).getNome().equals(val) && differenzaDiDate(c.get(i).getData(),now, TimeUnit.MINUTES)<300) {
+    				if(differenzaDiDate(c.get(maxRecent).getData(), now, TimeUnit.HOURS)>differenzaDiDate(c.get(i).getData(), now, TimeUnit.HOURS)) {
     					citta=c.get(i);
     					maxRecent=i;
     				}
