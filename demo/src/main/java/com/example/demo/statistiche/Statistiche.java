@@ -1,5 +1,3 @@
-
-
 //Classe che serve per fare tutte le statistiche di una città in un determinato periodo
 
 package com.example.demo.statistiche;

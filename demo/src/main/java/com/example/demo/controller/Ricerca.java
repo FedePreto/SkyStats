@@ -30,12 +30,13 @@ import com.google.gson.reflect.TypeToken;
 
 
 public class Ricerca {
-	private ArrayList<String> favoriti = new ArrayList<String>();
+	private ArrayList<String> favoriti ;
 	String config = ".\\src\\main\\java\\com\\example\\demo\\config/"+"config.json";
 	
 	public Ricerca() {
-		favoriti = aggiornaArray();
-
+		favoriti = new ArrayList<String>();
+		//dummy();
+		aggiornaArray();
 	}
 	
 	public void salvataggioAutomatico() {
@@ -51,7 +52,7 @@ public class Ricerca {
 	}
 	
 	
-	public ArrayList<String> aggiornaArray() {
+	public void aggiornaArray() {
 		favoriti.clear();
 		JsonParser jsonParser = null;
 		JsonElement jsonTree = null;
@@ -83,7 +84,7 @@ public class Ricerca {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return favoriti;
+		
 	}
 	
 	public void salvaArray() {
@@ -134,5 +135,8 @@ public class Ricerca {
 	public void removeFavoriti(String val) {
 		favoriti.remove(val);
 		salvaArray();
+	}
+	public ArrayList<String> getFavoriti() {
+		return favoriti;
 	}
 }
