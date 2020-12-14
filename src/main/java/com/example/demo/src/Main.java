@@ -6,6 +6,7 @@ import com.example.demo.statistiche.Stat;
 import com.example.demo.statistiche.Statistiche;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -40,6 +41,8 @@ public class Main {
         			           "4) Aggiungi ai preferiti\n"+
         	                   "5) Rimuovi dai preferiti\n"+
         	                   "6) Stampa favoriti\n"+
+        	                   "7) Stat per zone geografice\n"+
+        	                   "8) Stampa le citta con i valori massimi nel DB\n"+
         	                   "0) Esci\n");
         	
         	System.out.print("\nFai la tua scelta: ");
@@ -52,7 +55,10 @@ public class Main {
         		break;
         		
         	case 2:
-        		menuStatistica();
+        		System.out.println("Inserisci il nome della citta : ");
+        		String citta = in.next();
+        		Date[] date = menuDate();
+        		stampaStat(date[0], date[1], citta);
         	    break;    
         	case 3:
         	    r.salvataggioAutomatico();
@@ -68,6 +74,10 @@ public class Main {
         	case 6:
         		r.stampaPreferiti();
         		break;
+        	case 8:
+        		Date[] d = menuDate();
+        		Stat s = new Stat();
+        		s.printMaxValues(d[0], d[1]);
         	case 0: 
         		System.out.println("Alla prossima");
         		break;
@@ -131,18 +141,18 @@ public class Main {
     	Stat stat = new Stat();
 	    double mediaP = stat.getMedia(stat.getValues(in, fin, citta, true));
 	    double mediaU = stat.getMedia(stat.getValues(in, fin, citta, false));
-	    System.out.println("La Media della pressione è: " + mediaP);
-	    System.out.println("La Varianza dell'pressione è: " + stat.getVarianza(stat.getValues(in, fin, citta, true), mediaP));
-	    System.out.println("La Media dell'umidità è: " + mediaU);
-	    System.out.println("La Varianza della umidita è: " + stat.getVarianza(stat.getValues(in, fin, citta, false), mediaU));
+	    System.out.println("La Media della pressione è: " + new DecimalFormat("#.##").format(mediaP));
+	    System.out.println("La Varianza dell'pressione è: " + new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, true), mediaP)));
+	    System.out.println("La Media dell'umidità è: " + new DecimalFormat("#.##").format(mediaU));
+	    System.out.println("La Varianza della umidita è: " + new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, false), mediaU)));
     }
     
-	public static void menuStatistica() {
+	public static Date[] menuDate() {
     	Scanner in = new Scanner(System.in);
-    	System.out.println("Inserisci la citta da prendere in considerazione : ");
-    	String citta = in.next();
-    	Date inizio;
-    	Date fine;
+    	//System.out.println("Inserisci la citta da prendere in considerazione : ");
+    	//String citta = in.next();
+    	Date inizio = new Date();
+    	Date fine = new Date();
     	LocalDate l;
     	
     		System.out.println("Seleziona il range di tempo: \n"+
@@ -156,33 +166,50 @@ public class Main {
     			fine = new Date();
     			l =LocalDate.now().minusDays(1);
     			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-    			stampaStat(inizio,fine,citta);
+    			//stampaStat(inizio,fine,citta);
     			break;
     		case 2:
     			fine = new Date();
     			l =LocalDate.now().minusDays(7);
     			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-    			stampaStat(inizio,fine,citta);
+    			//stampaStat(inizio,fine,citta);
     			break;
     		case 3:
     			fine = new Date();
     			l =LocalDate.now().minusDays(30);
     			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-    			stampaStat(inizio,fine,citta);
+    			//stampaStat(inizio,fine,citta);
     			break;
     		case 4:
     			fine = new Date();
     			l =LocalDate.now().minusDays(365);
     			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-    			stampaStat(inizio,fine,citta);
+    			//stampaStat(inizio,fine,citta);
     			break;
     		case 5:
     			System.out.println("Inserisci la data di inizio [gg/mm/yy HH:mm] : ");
     			inizio = getData();
     			System.out.println("Inserisci la data di fine [gg/mm/yy HH:mm] : ");
     			fine = getData();
-    			stampaStat(inizio,fine,citta);
+    			//stampaStat(inizio,fine,citta);
     		}
-    	
+    		Date[] date = {inizio,fine};
+    		return	date;
     }
+	
+	//Da finire
+	public void zoneGeo() {
+		Scanner in = new Scanner(System.in);
+		int scelta;
+		
+		System.out.println("1)Nord\n"+
+							"2)Centro\n"+
+							"3)Sud");
+		scelta = in.nextInt();
+		Date[] date = menuDate();
+		switch(scelta) {
+		case 1:
+		}
+		
+	}
 }

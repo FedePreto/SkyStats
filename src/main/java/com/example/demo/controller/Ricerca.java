@@ -136,4 +136,7 @@ public class Ricerca {
 		favoriti.remove(val);
 		salvaArray();
 	}
+	public ArrayList<String> getFavoriti() {
+		return favoriti;
+	}
 }
