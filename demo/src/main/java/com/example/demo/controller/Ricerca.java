@@ -1,5 +1,4 @@
 
-
 //Classe che serve per fare il salvataggio automatico del meteo dei capoluoghi di regione
 //(Il nome della classe è completamente fuori luogo da cambiare) 
 
@@ -16,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import org.json.simple.JSONArray;
-
 import com.example.demo.src.Citta;
 import com.example.demo.src.Convertitore;
 import com.google.gson.Gson;
@@ -28,52 +25,53 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-
 public class Ricerca {
-	private ArrayList<String> favoriti ;
-	String config = ".\\src\\main\\java\\com\\example\\demo\\config/"+"config.json";
-	
+	private ArrayList<String> favoriti;
+	String config = ".\\src\\main\\java\\com\\example\\demo\\config/" + "config.json";
+
 	public Ricerca() {
 		favoriti = new ArrayList<String>();
-		//dummy();
+		// dummy();
 		aggiornaArray();
 	}
-	
+
 	public void salvataggio() {
 		String url = "";
-		for(String x : favoriti) {
+		ArrayList<Citta> city = new ArrayList<Citta>();
+		Convertitore conv = new Convertitore();
+		for (String x : favoriti) {
 			url = "http://api.openweathermap.org/data/2.5/weather?q=" + x
 					+ "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
-			
-			Convertitore c = new Convertitore();
-			c.getClassFromCall(CercaMeteo.getMeteo(url),true);
+						
+			city.add(conv.getClassFromCall(CercaMeteo.getMeteo(url)));
 		}
 		
+		conv.salva(city);
+
 	}
-	
-	
+
 	public void aggiornaArray() {
 		favoriti.clear();
 		JsonParser jsonParser = null;
 		JsonElement jsonTree = null;
 		try {
 			BufferedReader buf = new BufferedReader(new FileReader(new File(config)));
-			
+
 			String prova = buf.readLine();
-			//System.out.println(prova);
+			// System.out.println(prova);
 			jsonParser = new JsonParser();
-	        jsonTree = jsonParser.parse(prova);
-	        
-	        if(jsonTree.isJsonObject()){
-	        	JsonObject jo = jsonTree.getAsJsonObject();
-	        	JsonArray ar = jo.get("favoriti").getAsJsonArray();
-	        	
-	        	for(int i = 0; i<ar.size();i++) {
-	        		favoriti.add(ar.get(i).getAsString());
-	        	}
-	        }
-	        buf.close();
-	        
+			jsonTree = jsonParser.parse(prova);
+
+			if (jsonTree.isJsonObject()) {
+				JsonObject jo = jsonTree.getAsJsonObject();
+				JsonArray ar = jo.get("favoriti").getAsJsonArray();
+
+				for (int i = 0; i < ar.size(); i++) {
+					favoriti.add(ar.get(i).getAsString());
+				}
+			}
+			buf.close();
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,58 +82,64 @@ public class Ricerca {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public void salvaArray() {
 		ArrayList<String> file = new ArrayList<String>();
 		try {
 			Scanner buf = new Scanner(new BufferedReader(new FileReader(new File(config))));
-			while(buf.hasNext()) {
+			while (buf.hasNext()) {
 				file.add(buf.nextLine());
 			}
 			buf.close();
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Gson gson = new Gson();
-		file.set(0,"{\"favoriti\":"+ gson.toJson(favoriti, new TypeToken<ArrayList<String>>() {}.getType())+"}");
-		
-		
-		
+		file.set(0, "{\"favoriti\":" + gson.toJson(favoriti, new TypeToken<ArrayList<String>>() {
+		}.getType()) + "}");
+
 		try {
 			BufferedWriter buf = new BufferedWriter(new FileWriter(new File(config)));
-			for(int i = 0;i<file.size();i++) {
+			for (int i = 0; i < file.size(); i++) {
 				buf.write(file.get(i));
 			}
 			buf.close();
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
+
 	public void addFavoriti(String fav) {
 		favoriti.add(fav);
 		salvaArray();
 	}
+
 	public void stampaPreferiti() {
-		for(int i = 0; i<favoriti.size();i++) {
+		for (int i = 0; i < favoriti.size(); i++) {
 			System.out.println(favoriti.get(i));
 		}
 	}
+
 	public void dummy() {
-		String[] prova ={"L'Aquila","Potenza","Catanzaro", "Napoli","Bologna","Trieste","Roma","Genova","Milano","Ancona","Campobasso","Torino","Bari","Cagliari","Palermo","Firenze","Trento","Perugia","Aosta","Venezia"};
+		String[] prova = { "L'Aquila", "Potenza", "Catanzaro", "Napoli", "Bologna", "Trieste", "Roma", "Genova",
+				"Milano", "Ancona", "Campobasso", "Torino", "Bari", "Cagliari", "Palermo", "Firenze", "Trento",
+				"Perugia", "Aosta", "Venezia" };
 		favoriti = new ArrayList<>(Arrays.asList(prova));
 		salvaArray();
 	}
+
 	public void removeFavoriti(String val) {
 		favoriti.remove(val);
 		salvaArray();
 	}
+
 	public ArrayList<String> getFavoriti() {
 		return favoriti;
 	}
