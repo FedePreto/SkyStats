@@ -7,7 +7,6 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
-
 import com.google.gson.*;
 
 public class Convertitore {
@@ -61,8 +60,10 @@ public class Convertitore {
 			for(Citta x : c) {
 			buf.write(gson.toJson(x));
 			buf.write("\n");}
-			for(int i=0; i<database.size(); i++)
+			for(int i=0; i<database.size(); i++) {
 				buf.write(database.get(i));
+				buf.write("\n");
+			}
 			buf.close();
 		} catch (IOException e) {
 			e.printStackTrace();
