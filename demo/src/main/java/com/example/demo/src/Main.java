@@ -33,7 +33,7 @@ public class Main {
         Ricerca r = new Ricerca();
         Timer timer = new Timer();
         Aggiornamento agg = new Aggiornamento();
-       // timer.schedule(agg,0,5*3600000);
+        timer.schedule(agg,0,5*3600000);
         
      do {
     	     

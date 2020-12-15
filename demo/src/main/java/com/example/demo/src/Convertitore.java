@@ -12,14 +12,14 @@ import com.google.gson.*;
 
 
 public class Convertitore {
-  String nomeFile = "prova.json";
+  String nomeFile = "Storico.json";
 
    public Convertitore(String nomeFile){
         this.nomeFile = nomeFile;
    }
 
     public Convertitore(){
-       nomeFile = ".\\src\\main\\java\\com\\example\\demo\\src/"+"prova.json";    	
+       nomeFile = ".\\src\\main\\java\\com\\example\\demo\\src/"+nomeFile;    	
     }
 
     public ArrayList<Citta> JsonToCitta(){

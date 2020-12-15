@@ -321,3 +321,49 @@
 {"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":100.0,"pressione":1019.0,"temperatura":4.68,"posizione":"Centro","data":"Dec 15, 2020, 8:58:37 AM"}
 {"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":59.0,"pressione":995.0,"temperatura":8.36,"posizione":"Centro","data":"Dec 15, 2020, 8:58:37 AM"}
 {"id":6542055,"nome":"Comune di Como","meteo":"pioggia leggera","umidita":84.0,"pressione":1025.0,"temperatura":3.8,"posizione":"Nord","data":"Dec 15, 2020, 8:58:37 AM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"cielo coperto","umidita":27.0,"pressione":1019.0,"temperatura":3.22,"posizione":"Centro","data":"Dec 15, 2020, 9:26:47 AM"}
+{"id":3170027,"nome":"Potenza","meteo":"cielo sereno","umidita":89.0,"pressione":1021.0,"temperatura":4.44,"posizione":"Sud","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo sereno","umidita":87.0,"pressione":1020.0,"temperatura":8.36,"posizione":"Sud","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3172394,"nome":"Napoli","meteo":"cielo sereno","umidita":81.0,"pressione":1019.0,"temperatura":7.51,"posizione":"Sud","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3181927,"nome":"Bologna","meteo":"cielo sereno","umidita":100.0,"pressione":1020.0,"temperatura":4.67,"posizione":"Nord","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3165185,"nome":"Trieste","meteo":"cielo sereno","umidita":80.0,"pressione":1017.0,"temperatura":5.12,"posizione":"Nord","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":5134295,"nome":"Rome","meteo":"cielo coperto","umidita":58.0,"pressione":1020.0,"temperatura":-2.16,"posizione":"Centro","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3176217,"nome":"Genova","meteo":"pioggia leggera","umidita":63.0,"pressione":1017.0,"temperatura":8.93,"posizione":"Nord","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3173435,"nome":"Milano","meteo":"pioggia leggera","umidita":100.0,"pressione":1020.0,"temperatura":3.78,"posizione":"Nord","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":100.0,"pressione":1020.0,"temperatura":3.54,"posizione":"Centro","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3180990,"nome":"Campobasso","meteo":"nubi sparse","umidita":80.0,"pressione":1019.0,"temperatura":6.67,"posizione":"Sud","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":3165523,"nome":"Torino","meteo":"nubi sparse","umidita":86.0,"pressione":1020.0,"temperatura":4.31,"posizione":"Nord","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"cielo sereno","umidita":81.0,"pressione":1019.0,"temperatura":10.45,"posizione":"Sud","data":"Dec 15, 2020, 9:26:48 AM"}
+{"id":2525471,"nome":"Cagliari","meteo":"poche nuvole","umidita":82.0,"pressione":1018.0,"temperatura":12.2,"posizione":"Sud","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":2523918,"nome":"Palermo","meteo":"nubi sparse","umidita":82.0,"pressione":982.0,"temperatura":9.56,"posizione":"Sud","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":3176959,"nome":"Firenze","meteo":"pioggia leggera","umidita":100.0,"pressione":1019.0,"temperatura":6.44,"posizione":"Centro","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":3165243,"nome":"Trento","meteo":"cielo coperto","umidita":89.0,"pressione":1017.0,"temperatura":2.65,"posizione":"Nord","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":3171179,"nome":"Perugia","meteo":"neve","umidita":100.0,"pressione":1020.0,"temperatura":1.72,"posizione":"Centro","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":3182996,"nome":"Aosta","meteo":"nubi sparse","umidita":95.0,"pressione":1020.0,"temperatura":1.49,"posizione":"Nord","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":3164603,"nome":"Venezia","meteo":"pioggia leggera","umidita":93.0,"pressione":1019.0,"temperatura":2.82,"posizione":"Nord","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":100.0,"pressione":1020.0,"temperatura":3.54,"posizione":"Centro","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":84.0,"pressione":1022.0,"temperatura":6.66,"posizione":"Centro","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"pioggia leggera","umidita":81.0,"pressione":1025.0,"temperatura":4.91,"posizione":"Nord","data":"Dec 15, 2020, 9:26:49 AM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"cielo coperto","umidita":27.0,"pressione":1019.0,"temperatura":3.22,"posizione":"Centro","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":3170027,"nome":"Potenza","meteo":"cielo sereno","umidita":89.0,"pressione":1021.0,"temperatura":4.44,"posizione":"Sud","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo sereno","umidita":87.0,"pressione":1020.0,"temperatura":8.36,"posizione":"Sud","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":3172394,"nome":"Napoli","meteo":"cielo sereno","umidita":81.0,"pressione":1019.0,"temperatura":7.51,"posizione":"Sud","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":3181927,"nome":"Bologna","meteo":"cielo sereno","umidita":100.0,"pressione":1020.0,"temperatura":4.67,"posizione":"Nord","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":3165185,"nome":"Trieste","meteo":"cielo sereno","umidita":80.0,"pressione":1017.0,"temperatura":5.12,"posizione":"Nord","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":5134295,"nome":"Rome","meteo":"cielo coperto","umidita":58.0,"pressione":1020.0,"temperatura":-2.16,"posizione":"Centro","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":3176217,"nome":"Genova","meteo":"pioggia leggera","umidita":63.0,"pressione":1017.0,"temperatura":8.93,"posizione":"Nord","data":"Dec 15, 2020, 9:26:58 AM"}
+{"id":3173435,"nome":"Milano","meteo":"pioggia leggera","umidita":100.0,"pressione":1020.0,"temperatura":3.78,"posizione":"Nord","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":100.0,"pressione":1020.0,"temperatura":3.54,"posizione":"Centro","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3180990,"nome":"Campobasso","meteo":"nubi sparse","umidita":80.0,"pressione":1019.0,"temperatura":6.67,"posizione":"Sud","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3165523,"nome":"Torino","meteo":"nubi sparse","umidita":86.0,"pressione":1020.0,"temperatura":4.31,"posizione":"Nord","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"cielo sereno","umidita":81.0,"pressione":1019.0,"temperatura":10.45,"posizione":"Sud","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":2525471,"nome":"Cagliari","meteo":"poche nuvole","umidita":82.0,"pressione":1018.0,"temperatura":12.2,"posizione":"Sud","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":2523918,"nome":"Palermo","meteo":"nubi sparse","umidita":82.0,"pressione":982.0,"temperatura":9.56,"posizione":"Sud","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3176959,"nome":"Firenze","meteo":"pioggia leggera","umidita":100.0,"pressione":1019.0,"temperatura":6.44,"posizione":"Centro","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3165243,"nome":"Trento","meteo":"cielo coperto","umidita":89.0,"pressione":1017.0,"temperatura":2.65,"posizione":"Nord","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3171179,"nome":"Perugia","meteo":"neve","umidita":100.0,"pressione":1020.0,"temperatura":1.72,"posizione":"Centro","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3182996,"nome":"Aosta","meteo":"nubi sparse","umidita":95.0,"pressione":1020.0,"temperatura":1.49,"posizione":"Nord","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3164603,"nome":"Venezia","meteo":"pioggia leggera","umidita":93.0,"pressione":1019.0,"temperatura":2.82,"posizione":"Nord","data":"Dec 15, 2020, 9:26:59 AM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":100.0,"pressione":1020.0,"temperatura":3.54,"posizione":"Centro","data":"Dec 15, 2020, 9:27:00 AM"}
+{"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":84.0,"pressione":1022.0,"temperatura":6.66,"posizione":"Centro","data":"Dec 15, 2020, 9:27:00 AM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"pioggia leggera","umidita":81.0,"pressione":1025.0,"temperatura":4.91,"posizione":"Nord","data":"Dec 15, 2020, 9:27:00 AM"}
