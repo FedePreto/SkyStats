@@ -46,7 +46,43 @@ public class Convertitore {
 		}
 		return c;
 	}
-
+	
+	public void salva(ArrayList<Citta> c) {
+		Gson gson = new Gson();
+		BufferedWriter buf;
+		Scanner in;
+		try {
+			buf = new BufferedWriter(new FileWriter("Storico2.json"));
+			in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
+			for(Citta x : c) {
+				buf.write(gson.toJson(x));
+				buf.write("\n");
+			}
+			while(in.hasNext()) {
+				buf.write(in.nextLine());
+				buf.write("\n");
+			}
+			in.close();
+			buf.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			buf = new BufferedWriter(new FileWriter(nomeFile));
+			in = new Scanner(new BufferedReader(new FileReader("Storico2.json"))); 
+			while(in.hasNext()) {
+				buf.write(in.nextLine());
+				buf.write("\n");
+			}
+			in.close();
+			buf.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+/*
 	public void salva(ArrayList<Citta> c) {
 		Gson gson = new Gson();
 		ArrayList<String> database = new ArrayList<String>();
@@ -69,7 +105,7 @@ public class Convertitore {
 			e.printStackTrace();
 		}
 	}
-
+*/
 
 
 
