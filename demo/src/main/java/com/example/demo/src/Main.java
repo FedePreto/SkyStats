@@ -1,10 +1,12 @@
 package com.example.demo.src;
 import com.example.demo.*;
+import com.example.demo.aggiornamento.Aggiornamento;
 import com.example.demo.controller.CercaMeteo;
 import com.example.demo.controller.Ricerca;
 import com.example.demo.statistiche.Stat;
 import com.example.demo.statistiche.Statistiche;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -15,6 +17,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.util.StringBuilderFormattable;
@@ -28,7 +31,9 @@ public class Main {
         int scelta;
         Scanner in = new Scanner(System.in);
         Ricerca r = new Ricerca();
-        
+        Timer timer = new Timer();
+        Aggiornamento agg = new Aggiornamento();
+       // timer.schedule(agg,0,5*3600000);
         
      do {
     	     
@@ -36,7 +41,7 @@ public class Main {
         	                   "         Menu          \n"+
         			           "=======================\n"+
         	                   "1) Meteo Città\n"+
-        			           "2) Statistiche\n"+
+        			           "2) Statistiche di una città\n"+
         	                   "3) Crea storico di oggi\n"+
         			           "4) Aggiungi ai preferiti\n"+
         	                   "5) Rimuovi dai preferiti\n"+
@@ -61,7 +66,7 @@ public class Main {
         		stampaStat(date[0], date[1], citta);
         	    break;    
         	case 3:
-        	    r.salvataggioAutomatico();
+        	    r.salvataggio();
         	    break;
         	case 4:
         		System.out.println("Inserisci il Nome della citta da aggiungere ai preferiti");

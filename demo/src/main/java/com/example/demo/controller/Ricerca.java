@@ -39,14 +39,14 @@ public class Ricerca {
 		aggiornaArray();
 	}
 	
-	public void salvataggioAutomatico() {
+	public void salvataggio() {
 		String url = "";
 		for(String x : favoriti) {
 			url = "http://api.openweathermap.org/data/2.5/weather?q=" + x
 					+ "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
 			
 			Convertitore c = new Convertitore();
-			c.stampaCitta(c.getClassFromCall(CercaMeteo.getMeteo(url),true));
+			c.getClassFromCall(CercaMeteo.getMeteo(url),true);
 		}
 		
 	}
