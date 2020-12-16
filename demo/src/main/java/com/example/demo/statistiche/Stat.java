@@ -285,7 +285,8 @@ public class Stat {
 				}
 			}
 		}
-		return (Double[]) temp.toArray();
+		Double[] d = new Double[temp.size()];
+		return temp.toArray(d);
 
 	}
 }
