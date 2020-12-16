@@ -37,7 +37,7 @@ public class Main {
 		Ricerca r = new Ricerca();
 		Timer timer = new Timer();
 		Aggiornamento agg = new Aggiornamento();
-		timer.schedule(agg, 0, 5 * 3600000);
+		//timer.schedule(agg, 0, 5 * 3600000);
 
 		do {
 
@@ -82,6 +82,10 @@ public class Main {
 				r.removeFavoriti(in.next());
 			case 6:
 				r.stampaPreferiti();
+				break;
+				
+			case 7:
+				zoneGeo();
 				break;
 			case 8:
 				Date[] d = menuDate();
@@ -133,6 +137,27 @@ public class Main {
 
 	public static void stampaStat(Date in, Date fin, String citta) {
 		Stat stat = new Stat();
+		if(citta.equals("Nord") || citta.equals("Centro") || citta.equals("Sud")){
+			double mediaP = stat.getMedia(stat.getDataByLocation(in, fin, citta, true));
+			double mediaU = stat.getMedia(stat.getDataByLocation(in, fin, citta, false));
+			System.out.println("La Media della pressione del " + citta + " è: " + new DecimalFormat("#.##").format(mediaP));
+			System.out.println("La Varianza dell'pressione del " + citta + " è: "
+					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getDataByLocation(in, fin, citta, true), mediaP)));
+			System.out.println("La Media dell'umidità del " + citta + " è: " + new DecimalFormat("#.##").format(mediaU));
+			System.out.println("La Varianza della umidita del " + citta + " è: "
+					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getDataByLocation(in, fin, citta, false), mediaU)));
+		}else{
+			double mediaP = stat.getMedia(stat.getValues(in, fin, citta, true));
+			double mediaU = stat.getMedia(stat.getValues(in, fin, citta, false));
+			System.out.println("La Media della pressione è: " + new DecimalFormat("#.##").format(mediaP));
+			System.out.println("La Varianza dell'pressione è: "
+					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, true), mediaP)));
+			System.out.println("La Media dell'umidità è: " + new DecimalFormat("#.##").format(mediaU));
+			System.out.println("La Varianza della umidita è: "
+					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, false), mediaU)));
+		}
+		/*
+		Stat stat = new Stat();
 		double mediaP = stat.getMedia(stat.getValues(in, fin, citta, true));
 		double mediaU = stat.getMedia(stat.getValues(in, fin, citta, false));
 		System.out.println("La Media della pressione è: " + new DecimalFormat("#.##").format(mediaP));
@@ -141,7 +166,7 @@ public class Main {
 		System.out.println("La Media dell'umidità è: " + new DecimalFormat("#.##").format(mediaU));
 		System.out.println("La Varianza della umidita è: "
 				+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, false), mediaU)));
-	}
+	*/}
 
 	public static Date[] menuDate() {
 		Scanner in = new Scanner(System.in);
@@ -194,16 +219,35 @@ public class Main {
 	}
 
 	// Da finire
-	public void zoneGeo() {
+	public static void zoneGeo() {
 		Scanner in = new Scanner(System.in);
 		int scelta;
+		
+		do{
+			System.out.println("1)Nord\n" + "2)Centro\n" + "3)Sud");
+			scelta = in.nextInt();
+			Date[] date = menuDate();
+			switch (scelta) {
+			case 1:
+				stampaStat(date[0],date[1],"Nord");
+				return;
+			case 2:
+				stampaStat(date[0],date[1],"Centro");
+				return;
+			case 3:
+				stampaStat(date[0],date[1],"Sud");
+				return;
+			default:
+				System.out.println("Inserisci un input valido");
+			}
+		}while(true);/*
 
 		System.out.println("1)Nord\n" + "2)Centro\n" + "3)Sud");
 		scelta = in.nextInt();
 		Date[] date = menuDate();
 		switch (scelta) {
-		case 1:
+		case 1:*/
 		}
 
 	}
-}
+
