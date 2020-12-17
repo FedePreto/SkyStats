@@ -157,6 +157,18 @@ public class Convertitore {
 	public Citta findInJson(String val) {
 		ArrayList<Citta> c;
 		c = JsonToCitta();
+		System.out.println(c.get(6));
+		boolean trovato=false;
+		Citta city = new Citta();
+		for(Citta x : c) {
+			if(val.equals(x.getNome()) && !trovato) {
+				city = x;
+				trovato=true;
+			}
+			
+		}
+		return city;
+	}/*
 		Citta citta = null;
 		Date now = new Date();
 		int maxRecent = 0;
@@ -190,7 +202,7 @@ public class Convertitore {
 			}
 		}
 		return citta;
-	}
+	}*/
 
 	public double differenzaDiDate(Date date1, Date date2, TimeUnit timeUnit) {
 		long diffInMillies = date2.getTime() - date1.getTime();

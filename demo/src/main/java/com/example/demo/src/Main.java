@@ -60,7 +60,7 @@ public class Main {
 			switch (scelta) {
 
 			case 1:
-				cercaMeteo();
+				//cercaMeteo();
 				break;
 
 			case 2:
@@ -123,16 +123,23 @@ public class Main {
 		} while (true);
 		return d;
 	}
+	//METODO DI RICERCA PER CONTROLLER (INIZIO)
+	public Citta cercaMeteo(String nome) {
+		Convertitore conv = new Convertitore();		
+		Citta c = conv.findInJson(nome);	
+		return c;
+	}
+	//METODO DI RICERCA PER CONTROLLER (FINE)
 
-	public static void cercaMeteo() {
+	
+/*	public static void cercaMeteo() {
 		Scanner in = new Scanner(System.in);
 		Convertitore conv = new Convertitore();
-		String url;
 		System.out.print("\nInserisci il nome o l'ID della città da cercare: ");
 		String city = in.next();
-		
+		in.close();		
 		Citta c = conv.findInJson(city);
-	}
+	}*/
 	
 
 	public static void stampaStat(Date in, Date fin, String citta) {

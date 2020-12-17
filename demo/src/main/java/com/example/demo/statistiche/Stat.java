@@ -207,68 +207,7 @@ public class Stat {
 				"La citta con varianza di pressione minore è: " + citta.get(minVP).getNome() + " con " + min[3]);
 
 	}
-	/*
-	 * public void printMaxValues(Date inizio,Date fine) { Convertitore conv = new
-	 * Convertitore(); ArrayList<Citta> citta = conv.JsonToCitta();
-	 * 
-	 * int maxU= 0; int maxP = 0; int maxVU = 0; int maxVP = 0;
-	 * 
-	 * int minU= 0; int minP = 0; int minVU = 0; int minVP = 0;
-	 * 
-	 * 
-	 * for(int i = 0; i<citta.size();i++) { //Max
-	 * if(citta.get(i).getUmidita()>=citta.get(maxU).getUmidita()&&
-	 * citta.get(i).getData().before(fine) && citta.get(i).getData().after(inizio))
-	 * { maxU=i; } if(citta.get(i).getPressione()>citta.get(maxP).getPressione()&&
-	 * citta.get(i).getData().before(fine) && citta.get(i).getData().after(inizio))
-	 * { maxP=i; } if(getVarianza(getValues(inizio, fine, citta.get(i).getNome(),
-	 * false), getMedia(getValues(inizio, fine, citta.get(i).getNome(),
-	 * false)))>getVarianza(getValues(inizio, fine, citta.get(maxVU).getNome(),
-	 * false), getMedia(getValues(inizio, fine, citta.get(maxVU).getNome(),
-	 * false)))) { maxVU=i; } if(getVarianza(getValues(inizio, fine,
-	 * citta.get(i).getNome(), true), getMedia(getValues(inizio, fine,
-	 * citta.get(i).getNome(), true)))>getVarianza(getValues(inizio, fine,
-	 * citta.get(maxVP).getNome(), true), getMedia(getValues(inizio, fine,
-	 * citta.get(maxVP).getNome(), true)))) { maxVP=i; } //Min
-	 * if(citta.get(i).getUmidita()<citta.get(minU).getUmidita()) { minU=i; }
-	 * if(citta.get(i).getPressione()<citta.get(minP).getPressione()) { minP=i; }
-	 * if(getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-	 * getMedia(getValues(inizio, fine, citta.get(i).getNome(),
-	 * false)))<getVarianza(getValues(inizio, fine, citta.get(minVU).getNome(),
-	 * false), getMedia(getValues(inizio, fine, citta.get(minVU).getNome(),
-	 * false)))) { minVU=i; } if(getVarianza(getValues(inizio, fine,
-	 * citta.get(i).getNome(), true), getMedia(getValues(inizio, fine,
-	 * citta.get(i).getNome(), true)))<getVarianza(getValues(inizio, fine,
-	 * citta.get(minVP).getNome(), true), getMedia(getValues(inizio, fine,
-	 * citta.get(minVP).getNome(), true)))) { minVP=i; } }
-	 * System.out.println("La città con umidita maggiore è: " +
-	 * citta.get(maxU).getNome() + " con " + citta.get(maxU).getUmidita() + "%");
-	 * System.out.println("La città con pressione maggiore è: " +
-	 * citta.get(maxP).getNome() + " con " + citta.get(maxP).getPressione() +
-	 * " hPa"); System.out.println("La città con varianza di umidità maggiore è: " +
-	 * citta.get(maxVU).getNome() + " con " + getVarianza(getValues(inizio, fine,
-	 * citta.get(maxVU).getNome(), false), getMedia(getValues(inizio, fine,
-	 * citta.get(maxVU).getNome(), false))));
-	 * System.out.println("La citta con varianza di pressione maggiore è: "+citta.
-	 * get(maxVP).getNome()+" con " + getVarianza(getValues(inizio, fine,
-	 * citta.get(maxVP).getNome(), true), getMedia(getValues(inizio, fine,
-	 * citta.get(maxVP).getNome(), true)))); System.out.println();
-	 * System.out.println("La città con umidita minore è: " +
-	 * citta.get(minU).getNome() + " con " + citta.get(minU).getUmidita() + "%");
-	 * System.out.println("La città con pressione minore è: " +
-	 * citta.get(minP).getNome() + " con " + citta.get(minP).getPressione() +
-	 * " hPa"); System.out.println("La città con varianza di umidità minore è: " +
-	 * citta.get(minVU).getNome() + " con " + getVarianza(getValues(inizio, fine,
-	 * citta.get(minVU).getNome(), false), getMedia(getValues(inizio, fine,
-	 * citta.get(minVU).getNome(), false))));
-	 * System.out.println("La citta con varianza di pressione minore è: "+citta.get(
-	 * minVP).getNome()+" con " + getVarianza(getValues(inizio, fine,
-	 * citta.get(minVP).getNome(), true), getMedia(getValues(inizio, fine,
-	 * citta.get(minVP).getNome(), true))));
-	 * 
-	 * 
-	 * }
-	 */
+	
 
 	public Double[] getDataByLocation(Date inizio, Date fine, String location, boolean isPressione) {
 		Convertitore conv = new Convertitore();
