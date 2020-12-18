@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
+import com.example.demo.model.Citta;
 import com.google.gson.*;
 
 public class Convertitore {

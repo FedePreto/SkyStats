@@ -1,6 +1,7 @@
 package com.example.demo.statistiche;
 
-import com.example.demo.controller.Ricerca;
+import com.example.demo.model.Citta;
+import com.example.demo.services.Favoriti;
 import com.example.demo.src.*;
 import java.util.Date;
 import java.util.ArrayList;

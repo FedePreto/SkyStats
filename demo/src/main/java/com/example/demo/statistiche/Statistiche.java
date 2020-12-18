@@ -4,7 +4,7 @@ package com.example.demo.statistiche;
 
 import java.util.*;
 
-import com.example.demo.src.Citta;
+import com.example.demo.model.Citta;
 import com.example.demo.src.Convertitore;
 
 public class Statistiche {

@@ -1,7 +1,7 @@
 
 //Classe che modella i parametri di una città
 
-package com.example.demo.src;
+package com.example.demo.model;
 
 import java.util.Date;
 

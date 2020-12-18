@@ -2,8 +2,9 @@ package com.example.demo.src;
 
 import com.example.demo.*;
 import com.example.demo.aggiornamento.Aggiornamento;
-import com.example.demo.controller.CercaMeteo;
-import com.example.demo.controller.Ricerca;
+import com.example.demo.model.Citta;
+import com.example.demo.services.CercaMeteo;
+import com.example.demo.services.Favoriti;
 import com.example.demo.statistiche.Stat;
 import com.example.demo.statistiche.Statistiche;
 import com.google.gson.Gson;
@@ -37,7 +38,7 @@ public class Main {
 		Convertitore conv = new Convertitore();
 		int scelta;
 		Scanner in = new Scanner(System.in);
-		Ricerca r = new Ricerca();
+		Favoriti r = new Favoriti();
 		Timer timer = new Timer();
 		Aggiornamento agg = new Aggiornamento();
 		timer.schedule(agg, getDelay(), 5 * 3600000);

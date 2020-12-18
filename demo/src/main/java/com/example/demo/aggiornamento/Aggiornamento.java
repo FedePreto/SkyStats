@@ -2,11 +2,11 @@ package com.example.demo.aggiornamento;
 
 import java.util.TimerTask;
 
-import com.example.demo.controller.Ricerca;
+import com.example.demo.services.Favoriti;
 
 public class Aggiornamento extends TimerTask {
 
-	Ricerca r = new Ricerca();
+	Favoriti r = new Favoriti();
 
 	public void run() {
 		r.salvataggio();

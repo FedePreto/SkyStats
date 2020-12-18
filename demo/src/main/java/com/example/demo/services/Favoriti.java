@@ -2,7 +2,7 @@
 //Classe che serve per fare il salvataggio automatico del meteo dei capoluoghi di regione
 //(Il nome della classe è completamente fuori luogo da cambiare) 
 
-package com.example.demo.controller;
+package com.example.demo.services;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import com.example.demo.src.Citta;
+import com.example.demo.model.Citta;
 import com.example.demo.src.Convertitore;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -25,11 +25,11 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-public class Ricerca {
+public class Favoriti {
 	private ArrayList<String> favoriti;
 	String config = ".\\src\\main\\java\\com\\example\\demo\\config/" + "config.json";
 
-	public Ricerca() {
+	public Favoriti() {
 		favoriti = new ArrayList<String>();
 		// dummy();
 		aggiornaArray();
