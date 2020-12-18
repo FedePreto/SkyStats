@@ -7,6 +7,7 @@ package com.example.demo.controller;
  org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.src.Citta;
+import com.example.demo.src.Convertitore;
 import com.example.demo.src.Main;
 
  
@@ -15,11 +16,35 @@ import com.example.demo.src.Main;
  
  String url = "";//"C:\\Users\\OEM\\Downloads\\demo\\Esempio chiamata.txt";
  
- @GetMapping("/Weather") public Citta getSaluto(@RequestParam(name = "Citta", defaultValue = "") String city) {
-	 Main m = new Main();
-	 Citta c = m.cercaMeteo(city);
-	 System.out.println(c);
+ @GetMapping("/Weather") public Citta getSaluto(@RequestParam(name = "Citta", defaultValue = "Rome") String city,@RequestParam(name = "Aggiornamento", defaultValue = "Si")String agg) {
+	 Citta c = new Citta();
+	 Convertitore conv = new Convertitore(); 
+	 if(agg.equals("Si")) {
+		 System.out.println("Sono nel si");
+		 try { int ID = Integer.parseInt(city); url =
+				 "http://api.openweathermap.org/data/2.5/weather?id=" + ID +
+				 "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
+				 
+				  } catch (NumberFormatException e) {
+				 
+				 url = "http://api.openweathermap.org/data/2.5/weather?q=" + city +
+				 ",IT&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
+				 
+				 }
+				 
+				 String meteo = CercaMeteo.getMeteo(url);
+				 System.out.println(meteo);
+				 c = conv.getClassFromCall(meteo);
+				 System.out.println(c);
+				 return c;
+	 }
+	 else if(agg.equals("No")){	
+		 System.out.println("Sono nel no");
+	 c = conv.findInJson(city);
 	 return c;
+	 }
+	 else return null;
+//@Getmapping()
  /*
   try { int ID = Integer.parseInt(city); url =
  "http://api.openweathermap.org/data/2.5/weather?id=" + ID +
