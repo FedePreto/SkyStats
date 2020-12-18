@@ -12,14 +12,6 @@ import com.google.gson.*;
 public class Convertitore {
 	String nomeFile = "Storico.json";
 
-	public Convertitore(String nomeFile) {
-		this.nomeFile = nomeFile;
-	}
-
-	public Convertitore() {
-		nomeFile = ".\\src\\main\\java\\com\\example\\demo\\src/" + nomeFile;
-	}
-
 	public ArrayList<Citta> JsonToCitta() {
 		ArrayList<Citta> c = new ArrayList<Citta>();
 		Stream<String> file;

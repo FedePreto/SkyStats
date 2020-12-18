@@ -6,9 +6,12 @@ import com.example.demo.controller.CercaMeteo;
 import com.example.demo.controller.Ricerca;
 import com.example.demo.statistiche.Stat;
 import com.example.demo.statistiche.Statistiche;
+import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Time;
@@ -37,7 +40,8 @@ public class Main {
 		Ricerca r = new Ricerca();
 		Timer timer = new Timer();
 		Aggiornamento agg = new Aggiornamento();
-		//timer.schedule(agg, 0, 5 * 3600000);
+		timer.schedule(agg, getDelay(), 5 * 3600000);
+		
 
 		do {
 
@@ -247,14 +251,29 @@ public class Main {
 			default:
 				System.out.println("Inserisci un input valido");
 			}
-		}while(true);/*
+		}while(true);
 
-		System.out.println("1)Nord\n" + "2)Centro\n" + "3)Sud");
-		scelta = in.nextInt();
-		Date[] date = menuDate();
-		switch (scelta) {
-		case 1:*/
+		
 		}
+	public static long getDelay() {
+		Date now = new Date();
+		Gson gson = new Gson();
+		Citta c = null;
+		        	try {
+        		Convertitore conv = new Convertitore();
+				Scanner in = new Scanner(new BufferedReader(new FileReader("Storico.json")));
+				c = gson.fromJson(in.nextLine(), Citta.class);							
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		    long differenza = now.getTime() - c.getData().getTime();
+		    System.out.println(c.getData());
+		    System.out.println(differenza);
+        	if(differenza>5*3600000) {
+				return 0;
+			}
+			else return (5*3600000-differenza);
+}
 
 	}
 
