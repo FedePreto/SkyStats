@@ -121,7 +121,7 @@ public class Stat {
 	 * }
 	 */
 
-	public void printMaxValues(Date inizio, Date fine) {
+	public String printMaxValues(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Citta> citta = conv.JsonToCitta();
 
@@ -192,6 +192,7 @@ public class Stat {
 				minVP = i;
 			}
 		}
+		/*
 		System.out.println("La città con umidita maggiore è: " + citta.get(maxU).getNome() + " con " + max[0] + "%");
 		System.out
 				.println("La città con pressione maggiore è: " + citta.get(maxP).getNome() + " con " + max[1] + " hPa");
@@ -206,7 +207,14 @@ public class Stat {
 				.println("La città con varianza di umidità minore è: " + citta.get(minVU).getNome() + " con " + min[2]);
 		System.out.println(
 				"La citta con varianza di pressione minore è: " + citta.get(minVP).getNome() + " con " + min[3]);
-
+		*/
+		return	"La città con umidita maggiore è: " + citta.get(maxU).getNome() + " con " + max[0] + "%<br>"+
+				"La città con pressione maggiore è: " + citta.get(maxP).getNome() + " con " + max[1] + " hPa<br>"+
+				"La citta con varianza di pressione maggiore è: " + citta.get(maxVP).getNome() + " con " + max[3]+"<br>"+
+				"La città con umidita minore è: " + citta.get(minU).getNome() + " con " + min[0] + "%<br>"+
+				"La città con pressione minore è: " + citta.get(minP).getNome() + " con " + min[1] + " hPa<br>"+
+				"La citta con varianza di pressione minore è: " + citta.get(minVP).getNome() + " con " + min[3];
+				
 	}
 	
 
