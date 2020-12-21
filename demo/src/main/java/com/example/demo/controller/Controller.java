@@ -44,7 +44,8 @@ import com.example.demo.src.Main;
 	 return c;
 	 }
 	 else return null;
-	 
+ }
+ 
 //@Getmapping("/Stat")
 //public JsonObject getStat(@RequestParam jsonBody)
  /*
@@ -63,5 +64,5 @@ import com.example.demo.src.Main;
  
  */
  
- } }
+  }
  
