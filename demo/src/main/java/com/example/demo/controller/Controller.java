@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -7,14 +8,13 @@ import java.util.Scanner;
 
 //Classe non utilizzata momentaneamente (Serve per gestire le call da Postaman alla nostra API)
 
- import org.springframework.web.bind.annotation.GetMapping; import
- org.springframework.web.bind.annotation.RequestParam; import
- org.springframework.web.bind.annotation.RestController;
+ import org.springframework.web.bind.annotation.GetMapping; 
+ import org.springframework.web.bind.annotation.RequestParam; 
+ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Citta;
 import com.example.demo.services.CercaMeteo;
-import com.example.demo.src.Convertitore;
-import com.example.demo.src.Main;
+import com.example.demo.src.*;
 import com.example.demo.statistiche.Stat;
 import com.google.gson.JsonObject;
 
@@ -79,6 +79,20 @@ import com.google.gson.JsonObject;
 	 Stat s = new Stat();
 	 return s.printMaxValues(range[0], range[1]);
  }
+ 
+ @GetMapping("/ZoneGeo")
+ public String getZoneGeo(@RequestParam( name = "zona", defaultValue = "Centro")String zona,@RequestParam( name = "periodo",defaultValue = "Giornaliero")String periodo) {
+	 Date[] range = menuDate(periodo);
+	 Stat stat = new Stat();
+	 double mediaP = stat.getMedia(stat.getDataByLocation(range[0], range[1], zona, true));
+	 double mediaU = stat.getMedia(stat.getDataByLocation(range[0], range[1], zona, false));
+	 
+	 return "Media della pressione al "+zona+": "+new DecimalFormat("#.##").format(mediaP)+"<br>Varianza della pressione al "+zona+" : "+new DecimalFormat("#.##").format(stat.getVarianza(stat.getDataByLocation(range[0], range[1], zona, true), mediaP))+
+			 "<br><br>Media dell'umidità al "+zona+" : "+mediaU+"<br>Varianza dell'umidità al "+zona+" : "+stat.getVarianza(stat.getDataByLocation(range[0], range[1], zona, true), mediaU);
+		
+ }
+ 
+		
  public static Date[] menuDate(String time) {
 	 Date inizio = new Date();
 	 Date fine = new Date();
