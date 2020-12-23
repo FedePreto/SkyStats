@@ -53,23 +53,7 @@ public class Stat {
 		return media / (double) val.length;
 	}
 
-	/*
-	 * public double getVarianza(Double[] val, double media) { Convertitore conv =
-	 * new Convertitore(); //Da fare con le collection ma siccome non le so ancora
-	 * usare bene lo faccio con gli arraylist ArrayList<Double[]> temp= new
-	 * ArrayList<Double[]>();
-	 * 
-	 * for(int i = 0; i<val.length;i++){//cicla tutti i risulati boolean trovato =
-	 * false; for(int j = 0; j<temp.size();j++){ if(temp.get(j)[0]==val[i]) {//vede
-	 * se quel dato si trova in temp temp.get(j)[1]++;//se c'è incrementa il
-	 * contatore trovato = true; } } if(!trovato){//se non c'è lo aggiunge Double[]
-	 * d = new Double[2]; d[0] = val[i]; d[1] = (double)1; temp.add(d); } }
-	 * 
-	 * double varianza=0; //stampaArray(temp); //Calcolo varianza for(int i = 0;
-	 * i<temp.size();i++){ varianza +=
-	 * Math.pow(temp.get(i)[0]-media,2)*temp.get(i)[1]; } return
-	 * Math.sqrt(varianza/temp.size()); }
-	 */
+	
 
 	public double getVarianza(Double[] val, double media) {
 		double var = 0;
@@ -84,42 +68,7 @@ public class Stat {
 			System.out.println(a.get(i)[0] + " " + a.get(i)[1]);
 		}
 	}
-	/*
-	 * public void maxVal(Date inizio, Date fine) { Convertitore conv = new
-	 * Convertitore(); Ricerca r = new Ricerca(); ArrayList<Citta> c =
-	 * conv.JsonToCitta(); ArrayList<String> nomiCitta = r.getFavoriti(); int
-	 * indiceCittaU = 0; int indiceCittaP = 0; int indiceCittaVU = 0; int
-	 * indiceCittaVP = 0;
-	 * 
-	 * double valMaxPressione = 0; double valMaxUmidita = 0; double valMaxVarUm = 0;
-	 * double valMaxVarPre =0; for (int i=0; i<c.size(); i++) {
-	 * if(c.get(i).getUmidita()>=valMaxUmidita && c.get(i).getData().before(fine) &&
-	 * c.get(i).getData().after(inizio)) { indiceCittaU = i; valMaxUmidita =
-	 * c.get(i).getUmidita(); } if (c.get(i).getPressione()>=valMaxPressione &&
-	 * c.get(i).getData().before(fine) && c.get(i).getData().after(inizio)) {
-	 * indiceCittaP = i; valMaxPressione = c.get(i).getPressione(); } }
-	 * 
-	 * for (int j=0; j<nomiCitta.size(); j++) { for (int i=0; i<c.size(); i++) {
-	 * if(nomiCitta.get(j).equals(c.get(i).getNome()) &&
-	 * getVarianza(getValues(inizio,fine,c.get(i).getNome(),true))>=valMaxVarPre){
-	 * indiceCittaVP = i; valMaxVarPre =
-	 * getVarianza(getValues(inizio,fine,c.get(i).getNome(),true)); }
-	 * if(nomiCitta.get(j).equals(c.get(i).getNome()) &&
-	 * getVarianza(getValues(inizio,fine,c.get(i).getNome(),false))>=valMaxVarUm){
-	 * indiceCittaVU = i; valMaxVarUm =
-	 * getVarianza(getValues(inizio,fine,c.get(i).getNome(),false)); } } }
-	 * 
-	 * System.out.println("La città con umidita maggiore è: " +
-	 * c.get(indiceCittaU).getNome() + " con " + valMaxUmidita + "%");
-	 * System.out.println("La città con pressione maggiore è: " +
-	 * c.get(indiceCittaP).getNome() + " con " + valMaxPressione + " hPa");
-	 * System.out.println("La città con varianza di umidità maggiore è: " +
-	 * c.get(indiceCittaVU).getNome() + " con " + valMaxVarUm);
-	 * System.out.println("La citta con varianza di pressione maggiore è: " +
-	 * c.get(indiceCittaVP).getNome() + " con " + valMaxVarPre);
-	 * 
-	 * }
-	 */
+	
 
 	public String printMaxValues(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
@@ -159,42 +108,43 @@ public class Stat {
 			
 			//Il metodo Max è stato Ottimizzato riducendo il numero di call, innestando i vari if
 			if( citta.get(i).getData().after(inizio) && citta.get(i).getData().before(fine)) {
+				//check se l'umidità è il valore massimo
 				if ( Hum > max[0]) {
 					max[0] = Hum;
 					maxU = i;
 				}
-				
-				if (Pres > max[1]) {
-					max[1] = Pres;
-					maxP = i;
-				}
-				
+				//check se l'umidità è il valore minimo
 				if (Hum < min[0]) {
 				min[0] = Hum;
 				minU = i;
 				}
-				
+				//check se la pressione è il valore massimo
+				if (Pres > max[1]) {
+					max[1] = Pres;
+					maxP = i;
+				}
+				//check se la pressione è il valore minimo
 				if ( Pres < min[1]) {
 				min[1] = Pres;
 				minP = i;
 				}
 			}
-			
+			//check se la varianza dell'umidità è il valore massimo
 			if (getVarF > max[2]) {
 				max[2] = getVarF;
 				maxVU = i;
 			}
-			
+			//check se la varianza dell'umidità è il valore minimo
 			if (getVarF < min[2]) {
 				min[2] = getVarF;
 				minVU = i;
 			}
-			
+			//check se la varianza della pressione è il valore massimo
 			if (getVarT > max[3]) {
 				max[3] = getVarT;
 				maxVP = i;
 			}
-			
+			//check se la varianza della pressione è il valore minimo
 			if (getVarT < min[3]) {
 				min[3] = getVarT;
 				minVP = i;
