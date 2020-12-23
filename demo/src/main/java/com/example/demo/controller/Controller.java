@@ -54,7 +54,7 @@ import com.google.gson.JsonObject;
  }
  
  @GetMapping("/Stat")
- public String getStat(@RequestParam(name = "time",defaultValue = "Giornaliero")String time,@RequestParam(name = "citta",defaultValue = "Rome")String city) {
+ public String getStat(@RequestParam(name = "time",defaultValue = "Settimanale")String time,@RequestParam(name = "citta",defaultValue = "Rome")String city) {
 	 Date[] range = menuDate(time);
 	 Stat s = new Stat();
 	 double mediaU = s.getMedia(s.getValues(range[0], range[1], city, false));
@@ -74,14 +74,14 @@ import com.google.gson.JsonObject;
  }
  
  @GetMapping("/Max")
- public String getMax(@RequestParam(name = "timeRange", defaultValue = "Giornaliero")String timeRange,@RequestParam(name = "citta",defaultValue = "Rome")String city) {
+ public String getMax(@RequestParam(name = "timeRange", defaultValue = "Settimanale")String timeRange,@RequestParam(name = "citta",defaultValue = "Rome")String city) {
 	 Date[] range = menuDate(timeRange);
 	 Stat s = new Stat();
 	 return s.printMaxValues(range[0], range[1]);
  }
  
  @GetMapping("/ZoneGeo")
- public String getZoneGeo(@RequestParam( name = "zona", defaultValue = "Centro")String zona,@RequestParam( name = "periodo",defaultValue = "Giornaliero")String periodo) {
+ public String getZoneGeo(@RequestParam( name = "zona", defaultValue = "Centro")String zona,@RequestParam( name = "periodo",defaultValue = "Settimanale")String periodo) {
 	 Date[] range = menuDate(periodo);
 	 Stat stat = new Stat();
 	 double mediaP = stat.getMedia(stat.getDataByLocation(range[0], range[1], zona, true));

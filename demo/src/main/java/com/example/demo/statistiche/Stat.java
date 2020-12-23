@@ -146,51 +146,60 @@ public class Stat {
 				getMedia(getValues(inizio, fine, citta.get(0).getNome(), true)));
 		for (int i = 0; i < citta.size(); i++) {
 			// Max
-			if (citta.get(i).getData().after(inizio) && citta.get(i).getUmidita() > max[0]
-					&& citta.get(i).getData().before(fine)) {
-				max[0] = citta.get(i).getUmidita();
-				maxU = i;
+			//getVarF prende la varianza dell'umidità
+			double getVarF= getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
+					getMedia(getValues(inizio, fine, citta.get(i).getNome(), false)));
+			//getVarT prende la varianza della pressione
+			double getVarT=getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
+					getMedia(getValues(inizio, fine, citta.get(i).getNome(), true)));
+			//Hum calcola l'umidità sul singolo valore
+			double Hum = citta.get(i).getUmidita();
+			//Pres calcola la pressione su singolo valore
+			double Pres = citta.get(i).getPressione();
+			
+			//Il metodo Max è stato Ottimizzato riducendo il numero di call, innestando i vari if
+			if( citta.get(i).getData().after(inizio) && citta.get(i).getData().before(fine)) {
+				if ( Hum > max[0]) {
+					max[0] = Hum;
+					maxU = i;
+				}
+				
+				if (Pres > max[1]) {
+					max[1] = Pres;
+					maxP = i;
+				}
+				
+				if (Hum < min[0]) {
+				min[0] = Hum;
+				minU = i;
+				}
+				
+				if ( Pres < min[1]) {
+				min[1] = Pres;
+				minP = i;
+				}
 			}
-			if (citta.get(i).getData().after(inizio) && citta.get(i).getPressione() > max[1]
-					&& citta.get(i).getData().before(fine)) {
-				max[1] = citta.get(i).getPressione();
-				maxP = i;
-			}
-			if (getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-					getMedia(getValues(inizio, fine, citta.get(i).getNome(), false))) > max[2]) {
-				max[2] = getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-						getMedia(getValues(inizio, fine, citta.get(i).getNome(), false)));
+			
+			if (getVarF > max[2]) {
+				max[2] = getVarF;
 				maxVU = i;
 			}
-			if (getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
-					getMedia(getValues(inizio, fine, citta.get(i).getNome(), true))) > max[3]) {
-				max[3] = getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
-						getMedia(getValues(inizio, fine, citta.get(i).getNome(), true)));
-				maxVP = i;
-			}
-
-			if (citta.get(i).getData().after(inizio) && citta.get(i).getUmidita() < min[0]
-					&& citta.get(i).getData().before(fine)) {
-				min[0] = citta.get(i).getUmidita();
-				minU = i;
-			}
-			if (citta.get(i).getData().after(inizio) && citta.get(i).getPressione() < min[1]
-					&& citta.get(i).getData().before(fine)) {
-				min[1] = citta.get(i).getPressione();
-				minP = i;
-			}
-			if (getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-					getMedia(getValues(inizio, fine, citta.get(i).getNome(), false))) < min[2]) {
-				min[2] = getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-						getMedia(getValues(inizio, fine, citta.get(i).getNome(), false)));
+			
+			if (getVarF < min[2]) {
+				min[2] = getVarF;
 				minVU = i;
 			}
-			if (getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
-					getMedia(getValues(inizio, fine, citta.get(i).getNome(), true))) < min[3]) {
-				min[3] = getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
-						getMedia(getValues(inizio, fine, citta.get(i).getNome(), true)));
+			
+			if (getVarT > max[3]) {
+				max[3] = getVarT;
+				maxVP = i;
+			}
+			
+			if (getVarT < min[3]) {
+				min[3] = getVarT;
 				minVP = i;
 			}
+			
 		}
 		/*
 		System.out.println("La città con umidita maggiore è: " + citta.get(maxU).getNome() + " con " + max[0] + "%");
