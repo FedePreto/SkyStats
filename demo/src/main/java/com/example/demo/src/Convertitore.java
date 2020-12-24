@@ -13,7 +13,7 @@ import com.google.gson.*;
 public class Convertitore {
 	String nomeFile = "Storico.json";
 
-	public ArrayList<Citta> JsonToCitta() {
+public ArrayList<Citta> JsonToCitta() {
 		ArrayList<Citta> c = new ArrayList<Citta>();
 		Stream<String> file;
 		int i = 0;
@@ -38,7 +38,29 @@ public class Convertitore {
 			return c;
 		}
 		return c;
+	}public Convertitore() {
+		// TODO Auto-generated constructor stub
 	}
+
+public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
+		ArrayList<Citta> c = new ArrayList<Citta>();
+		String file="";
+		int i = -1;
+		Gson gson = new Gson();
+		try {
+			Scanner in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
+			do {
+				
+				c.add(gson.fromJson(in.nextLine(), Citta.class));
+				i++;
+			}
+			while((c.get(i).getData().after(inizio) && c.get(i).getData().before(fine)) && in.hasNext());
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		if(c.isEmpty())return null;
+		return c;
+}
 	
 	public void salva(ArrayList<Citta> c) {
 		Gson gson = new Gson();
