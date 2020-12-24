@@ -117,10 +117,6 @@ public class Main {
 				// converte la stringa della data in un oggetto di classe Date
 				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy HH:mm");
 				d = formato.parse(s);
-				// crea un oggetto 'formattatore' fissando un pattern
-				formato = new SimpleDateFormat("'alle ore' HH:mm 'del' dd/MM/yyyy");
-				// visualizza la data formattata secondo il pattern fissato
-				System.out.println("OUTPUT: " + formato.format(d));
 				break; // esce dal ciclo
 			} catch (ParseException e) {
 				System.out.println("Formato data non valido.");
