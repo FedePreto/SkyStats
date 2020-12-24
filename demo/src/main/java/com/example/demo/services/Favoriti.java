@@ -31,7 +31,6 @@ public class Favoriti {
 
 	public Favoriti() {
 		favoriti = new ArrayList<String>();
-		// dummy();
 		aggiornaArray();
 	}
 
@@ -52,24 +51,12 @@ public class Favoriti {
 
 	public void aggiornaArray() {
 		favoriti.clear();
-		JsonParser jsonParser = null;
-		JsonElement jsonTree = null;
 		try {
 			BufferedReader buf = new BufferedReader(new FileReader(new File(config)));
-
-			String prova = buf.readLine();
-			// System.out.println(prova);
-			jsonParser = new JsonParser();
-			jsonTree = jsonParser.parse(prova);
-
-			if (jsonTree.isJsonObject()) {
-				JsonObject jo = jsonTree.getAsJsonObject();
-				JsonArray ar = jo.get("favoriti").getAsJsonArray();
-
-				for (int i = 0; i < ar.size(); i++) {
-					favoriti.add(ar.get(i).getAsString());
-				}
-			}
+			JsonObject jo = JsonParser.parseReader(buf).getAsJsonObject(); 
+			JsonArray ar = jo.get("favoriti").getAsJsonArray();
+			for (int i = 0; i < ar.size(); i++) 
+				favoriti.add(ar.get(i).getAsString());
 			buf.close();
 
 		} catch (FileNotFoundException e) {
@@ -99,9 +86,7 @@ public class Favoriti {
 			e.printStackTrace();
 		}
 		Gson gson = new Gson();
-		file.set(0, "{\"favoriti\":" + gson.toJson(favoriti, new TypeToken<ArrayList<String>>() {
-		}.getType()) + "}");
-
+		file.set(0, "{\"favoriti\":" + gson.toJson(favoriti, new TypeToken<ArrayList<String>>(){}.getType()) + "}");
 		try {
 			BufferedWriter buf = new BufferedWriter(new FileWriter(new File(config)));
 			for (int i = 0; i < file.size(); i++) {
@@ -120,6 +105,19 @@ public class Favoriti {
 		favoriti.add(fav);
 		salvaArray();
 	}
+	
+	//Metodo creato per l'utilizzo con la classe controller utile a visualizzare il contenuto del file fav
+	public JsonObject stampaFavoriti() {
+		JsonObject jo = new JsonObject();
+		try {
+			BufferedReader buf = new BufferedReader(new FileReader(new File(config)));
+			jo = JsonParser.parseReader(buf).getAsJsonObject(); 		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jo;
+	}
 
 	public void stampaPreferiti() {
 		for (int i = 0; i < favoriti.size(); i++) {
@@ -127,13 +125,13 @@ public class Favoriti {
 		}
 	}
 
-	public void dummy() {
-		String[] prova = { "L'Aquila", "Potenza", "Catanzaro", "Napoli", "Bologna", "Trieste", "Roma", "Genova",
+	/*public void dummy() {
+		String[] capoluoghi = { "L'Aquila", "Potenza", "Catanzaro", "Napoli", "Bologna", "Trieste", "Roma", "Genova",
 				"Milano", "Ancona", "Campobasso", "Torino", "Bari", "Cagliari", "Palermo", "Firenze", "Trento",
 				"Perugia", "Aosta", "Venezia" };
-		favoriti = new ArrayList<>(Arrays.asList(prova));
+		favoriti = new ArrayList<>(Arrays.asList(capoluoghi));
 		salvaArray();
-	}
+	}*/
 
 	public void removeFavoriti(String val) {
 		favoriti.remove(val);
