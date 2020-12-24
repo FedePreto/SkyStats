@@ -19,13 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Citta;
-import com.example.demo.services.CercaMeteo;
-import com.example.demo.src.*;
+import com.example.demo.services.*;
+import com.example.demo.src.Convertitore;
 import com.example.demo.statistiche.Stat;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 
  
  
@@ -63,118 +61,140 @@ import com.google.gson.JsonParser;
 	 else return null;
  }
  
- @SuppressWarnings("unchecked")
 @PostMapping("/Stat")
- public JSONObject getStat(@RequestBody JSONObject JsonBody) {
-	 JsonObject body = (JsonObject)JsonParser.parseString(JsonBody.toString());
-	 System.out.println(body);
+ public JsonObject getStat(@RequestBody JsonObject body) {
 	 String city =  body.get("city").getAsString();
      String type = body.get("type").getAsString();
-     String inizio = "";
-     String fine = "";
-	 try {
+     Date[] date = new Date[2];
+     if(type.equals("Customizzato")) {
 		 JsonArray range = body.getAsJsonArray("range");
-		 inizio = range.get(0).getAsString();
-		 fine = range.get(1).getAsString();
-		 }catch(NullPointerException e) {};
-	
-	 Date[] range = menuDate(type,inizio,fine);
-	 System.out.println(range[0] + " " + range[1]);
+		 String inizio = range.get(0).getAsString();
+		 String fine = range.get(1).getAsString();
+		 date = menuDate(inizio,fine);
+		 }
+     else {
+    	 date = menuDate(type);
+    	 };
 	 Stat s = new Stat();
-	 Double[] valP =  s.getValues(range[0], range[1], city, true);
-	 Double[] valU = s.getValues(range[0], range[1], city, false);
+	 Double[] valP =  s.getValues(date[0], date[1], city, true);
+	 Double[] valU = s.getValues(date[0], date[1], city, false);
 	 double mediaU = s.getMedia(valU);
 	 double mediaP = s.getMedia(valP);
 	 double varianzaU = s.getVarianza(valU, mediaU);
 	 double varianzaP = s.getVarianza(valP, mediaP);
-	 JSONObject JsonReturn = new JSONObject();
+	 JsonObject JsonReturn = new JsonObject();
 	 if(valP == null && valU == null) {
-		 JsonReturn.put("Nessun valore trovato nel range di tempo specificato","");
+		 JsonReturn.addProperty("Nessun valore trovato nel range di tempo specificato","");
 		 return JsonReturn;
 	 }
 	 else {
-		 JsonReturn.put("Nome", city);
-		 JsonReturn.put("Media Umidità", new DecimalFormat("#.##").format(mediaU));
-		 JsonReturn.put("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
-		 JsonReturn.put("Media Pressione",new DecimalFormat("#.##").format(mediaP));
-		 JsonReturn.put("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
+		 JsonReturn.addProperty("Nome", city);
+		 JsonReturn.addProperty("Media Umidità", new DecimalFormat("#.##").format(mediaU));
+		 JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
+		 JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(mediaP));
+		 JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
 		 return JsonReturn;
 		 }
  }
 
  @PostMapping("/Max")
- public JSONObject getMax(@RequestBody JSONObject JsonBody) {
-	 JsonObject body = (JsonObject)JsonParser.parseString(JsonBody.toString());
+ public JsonObject getMax(@RequestBody JsonObject body) {
      String type = body.get("type").getAsString();
-     System.out.println(type);
-     String inizio = "";
-     String fine = "";
-     try {
+     Date[] date = new Date[2];
+     if(type.equals("Customizzato")) {
 		 JsonArray range = body.getAsJsonArray("range");
-		 inizio = range.get(0).getAsString();
-		 fine = range.get(1).getAsString();
-		 }catch(NullPointerException e) {};
-	 Date[] range = menuDate(type,inizio,fine);
+		 String inizio = range.get(0).getAsString();
+		 String fine = range.get(1).getAsString();
+		 date = menuDate(inizio,fine);
+		 }
+     else {
+    	 date = menuDate(type);
+    	 };
 	 Stat s = new Stat();
-	 JSONObject JsonReturn = s.getMax(range[0],range[1]);
-	 return JsonReturn;
+	 return s.getMax(date[0],date[1]);
  }
  
  @PostMapping("/Min")
- public JSONObject getMin(@RequestBody JSONObject JsonBody) {
-	 JsonObject body = (JsonObject)JsonParser.parseString(JsonBody.toString());
+ public JsonObject getMin(@RequestBody JsonObject body) {
      String type = body.get("type").getAsString();
-     String inizio = "";
-     String fine = "";
-     try {
+     Date[] date = new Date[2];
+     if(type.equals("Customizzato")) {
 		 JsonArray range = body.getAsJsonArray("range");
-		 inizio = range.get(0).getAsString();
-		 fine = range.get(1).getAsString();
-		 }catch(NullPointerException e) {};
-	 Date[] range = menuDate(type,inizio,fine);
+		 String inizio = range.get(0).getAsString();
+		 String fine = range.get(1).getAsString();
+		 date = menuDate(inizio,fine);
+		 }
+     else {
+    	 date = menuDate(type);
+    	 };
 	 Stat s = new Stat();
-	 JSONObject JsonReturn = s.getMin(range[0],range[1]);
-	 return JsonReturn;
- }
+	 return s.getMin(date[0],date[1]);
+}
  
- @SuppressWarnings("unchecked")
 @PostMapping("/ZoneGeo")
- public JSONObject getZoneGeo(@RequestBody JSONObject JsonBody) {
-	 JsonObject body = (JsonObject)JsonParser.parseString(JsonBody.toString());
+ public JsonObject getZoneGeo(@RequestBody JsonObject body) {
 	 String zone = body.get("zone").getAsString();
      String type = body.get("type").getAsString();
-     String inizio = "";
-     String fine = "";
-     try {
+     Date[] date = new Date[2];
+     if(type.equals("Customizzato")) {
 		 JsonArray range = body.getAsJsonArray("range");
-		 inizio = range.get(0).getAsString();
-		 fine = range.get(1).getAsString();
-		 }catch(NullPointerException e) {};
-	 Date[] range = menuDate(type,inizio,fine);	 
+		 String inizio = range.get(0).getAsString();
+		 String fine = range.get(1).getAsString();
+		 date = menuDate(inizio,fine);
+		 }
+     else {
+    	 date = menuDate(type);
+    	 };
 	 Stat stat = new Stat();
-	 Double[] valP =  stat.getDataByLocation(range[0], range[1], zone, true);
-	 Double[] valU = stat.getDataByLocation(range[0], range[1], zone, false);
+	 Double[] valP =  stat.getDataByLocation(date[0], date[1], zone, true);
+	 Double[] valU = stat.getDataByLocation(date[0], date[1], zone, false);
 	 double mediaP = stat.getMedia(valP);
 	 double mediaU = stat.getMedia(valU);
 	 double varianzaU = stat.getVarianza(valU, mediaU);
 	 double varianzaP = stat.getVarianza(valP, mediaP);
-	 JSONObject JsonReturn = new JSONObject();
+	 JsonObject JsonReturn = new JsonObject();
 	 if(valP == null && valU == null) {
-		 JsonReturn.put("Nessun valore trovato nel range di tempo specificato","");
+		 JsonReturn.addProperty("Nessun valore trovato nel range di tempo specificato","");
 		 return JsonReturn;
 	 }
 	 else {
-		 JsonReturn.put("Zona", zone);
-		 JsonReturn.put("Media Umidità", new DecimalFormat("#.##").format(mediaU));
-		 JsonReturn.put("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
-		 JsonReturn.put("Media Pressione",new DecimalFormat("#.##").format(mediaP));
-		 JsonReturn.put("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
+		 JsonReturn.addProperty("Zona", zone);
+		 JsonReturn.addProperty("Media Umidità", new DecimalFormat("#.##").format(mediaU));
+		 JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
+		 JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(mediaP));
+		 JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
 		 return JsonReturn;
 		 }		
  }
  
+ @GetMapping("/Fav")
+ public JsonObject Favoriti(@RequestParam(name = "Action")String action,@RequestParam(name = "Name", defaultValue = "")String name) {
+	 Favoriti fav = new Favoriti();
+	 switch(action) {
+	 case "Aggiungi":
+		 fav.addFavoriti(name);
+		 return fav.stampaFavoriti();
+	 case "Rimuovi":
+		 fav.removeFavoriti(name);
+		 return fav.stampaFavoriti();
+	 case "Stampa":
+		return fav.stampaFavoriti();
+	default:
+		JsonObject errObj = new JsonObject();
+		errObj.addProperty("La scelta selezionata non è consentita","");
+		return errObj;		 
+	 }
+
+ }
+ 
+ @GetMapping("/Prova")
+ public void Favoriti() {
+	 Convertitore conv = new Convertitore();
+	 Date[] date = menuDate("Annuale");
+	 conv.JsonToCitta(date[0], date[1]);
+ }
 		
- public static Date[] menuDate(String time, String start, String end) {
+ public static Date[] menuDate(String time) {
 	 Date inizio = new Date();
 	 Date fine = new Date();
 	 LocalDate l;
@@ -203,25 +223,31 @@ import com.google.gson.JsonParser;
 			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
 			// stampaStat(inizio,fine,citta);
 			break;
-		case "Customizzato":
-				try {
-					SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy HH:mm");
-					inizio = formato.parse(start);
-					fine = formato.parse(end);
-					break;
-				}catch (ParseException e1) {
-					try {
-						SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");
-						inizio = formato.parse(start);
-						fine = formato.parse(end);					
-						}catch (ParseException e2) {
-							e2.printStackTrace();
-						}
-				}
 		}
+				
 		Date[] date = {inizio, fine};
 		return date;
 	}
  
-  }
+ public static  Date[] menuDate(String start,String end) {
+	 Date inizio = new Date();
+	 Date fine = new Date();
+	 try {
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy HH:mm");
+			inizio = formato.parse(start);
+			fine = formato.parse(end);
+		}catch (ParseException e1) {
+			try {
+				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");
+				inizio = formato.parse(start);
+				fine = formato.parse(end);					
+				}catch (ParseException e2) {
+					e2.printStackTrace();
+				}
+		}
+	 Date[] date = {inizio, fine};
+		return date;
+		}
+ }
+ 
  
