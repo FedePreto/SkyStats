@@ -1,4 +1,4 @@
-package com.example.demo.services;
+package com.example.demo.GUI;
 import javax.swing.*;  
 
 @SuppressWarnings("serial")

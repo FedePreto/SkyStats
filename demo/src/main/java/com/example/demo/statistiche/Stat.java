@@ -1,7 +1,7 @@
 package com.example.demo.statistiche;
 
+import com.example.demo.GUI.BarraProgresso;
 import com.example.demo.model.Citta;
-import com.example.demo.services.BarraProgresso;
 import com.example.demo.services.Favoriti;
 import com.example.demo.src.*;
 import com.google.gson.JsonArray;
