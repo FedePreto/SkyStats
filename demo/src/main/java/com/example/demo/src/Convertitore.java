@@ -45,12 +45,12 @@ public ArrayList<Citta> JsonToCitta() {
 public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 		ArrayList<Citta> c = new ArrayList<Citta>();
 		String file="";
+		//Comincia da -1 perchè il contatore viene incrementato prima di effettuare il primo controllo
 		int i = -1;
 		Gson gson = new Gson();
 		try {
 			Scanner in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
 			do {
-				
 				c.add(gson.fromJson(in.nextLine(), Citta.class));
 				i++;
 			}
@@ -59,6 +59,7 @@ public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 			e.printStackTrace();
 		}
 		if(c.isEmpty())return null;
+		c.remove(i);
 		return c;
 }
 	

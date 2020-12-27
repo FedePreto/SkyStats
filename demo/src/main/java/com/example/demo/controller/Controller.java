@@ -8,7 +8,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Scanner;
 
-import org.json.simple.JSONObject;
+
 
 //Classe non utilizzata momentaneamente (Serve per gestire le call da Postaman alla nostra API)
 
@@ -33,7 +33,7 @@ import com.google.gson.JsonObject;
 
  
  @GetMapping("/Weather")
- public String getWeather(@RequestParam(name = "Citta", defaultValue = "Rome") String city,@RequestParam(name = "Aggiornamento", defaultValue = "Si")String agg) {
+ public Citta getWeather(@RequestParam(name = "Citta", defaultValue = "Rome") String city,@RequestParam(name = "Aggiornamento", defaultValue = "Si")String agg) {
 	 Citta c = new Citta();
 	 Convertitore conv = new Convertitore(); 
 	 if(agg.equals("Si")) {
@@ -49,14 +49,12 @@ import com.google.gson.JsonObject;
 				 }
 				 
 				 String meteo = CercaMeteo.getMeteo(url);
-				 System.out.println(meteo);
 				 c = conv.getClassFromCall(meteo);
-				 System.out.println(c);
-				 return c.toString();
+				 return c;
 	 }
 	 else if(agg.equals("No")){	
 	 c = conv.findInJson(city);
-	 return c.toString();
+	 return c;
 	 }
 	 else return null;
  }
@@ -188,10 +186,9 @@ import com.google.gson.JsonObject;
  }
  
  @GetMapping("/Prova")
- public void Favoriti() {
-	 Convertitore conv = new Convertitore();
-	 Date[] date = menuDate("Annuale");
-	 conv.JsonToCitta(date[0], date[1]);
+ public String getStringa(@RequestParam(name = "Saluta") String saluto) {
+	 return saluto; 
+	 
  }
 		
  public static Date[] menuDate(String time) {

@@ -10,10 +10,6 @@ import com.google.gson.JsonObject;
 import javax.swing.*;  
 import java.util.Date;
 
-import javax.swing.JProgressBar;
-
-import org.json.simple.JSONObject;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -105,26 +101,22 @@ public class Stat {
 		int max_index[] = new int[4];
 		
 		//Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
-		for (int i = 0; i < citta.size(); i++) {		    
+		for (int i = 0; i < citta.size(); i++) {	
 			/*
 			   L'istanziamento delle seguenti variabili è volto alla memorizzazione
 			   dei valori permettendo così di non dover svolgere gli stessi calcoli due volte 
 			   con il conseguente risparmio notevole di tempo in fase di esecuzione			 
 			 */
 			
-			//Hum memorizza l'umidità della città momentanemante processata
-			double Hum = citta.get(i).getUmidita();
-			//Pres calcola la pressione su singolo valore
-			double Pres = citta.get(i).getPressione();
 			//Permette di memorizzare il valore massimo di umidità e l'indice della città che lo contiene
 				
-			if ( Hum > max_val[0]) {
-				max_val[0] = Hum;
+			if ( citta.get(i).getUmidita() > max_val[0]) {
+				max_val[0] = citta.get(i).getUmidita();
 				max_index[0] = i;
 				}
 			//Permette di memorizzare il valore massimo di pressione e l'indice della citta che lo contiene
-			if (Pres > max_val[1]) {
-				max_val[1] = Pres;
+			if (citta.get(i).getPressione()> max_val[1]) {				
+				max_val[1] = citta.get(i).getPressione();
 				max_index[1] = i;
 				}
 		}		
@@ -135,19 +127,19 @@ public class Stat {
 		//Crea una barra che permette all'utente di visualizzare lo stato di avanzamento
 			BarraProgresso m=new BarraProgresso(0,favoriti.size());  
 			m.setVisible(true);  
-			m.setTitle("Calcolo dell varianza");  //Titolo della barra
+			m.setTitle("Calcolo della varianza");  //Titolo della barra
 		for(int i=0; i<favoriti.size(); i++) {
 			 m.paint(m.getGraphics()); 
 			 m.jb.setValue(i);
 			for(int j=0; j<citta.size(); j++) {
-				if(favoriti.get(i).equals(citta.get(j).getNome())) {					
+				if(favoriti.get(i).equals(citta.get(j).getNome())) {
 					getVarU= getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
 							getMedia(getValues(inizio, fine, citta.get(i).getNome(), false)));
 					//getVarP memorizza la varianza della pressione per una determinata citta
 					getVarP=getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
 							getMedia(getValues(inizio, fine, citta.get(i).getNome(), true)));
 					break;
-			}
+				}
 			}
 					//Permette di memorizzare il valore massimo di varianza di Umidita e l'indice della città su cui è stato calcolato
 				if (getVarU > max_val[2]) {
@@ -216,21 +208,16 @@ public class Stat {
 			   L'istanziamento delle seguenti variabili è volto alla memorizzazione
 			   dei valori permettendo così di non dover svolgere gli stessi calcoli due volte 
 			   con il conseguente risparmio notevole di tempo in fase di esecuzione			 
-			 */	
-			//Hum memorizza l'umidità della città momentanemante processata
-			double Hum = citta.get(i).getUmidita();
-			//Pres calcola la pressione su singolo valore
-			double Pres = citta.get(i).getPressione();
-			
+			 */				
 				//Permette di memorizzare il valore massimo di umidità e l'indice della città che lo contiene
-				if ( Hum < min_val[0]) {
-					min_val[0] = Hum;
+				if ( citta.get(i).getUmidita() < min_val[0]) {
+					min_val[0] = citta.get(i).getUmidita();
 					min_index[0] = i;
 				}
 				
 				//Permette di memorizzare il valore massimo di pressione e l'indice della citta che lo contiene
-				if (Pres < min_val[1]) {
-					min_val[1] = Pres;
+				if (citta.get(i).getPressione() < min_val[1]) {
+					min_val[1] = citta.get(i).getPressione();
 					min_index[1] = i;
 				}
 		}
@@ -238,6 +225,7 @@ public class Stat {
 		ArrayList<String> favoriti = fav.getFavoriti();
 		double getVarU=0;
 		double getVarP=0;
+		int numero=0;
 		//Crea una barra che permette all'utente di visualizzare lo stato di avanzamento
 			BarraProgresso m=new BarraProgresso(0,favoriti.size());  
 			m.setVisible(true);  
@@ -247,20 +235,17 @@ public class Stat {
 			m.jb.setValue(i);
 			for(int j=1; j<citta.size(); j++) {
 				if(favoriti.get(i).equals(citta.get(j).getNome())) {					
-					getVarU= getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-							getMedia(getValues(inizio, fine, citta.get(i).getNome(), false)));
+					getVarU= getVarianza(getValues(inizio, fine, citta.get(j).getNome(), false),
+							getMedia(getValues(inizio, fine, citta.get(j).getNome(), false)));
 					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP=getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
-							getMedia(getValues(inizio, fine, citta.get(i).getNome(), true)));
-					System.out.println(favoriti.get(i));
-					System.out.println(citta.get(j));
-					System.out.println(getVarU);
-					System.out.println(getVarP);
+					getVarP=getVarianza(getValues(inizio, fine, citta.get(j).getNome(), true),
+							getMedia(getValues(inizio, fine, citta.get(j).getNome(), true)));
+					numero=j;
 					break;
 			   }
 			}
 				//Permette di memorizzare il valore massimo di varianza di Umidita e l'indice della città su cui è stato calcolato
-				if (getVarU < min_val[2]) {
+				if (getVarU < min_val[2]) {					
 					min_val[2] = getVarU;
 					min_index[2] = i;
 				}
@@ -295,6 +280,7 @@ public class Stat {
 		JsonReturn.add("Varianza di Pressione Minima", Min_Var_Pr);
 		return JsonReturn;
 	}
+	
 //Metodo utilizzato nella classe Main
 	public String printMaxValues(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
