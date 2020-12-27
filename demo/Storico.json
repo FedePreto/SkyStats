@@ -1,3 +1,26 @@
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"nubi sparse","umidita":85.0,"pressione":1000.0,"temperatura":-0.54,"posizione":"Centro","data":"Dec 27, 2020, 6:36:22 PM"}
+{"id":3170027,"nome":"Potenza","meteo":"cielo coperto","umidita":81.0,"pressione":1005.0,"temperatura":4.44,"posizione":"Sud","data":"Dec 27, 2020, 6:36:22 PM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo coperto","umidita":93.0,"pressione":1008.0,"temperatura":6.15,"posizione":"Sud","data":"Dec 27, 2020, 6:36:22 PM"}
+{"id":3172394,"nome":"Napoli","meteo":"nubi sparse","umidita":71.0,"pressione":1004.0,"temperatura":9.83,"posizione":"Sud","data":"Dec 27, 2020, 6:36:22 PM"}
+{"id":3181927,"nome":"Bologna","meteo":"cielo sereno","umidita":74.0,"pressione":1005.0,"temperatura":0.81,"posizione":"Nord","data":"Dec 27, 2020, 6:36:22 PM"}
+{"id":3165185,"nome":"Trieste","meteo":"cielo sereno","umidita":59.0,"pressione":1003.0,"temperatura":2.55,"posizione":"Nord","data":"Dec 27, 2020, 6:36:22 PM"}
+{"id":4219762,"nome":"Rome","meteo":"cielo sereno","umidita":42.0,"pressione":1024.0,"temperatura":10.19,"posizione":"Sud","data":"Dec 27, 2020, 6:36:22 PM"}
+{"id":3176217,"nome":"Genova","meteo":"nubi sparse","umidita":52.0,"pressione":1003.0,"temperatura":5.96,"posizione":"Nord","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3173435,"nome":"Milano","meteo":"nebbia","umidita":78.0,"pressione":1004.0,"temperatura":0.47,"posizione":"Nord","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"poche nuvole","umidita":82.0,"pressione":1005.0,"temperatura":1.79,"posizione":"Centro","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3180990,"nome":"Campobasso","meteo":"cielo coperto","umidita":85.0,"pressione":1003.0,"temperatura":4.46,"posizione":"Sud","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3165523,"nome":"Torino","meteo":"cielo sereno","umidita":80.0,"pressione":1005.0,"temperatura":-0.29,"posizione":"Nord","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"poche nuvole","umidita":81.0,"pressione":1004.0,"temperatura":6.75,"posizione":"Sud","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":2525471,"nome":"Cagliari","meteo":"cielo sereno","umidita":81.0,"pressione":1010.0,"temperatura":8.91,"posizione":"Sud","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":2523918,"nome":"Palermo","meteo":"nubi sparse","umidita":80.0,"pressione":972.0,"temperatura":6.46,"posizione":"Sud","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3176959,"nome":"Firenze","meteo":"cielo sereno","umidita":69.0,"pressione":1005.0,"temperatura":3.82,"posizione":"Centro","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3165243,"nome":"Trento","meteo":"cielo coperto","umidita":63.0,"pressione":1005.0,"temperatura":-2.74,"posizione":"Nord","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3171179,"nome":"Perugia","meteo":"cielo sereno","umidita":85.0,"pressione":1004.0,"temperatura":2.61,"posizione":"Centro","data":"Dec 27, 2020, 6:36:23 PM"}
+{"id":3182996,"nome":"Aosta","meteo":"neve","umidita":72.0,"pressione":994.0,"temperatura":-4.21,"posizione":"Nord","data":"Dec 27, 2020, 6:36:24 PM"}
+{"id":3164603,"nome":"Venezia","meteo":"cielo sereno","umidita":59.0,"pressione":1004.0,"temperatura":3.1,"posizione":"Nord","data":"Dec 27, 2020, 6:36:24 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"poche nuvole","umidita":82.0,"pressione":1005.0,"temperatura":1.79,"posizione":"Centro","data":"Dec 27, 2020, 6:36:24 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"nubi sparse","umidita":53.0,"pressione":1021.0,"temperatura":2.39,"posizione":"Centro","data":"Dec 27, 2020, 6:36:24 PM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"pioggia leggera","umidita":77.0,"pressione":1009.0,"temperatura":1.13,"posizione":"Nord","data":"Dec 27, 2020, 6:36:24 PM"}
 {"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"cielo sereno","umidita":64.0,"pressione":1030.0,"temperatura":4.44,"posizione":"Centro","data":"Dec 23, 2020, 12:18:29 PM"}
 {"id":3170027,"nome":"Potenza","meteo":"nubi sparse","umidita":72.0,"pressione":1040.0,"temperatura":11.67,"posizione":"Sud","data":"Dec 23, 2020, 12:18:29 PM"}
 {"id":2525059,"nome":"Catanzaro","meteo":"nubi sparse","umidita":58.0,"pressione":1090.0,"temperatura":14.98,"posizione":"Sud","data":"Dec 23, 2020, 12:18:29 PM"}

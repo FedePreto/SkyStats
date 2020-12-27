@@ -225,7 +225,6 @@ public class Stat {
 		ArrayList<String> favoriti = fav.getFavoriti();
 		double getVarU=0;
 		double getVarP=0;
-		int numero=0;
 		//Crea una barra che permette all'utente di visualizzare lo stato di avanzamento
 			BarraProgresso m=new BarraProgresso(0,favoriti.size());  
 			m.setVisible(true);  
@@ -240,7 +239,6 @@ public class Stat {
 					//getVarP memorizza la varianza della pressione per una determinata citta
 					getVarP=getVarianza(getValues(inizio, fine, citta.get(j).getNome(), true),
 							getMedia(getValues(inizio, fine, citta.get(j).getNome(), true)));
-					numero=j;
 					break;
 			   }
 			}
