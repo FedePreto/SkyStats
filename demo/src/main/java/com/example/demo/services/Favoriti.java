@@ -25,10 +25,19 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Classe che contiene tutti i metodi per la gestione del Favoriti ( Array di Stringhe che contengono i nomi delle citta Preferite dall'utente
+ * @author Federico
+ * @author Nicolò
+ *
+ */
 public class Favoriti {
 	private ArrayList<String> favoriti;
 	String config = ".\\src\\main\\java\\com\\example\\demo\\config/" + "config.json";
-
+	
+	/**
+	 * Costruttore che inizializza la classe Favoriti aggiornando favoriti dal file <b>config</b>
+	 */
 	public Favoriti() {
 		favoriti = new ArrayList<String>();
 		aggiornaArray();
@@ -48,7 +57,12 @@ public class Favoriti {
 		conv.salva(city);
 
 	}
-
+	/**
+	 * Metodo che va ad aggiornare favoriti con i favoriti scirtti sul file <b>config</>
+	 * @author Nicolò
+	 * 
+	 * 
+	 */
 	public void aggiornaArray() {
 		favoriti.clear();
 		try {
@@ -71,7 +85,9 @@ public class Favoriti {
 		}
 
 	}
-
+	/**
+	 * Scrive sul file <b>config</> i favoriti in modo da salvarli
+	 */
 	public void salvaArray() {
 		ArrayList<String> file = new ArrayList<String>();
 		try {
@@ -118,26 +134,28 @@ public class Favoriti {
 		}
 		return jo;
 	}
-
+	/**
+	 * Stampa di debug dei favoriti
+	 * @author Nicolò
+	 */
 	public void stampaPreferiti() {
 		for (int i = 0; i < favoriti.size(); i++) {
 			System.out.println(favoriti.get(i));
 		}
 	}
 
-	/*public void dummy() {
-		String[] capoluoghi = { "L'Aquila", "Potenza", "Catanzaro", "Napoli", "Bologna", "Trieste", "Roma", "Genova",
-				"Milano", "Ancona", "Campobasso", "Torino", "Bari", "Cagliari", "Palermo", "Firenze", "Trento",
-				"Perugia", "Aosta", "Venezia" };
-		favoriti = new ArrayList<>(Arrays.asList(capoluoghi));
-		salvaArray();
-	}*/
-
+	/**
+	 * Cancella il favorito <b>val</> dai favoriti
+	 * @param val Valore dal eliminare
+	 */
 	public void removeFavoriti(String val) {
 		favoriti.remove(val);
 		salvaArray();
 	}
-
+	/**
+	 * Ritorna i favoriti
+	 * @return ArrayList dei favoriti
+	 */
 	public ArrayList<String> getFavoriti() {
 		return favoriti;
 	}

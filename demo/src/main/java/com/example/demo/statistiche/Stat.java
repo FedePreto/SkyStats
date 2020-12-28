@@ -12,8 +12,20 @@ import java.util.Date;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
+/**
+ * Classe che contiene tutti i metodi riguardanti le statistiche.
+ * @author Nicolò,Federico
+ *
+ */
 public class Stat {
+	/**
+	 * Metodo che manda indietro i dati utili alla ricerca sottoforma di Array Double
+	 * @param inizio Data di inizio del range di tempo
+	 * @param fine	Data di fine del range di tempo
+	 * @param citta	Città soggetta a statistiche
+	 * @param isPressione	Flag utilizzato per decidere di avere indietro o l'umidità oppure la pressione
+	 * @return Array di Double contenente i valori richiesti
+	 */
 	public Double[] getValues(Date inizio, Date fine, String citta, boolean isPressione) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Citta> c = conv.JsonToCitta();
@@ -52,7 +64,11 @@ public class Stat {
 				return val.toArray(d);
 		}
 	}
-
+	/**
+	 * Dati i valori ritorna la media
+	 * @param val	Valori per i quali calcolare la media
+	 * @return	Ritorna la media
+	 */
 	public double getMedia(Double[] val) {
 		if (val == null) return 0;
 		else {
@@ -64,7 +80,12 @@ public class Stat {
 			}
 		}	
 
-	
+	/**
+	 * Metodo che dati in input i valori e la media di questi calcola la varianza	
+	 * @param val	Valori usati per calcolare la varianza
+	 * @param media	Media dei valori	
+	 * @return	Varianza
+	 */
 
 	public double getVarianza(Double[] val, double media) {
 		if(val==null) return 0;
@@ -82,6 +103,14 @@ public class Stat {
 			System.out.println(a.get(i)[0] + " " + a.get(i)[1]);
 		}
 	}
+	/**
+	 * Date in input 2 date il metodo cerca nel database le citta con i valori massimi per ogni parametro
+	 * @author Federico
+	 * @author Nicolò
+	 * @param inizio Data di inizio del range di tempo
+	 * @param fine	Data di fine del range di tempo
+	 * @return JsonObject che contiene tutte le con i valori massimi nel database nel range di tempo indicato
+	 */
 	public JsonObject getMax(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Citta> citta = conv.JsonToCitta(inizio,fine);
@@ -177,7 +206,12 @@ public class Stat {
 		JsonReturn.add("Varianza di Pressione Massima", Max_Var_Pr);
 		return JsonReturn;
 	}
-	
+	/**
+	 * Metodo che manda indietro un JsonObject di tutte le città con valori minimi nel range di tempo definito da inizio e fine
+	 * @param inizio Data di inizio del range
+	 * @param fine Data di fine del range
+	 * @return JsonObject che contiente tutte le citta con i valori minimi nel database contenute nel range di tempo definito da inizio e fine
+	 */
 	public JsonObject getMin(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Citta> citta = conv.JsonToCitta(inizio,fine);
@@ -376,7 +410,14 @@ public class Stat {
 				
 	}
 	
-
+	/**
+	 * Metodo utilizzato per prendere dati dal database in base al range di tempo definito tra inizio e fine e alla posizione geografica (location) 
+	 * @param inizio Data di inizio del range di tempo
+	 * @param fine Data di fine del range di tempo
+	 * @param location zona geografica ( Nord, Centro o Sud)
+	 * @param isPressione Flag utilizzato per decidere se prendere i dati riguardanti la pressione oppure l'umidità
+	 * @return Array di Double contentente tutti i valori
+	 */
 	public Double[] getDataByLocation(Date inizio, Date fine, String location, boolean isPressione) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Citta> file = conv.JsonToCitta();

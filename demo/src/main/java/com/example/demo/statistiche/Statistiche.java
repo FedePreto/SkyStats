@@ -6,7 +6,11 @@ import java.util.*;
 
 import com.example.demo.model.Citta;
 import com.example.demo.src.Convertitore;
-
+/**
+ * Classe Obsoleta utilizzata originariamente per la gestione delle statistiche
+ * @author Nicolò
+ *
+ */
 public class Statistiche {
 	String nomeFile;
 

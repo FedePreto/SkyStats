@@ -9,60 +9,77 @@ import java.util.stream.Stream;
 
 import com.example.demo.model.Citta;
 import com.google.gson.*;
-
+/**
+ * Classe contenente metodi per la conversione di Java to Json o viceversa
+ * @author Nicolò
+ *
+ */
 public class Convertitore {
 	String nomeFile = "Storico.json";
 
-public ArrayList<Citta> JsonToCitta() {
-		ArrayList<Citta> c = new ArrayList<Citta>();
-		Stream<String> file;
-		int i = 0;
-		Gson gson = new Gson();
-		try {
-			BufferedReader buf = new BufferedReader(new FileReader(nomeFile));
-			file = buf.lines();
-			while (true) {
-				String prova = buf.readLine();
-				if (prova.equals(""))
-					return c;
-
-				c.add(gson.fromJson(prova, Citta.class));
-				i++;
+	/**
+	 * Legge tutto il database nomeFile e lo manda indietro in un ArrayList
+	 * @author Nicolò
+	 * @return ArrayList contenente tutti i valori nel DB
+	 */
+	public ArrayList<Citta> JsonToCitta() {
+			ArrayList<Citta> c = new ArrayList<Citta>();
+			Stream<String> file;
+			int i = 0;
+			Gson gson = new Gson();
+			try {
+				BufferedReader buf = new BufferedReader(new FileReader(nomeFile));
+				file = buf.lines();
+				while (true) {
+					String prova = buf.readLine();
+					if (prova.equals(""))
+						return c;
+	
+					c.add(gson.fromJson(prova, Citta.class));
+					i++;
+				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				// System.out.println(i+" Exception");
+				return c;
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			// System.out.println(i+" Exception");
 			return c;
 		}
-		return c;
-	}public Convertitore() {
-		// TODO Auto-generated constructor stub
-	}
 
-public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
-		ArrayList<Citta> c = new ArrayList<Citta>();
-		String file="";
-		//Comincia da -1 perchè il contatore viene incrementato prima di effettuare il primo controllo
-		int i = -1;
-		Gson gson = new Gson();
-		try {
-			Scanner in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
-			do {
-				c.add(gson.fromJson(in.nextLine(), Citta.class));
-				i++;
+	/**
+	 * Override del metodo precedente che permette di filtrare in base ad un range di date dato in input
+	 * @param inizio Data di inizio del range di tempo
+	 * @param fine Data di fine del range di tempo
+	 * @return ArrayList di Citta che sono del db e che si trovano tra la data di inizio e quella di fine
+	 */
+	public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
+			ArrayList<Citta> c = new ArrayList<Citta>();
+			String file="";
+			//Comincia da -1 perchè il contatore viene incrementato prima di effettuare il primo controllo
+			int i = -1;
+			Gson gson = new Gson();
+			try {
+				Scanner in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
+				do {
+					c.add(gson.fromJson(in.nextLine(), Citta.class));
+					i++;
+				}
+				while((c.get(i).getData().after(inizio) && c.get(i).getData().before(fine)) && in.hasNext());
+			}catch(IOException e) {
+				e.printStackTrace();
 			}
-			while((c.get(i).getData().after(inizio) && c.get(i).getData().before(fine)) && in.hasNext());
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		if(c.isEmpty())return null;
-		c.remove(i);
-		return c;
-}
-	
+			if(c.isEmpty())return null;
+			c.remove(i);
+			return c;
+	}
+	/**
+	 * Metodo che salva le Citta contenute in c in nomeFile
+	 *  @author Nicolò
+	 * @param c ArrayList contenente tutte le Citta da salvare
+	 */
 	public void salva(ArrayList<Citta> c) {
 		Gson gson = new Gson();
 		BufferedWriter buf;
@@ -124,7 +141,12 @@ public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 */
 
 
-
+	/**
+	 * Data una stringa s contenente Json ritorna la classe corrispondente
+	 * @author Nicolò
+	 * @param s Stringa Json
+	 * @return Classe Citta associata alla Stringa Json
+	 */
 	public Citta getClassFromCall(String s) {
 		
 		Citta c = new Citta();
@@ -165,11 +187,18 @@ public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 			}
 		return c;
 }
-
+	/**
+	 * Stampa di Debug di una qualsiasi citta
+	 * @param c Citta da stampare
+	 */
 	public void stampaCitta(Citta c) {
 		System.out.println(c); 
 	}
-
+	/**
+	 * Controlla se <b>val</b> è contenuto nel DataBase e ritorna l 'ultimo valore
+	 * @param val nome della citta
+	 * @return Citta trovata oppure null se non trovata
+	 */
 	public Citta findInJson(String val) {
 		ArrayList<Citta> c;
 		c = JsonToCitta();
@@ -219,7 +248,14 @@ public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 		}
 		return citta;
 	}*/
-
+	/**
+	 * Metodo che date due date ritorna la loro differenza scalate in base al timeUnit
+	 * @author Nicolò
+	 * @param date1 Minuendo
+	 * @param date2 Sottraendo
+	 * @param timeUnit Unità di misura 
+	 * @return Differenza tra data1 e data2 scalate in base al timeUnit
+	 */
 	public double differenzaDiDate(Date date1, Date date2, TimeUnit timeUnit) {
 		long diffInMillies = date2.getTime() - date1.getTime();
 		return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);

@@ -7,9 +7,18 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
-
+/**
+ * Classe per fare le call alle api di OpenWeather
+ * @author Federico
+ *
+ */
 public class CercaMeteo {
-
+	/**
+	 * Metodo che dato un URL manda indietro la risposta della Call dell'API
+	 * @author Federico
+	 * @param url Url per la call
+	 * @return Stringa di risposta 
+	 */
 	public static String getMeteo(String url) {
 
 		String meteo_citta = "";
