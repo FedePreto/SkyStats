@@ -1,6 +1,13 @@
 package com.example.demo.GUI;
 import javax.swing.*;  
 
+/**
+ * 
+ * 
+ * @author Federico
+ *
+ */
+
 @SuppressWarnings("serial")
 public class BarraProgresso extends JFrame{  
 	    

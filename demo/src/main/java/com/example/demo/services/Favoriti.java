@@ -122,7 +122,12 @@ public class Favoriti {
 		salvaArray();
 	}
 	
-	//Metodo creato per l'utilizzo con la classe controller utile a visualizzare il contenuto del file fav
+	/**
+	 * 
+	 * @author Federico
+	 * 
+	 * @return
+	 */
 	public JsonObject stampaFavoriti() {
 		JsonObject jo = new JsonObject();
 		try {

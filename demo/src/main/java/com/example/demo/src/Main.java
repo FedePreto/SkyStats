@@ -252,6 +252,12 @@ public class Main {
 
 		
 		}
+	
+	/**
+	 * @author Federico
+	 * 
+	 * @return
+	 */
 	public static long getDelay() {
 		Date now = new Date();
 		Gson gson = new Gson();

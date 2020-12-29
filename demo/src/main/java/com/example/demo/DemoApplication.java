@@ -19,7 +19,11 @@ import com.google.gson.Gson;
 @SpringBootApplication
 public class DemoApplication {
 
-	
+	/**
+	 * @author Federico
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		//Per usare le interfacce grafiche si è dovuto utilizzare questo builder di avviamento
 		 SpringApplicationBuilder builder = new SpringApplicationBuilder(DemoApplication.class);
@@ -31,6 +35,12 @@ public class DemoApplication {
 		
 	}
 	
+	/**
+	 * 
+	 * @author Federico
+	 * 
+	 * @return
+	 */
 	public static long getDelay() {
 		Date now = new Date();
 		Gson gson = new Gson();

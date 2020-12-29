@@ -31,7 +31,14 @@ import com.google.gson.JsonObject;
  
  String url = "";//"C:\\Users\\OEM\\Downloads\\demo\\Esempio chiamata.txt";
 
- 
+ /**
+  * 
+  * @author Federico
+  * 
+  * @param city
+  * @param agg
+  * @return
+  */
  @GetMapping("/Weather")
  public Citta getWeather(@RequestParam(name = "Citta", defaultValue = "Rome") String city,@RequestParam(name = "Aggiornamento", defaultValue = "Si")String agg) {
 	 Citta c = new Citta();
@@ -58,7 +65,15 @@ import com.google.gson.JsonObject;
 	 }
 	 else return null;
  }
- 
+
+/**
+ * 
+ * @author Federico
+ * 
+ * @param body
+ * @return
+ */
+
 @PostMapping("/Stat")
  public JsonObject getStat(@RequestBody JsonObject body) {
 	 String city =  body.get("city").getAsString();
@@ -95,6 +110,13 @@ import com.google.gson.JsonObject;
 		 }
  }
 
+/**
+ * 
+ * @author Federico 
+ *
+ * @param body
+ * @return
+ */
  @PostMapping("/Max")
  public JsonObject getMax(@RequestBody JsonObject body) {
      String type = body.get("type").getAsString();
@@ -111,7 +133,13 @@ import com.google.gson.JsonObject;
 	 Stat s = new Stat();
 	 return s.getMax(date[0],date[1]);
  }
- 
+ /**
+  * 
+  * @author Federico
+  * 
+  * @param body
+  * @return
+  */
  @PostMapping("/Min")
  public JsonObject getMin(@RequestBody JsonObject body) {
      String type = body.get("type").getAsString();
@@ -129,6 +157,13 @@ import com.google.gson.JsonObject;
 	 return s.getMin(date[0],date[1]);
 }
  
+/**
+ * 
+ * @author Federico
+ *  
+ * @param body
+ * @return
+ */
 @PostMapping("/ZoneGeo")
  public JsonObject getZoneGeo(@RequestBody JsonObject body) {
 	 String zone = body.get("zone").getAsString();
@@ -165,6 +200,14 @@ import com.google.gson.JsonObject;
 		 }		
  }
  
+/**
+ * 
+ * @author Federico
+ * 
+ * @param action
+ * @param name
+ * @return
+ */
  @GetMapping("/Fav")
  public JsonObject Favoriti(@RequestParam(name = "Action")String action,@RequestParam(name = "Name", defaultValue = "")String name) {
 	 Favoriti fav = new Favoriti();
@@ -185,11 +228,6 @@ import com.google.gson.JsonObject;
 
  }
  
- @GetMapping("/Prova")
- public String getStringa(@RequestParam(name = "Saluta") String saluto) {
-	 return saluto; 
-	 
- }
 		
  public static Date[] menuDate(String time) {
 	 Date inizio = new Date();
@@ -226,6 +264,14 @@ import com.google.gson.JsonObject;
 		return date;
 	}
  
+ /**
+  * 
+  * @author Federico
+  * 
+  * @param start
+  * @param end
+  * @return
+  */
  public static  Date[] menuDate(String start,String end) {
 	 Date inizio = new Date();
 	 Date fine = new Date();

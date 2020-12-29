@@ -14,12 +14,14 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 /**
  * Classe che contiene tutti i metodi riguardanti le statistiche.
- * @author Nicolò,Federico
+ * @author Federico
+ * @author Nicolò
  *
  */
 public class Stat {
 	/**
 	 * Metodo che manda indietro i dati utili alla ricerca sottoforma di Array Double
+	 * @author Nicolo
 	 * @param inizio Data di inizio del range di tempo
 	 * @param fine	Data di fine del range di tempo
 	 * @param citta	Città soggetta a statistiche
@@ -33,8 +35,6 @@ public class Stat {
 		try {
 			int idCitta = Integer.parseInt(citta);
 			for (int i = 0; i < c.size(); i++) {
-				// if(c.get(i).getId()==idCitta && c.get(i).getData().before(fine) &&
-				// c.get(i).getData().after(inizio)){
 				if (c.get(i).getData().after(inizio) && c.get(i).getId() == idCitta
 						&& c.get(i).getData().before(fine)) {
 					if (isPressione) {
@@ -66,6 +66,7 @@ public class Stat {
 	}
 	/**
 	 * Dati i valori ritorna la media
+	 * @author Nicolò
 	 * @param val	Valori per i quali calcolare la media
 	 * @return	Ritorna la media
 	 */
@@ -81,7 +82,8 @@ public class Stat {
 		}	
 
 	/**
-	 * Metodo che dati in input i valori e la media di questi calcola la varianza	
+	 * Metodo che dati in input i valori e la media di questi calcola la varianza
+	 * @author Federico	
 	 * @param val	Valori usati per calcolare la varianza
 	 * @param media	Media dei valori	
 	 * @return	Varianza
@@ -209,6 +211,7 @@ public class Stat {
 	}
 	/**
 	 * Metodo che manda indietro un JsonObject di tutte le città con valori minimi nel range di tempo definito da inizio e fine
+	 * @author Federico
 	 * @param inizio Data di inizio del range
 	 * @param fine Data di fine del range
 	 * @return JsonObject che contiente tutte le citta con i valori minimi nel database contenute nel range di tempo definito da inizio e fine

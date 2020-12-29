@@ -119,32 +119,6 @@ public class Convertitore {
 			e.printStackTrace();
 		}
 	}
-	
-/*
-	public void salva(ArrayList<Citta> c) {
-		Gson gson = new Gson();
-		ArrayList<String> database = new ArrayList<String>();
-		try {
-			Scanner in =new Scanner(new BufferedReader(new FileReader(nomeFile)));
-			while(in.hasNext()) {
-				database.add(in.nextLine());					
-			}
-			in.close();
-			BufferedWriter buf = new BufferedWriter(new FileWriter(new File(nomeFile)));
-			for(Citta x : c) {
-			buf.write(gson.toJson(x));
-			buf.write("\n");}
-			for(int i=0; i<database.size(); i++) {
-				buf.write(database.get(i));
-				buf.write("\n");
-			}
-			buf.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-*/
-
 
 	/**
 	 * Data una stringa s contenente Json ritorna la classe corrispondente
@@ -210,12 +184,11 @@ public class Convertitore {
 		Citta city = new Citta();
 		for(Citta x : c) {
 			if(val.equals(x.getNome())) {
-				city = x;
-				
+				return city;
 			}
 			
 		}
-		return city;
+		return null;
 	}
 
 }
