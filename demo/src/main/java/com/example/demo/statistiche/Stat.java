@@ -85,6 +85,7 @@ public class Stat {
 	public JsonObject getMax(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Citta> citta = conv.JsonToCitta(inizio,fine);
+		
 	/*
 	  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
 		0-Umidità massima

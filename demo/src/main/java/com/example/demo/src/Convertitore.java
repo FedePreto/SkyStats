@@ -44,22 +44,23 @@ public ArrayList<Citta> JsonToCitta() {
 
 public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 		ArrayList<Citta> c = new ArrayList<Citta>();
+		Citta citta;
 		String file="";
-		//Comincia da -1 perchè il contatore viene incrementato prima di effettuare il primo controllo
-		int i = -1;
+		int i = 0;
 		Gson gson = new Gson();
 		try {
 			Scanner in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
-			do {
-				c.add(gson.fromJson(in.nextLine(), Citta.class));
-				i++;
+			citta = gson.fromJson(in.nextLine(), Citta.class);
+			while(citta.getData().after(inizio) && in.hasNext()) {
+				if(citta.getData().before(fine)){
+					c.add(citta);		    
+				    }
+				citta = gson.fromJson(in.nextLine(), Citta.class);
 			}
-			while((c.get(i).getData().after(inizio) && c.get(i).getData().before(fine)) && in.hasNext());
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 		if(c.isEmpty())return null;
-		c.remove(i);
 		return c;
 }
 	
