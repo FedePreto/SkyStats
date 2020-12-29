@@ -81,7 +81,20 @@ public class Stat {
 	 * @param media	Media dei valori	
 	 * @return	Varianza
 	 */
-
+	public double getVarianza(ArrayList<Citta> c, boolean isPressione) {
+		Double[] val = getValues(c,c.get(0).getNome(),isPressione);
+		double media = getMedia(val);
+		
+		if(val==null) return 0;
+		else {
+			double var = 0;
+			for (int i = 0; i < val.length; i++) {
+				var += Math.pow((val[i] - media), 2);
+		}
+			return var / val.length;
+			}
+		
+	}
 	public double getVarianza(Double[] val, double media) {
 		if(val==null) return 0;
 		else {
@@ -159,11 +172,9 @@ public class Stat {
 			 m.jb.setValue(i);
 			for(int j=0; j<citta.size(); j++) {
 				if(favoriti.get(i).equals(citta.get(j).getNome())) {
-					getVarU= getVarianza(getValues(citta, citta.get(i).getNome(), false),
-							getMedia(getValues(citta, citta.get(i).getNome(), false)));
+					getVarU= getVarianza(citta,true);
 					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP=getVarianza(getValues(citta, citta.get(i).getNome(), true),
-							getMedia(getValues(citta, citta.get(i).getNome(), true)));
+					getVarP=getVarianza(citta,false);
 					break;
 				}
 			}
