@@ -58,6 +58,7 @@ public class Convertitore {
 	 * @return ArrayList di Citta che sono del db e che si trovano tra la data di inizio e quella di fine
 	 */
 	public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
+		System.out.println("================================================================");
 		ArrayList<Citta> c = new ArrayList<Citta>();
 		Citta citta;
 		String file="";
@@ -67,7 +68,9 @@ public class Convertitore {
 			Scanner in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
 			citta = gson.fromJson(in.nextLine(), Citta.class);
 			while(citta.getData().after(inizio) && in.hasNext()) {
+				i++;
 				if(citta.getData().before(fine)){
+					System.out.println(i);
 					c.add(citta);		    
 				    }
 				citta = gson.fromJson(in.nextLine(), Citta.class);

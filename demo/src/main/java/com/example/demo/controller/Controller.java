@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -89,8 +90,10 @@ import com.google.gson.JsonObject;
     	 date = menuDate(type);
     	 };
 	 Stat s = new Stat();
-	 Double[] valP =  s.getValues(date[0], date[1], city, true);
-	 Double[] valU = s.getValues(date[0], date[1], city, false);
+	 Convertitore c = new Convertitore();
+	 ArrayList<Citta> citta = c.JsonToCitta(date[0], date[1]);
+	 Double[] valP =  s.getValues(citta, city, true);
+	 Double[] valU = s.getValues(citta, city, false);
 	 double mediaU = s.getMedia(valU);
 	 double mediaP = s.getMedia(valP);
 	 double varianzaU = s.getVarianza(valU, mediaU);
@@ -131,6 +134,7 @@ import com.google.gson.JsonObject;
     	 date = menuDate(type);
     	 };
 	 Stat s = new Stat();
+	 System.out.println(date[0] + " " + date[1]);
 	 return s.getMax(date[0],date[1]);
  }
  /**

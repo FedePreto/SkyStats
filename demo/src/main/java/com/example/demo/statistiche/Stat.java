@@ -26,9 +26,8 @@ public class Stat {
 	 * @param isPressione	Flag utilizzato per decidere di avere indietro o l'umidità oppure la pressione
 	 * @return Array di Double contenente i valori richiesti
 	 */
-	public Double[] getValues(Date inizio, Date fine, String citta, boolean isPressione) {
+	public Double[] getValues(ArrayList<Citta> c, String citta, boolean isPressione) {
 		Convertitore conv = new Convertitore();
-		ArrayList<Citta> c = conv.JsonToCitta(inizio,fine);
 		ArrayList<Double> val = new ArrayList<Double>();
 		try {
 			int idCitta = Integer.parseInt(citta);
@@ -45,8 +44,6 @@ public class Stat {
 			return val.toArray(d);
 		} catch (NumberFormatException e) {
 			for (int i = 0; i < c.size(); i++) {
-				// if(c.get(i).getNome().equals(citta) &&
-				// c.get(i).getData().before(fine)&&c.get(i).getData().after(inizio) ) {
 				if (c.get(i).getNome().equals(citta)) {
 					if (isPressione) {
 						val.add(c.get(i).getPressione());
@@ -60,6 +57,7 @@ public class Stat {
 				return val.toArray(d);
 		}
 	}
+	
 	/**
 	 * Dati i valori ritorna la media
 	 * @param val	Valori per i quali calcolare la media
@@ -138,6 +136,8 @@ public class Stat {
 				
 			if ( citta.get(i).getUmidita() > max_val[0]) {
 				max_val[0] = citta.get(i).getUmidita();
+				System.out.println(citta.get(i).getData());
+				System.out.println(i);
 				max_index[0] = i;
 				}
 			//Permette di memorizzare il valore massimo di pressione e l'indice della citta che lo contiene
@@ -159,11 +159,11 @@ public class Stat {
 			 m.jb.setValue(i);
 			for(int j=0; j<citta.size(); j++) {
 				if(favoriti.get(i).equals(citta.get(j).getNome())) {
-					getVarU= getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-							getMedia(getValues(inizio, fine, citta.get(i).getNome(), false)));
+					getVarU= getVarianza(getValues(citta, citta.get(i).getNome(), false),
+							getMedia(getValues(citta, citta.get(i).getNome(), false)));
 					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP=getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
-							getMedia(getValues(inizio, fine, citta.get(i).getNome(), true)));
+					getVarP=getVarianza(getValues(citta, citta.get(i).getNome(), true),
+							getMedia(getValues(citta, citta.get(i).getNome(), true)));
 					break;
 				}
 			}
@@ -229,10 +229,10 @@ public class Stat {
  //Inizializza i minimi al primo valore letto nell'array poi procederà con i confronti
 		 min_val[0] = citta.get(0).getUmidita();
 	     min_val[1] = citta.get(0).getPressione();
-	     min_val[2] = getVarianza(getValues(inizio, fine, citta.get(0).getNome(), false),
-					getMedia(getValues(inizio, fine, citta.get(0).getNome(), false)));
-		 min_val[3] = getVarianza(getValues(inizio, fine, citta.get(0).getNome(), true),
-					getMedia(getValues(inizio, fine, citta.get(0).getNome(), true)));
+	     min_val[2] = getVarianza(getValues(citta, citta.get(0).getNome(), false),
+					getMedia(getValues(citta, citta.get(0).getNome(), false)));
+		 min_val[3] = getVarianza(getValues(citta, citta.get(0).getNome(), true),
+					getMedia(getValues(citta, citta.get(0).getNome(), true)));
 		 //Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
 		for (int i = 1; i < citta.size(); i++) {
 		   /*
@@ -265,11 +265,11 @@ public class Stat {
 			m.jb.setValue(i);
 			for(int j=1; j<citta.size(); j++) {
 				if(favoriti.get(i).equals(citta.get(j).getNome())) {					
-					getVarU= getVarianza(getValues(inizio, fine, citta.get(j).getNome(), false),
-							getMedia(getValues(inizio, fine, citta.get(j).getNome(), false)));
+					getVarU= getVarianza(getValues(citta, citta.get(j).getNome(), false),
+							getMedia(getValues(citta, citta.get(j).getNome(), false)));
 					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP=getVarianza(getValues(inizio, fine, citta.get(j).getNome(), true),
-							getMedia(getValues(inizio, fine, citta.get(j).getNome(), true)));
+					getVarP=getVarianza(getValues(citta, citta.get(j).getNome(), true),
+							getMedia(getValues(citta, citta.get(j).getNome(), true)));
 					break;
 			   }
 			}
@@ -343,18 +343,18 @@ public class Stat {
         //Inizializza i minimi al primo valore letto nell'array poi procederà con i confronti
 		min[0] = citta.get(0).getUmidita();
 		min[1] = citta.get(0).getPressione();
-		min[2] = getVarianza(getValues(inizio, fine, citta.get(0).getNome(), false),
-				getMedia(getValues(inizio, fine, citta.get(0).getNome(), false)));
-		min[3] = getVarianza(getValues(inizio, fine, citta.get(0).getNome(), true),
-				getMedia(getValues(inizio, fine, citta.get(0).getNome(), true)));
+		min[2] = getVarianza(getValues(citta, citta.get(0).getNome(), false),
+				getMedia(getValues(citta, citta.get(0).getNome(), false)));
+		min[3] = getVarianza(getValues(citta, citta.get(0).getNome(), true),
+				getMedia(getValues(citta, citta.get(0).getNome(), true)));
 		for (int i = 0; i < citta.size(); i++) {
 			// Max
 			//getVarF prende la varianza dell'umidità
-			double getVarF= getVarianza(getValues(inizio, fine, citta.get(i).getNome(), false),
-					getMedia(getValues(inizio, fine, citta.get(i).getNome(), false)));
+			double getVarF= getVarianza(getValues(citta, citta.get(i).getNome(), false),
+					getMedia(getValues(citta, citta.get(i).getNome(), false)));
 			//getVarT prende la varianza della pressione
-			double getVarT=getVarianza(getValues(inizio, fine, citta.get(i).getNome(), true),
-					getMedia(getValues(inizio, fine, citta.get(i).getNome(), true)));
+			double getVarT=getVarianza(getValues(citta, citta.get(i).getNome(), true),
+					getMedia(getValues(citta, citta.get(i).getNome(), true)));
 			//Hum calcola l'umidità sul singolo valore
 			double Hum = citta.get(i).getUmidita();
 			//Pres calcola la pressione su singolo valore
