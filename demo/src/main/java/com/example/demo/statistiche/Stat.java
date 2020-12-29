@@ -14,14 +14,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 /**
  * Classe che contiene tutti i metodi riguardanti le statistiche.
- * @author Federico
- * @author Nicolò
+ * @author Nicolò,Federico
  *
  */
 public class Stat {
 	/**
 	 * Metodo che manda indietro i dati utili alla ricerca sottoforma di Array Double
-	 * @author Nicolo
 	 * @param inizio Data di inizio del range di tempo
 	 * @param fine	Data di fine del range di tempo
 	 * @param citta	Città soggetta a statistiche
@@ -30,13 +28,12 @@ public class Stat {
 	 */
 	public Double[] getValues(Date inizio, Date fine, String citta, boolean isPressione) {
 		Convertitore conv = new Convertitore();
-		ArrayList<Citta> c = conv.JsonToCitta();
+		ArrayList<Citta> c = conv.JsonToCitta(inizio,fine);
 		ArrayList<Double> val = new ArrayList<Double>();
 		try {
 			int idCitta = Integer.parseInt(citta);
 			for (int i = 0; i < c.size(); i++) {
-				if (c.get(i).getData().after(inizio) && c.get(i).getId() == idCitta
-						&& c.get(i).getData().before(fine)) {
+				if (c.get(i).getId() == idCitta) {
 					if (isPressione) {
 						val.add(c.get(i).getPressione());
 					} else {
@@ -50,8 +47,7 @@ public class Stat {
 			for (int i = 0; i < c.size(); i++) {
 				// if(c.get(i).getNome().equals(citta) &&
 				// c.get(i).getData().before(fine)&&c.get(i).getData().after(inizio) ) {
-				if (c.get(i).getData().after(inizio) && c.get(i).getNome().equals(citta)
-						&& c.get(i).getData().before(fine)) {
+				if (c.get(i).getNome().equals(citta)) {
 					if (isPressione) {
 						val.add(c.get(i).getPressione());
 					} else {
@@ -66,7 +62,6 @@ public class Stat {
 	}
 	/**
 	 * Dati i valori ritorna la media
-	 * @author Nicolò
 	 * @param val	Valori per i quali calcolare la media
 	 * @return	Ritorna la media
 	 */
@@ -107,8 +102,7 @@ public class Stat {
 	}
 	/**
 	 * Date in input 2 date il metodo cerca nel database le citta con i valori massimi per ogni parametro
-	 * @author Federico
-	 * @author Nicolò
+	 * @author Federico 
 	 * @param inizio Data di inizio del range di tempo
 	 * @param fine	Data di fine del range di tempo
 	 * @return JsonObject che contiene tutte le con i valori massimi nel database nel range di tempo indicato
@@ -211,7 +205,6 @@ public class Stat {
 	}
 	/**
 	 * Metodo che manda indietro un JsonObject di tutte le città con valori minimi nel range di tempo definito da inizio e fine
-	 * @author Federico
 	 * @param inizio Data di inizio del range
 	 * @param fine Data di fine del range
 	 * @return JsonObject che contiente tutte le citta con i valori minimi nel database contenute nel range di tempo definito da inizio e fine
@@ -318,9 +311,17 @@ public class Stat {
 	}
 	
 //Metodo utilizzato nella classe Main
+	/**
+	 * 
+	 * @author Nicolò
+	 * 
+	 * @param inizio
+	 * @param fine
+	 * @return
+	 */
 	public String printMaxValues(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
-		ArrayList<Citta> citta = conv.JsonToCitta();
+		ArrayList<Citta> citta = conv.JsonToCitta(inizio,fine);
 		
 		//Array per la memorizzazione dei valori minimi e massimi
 
