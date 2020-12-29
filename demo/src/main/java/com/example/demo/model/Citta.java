@@ -4,7 +4,18 @@
 package com.example.demo.model;
 
 import java.util.Date;
-
+/**
+ * Classe rappresentativa della citta
+ * @author Nicolò
+ *@param id id della citta
+ *@param nome nome della citta
+ *@param meteo Stringa riassuntiva del meteo di questa citta nella data <b>data</b>
+ *@param umidita umidita in questa citta nella data <b>data</b>
+ *@param pressione pressione in questa citta nella data <b>data</b>
+ *@param temperatura temperatura in questa citta nella data <b>data</b>
+ *@param posizione posizione di questa citta ( Nord, Centro o Sud)
+ *@param data orario di quando questi dati sono stati presi
+ */
 public class Citta {
 	private int id;
 	private String nome;
@@ -99,7 +110,11 @@ public class Citta {
 				+ this.meteo + "\nUmidità = " + this.umidita + "%\nPressione = " + this.pressione + "\nData = "
 				+ this.data.toString();
 	}
-
+	/**
+	 * Data la latitudine associa la citta ad una posizione geografica (Nord, Centro o Sud)
+	 * @param latitudine
+	 * @return posizione geografica
+	 */
 	public String getLocation(double latitudine) {
 		// System.out.println(latitudine);
 		if (latitudine > 43.77) {

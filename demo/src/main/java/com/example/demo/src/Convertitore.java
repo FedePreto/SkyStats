@@ -9,40 +9,55 @@ import java.util.stream.Stream;
 
 import com.example.demo.model.Citta;
 import com.google.gson.*;
-
+/**
+ * Classe contenente metodi per la conversione di Java to Json o viceversa
+ * @author Nicolò
+ * @author Federico
+ *
+ */
 public class Convertitore {
 	String nomeFile = "Storico.json";
 
-public ArrayList<Citta> JsonToCitta() {
-		ArrayList<Citta> c = new ArrayList<Citta>();
-		Stream<String> file;
-		int i = 0;
-		Gson gson = new Gson();
-		try {
-			BufferedReader buf = new BufferedReader(new FileReader(nomeFile));
-			file = buf.lines();
-			while (true) {
-				String prova = buf.readLine();
-				if (prova.equals(""))
-					return c;
-
-				c.add(gson.fromJson(prova, Citta.class));
-				i++;
+	/**
+	 * Legge tutto il database nomeFile e lo manda indietro in un ArrayList
+	 * @author Nicolò
+	 * @return ArrayList contenente tutti i valori nel DB
+	 */
+	public ArrayList<Citta> JsonToCitta() {
+			ArrayList<Citta> c = new ArrayList<Citta>();
+			Stream<String> file;
+			int i = 0;
+			Gson gson = new Gson();
+			try {
+				BufferedReader buf = new BufferedReader(new FileReader(nomeFile));
+				file = buf.lines();
+				while (true) {
+					String prova = buf.readLine();
+					if (prova.equals(""))
+						return c;
+	
+					c.add(gson.fromJson(prova, Citta.class));
+					i++;
+				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				// System.out.println(i+" Exception");
+				return c;
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			// System.out.println(i+" Exception");
 			return c;
 		}
-		return c;
-	}public Convertitore() {
-		// TODO Auto-generated constructor stub
-	}
-
-public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
+	
+    /**
+	 * Override del metodo precedente che permette di filtrare in base ad un range di date dato in input
+	 * @author Federico
+	 * @param inizio Data di inizio del range di tempo
+	 * @param fine Data di fine del range di tempo
+	 * @return ArrayList di Citta che sono del db e che si trovano tra la data di inizio e quella di fine
+	 */
+	public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 		ArrayList<Citta> c = new ArrayList<Citta>();
 		Citta citta;
 		String file="";
@@ -63,6 +78,12 @@ public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 		if(c.isEmpty())return null;
 		return c;
 }
+
+	/**
+	 * Metodo che salva le Citta contenute in c in nomeFile
+	 * @author Federico
+	 * @param c ArrayList contenente tutte le Citta da salvare
+	 */
 	
 	public void salva(ArrayList<Citta> c) {
 		Gson gson = new Gson();
@@ -125,7 +146,12 @@ public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 */
 
 
-
+	/**
+	 * Data una stringa s contenente Json ritorna la classe corrispondente
+	 * @author Nicolò
+	 * @param s Stringa Json
+	 * @return Classe Citta associata alla Stringa Json
+	 */
 	public Citta getClassFromCall(String s) {
 		
 		Citta c = new Citta();
@@ -166,64 +192,30 @@ public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
 			}
 		return c;
 }
-
+	/**
+	 * Stampa di Debug di una qualsiasi citta
+	 * @param c Citta da stampare
+	 */
 	public void stampaCitta(Citta c) {
 		System.out.println(c); 
 	}
-
+	/**
+	 * Controlla se <b>val</b> è contenuto nel DataBase e ritorna l 'ultimo valore
+	 * @param val nome della citta
+	 * @return Citta trovata oppure null se non trovata
+	 */
 	public Citta findInJson(String val) {
 		ArrayList<Citta> c;
 		c = JsonToCitta();
-		System.out.println(c.get(6));
-		boolean trovato=false;
 		Citta city = new Citta();
 		for(Citta x : c) {
-			if(val.equals(x.getNome()) && !trovato) {
+			if(val.equals(x.getNome())) {
 				city = x;
-				trovato=true;
+				
 			}
 			
 		}
 		return city;
-	}/*
-		Citta citta = null;
-		Date now = new Date();
-		int maxRecent = 0;
-		try {
-			int id = Integer.parseInt(val);
-			for (int i = 0; i < c.size(); i++) {
-				// System.out.println(c.get(i).getNome()+" Data =
-				// "+c.get(i).getData().toString()+" difference by now = "+
-				// differenzaDiDate(c.get(i).getData(), now, TimeUnit.MINUTES)+" minuti");
-				if (c.get(i).getId() == id && differenzaDiDate(c.get(i).getData(), now, TimeUnit.MINUTES) < 300) {
-					if (differenzaDiDate(c.get(maxRecent).getData(), now,
-							TimeUnit.HOURS) > differenzaDiDate(c.get(i).getData(), now, TimeUnit.HOURS)) {
-						citta = c.get(i);
-						maxRecent = i;
-					}
-				}
-			}
-		} catch (Exception e) {
-			for (int i = 0; i < c.size(); i++) {
-				// System.out.println(c.get(i).getNome()+" Data =
-				// "+c.get(i).getData().toString()+" difference by now = "+
-				// differenzaDiDate(c.get(i).getData(), now, TimeUnit.MINUTES)+" minuti");
-				if (c.get(i).getNome().equals(val)
-						&& differenzaDiDate(c.get(i).getData(), now, TimeUnit.MINUTES) < 300) {
-					if (differenzaDiDate(c.get(maxRecent).getData(), now,
-							TimeUnit.HOURS) > differenzaDiDate(c.get(i).getData(), now, TimeUnit.HOURS)) {
-						citta = c.get(i);
-						maxRecent = i;
-					}
-				}
-			}
-		}
-		return citta;
-	}*/
-
-	public double differenzaDiDate(Date date1, Date date2, TimeUnit timeUnit) {
-		long diffInMillies = date2.getTime() - date1.getTime();
-		return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	}
 
 }
