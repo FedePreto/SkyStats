@@ -26,6 +26,29 @@ public class Stat {
 	 * @param isPressione	Flag utilizzato per decidere di avere indietro o l'umidità oppure la pressione
 	 * @return Array di Double contenente i valori richiesti
 	 */
+	public Double[] getValues(ArrayList<Citta>c , String citta) {
+		Convertitore conv = new Convertitore();
+		ArrayList<Double> val = new ArrayList<Double>();
+		try {
+			int idCitta = Integer.parseInt(citta);
+			for (int i = 0; i < c.size(); i++) {
+				if (c.get(i).getId() == idCitta) {
+					val.add(c.get(i).getTemperatura());
+				}
+			}
+			Double[] d = new Double[val.size()];
+			return val.toArray(d);
+		} catch (NumberFormatException e) {
+			for (int i = 0; i < c.size(); i++) {
+				if (c.get(i).getNome().equals(citta)) {
+					val.add(c.get(i).getTemperatura());
+				}
+			}
+			if(val.isEmpty()) return null;
+			Double[] d = new Double[val.size()];
+				return val.toArray(d);
+		}
+	}
 	public Double[] getValues(ArrayList<Citta> c, String citta, boolean isPressione) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Double> val = new ArrayList<Double>();

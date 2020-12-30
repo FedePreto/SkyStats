@@ -47,14 +47,12 @@ public class Favoriti {
 		String url = "";
 		ArrayList<Citta> city = new ArrayList<Citta>();
 		Convertitore conv = new Convertitore();
+		Gson gson = new Gson();
 		for (String x : favoriti) {
-			url = "http://api.openweathermap.org/data/2.5/weather?q=" + x
-					+ "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
-						
-			city.add(conv.getClassFromCall(CercaMeteo.getMeteo(url)));
+			url = "http://api.openweathermap.org/data/2.5/weather?q=" + x + "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";						
+			//city.add(conv.getClassFromCall(CercaMeteo.getMeteo(url)));
+			conv.salva(gson.toJson(conv.getClassFromCall(CercaMeteo.getMeteo(url))));
 		}
-		
-		conv.salva(city);
 
 	}
 	/**

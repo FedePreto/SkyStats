@@ -23,6 +23,7 @@ import com.example.demo.model.Citta;
 import com.example.demo.services.*;
 import com.example.demo.src.Convertitore;
 import com.example.demo.statistiche.Stat;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -45,24 +46,23 @@ import com.google.gson.JsonObject;
 	 Citta c = new Citta();
 	 Convertitore conv = new Convertitore(); 
 	 if(agg.equals("Si")) {
-		 try { int ID = Integer.parseInt(city); url =
-				 "http://api.openweathermap.org/data/2.5/weather?id=" + ID +
-				 "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
+		 try { 
+			 int ID = Integer.parseInt(city);
+			 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
 				 
-				  } catch (NumberFormatException e) {
-				 
-				 url = "http://api.openweathermap.org/data/2.5/weather?q=" + city +
-				 ",IT&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
-				 
-				 }
-				 
-				 String meteo = CercaMeteo.getMeteo(url);
-				 c = conv.getClassFromCall(meteo);
-				 return c;
+		 	}catch (NumberFormatException e) {
+			 url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",IT&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it"; 
+		 	}	 
+			String meteo = CercaMeteo.getMeteo(url);
+			c = conv.getClassFromCall(meteo);
+			//Aggiunto autosalvataggio
+			Gson gson = new Gson();
+			conv.salva(gson.toJson(c));
+			return c;
 	 }
 	 else if(agg.equals("No")){	
-	 c = conv.findInJson(city);
-	 return c;
+		 c = conv.findInJson(city);
+		 return c;
 	 }
 	 else return null;
  }
@@ -88,16 +88,19 @@ import com.google.gson.JsonObject;
 		 }
      else {
     	 date = menuDate(type);
-    	 };
+    	 }
 	 Stat s = new Stat();
 	 Convertitore c = new Convertitore();
 	 ArrayList<Citta> citta = c.JsonToCitta(date[0], date[1]);
 	 Double[] valP =  s.getValues(citta, city, true);
 	 Double[] valU = s.getValues(citta, city, false);
+	 Double[] valT = s.getValues(citta, city);
 	 double mediaU = s.getMedia(valU);
 	 double mediaP = s.getMedia(valP);
+	 double mediaT = s.getMedia(valT);
 	 double varianzaU = s.getVarianza(valU, mediaU);
 	 double varianzaP = s.getVarianza(valP, mediaP);
+	 double varianzaT = s.getVarianza(valT, mediaT);
 	 JsonObject JsonReturn = new JsonObject();
 	 if(valP == null && valU == null) {
 		 JsonReturn.addProperty("Nessun valore trovato nel range di tempo specificato","");
@@ -109,6 +112,8 @@ import com.google.gson.JsonObject;
 		 JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
 		 JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(mediaP));
 		 JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
+		 JsonReturn.addProperty("Media Temperatura",  new DecimalFormat("#.##").format(mediaT));
+		 JsonReturn.addProperty("Varianza Temperatura",  new DecimalFormat("#.##").format(varianzaT));
 		 return JsonReturn;
 		 }
  }

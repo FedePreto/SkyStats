@@ -7,6 +7,8 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.input.ReversedLinesFileReader;
+
 import com.example.demo.model.Citta;
 import com.google.gson.*;
 /**
@@ -65,20 +67,23 @@ public class Convertitore {
 		int i = 0;
 		Gson gson = new Gson();
 		try {
-			Scanner in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
-			citta = gson.fromJson(in.nextLine(), Citta.class);
-			while(citta.getData().after(inizio) && in.hasNext()) {
-				i++;
-				if(citta.getData().before(fine)){
-					System.out.println(i);
-					c.add(citta);		    
-				    }
-				citta = gson.fromJson(in.nextLine(), Citta.class);
-			}
+			ReversedLinesFileReader in = new ReversedLinesFileReader(new File(nomeFile));
+			citta = gson.fromJson(in.readLine(), Citta.class);
+			 do{
+				citta = gson.fromJson(in.readLine(), Citta.class);
+				if(citta!=null)
+					if(citta.getData().before(fine)) {
+						c.add(citta);
+					}
+			}while(citta.getData().after(inizio));
 		}catch(IOException e) {
-			e.printStackTrace();
+			
 		}
-		if(c.isEmpty())return null;
+		catch(NullPointerException e) {
+			System.out.println();
+		}
+		if(c.isEmpty())
+			return null;
 		return c;
 }
 
@@ -87,42 +92,70 @@ public class Convertitore {
 	 * @author Federico
 	 * @param c ArrayList contenente tutte le Citta da salvare
 	 */
-	
+	/*public void revert() {
+		ArrayList<String> file = new ArrayList<String>();
+		Scanner s;
+		try {
+			s = new Scanner(new BufferedReader(new FileReader(nomeFile)));
+			while(s.hasNext()) {
+				file.add(s.nextLine());
+			}
+			s.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			BufferedWriter buf = new BufferedWriter(new FileWriter(nomeFile));
+			for(int i = file.size()-1;i>=0;i--) {
+				buf.write(file.get(i)+"\n");
+			}
+			buf.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
+	public void revert() {
+		ArrayList<Citta> c = JsonToCitta();
+		Date last = new Date("01/01/00");
+		
+		try {
+			BufferedWriter buf = new BufferedWriter(new FileWriter(nomeFile));
+			for (int i = 0; i < c.size(); i++) {
+				
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void salva(ArrayList<Citta> c) {
 		Gson gson = new Gson();
 		BufferedWriter buf;
 		Scanner in;
 		try {
-			buf = new BufferedWriter(new FileWriter("Storico2.json"));
-			in = new Scanner(new BufferedReader(new FileReader(nomeFile)));
-			for(Citta x : c) {
-				buf.write(gson.toJson(x));
-				buf.write("\n");
+			buf = new BufferedWriter(new FileWriter(nomeFile));
+			for(int i = 0;i<c.size();i++) {
+				buf.write(gson.toJson(c.get(i)));
 			}
-			while(in.hasNext()) {
-				buf.write(in.nextLine());
-				buf.write("\n");
-			}
-			in.close();
 			buf.close();
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 		
+	}
+	public void salva(String s) {
 		try {
-			buf = new BufferedWriter(new FileWriter(nomeFile));
-			in = new Scanner(new BufferedReader(new FileReader("Storico2.json"))); 
-			while(in.hasNext()) {
-				buf.write(in.nextLine());
-				buf.write("\n");
-			}
-			in.close();
+			BufferedWriter buf = new BufferedWriter(new FileWriter(nomeFile,true));
+			buf.write("\n"+s);
 			buf.close();
-		}catch(IOException e) {
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * Data una stringa s contenente Json ritorna la classe corrispondente
 	 * @author Nicolò
