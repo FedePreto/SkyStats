@@ -42,7 +42,10 @@ public class Favoriti {
 		favoriti = new ArrayList<String>();
 		aggiornaArray();
 	}
-
+	/**
+	 * Fa una call ad OpenWeather per ogni città in Favoriti
+	 * @author Federico
+	 */
 	public void salvataggio() {
 		String url = "";
 		ArrayList<Citta> city = new ArrayList<Citta>();
@@ -85,6 +88,7 @@ public class Favoriti {
 	}
 	/**
 	 * Scrive sul file <b>config</> i favoriti in modo da salvarli
+	 * @author Nicolò
 	 */
 	public void salvaArray() {
 		ArrayList<String> file = new ArrayList<String>();
@@ -114,14 +118,17 @@ public class Favoriti {
 		}
 
 	}
-
+	/**
+	 * Aggiunge fav alla lista dei favoriti
+	 * @param fav elemento da aggiungere
+	 */
 	public void addFavoriti(String fav) {
 		favoriti.add(fav);
 		salvaArray();
 	}
 	
 	/**
-	 * 
+	 * Ritorna JsonObject contentente tutte le citta nei favoriti
 	 * @author Federico
 	 * 
 	 * @return
@@ -149,6 +156,7 @@ public class Favoriti {
 
 	/**
 	 * Cancella il favorito <b>val</> dai favoriti
+	 * @author Nicolò
 	 * @param val Valore dal eliminare
 	 */
 	public void removeFavoriti(String val) {
@@ -157,6 +165,7 @@ public class Favoriti {
 	}
 	/**
 	 * Ritorna i favoriti
+	 * @author Nicolò
 	 * @return ArrayList dei favoriti
 	 */
 	public ArrayList<String> getFavoriti() {

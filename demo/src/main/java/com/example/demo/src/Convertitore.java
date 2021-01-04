@@ -55,6 +55,7 @@ public class Convertitore {
     /**
 	 * Override del metodo precedente che permette di filtrare in base ad un range di date dato in input
 	 * @author Federico
+	 * @author Nicolò
 	 * @param inizio Data di inizio del range di tempo
 	 * @param fine Data di fine del range di tempo
 	 * @return ArrayList di Citta che sono del db e che si trovano tra la data di inizio e quella di fine
@@ -87,11 +88,7 @@ public class Convertitore {
 		return c;
 }
 
-	/**
-	 * Metodo che salva le Citta contenute in c in nomeFile
-	 * @author Federico
-	 * @param c ArrayList contenente tutte le Citta da salvare
-	 */
+	
 	/*public void revert() {
 		ArrayList<String> file = new ArrayList<String>();
 		Scanner s;
@@ -116,7 +113,8 @@ public class Convertitore {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}*/
+	}
+	/****************************************
 	public void revert() {
 		ArrayList<Citta> c = JsonToCitta();
 		Date last = new Date("01/01/00");
@@ -130,7 +128,12 @@ public class Convertitore {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
+	/**
+	 * Metodo che salva le Citta contenute in c in nomeFile
+	 * @author Federico
+	 * @param c ArrayList contenente tutte le Citta da salvare
+	 */
 	public void salva(ArrayList<Citta> c) {
 		Gson gson = new Gson();
 		BufferedWriter buf;
@@ -146,6 +149,11 @@ public class Convertitore {
 		}
 		
 	}
+	/**
+	 * Salva nel Database in append una sola riga
+	 * @author Nicolò
+	 * @param s Riga da scrivere
+	 */
 	public void salva(String s) {
 		try {
 			BufferedWriter buf = new BufferedWriter(new FileWriter(nomeFile,true));
@@ -204,6 +212,7 @@ public class Convertitore {
 }
 	/**
 	 * Stampa di Debug di una qualsiasi citta
+	 * @author Nicolo
 	 * @param c Citta da stampare
 	 */
 	public void stampaCitta(Citta c) {
@@ -211,6 +220,7 @@ public class Convertitore {
 	}
 	/**
 	 * Controlla se <b>val</b> è contenuto nel DataBase e ritorna l 'ultimo valore
+	 * @author Nicolò
 	 * @param val nome della citta
 	 * @return Citta trovata oppure null se non trovata
 	 */

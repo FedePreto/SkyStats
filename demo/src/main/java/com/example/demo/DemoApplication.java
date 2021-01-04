@@ -19,11 +19,16 @@ import com.example.demo.model.Citta;
 import com.example.demo.src.Convertitore;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-
+/**
+ * SpringBoot 
+ * @author Federico
+ *
+ */
 @SpringBootApplication
 public class DemoApplication {
 
 	/**
+	 * Startup SpringBoot
 	 * @author Federico
 	 * 
 	 * @param args

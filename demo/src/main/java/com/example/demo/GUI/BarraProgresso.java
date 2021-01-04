@@ -3,7 +3,7 @@ import javax.swing.*;
 
 /**
  * 
- * 
+ * La barra di caricamento di alcuni metodi
  * @author Federico
  *
  */

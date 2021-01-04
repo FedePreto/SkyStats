@@ -877,3 +877,77 @@
 {"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":76.0,"pressione":1004.0,"temperatura":10.37,"posizione":"Centro","data":"Dec 30, 2020, 12:17:57 PM"}
 {"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":100.0,"pressione":1004.0,"temperatura":8.99,"posizione":"Centro","data":"Dec 30, 2020, 12:22:51 PM"}
 {"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":75.0,"pressione":1004.0,"temperatura":10.04,"posizione":"Centro","data":"Dec 30, 2020, 12:22:57 PM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"pioggia leggera","umidita":91.0,"pressione":1005.0,"temperatura":5.41,"posizione":"Centro","data":"Jan 2, 2021, 3:01:24 PM"}
+{"id":3170027,"nome":"Potenza","meteo":"pioggia leggera","umidita":82.0,"pressione":1012.0,"temperatura":5.56,"posizione":"Sud","data":"Jan 2, 2021, 3:01:24 PM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo coperto","umidita":82.0,"pressione":1011.0,"temperatura":11.12,"posizione":"Sud","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3172394,"nome":"Napoli","meteo":"nubi sparse","umidita":54.0,"pressione":1008.0,"temperatura":13.86,"posizione":"Sud","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3181927,"nome":"Bologna","meteo":"pioggia leggera","umidita":100.0,"pressione":1004.0,"temperatura":6.48,"posizione":"Nord","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3165185,"nome":"Trieste","meteo":"pioggia leggera","umidita":76.0,"pressione":1005.0,"temperatura":9.0,"posizione":"Nord","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":4219762,"nome":"Rome","meteo":"foschia","umidita":93.0,"pressione":1018.0,"temperatura":6.98,"posizione":"Sud","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3176217,"nome":"Genova","meteo":"pioggia leggera","umidita":83.0,"pressione":999.0,"temperatura":5.0,"posizione":"Nord","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3173435,"nome":"Milano","meteo":"pioggia moderata","umidita":100.0,"pressione":1004.0,"temperatura":4.15,"posizione":"Nord","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":62.0,"pressione":1004.0,"temperatura":10.54,"posizione":"Centro","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3180990,"nome":"Campobasso","meteo":"nubi sparse","umidita":74.0,"pressione":1001.0,"temperatura":9.39,"posizione":"Sud","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3165523,"nome":"Torino","meteo":"pioggia moderata","umidita":100.0,"pressione":1004.0,"temperatura":3.19,"posizione":"Nord","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"nubi sparse","umidita":71.0,"pressione":1010.0,"temperatura":14.12,"posizione":"Sud","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":2525471,"nome":"Cagliari","meteo":"nubi sparse","umidita":81.0,"pressione":1007.0,"temperatura":10.16,"posizione":"Sud","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":2523918,"nome":"Palermo","meteo":"cielo sereno","umidita":47.0,"pressione":1010.0,"temperatura":15.19,"posizione":"Sud","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3176959,"nome":"Firenze","meteo":"pioggia leggera","umidita":76.0,"pressione":1003.0,"temperatura":9.2,"posizione":"Centro","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3165243,"nome":"Trento","meteo":"neve","umidita":92.0,"pressione":1003.0,"temperatura":-1.21,"posizione":"Nord","data":"Jan 2, 2021, 3:01:25 PM"}
+{"id":3171179,"nome":"Perugia","meteo":"pioggia moderata","umidita":81.0,"pressione":1004.0,"temperatura":7.99,"posizione":"Centro","data":"Jan 2, 2021, 3:01:26 PM"}
+{"id":3182996,"nome":"Aosta","meteo":"neve","umidita":100.0,"pressione":997.0,"temperatura":-5.03,"posizione":"Nord","data":"Jan 2, 2021, 3:01:26 PM"}
+{"id":3164603,"nome":"Venezia","meteo":"nubi sparse","umidita":93.0,"pressione":1006.0,"temperatura":7.48,"posizione":"Nord","data":"Jan 2, 2021, 3:01:26 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":62.0,"pressione":1004.0,"temperatura":10.54,"posizione":"Centro","data":"Jan 2, 2021, 3:01:26 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"nubi sparse","umidita":71.0,"pressione":1007.0,"temperatura":12.21,"posizione":"Centro","data":"Jan 2, 2021, 3:01:26 PM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"pioggia moderata","umidita":92.0,"pressione":1010.0,"temperatura":4.58,"posizione":"Nord","data":"Jan 2, 2021, 3:01:26 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"nubi sparse","umidita":72.0,"pressione":1003.0,"temperatura":8.5,"posizione":"Centro","data":"Jan 2, 2021, 7:07:52 PM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"pioggia leggera","umidita":100.0,"pressione":1006.0,"temperatura":0.69,"posizione":"Centro","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3170027,"nome":"Potenza","meteo":"neve","umidita":68.0,"pressione":1010.0,"temperatura":7.1,"posizione":"Sud","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"poche nuvole","umidita":42.0,"pressione":1013.0,"temperatura":14.31,"posizione":"Sud","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3172394,"nome":"Napoli","meteo":"nubi sparse","umidita":66.0,"pressione":1011.0,"temperatura":11.08,"posizione":"Sud","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3181927,"nome":"Bologna","meteo":"nebbia","umidita":100.0,"pressione":1009.0,"temperatura":8.07,"posizione":"Nord","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3165185,"nome":"Trieste","meteo":"poche nuvole","umidita":71.0,"pressione":1008.0,"temperatura":11.62,"posizione":"Nord","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":4219762,"nome":"Rome","meteo":"cielo coperto","umidita":78.0,"pressione":1019.0,"temperatura":5.51,"posizione":"Sud","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3176217,"nome":"Genova","meteo":"cielo coperto","umidita":77.0,"pressione":1007.0,"temperatura":8.89,"posizione":"Nord","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3173435,"nome":"Milano","meteo":"nubi sparse","umidita":93.0,"pressione":1009.0,"temperatura":7.4,"posizione":"Nord","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":66.0,"pressione":1009.0,"temperatura":10.58,"posizione":"Centro","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3180990,"nome":"Campobasso","meteo":"pioggia leggera","umidita":92.0,"pressione":1004.0,"temperatura":6.97,"posizione":"Sud","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":3165523,"nome":"Torino","meteo":"cielo coperto","umidita":100.0,"pressione":1009.0,"temperatura":2.75,"posizione":"Nord","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"nubi sparse","umidita":62.0,"pressione":1012.0,"temperatura":11.17,"posizione":"Sud","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":2525471,"nome":"Cagliari","meteo":"pioggia leggera","umidita":81.0,"pressione":1009.0,"temperatura":9.02,"posizione":"Sud","data":"Jan 3, 2021, 2:31:23 PM"}
+{"id":2523918,"nome":"Palermo","meteo":"cielo sereno","umidita":59.0,"pressione":1009.0,"temperatura":11.82,"posizione":"Sud","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":3176959,"nome":"Firenze","meteo":"poche nuvole","umidita":66.0,"pressione":1008.0,"temperatura":10.19,"posizione":"Centro","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":3165243,"nome":"Trento","meteo":"nebbia","umidita":86.0,"pressione":1004.0,"temperatura":1.06,"posizione":"Nord","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":3171179,"nome":"Perugia","meteo":"cielo coperto","umidita":81.0,"pressione":1009.0,"temperatura":7.12,"posizione":"Centro","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":3182996,"nome":"Aosta","meteo":"neve","umidita":100.0,"pressione":998.0,"temperatura":-4.85,"posizione":"Nord","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":3164603,"nome":"Venezia","meteo":"nubi sparse","umidita":81.0,"pressione":1009.0,"temperatura":10.19,"posizione":"Nord","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":66.0,"pressione":1009.0,"temperatura":10.58,"posizione":"Centro","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":77.0,"pressione":1004.0,"temperatura":12.22,"posizione":"Centro","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"nubi sparse","umidita":89.0,"pressione":1014.0,"temperatura":5.81,"posizione":"Nord","data":"Jan 3, 2021, 2:31:24 PM"}
+{"id":3169070,"nome":"Roma","meteo":"pioggia moderata","umidita":81.0,"pressione":1010.0,"temperatura":6.75,"posizione":"Centro","data":"Jan 3, 2021, 2:31:36 PM"}
+{"id":3169070,"nome":"Roma","meteo":"pioggia moderata","umidita":81.0,"pressione":1010.0,"temperatura":6.75,"posizione":"Centro","data":"Jan 3, 2021, 2:31:56 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":77.0,"pressione":1004.0,"temperatura":12.22,"posizione":"Centro","data":"Jan 3, 2021, 2:32:24 PM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"nubi sparse","umidita":92.0,"pressione":1006.0,"temperatura":3.07,"posizione":"Centro","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":3170027,"nome":"Potenza","meteo":"nubi sparse","umidita":73.0,"pressione":1009.0,"temperatura":9.76,"posizione":"Sud","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo coperto","umidita":76.0,"pressione":1011.0,"temperatura":9.21,"posizione":"Sud","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":3172394,"nome":"Napoli","meteo":"nubi sparse","umidita":71.0,"pressione":1010.0,"temperatura":11.29,"posizione":"Sud","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":3181927,"nome":"Bologna","meteo":"nubi sparse","umidita":87.0,"pressione":1011.0,"temperatura":5.48,"posizione":"Nord","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":3165185,"nome":"Trieste","meteo":"nubi sparse","umidita":81.0,"pressione":1010.0,"temperatura":7.86,"posizione":"Nord","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":4219762,"nome":"Rome","meteo":"cielo sereno","umidita":92.0,"pressione":1020.0,"temperatura":-1.7,"posizione":"Sud","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":3176217,"nome":"Genova","meteo":"pioggia moderata","umidita":85.0,"pressione":1007.0,"temperatura":5.55,"posizione":"Nord","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":3173435,"nome":"Milano","meteo":"nubi sparse","umidita":93.0,"pressione":1010.0,"temperatura":5.91,"posizione":"Nord","data":"Jan 4, 2021, 12:38:27 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"poche nuvole","umidita":93.0,"pressione":1010.0,"temperatura":8.5,"posizione":"Centro","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3180990,"nome":"Campobasso","meteo":"nubi sparse","umidita":92.0,"pressione":1003.0,"temperatura":8.11,"posizione":"Sud","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3165523,"nome":"Torino","meteo":"pioggerella","umidita":93.0,"pressione":1010.0,"temperatura":2.9,"posizione":"Nord","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"cielo sereno","umidita":62.0,"pressione":1009.0,"temperatura":12.02,"posizione":"Sud","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":2525471,"nome":"Cagliari","meteo":"poche nuvole","umidita":76.0,"pressione":1012.0,"temperatura":10.53,"posizione":"Sud","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":2523918,"nome":"Palermo","meteo":"nubi sparse","umidita":1.0,"pressione":1010.0,"temperatura":10.53,"posizione":"Sud","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3176959,"nome":"Firenze","meteo":"nubi sparse","umidita":70.0,"pressione":1010.0,"temperatura":8.87,"posizione":"Centro","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3165243,"nome":"Trento","meteo":"nubi sparse","umidita":85.0,"pressione":1005.0,"temperatura":-0.63,"posizione":"Nord","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3171179,"nome":"Perugia","meteo":"nubi sparse","umidita":81.0,"pressione":1010.0,"temperatura":7.46,"posizione":"Centro","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3182996,"nome":"Aosta","meteo":"neve","umidita":93.0,"pressione":1001.0,"temperatura":-1.91,"posizione":"Nord","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3164603,"nome":"Venezia","meteo":"nubi sparse","umidita":81.0,"pressione":1011.0,"temperatura":7.49,"posizione":"Nord","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"poche nuvole","umidita":93.0,"pressione":1010.0,"temperatura":8.5,"posizione":"Centro","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"nubi sparse","umidita":61.0,"pressione":1011.0,"temperatura":9.63,"posizione":"Centro","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"cielo coperto","umidita":87.0,"pressione":1009.0,"temperatura":5.08,"posizione":"Nord","data":"Jan 4, 2021, 12:38:28 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"nubi sparse","umidita":77.0,"pressione":1005.0,"temperatura":10.92,"posizione":"Centro","data":"Jan 4, 2021, 1:48:36 PM"}

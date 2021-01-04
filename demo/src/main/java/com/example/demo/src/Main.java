@@ -30,7 +30,11 @@ import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.util.StringBuilderFormattable;
-
+/**
+ * Classe che contiente il menu per la versione primitiva testuale del programma. Antecedente all'implementazione di SpringBoot
+ * @author Nicolò
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
@@ -104,7 +108,10 @@ public class Main {
 		} while (scelta != 0);
 
 	}
-
+	/**
+	 * Metodo per l'input di una Data da Console
+	 * @return Data inserita dall'utente
+	 */
 	public static Date getData() {
 		String s;
 		Date d = null;
@@ -124,13 +131,18 @@ public class Main {
 		} while (true);
 		return d;
 	}
-	//METODO DI RICERCA PER CONTROLLER (INIZIO)
+	
+	/**
+	 * Controlla nel Database se si trova una citta recente al massimo di 5 h e la ritorna
+	 * @param nome
+	 * @return
+	 */
 	public Citta cercaMeteo(String nome) {
 		Convertitore conv = new Convertitore();		
 		Citta c = conv.findInJson(nome);	
 		return c;
 	}
-	//METODO DI RICERCA PER CONTROLLER (FINE)
+	
 
 	
 /*	public static void cercaMeteo() {
@@ -142,40 +154,47 @@ public class Main {
 		Citta c = conv.findInJson(city);
 	}*/
 	
-
+	/**
+	 * Stampa tutte le statistiche in base al range di date definito da <b>in</b> a <b>fin</b> della citta <b>citta</b>
+	 * @param in Data di inizio del range di tempo
+	 * @param fin Data di fine del range di tempo
+	 * @param citta Citta o Id della citta della quale chidere Statistiche
+	 */
 	public static void stampaStat(Date in, Date fin, String citta) {
 		Stat stat = new Stat();
-		if(citta.equals("Nord") || citta.equals("Centro") || citta.equals("Sud")){
-			double mediaP = stat.getMedia(stat.getDataByLocation(in, fin, citta, true));
-			double mediaU = stat.getMedia(stat.getDataByLocation(in, fin, citta, false));
-			System.out.println("La Media della pressione del " + citta + " è: " + new DecimalFormat("#.##").format(mediaP));
-			System.out.println("La Varianza dell'pressione del " + citta + " è: "
-					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getDataByLocation(in, fin, citta, true), mediaP)));
-			System.out.println("La Media dell'umidità del " + citta + " è: " + new DecimalFormat("#.##").format(mediaU));
-			System.out.println("La Varianza della umidita del " + citta + " è: "
-					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getDataByLocation(in, fin, citta, false), mediaU)));
-		}else{
-			double mediaP = stat.getMedia(stat.getValues(in, fin, citta, true));
-			double mediaU = stat.getMedia(stat.getValues(in, fin, citta, false));
-			System.out.println("La Media della pressione è: " + new DecimalFormat("#.##").format(mediaP));
-			System.out.println("La Varianza dell'pressione è: "
-					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, true), mediaP)));
-			System.out.println("La Media dell'umidità è: " + new DecimalFormat("#.##").format(mediaU));
-			System.out.println("La Varianza della umidita è: "
-					+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, false), mediaU)));
+		Convertitore conv = new Convertitore();
+		Double[] valP ;
+		Double[] valU ;
+		Double[] valT ;
+		ArrayList<Citta> c = conv.JsonToCitta(in,fin);
+		if(citta.equals("Nord") || citta.equals("Centro") || citta.equals("Sud")) {
+			 valP = stat.getDataByLocation(c, citta,0);
+			 valU = stat.getDataByLocation(c, citta,1);
+			 valT = stat.getDataByLocation(c, citta,2);
+			
+		}else {
+			 valP = stat.getValues(c, citta,true);
+			 valU = stat.getValues(c, citta,false);
+			 valT = stat.getValues(c, citta);
 		}
-		/*
-		Stat stat = new Stat();
-		double mediaP = stat.getMedia(stat.getValues(in, fin, citta, true));
-		double mediaU = stat.getMedia(stat.getValues(in, fin, citta, false));
-		System.out.println("La Media della pressione è: " + new DecimalFormat("#.##").format(mediaP));
-		System.out.println("La Varianza dell'pressione è: "
-				+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, true), mediaP)));
+		
+		double mediaP = stat.getMedia(valP);
+		double mediaU = stat.getMedia(valU);
+		double mediaT = stat.getMedia(valT);
+						
+		
+		System.out.println("La Media della pressione del è: " + new DecimalFormat("#.##").format(mediaP));
+		System.out.println("La Varianza dell'pressione è: " + new DecimalFormat("#.##").format(stat.getVarianza(stat.getDataByLocation(in, fin, citta, true))));
 		System.out.println("La Media dell'umidità è: " + new DecimalFormat("#.##").format(mediaU));
-		System.out.println("La Varianza della umidita è: "
-				+ new DecimalFormat("#.##").format(stat.getVarianza(stat.getValues(in, fin, citta, false), mediaU)));
-	*/}
-
+		System.out.println("La Varianza della umidita  è: " + new DecimalFormat("#.##").format(stat.getVarianza(stat.getDataByLocation(in, fin, citta, false))));
+		System.out.println("La media Della temperatura è di : "+mediaT);
+		System.out.println("La varianza della temperatura è di : "+stat.getVarianza(valT));
+	}
+	/**
+	 * Menu per la gestione dei periodi di tempo
+	 * @author Nicolò
+	 * @return Range di tempo 
+	 */
 	public static Date[] menuDate() {
 		Scanner in = new Scanner(System.in);
 		// System.out.println("Inserisci la citta da prendere in considerazione : ");
@@ -226,7 +245,10 @@ public class Main {
 		return date;
 	}
 
-	// Da finire
+	/**
+	 * Meteo per zona geografica
+	 * @author Nicolò
+	 */
 	public static void zoneGeo() {
 		Scanner in = new Scanner(System.in);
 		int scelta;
@@ -254,9 +276,10 @@ public class Main {
 		}
 	
 	/**
+	 * Calcola il tempo passato dall'ultimo update
 	 * @author Federico
 	 * 
-	 * @return
+	 * @return Tempo passato dall'ultimo Update del database
 	 */
 	public static long getDelay() {
 		Date now = new Date();

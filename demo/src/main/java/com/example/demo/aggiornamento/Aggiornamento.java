@@ -5,7 +5,7 @@ import java.util.TimerTask;
 import com.example.demo.services.Favoriti;
 
 /**
- * 
+ * Classe per l'aggiornamento automatico
  * @author Federico
  *
  */
@@ -13,7 +13,7 @@ import com.example.demo.services.Favoriti;
 public class Aggiornamento extends TimerTask {
 
 	Favoriti r = new Favoriti();
-
+	
 	public void run() {
 		r.salvataggio();
 	}

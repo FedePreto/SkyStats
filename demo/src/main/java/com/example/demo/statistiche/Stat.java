@@ -14,17 +14,33 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 /**
  * Classe che contiene tutti i metodi riguardanti le statistiche.
- * @author Nicolò,Federico
- *
+ * 	@author Nicolò
+ *	@author Federico
  */
 public class Stat {
+	public Double[][] getValues(ArrayList<Citta> c){
+		ArrayList[] dati = new ArrayList[3];
+		for (int i = 0; i < dati.length; i++) {
+			dati[i] = new ArrayList<Double>();
+		}
+		
+		for (int i = 0; i < c.size(); i++) {
+			dati[0].add(c.get(i).getPressione());
+			dati[1].add(c.get(i).getUmidita());
+			dati[2].add(c.get(i).getTemperatura());
+		}
+		Double[][] tmp = new Double[3][dati[0].size()];
+		for (int i = 0; i < tmp.length; i++) {
+			tmp[i] = (Double[])dati[i].toArray();
+		}
+		return tmp;
+	}
 	/**
-	 * Metodo che manda indietro i dati utili alla ricerca sottoforma di Array Double
-	 * @param inizio Data di inizio del range di tempo
-	 * @param fine	Data di fine del range di tempo
-	 * @param citta	Città soggetta a statistiche
-	 * @param isPressione	Flag utilizzato per decidere di avere indietro o l'umidità oppure la pressione
-	 * @return Array di Double contenente i valori richiesti
+	 * Prende i dati dal Database e li ritorna sottoforma di Array di Double in modo da poter essere processati da funzioni statistiche
+	 * @author Nicolò
+	 * @param c Lista delle citta dalle quali prelevare i dati
+	 * @param citta nome della citta da selezionare
+	 * @return array di valori di temperatura delle citta <b>citta</b> nell array <b>c</b>
 	 */
 	public Double[] getValues(ArrayList<Citta>c , String citta) {
 		Convertitore conv = new Convertitore();
@@ -49,6 +65,15 @@ public class Stat {
 				return val.toArray(d);
 		}
 	}
+	/**
+	 * Metodo che manda indietro i dati utili alla ricerca sottoforma di Array Double
+	 * @author Federico
+	 * @param inizio Data di inizio del range di tempo
+	 * @param fine	Data di fine del range di tempo
+	 * @param citta	Città soggetta a statistiche
+	 * @param isPressione	Flag utilizzato per decidere di avere indietro o l'umidità oppure la pressione
+	 * @return Array di Double contenente i valori richiesti
+	 */
 	public Double[] getValues(ArrayList<Citta> c, String citta, boolean isPressione) {
 		Convertitore conv = new Convertitore();
 		ArrayList<Double> val = new ArrayList<Double>();
@@ -83,6 +108,7 @@ public class Stat {
 	
 	/**
 	 * Dati i valori ritorna la media
+	 * @author Nicolò
 	 * @param val	Valori per i quali calcolare la media
 	 * @return	Ritorna la media
 	 */
@@ -118,7 +144,14 @@ public class Stat {
 			}
 		
 	}
-	public double getVarianza(Double[] val, double media) {
+	/**
+	 * Metodo che calcola la varianza dati i valori e la loro media
+	 * @author Nicolò
+	 * @param val valori da calcolarne la varianza
+	 * @return varianza dei valori
+	 */
+	public double getVarianza(Double[] val) {
+		double media = getMedia(val);
 		if(val==null) return 0;
 		else {
 			double var = 0;
@@ -239,6 +272,7 @@ public class Stat {
 	}
 	/**
 	 * Metodo che manda indietro un JsonObject di tutte le città con valori minimi nel range di tempo definito da inizio e fine
+	 * @author Federico
 	 * @param inizio Data di inizio del range
 	 * @param fine Data di fine del range
 	 * @return JsonObject che contiente tutte le citta con i valori minimi nel database contenute nel range di tempo definito da inizio e fine
@@ -263,10 +297,8 @@ public class Stat {
  //Inizializza i minimi al primo valore letto nell'array poi procederà con i confronti
 		 min_val[0] = citta.get(0).getUmidita();
 	     min_val[1] = citta.get(0).getPressione();
-	     min_val[2] = getVarianza(getValues(citta, citta.get(0).getNome(), false),
-					getMedia(getValues(citta, citta.get(0).getNome(), false)));
-		 min_val[3] = getVarianza(getValues(citta, citta.get(0).getNome(), true),
-					getMedia(getValues(citta, citta.get(0).getNome(), true)));
+	     min_val[2] = getVarianza(getValues(citta, citta.get(0).getNome()));
+		 min_val[3] = getVarianza(getValues(citta, citta.get(0).getNome()));
 		 //Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
 		for (int i = 1; i < citta.size(); i++) {
 		   /*
@@ -299,11 +331,9 @@ public class Stat {
 			m.jb.setValue(i);
 			for(int j=1; j<citta.size(); j++) {
 				if(favoriti.get(i).equals(citta.get(j).getNome())) {					
-					getVarU= getVarianza(getValues(citta, citta.get(j).getNome(), false),
-							getMedia(getValues(citta, citta.get(j).getNome(), false)));
+					getVarU= getVarianza(getValues(citta, citta.get(j).getNome(), false));
 					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP=getVarianza(getValues(citta, citta.get(j).getNome(), true),
-							getMedia(getValues(citta, citta.get(j).getNome(), true)));
+					getVarP=getVarianza(getValues(citta, citta.get(j).getNome(), true));
 					break;
 			   }
 			}
@@ -346,12 +376,12 @@ public class Stat {
 	
 //Metodo utilizzato nella classe Main
 	/**
-	 * 
+	 * Stampa le citta con valori di umidita e pressione massimi
 	 * @author Nicolò
 	 * 
-	 * @param inizio
-	 * @param fine
-	 * @return
+	 * @param inizio data di inizio del range di tempo
+	 * @param fine data di fine del range di tempo
+	 * @return stringa di output
 	 */
 	public String printMaxValues(Date inizio, Date fine) {
 		Convertitore conv = new Convertitore();
@@ -377,18 +407,14 @@ public class Stat {
         //Inizializza i minimi al primo valore letto nell'array poi procederà con i confronti
 		min[0] = citta.get(0).getUmidita();
 		min[1] = citta.get(0).getPressione();
-		min[2] = getVarianza(getValues(citta, citta.get(0).getNome(), false),
-				getMedia(getValues(citta, citta.get(0).getNome(), false)));
-		min[3] = getVarianza(getValues(citta, citta.get(0).getNome(), true),
-				getMedia(getValues(citta, citta.get(0).getNome(), true)));
+		min[2] = getVarianza(getValues(citta, citta.get(0).getNome(), false));
+		min[3] = getVarianza(getValues(citta, citta.get(0).getNome(), true));
 		for (int i = 0; i < citta.size(); i++) {
 			// Max
 			//getVarF prende la varianza dell'umidità
-			double getVarF= getVarianza(getValues(citta, citta.get(i).getNome(), false),
-					getMedia(getValues(citta, citta.get(i).getNome(), false)));
+			double getVarF= getVarianza(getValues(citta, citta.get(i).getNome(), false));
 			//getVarT prende la varianza della pressione
-			double getVarT=getVarianza(getValues(citta, citta.get(i).getNome(), true),
-					getMedia(getValues(citta, citta.get(i).getNome(), true)));
+			double getVarT=getVarianza(getValues(citta, citta.get(i).getNome(), true));
 			//Hum calcola l'umidità sul singolo valore
 			double Hum = citta.get(i).getUmidita();
 			//Pres calcola la pressione su singolo valore
@@ -449,6 +475,31 @@ public class Stat {
 				
 	}
 	
+	/**
+	 * Date le città e la posizione geografica da filtrare ritorna un array di dati in base a <b>flag</b>
+	 * @author Nicolò
+	 * @param c citta da filtrare
+	 * @param location Posizione geografica
+	 * @param flag <br>1- Umidità<br>2- Pressione<br>3- Temperatura
+	 * @return dati filtrati
+	 */
+	public Double[] getDataByLocation(ArrayList<Citta> c, String location,int flag) {
+		ArrayList<Double> val = new ArrayList<Double>();
+		for (int i = 0; i < c.size(); i++) {
+			if(c.get(i).getPosizione().equals(location)) {
+				if(flag==0) {
+					val.add(c.get(i).getPressione());
+				}else if(flag==1) {
+					val.add(c.get(i).getUmidita());
+				}else if(flag==2) {
+					val.add(c.get(i).getTemperatura());
+				}
+			}
+		}
+		Double[] tmp = new Double[val.size()];
+		tmp = (Double[]) val.toArray();
+		return tmp;
+	}
 	/**
 	 * Metodo utilizzato per prendere dati dal database in base al range di tempo definito tra inizio e fine e alla posizione geografica (location) 
 	 * @param inizio Data di inizio del range di tempo
