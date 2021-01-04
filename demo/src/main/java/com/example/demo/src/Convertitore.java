@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
-
 import org.apache.commons.io.input.ReversedLinesFileReader;
 
 import com.example.demo.model.Citta;

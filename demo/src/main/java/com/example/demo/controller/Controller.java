@@ -92,8 +92,20 @@ import com.google.gson.JsonObject;
 	ArrayList<Citta> citta = conv.JsonToCitta();
 	
 	for(int i = 0; i<f.size();i++) {
+		System.out.println("=========================================================");
+		System.out.println(i);
 		citta = f.get(i).filtra(citta);
+		for(Citta x:citta) {
+			System.out.println(x.getNome());
+			System.out.println(x.getData());
+		}
+		System.out.println("==========================================================");
 	}
+	for(Citta x:citta) {
+		System.out.println(x.getNome());
+		System.out.println(x.getData());
+	}
+		
 	/*
 	 String city =  body.get("city").getAsString();
      String type = body.get("type").getAsString();
@@ -144,6 +156,7 @@ import com.google.gson.JsonObject;
  */
  @PostMapping("/Max")
  public JsonObject getMax(@RequestBody JsonObject body) {
+	 
      String type = body.get("type").getAsString();
      Date[] date = new Date[2];
      if(type.equals("Customizzato")) {
@@ -184,6 +197,7 @@ import com.google.gson.JsonObject;
 	 Stat s = new Stat();
 	 return s.getMin(date[0],date[1]);
 }
+
  
 /**
  * Call che dato un JsonBody in post restituisce un altro JsonBody contenente tutte le informazioni riguardanti le citta con valori minimi di umidita, pressione e temperatura
@@ -195,6 +209,7 @@ import com.google.gson.JsonObject;
  * @param range Nel caso in cui type = Customizzato allora range conterrà il range di date 
  * @return JsonObject contenente le città con i valori minimi di umidità, pressione e temperatura
  */
+ /*
 @PostMapping("/ZoneGeo")
  public JsonObject getZoneGeo(@RequestBody JsonObject body) {
 	 String zone = body.get("zone").getAsString();
@@ -230,7 +245,7 @@ import com.google.gson.JsonObject;
 		 return JsonReturn;
 		 }		
  }
- 
+ */
 /**
  * Call per gestire i favoriti
  * @author Federico

@@ -1,8 +1,11 @@
 package com.example.demo.statistiche;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.PatternSyntaxException;
 
 import com.example.demo.model.Citta;
@@ -23,43 +26,45 @@ public class Tempo extends Filtro{
 		}
 		return tmp;
 	}
-	@SuppressWarnings("deprecation")
+	
 	public static Date[] getDateFromString(String time) {
 		 Date inizio = new Date();
-		 Date fine = new Date();
-		 LocalDate l;
+		 LocalDate l = LocalDate.now().minusDays(0);
+		 Date fine = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		 
 			switch (time) {
-			case "Giornaliero":
-				fine = new Date();
+			
+			case "Giornaliero":     			
 				l = LocalDate.now().minusDays(1);
 				inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				// stampaStat(inizio,fine,citta);
 				break;
+				
 			case "Settimanale":
-				fine = new Date();
 				l = LocalDate.now().minusDays(7);
 				inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				// stampaStat(inizio,fine,citta);
 				break;
+				
 			case "Mensile":
-				fine = new Date();
 				l = LocalDate.now().minusDays(30);
 				inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				// stampaStat(inizio,fine,citta);
 				break;
+				
 			case "Annuale":
-				fine = new Date();
 				l = LocalDate.now().minusDays(365);
 				inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				// stampaStat(inizio,fine,citta);
 				break;
+				
 			default:
 				try {
 				String[] d = time.split(",");
-				inizio = new Date(d[0]);
-				fine =new Date(d[1]);
+				DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ITALY);
+				inizio = df.parse(d[0]);
+				fine = df.parse(d[1]);
 				}catch(PatternSyntaxException e) {
 					System.out.println("Errore : Separatore date non trovato!");
+				} catch (ParseException e) {
+					System.out.println("Errore : Formattazione delle date non corretto [dd/MM/yy]]");
+					e.printStackTrace();
 				}
 				
 			}
