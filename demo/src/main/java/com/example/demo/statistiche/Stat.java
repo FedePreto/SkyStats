@@ -19,21 +19,25 @@ import java.util.ArrayList;
  */
 public class Stat {
 	public Double[][] getValues(ArrayList<Citta> c){
-		ArrayList[] dati = new ArrayList[3];
-		for (int i = 0; i < dati.length; i++) {
-			dati[i] = new ArrayList<Double>();
-		}
+		ArrayList<Double> dati1 = new ArrayList<Double>();
+		ArrayList<Double> dati2 = new ArrayList<Double>();
+		ArrayList<Double> dati3 = new ArrayList<Double>();
+		Double[][] dati = new Double[3][c.size()];
 		
 		for (int i = 0; i < c.size(); i++) {
-			dati[0].add(c.get(i).getPressione());
-			dati[1].add(c.get(i).getUmidita());
-			dati[2].add(c.get(i).getTemperatura());
+			dati[0][i] = c.get(i).getPressione();
+			dati[1][i] = c.get(i).getUmidita();
+			dati[2][i] = c.get(i).getTemperatura();
+			/*dati1.add(c.get(i).getPressione());
+			dati2.add(c.get(i).getUmidita());
+			dati3.add(c.get(i).getTemperatura());*/
 		}
-		Double[][] tmp = new Double[3][dati[0].size()];
-		for (int i = 0; i < tmp.length; i++) {
-			tmp[i] = (Double[])dati[i].toArray();
-		}
-		return tmp;
+		//Double[][] tmp = new Double[3][dati1.size()];
+		//tmp[0] = (Double[]) dati1.toArray();
+		//tmp[1] = (Double[])dati2.toArray();
+		//tmp[2] = (Double[])dati3.toArray();
+		
+		return dati;
 	}
 	/**
 	 * Prende i dati dal Database e li ritorna sottoforma di Array di Double in modo da poter essere processati da funzioni statistiche
