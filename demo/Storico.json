@@ -2945,3 +2945,26 @@
 {"id":2525059,"nome":"Catanzaro","meteo":"cielo sereno","umidita":87.0,"pressione":1013.0,"temperatura":7.69,"posizione":"Sud","data":"Jan 4, 2021, 9:05:17 PM"}
 {"id":3170027,"nome":"Potenza","meteo":"cielo sereno","umidita":92.0,"pressione":1009.0,"temperatura":4.49,"posizione":"Sud","data":"Jan 4, 2021, 9:05:17 PM"}
 {"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"nubi sparse","umidita":92.0,"pressione":1007.0,"temperatura":0.45,"posizione":"Centro","data":"Jan 4, 2021, 9:05:17 PM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"neve","umidita":95.0,"pressione":1008.0,"temperatura":1.58,"posizione":"Centro","data":"Jan 5, 2021, 7:21:20 PM"}
+{"id":3170027,"nome":"Potenza","meteo":"nebbia","umidita":88.0,"pressione":1008.0,"temperatura":6.58,"posizione":"Sud","data":"Jan 5, 2021, 7:21:20 PM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo coperto","umidita":87.0,"pressione":1014.0,"temperatura":7.12,"posizione":"Sud","data":"Jan 5, 2021, 7:21:20 PM"}
+{"id":3172394,"nome":"Napoli","meteo":"nubi sparse","umidita":62.0,"pressione":1010.0,"temperatura":10.91,"posizione":"Sud","data":"Jan 5, 2021, 7:21:20 PM"}
+{"id":3181927,"nome":"Bologna","meteo":"nubi sparse","umidita":100.0,"pressione":1006.0,"temperatura":3.11,"posizione":"Nord","data":"Jan 5, 2021, 7:21:20 PM"}
+{"id":3165185,"nome":"Trieste","meteo":"pioggerella","umidita":87.0,"pressione":1007.0,"temperatura":6.3,"posizione":"Nord","data":"Jan 5, 2021, 7:21:20 PM"}
+{"id":4219762,"nome":"Rome","meteo":"nubi sparse","umidita":54.0,"pressione":1018.0,"temperatura":11.4,"posizione":"Sud","data":"Jan 5, 2021, 7:21:20 PM"}
+{"id":3176217,"nome":"Genova","meteo":"cielo coperto","umidita":88.0,"pressione":1005.0,"temperatura":4.54,"posizione":"Nord","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":3173435,"nome":"Milano","meteo":"pioggia leggera","umidita":100.0,"pressione":1007.0,"temperatura":3.28,"posizione":"Nord","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"nubi sparse","umidita":87.0,"pressione":1007.0,"temperatura":6.13,"posizione":"Centro","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":3180990,"nome":"Campobasso","meteo":"pioggia moderata","umidita":91.0,"pressione":1009.0,"temperatura":4.24,"posizione":"Sud","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":3165523,"nome":"Torino","meteo":"cielo coperto","umidita":97.0,"pressione":1002.0,"temperatura":1.72,"posizione":"Nord","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"cielo sereno","umidita":81.0,"pressione":1012.0,"temperatura":9.73,"posizione":"Sud","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":2525471,"nome":"Cagliari","meteo":"poche nuvole","umidita":93.0,"pressione":1010.0,"temperatura":7.86,"posizione":"Sud","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":2523918,"nome":"Palermo","meteo":"cielo coperto","umidita":36.0,"pressione":1011.0,"temperatura":12.22,"posizione":"Sud","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":3176959,"nome":"Firenze","meteo":"nubi sparse","umidita":100.0,"pressione":1007.0,"temperatura":5.09,"posizione":"Centro","data":"Jan 5, 2021, 7:21:21 PM"}
+{"id":3165243,"nome":"Trento","meteo":"neve","umidita":92.0,"pressione":1000.0,"temperatura":-2.05,"posizione":"Nord","data":"Jan 5, 2021, 7:21:22 PM"}
+{"id":3171179,"nome":"Perugia","meteo":"cielo coperto","umidita":93.0,"pressione":1007.0,"temperatura":3.97,"posizione":"Centro","data":"Jan 5, 2021, 7:21:22 PM"}
+{"id":3182996,"nome":"Aosta","meteo":"nubi sparse","umidita":91.0,"pressione":995.0,"temperatura":-4.13,"posizione":"Nord","data":"Jan 5, 2021, 7:21:22 PM"}
+{"id":3164603,"nome":"Venezia","meteo":"cielo coperto","umidita":93.0,"pressione":1007.0,"temperatura":6.07,"posizione":"Nord","data":"Jan 5, 2021, 7:21:22 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"nubi sparse","umidita":87.0,"pressione":1007.0,"temperatura":6.13,"posizione":"Centro","data":"Jan 5, 2021, 7:21:22 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":54.0,"pressione":1001.0,"temperatura":5.02,"posizione":"Centro","data":"Jan 5, 2021, 7:21:22 PM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"pioggia moderata","umidita":90.0,"pressione":1012.0,"temperatura":3.49,"posizione":"Nord","data":"Jan 5, 2021, 7:21:22 PM"}

@@ -28,7 +28,7 @@ import com.google.gson.JsonSyntaxException;
 public class DemoApplication {
 
 	/**
-	 * Startup SpringBoot
+	 * Avvia SpringBoot inizializzando il builder.headles a false in modo da poter utilizzare le GUI
 	 * @author Federico
 	 * 
 	 * @param args
@@ -38,7 +38,6 @@ public class DemoApplication {
 		 SpringApplicationBuilder builder = new SpringApplicationBuilder(DemoApplication.class);
 		    builder.headless(false).run(args);
 		    Convertitore conv = new Convertitore();
-		    //conv.revert();
 		    Timer timer = new Timer();
 			Aggiornamento agg = new Aggiornamento();
 			timer.schedule(agg, getDelay(), 5 * 3600000);
