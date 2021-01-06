@@ -146,9 +146,9 @@ import com.google.gson.JsonObject;
  }
 
 /**
- * Call che dato un JsoonObject per input restituisce un JsonObject contentente le citta con i valori massimi di temperatura, umidita e pressione nel database
+ * Dato un body in JsonObject, "/Max" è una call in Post che restituisce un JsonObject contentente le citta con i valori massimi di temperatura, umidita e pressione nel database
  * @author Federico 
- *
+ * @author Diego
  * @param body
  * @param type Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
  *
@@ -173,8 +173,9 @@ import com.google.gson.JsonObject;
 	 return s.getMax(date[0],date[1]);
  }
  /**
-  * Dato un JsonObject passato in post  restituisce tutte le citta con i valori minimi di pressione, umidità e Temperatura nel database
+  * Dato un body in JsonObject, "/Min" è una call in Post che restituisce tutte le citta con i valori minimi di pressione, umidità e Temperatura nel database
   * @author Federico
+  * @author Diego
   * 
   * @param body
   * @param type Range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
