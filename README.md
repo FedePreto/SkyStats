@@ -32,7 +32,7 @@ Diego Vaccarini <b>... </b><br>
         },
         "ZoneGeografiche":{
             "attivo":false,
-            "filtro":""
+            "filtro":"Centro"
         },
         "nome":{
             "attivo":true,
@@ -62,4 +62,44 @@ Possibili opzioni:<br>
 
 <h3>Filtro nome</h3><br>
  L'attributo filtro contiene il nome o l'id specifico dalla Città di cui cercare le statistiche<br>
-      
+
+<h2>Max(Post)</h2><br>
+<i>localhost:8080/Max</i>
+<br>
+<h3>Body dal passare in Post:</h3><br>
+
+```json
+
+{
+    "type":"Giornaliero"
+}
+
+```
+
+L'attributo <b>type</b> può valere: <br>
+  -Giornaliero : Il range delle statistiche sarà da il giorno prima della call alla stessa ora al momento attuale<br>
+  -Settimanale : Il range delle statistiche sarà da 7 giorni prima della call alla stessa ora al momento attuale<br>
+  -Mensile: Il range delle statistiche sarà da 30 giorni prima della call alla stessa ora al momento attuale<br>
+  -Annuale: Il range delle statistiche sarà da 365 giorni prima della call alla stessa ora al momento attuale<br>
+  -gg/mm/yyyy,gg/mm/yyyy : Il range di date customizzato<br>
+  
+<h2>Min(Post)</h2><br>
+<i>localhost:8080/Min</i>
+<br>
+<h3>Body dal passare in Post:</h3><br>
+
+```json
+
+{
+    "type":"Giornaliero"
+}
+
+```
+
+L'attributo <b>type</b> può valere: <br>
+  -Giornaliero : Il range delle statistiche sarà da il giorno prima della call alla stessa ora al momento attuale<br>
+  -Settimanale : Il range delle statistiche sarà da 7 giorni prima della call alla stessa ora al momento attuale<br>
+  -Mensile: Il range delle statistiche sarà da 30 giorni prima della call alla stessa ora al momento attuale<br>
+  -Annuale: Il range delle statistiche sarà da 365 giorni prima della call alla stessa ora al momento attuale<br>
+  -gg/mm/yyyy,gg/mm/yyyy : Il range di date customizzato<br>
+  
