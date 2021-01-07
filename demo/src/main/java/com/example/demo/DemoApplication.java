@@ -19,6 +19,8 @@ import com.example.demo.model.Citta;
 import com.example.demo.src.Convertitore;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+
+import log.Log;
 /**
  * SpringBoot 
  * @author Federico
@@ -60,9 +62,10 @@ public class DemoApplication {
 	    		ReversedLinesFileReader in = new ReversedLinesFileReader(new File("Storico.json"));
 				c = gson.fromJson(in.readLine(), Citta.class);							
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				Log.report(new Date()+"-"+e.getMessage());
+				//e.printStackTrace();
 			} catch (JsonSyntaxException e) {
-				System.out.println("Errore sintassi Json");
+				Log.report(new Date()+"-"+e.getMessage());
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {

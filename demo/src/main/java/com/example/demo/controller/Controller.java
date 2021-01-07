@@ -27,6 +27,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import log.Log;
+
  /**
   *  Classe che gestisce le call a SpringBoot
   * @author Federico
@@ -338,7 +340,7 @@ import com.google.gson.JsonObject;
 				inizio = formato.parse(start);
 				fine = formato.parse(end);					
 				}catch (ParseException e2) {
-					e2.printStackTrace();
+					Log.report(new Date()+"-"+e2.getMessage());
 				}
 		}
 	 Date[] date = {inizio, fine};

@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
 
 import com.example.demo.model.Citta;
@@ -24,6 +25,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+
+import log.Log;
 
 /**
  * Classe che contiene tutti i metodi per la gestione del Favoriti ( Array di Stringhe che contengono i nomi delle citta Preferite dall'utente
@@ -76,13 +79,13 @@ public class Favoriti {
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.report(new Date()+"-"+e.getMessage());
 		} catch (JsonSyntaxException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.report(new Date()+"-"+e.getMessage());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.report(new Date()+"-"+e.getMessage());
 		}
 
 	}
@@ -101,7 +104,7 @@ public class Favoriti {
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.report(new Date()+"-"+e.getMessage());
 		}
 		Gson gson = new Gson();
 		file.set(0, "{\"favoriti\":" + gson.toJson(favoriti, new TypeToken<ArrayList<String>>(){}.getType()) + "}");
@@ -114,7 +117,7 @@ public class Favoriti {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.report(new Date()+"-"+e.getMessage());
 		}
 
 	}
@@ -140,7 +143,7 @@ public class Favoriti {
 			jo = JsonParser.parseReader(buf).getAsJsonObject(); 		
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.report(new Date()+"-"+e.getMessage());
 		}
 		return jo;
 	}

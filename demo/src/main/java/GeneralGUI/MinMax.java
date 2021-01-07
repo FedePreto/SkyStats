@@ -7,6 +7,8 @@ import java.util.Date;
 import com.example.*;
 import com.example.demo.model.Citta;
 
+import log.Log;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -411,12 +413,16 @@ public class MinMax extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Log.report(new Date()+"-"+ex.getMessage());
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Log.report(new Date()+"-"+ex.getMessage());
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Log.report(new Date()+"-"+ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Log.report(new Date()+"-"+ex.getMessage());
         }
         //</editor-fold>
         

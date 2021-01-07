@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Date;
 import java.util.Scanner;
+
+import log.Log;
 /**
  * Classe per fare le call alle api di OpenWeather
  * @author Federico
@@ -30,11 +33,9 @@ public class CercaMeteo {
 			meteo_citta = in.nextLine();
 			in.close();
 		} catch (IOException e) {
-			System.out.println("ERRORE. OPERAZIONE I/O.");
-			System.out.println(e);
+			Log.report(new Date()+"-"+e.getMessage());
 		} catch (Exception e) {
-			System.out.println("ERRORE GENERICO.");
-			System.out.println(e);
+			Log.report(new Date()+"-"+e.getMessage());
 		}		
 		return meteo_citta;
 

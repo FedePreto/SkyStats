@@ -10,6 +10,8 @@ import java.util.regex.PatternSyntaxException;
 
 import com.example.demo.model.Citta;
 
+import log.Log;
+
 public class Tempo extends Filtro{
 	public Tempo(String filtro) {
 		super(filtro);
@@ -62,9 +64,10 @@ public class Tempo extends Filtro{
 				fine = df.parse(d[1]);
 				}catch(PatternSyntaxException e) {
 					System.out.println("Errore : Separatore date non trovato!");
+					Log.report(new Date()+"-"+e.getMessage());
 				} catch (ParseException e) {
 					System.out.println("Errore : Formattazione delle date non corretto [dd/MM/yy]]");
-					e.printStackTrace();
+					Log.report(new Date()+"-"+e.getMessage());
 				}
 				
 			}

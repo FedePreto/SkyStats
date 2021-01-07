@@ -8,6 +8,9 @@ import java.io.FileReader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import log.Log;
+
+import java.util.Date;
 import java.util.Scanner;
 
 @RestController
@@ -22,7 +25,7 @@ public class HomeController{
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.report(new Date()+"-"+e.getMessage());
 		}
 		 
 		 return html;
