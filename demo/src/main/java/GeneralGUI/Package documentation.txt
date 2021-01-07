@@ -1,3 +1,2 @@
-Le Gui Proposte sono una base per una futura release
-Da vedere in seguito l'aggiunta dei vari dati
+La Gui SingleCity è stata già integrata all'interno del progetto
 Diego

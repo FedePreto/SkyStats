@@ -1,5 +1,13 @@
 package GeneralGUI;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import com.example.demo.model.Citta;
+import com.example.demo.src.Convertitore;
+import com.example.demo.src.Main;
+import com.example.demo.statistiche.Stat;
 
 /**
 *
@@ -151,16 +159,53 @@ public class SingleCity extends javax.swing.JFrame {
        // TODO add your handling code here:
    }                                          
 
+   /**
+    * Ricerca il meteo di una singola città quando viene premuto il pulsante
+    * @param evt
+    * @return i dati ottenuti sono della media e varianza di temperatura, pressione e umidità
+    */
    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {                                      
        // TODO add your handling code here:
+	   String DataType=new String();
+	   DataType= "Giornaliero";
+	  
+	   String citta= (String)jComboBox1.getSelectedItem();
+	  if(String.valueOf(citta)=="L'aquila"|| String.valueOf(citta)=="L'Aquila")citta="Comune di L\u0027Aquila";
+	   System.out.println(citta);
+	   Date[] date = Main.menuDate(DataType);
+	   Stat stat = new Stat();
+	   Convertitore conv = new Convertitore();
+		Double[] valP ;
+		Double[] valU ;
+		Double[] valT ;
+		ArrayList<Citta> c = conv.JsonToCitta(date[0],date[1]);
+		if(citta.equals("Nord") || citta.equals("Centro") || citta.equals("Sud")) {
+			 valP = stat.getDataByLocation(c, citta,0);
+			 valU = stat.getDataByLocation(c, citta,1);
+			 valT = stat.getDataByLocation(c, citta,2);
+			
+		}else {
+			 valP = stat.getValues(c, citta,true);
+			 valU = stat.getValues(c, citta,false);
+			 valT = stat.getValues(c, citta);
+		}
+		
+		double mediaP = stat.getMedia(valP);
+		double mediaU = stat.getMedia(valU);
+		double mediaT = stat.getMedia(valT);
+		double varT=stat.getVarianza(valT);
+		double varP=stat.getVarianza(valP);
+		double varU=stat.getVarianza(valU);
+	System.out.println(date[0] +" " +date[1]);
+
+	   
      NameCity.setText("Meteo di " + jComboBox1.getSelectedItem());
-   MediaTemp.setText("Temperatura media: " + temp1 +"° ");
-   VarTemp.setText("Varianza della temperatura: " + temp1 +"° ");
-   MediaPres.setText("Pressione media: " +"Pa");
-   VarPres.setText("Varianza della pressione: " + "Pa");
-   MediaPres.setText("Media della pressione: "+ "Pa");
-   VarHum.setText("Variaza dell'umidità: " + "%");
-   MediaHum.setText("Media dell'umidità: " + "%");
+   MediaTemp.setText("Temperatura media: " + String.valueOf((float)mediaT) +"° ");
+   VarTemp.setText("Varianza della temperatura: " + String.valueOf((float)varT) +"° ");
+   MediaPres.setText("Pressione media: " +String.valueOf((float)mediaP)+"Pa");
+   VarPres.setText("Varianza della pressione: " +String.valueOf((float)varP)+ "Pa");
+   VarHum.setText("Varianza dell'umidità: " + String.valueOf((float)varU)+"%");
+   MediaHum.setText("Media dell'umidità: " +(float)mediaU+ "%");
    }                                     
 
    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           

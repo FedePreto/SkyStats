@@ -1,6 +1,12 @@
 package GeneralGUI;
 
+import java.util.ArrayList;
+import java.util.Date;
 
+import com.example.demo.model.Citta;
+import com.example.demo.src.Convertitore;
+import com.example.demo.src.Main;
+import com.example.demo.statistiche.Stat;
 
 /**
 *
@@ -248,22 +254,64 @@ public class MultiCity extends javax.swing.JFrame {
 
    private void CercaMousePressed(java.awt.event.MouseEvent evt) {                                   
        // TODO add your handling code here:
-       nameCityLabel2.setText("Meteo di " + SelectCity2.getSelectedItem());
+	   String DataType=new String();
+	   DataType= (String) TimeSpan.getSelectedItem();
+	   String citta= new String();
+	   for(int i=0; i<2; i++) {
+	   if(i==0) {
+		    citta= (String)SelectCity1.getSelectedItem();}
+	   else {
+		   citta= (String)SelectCity2.getSelectedItem();}
+	  
+	   if(String.valueOf(citta)=="L'aquila"|| String.valueOf(citta)=="L'Aquila")citta="Comune di L\u0027Aquila";
+	   System.out.println(citta);
+	   Date[] date = Main.menuDate(DataType);
+	   Stat stat = new Stat();
+	   Convertitore conv = new Convertitore();
+		Double[] valP ;
+		Double[] valU ;
+		Double[] valT ;
+		ArrayList<Citta> c = conv.JsonToCitta(date[0],date[1]);
+		if(citta.equals("Nord") || citta.equals("Centro") || citta.equals("Sud")) {
+			 valP = stat.getDataByLocation(c, citta,0);
+			 valU = stat.getDataByLocation(c, citta,1);
+			 valT = stat.getDataByLocation(c, citta,2);
+			
+		}else {
+			 valP = stat.getValues(c, citta,true);
+			 valU = stat.getValues(c, citta,false);
+			 valT = stat.getValues(c, citta);
+		}
+		
+		double mediaP = stat.getMedia(valP);
+		double mediaU = stat.getMedia(valU);
+		double mediaT = stat.getMedia(valT);
+		double varT=stat.getVarianza(valT);
+		double varP=stat.getVarianza(valP);
+		double varU=stat.getVarianza(valU);
+	System.out.println(date[0] +" " +date[1]);
+	
+	if(i==0) {
+		   MediaTemp1.setText("Temperatura media: "  +String.valueOf((float)mediaT)+"° ");
+		   VarTemp1.setText("Varianza della temperatura: " +String.valueOf((float)varT)+"° ");
+	       VarPr1.setText("Varianza della pressione: " +String.valueOf((float)varP)+ "Pa");
+	       MediaPr1.setText("Media della pressione: "+String.valueOf((float)mediaP)+ "Pa");
+	       VarHum1.setText("Variaza dell'umidità: "+String.valueOf((float)varU) + "%");
+	       MediaHum1.setText("Media dell'umidità: " +(float)mediaU+ "%");
+		
+	}
+	else {
+		MediaTemp2.setText("Temperatura media: "  +String.valueOf((float)mediaT)+"° ");
+		   VarTemp2.setText("Varianza della temperatura: " +String.valueOf((float)varT)+"° ");
+	       VarPr2.setText("Varianza della pressione: " +String.valueOf((float)varP)+ "Pa");
+	       MediaPr2.setText("Media della pressione: "+String.valueOf((float)mediaP)+ "Pa");
+	       VarHum2.setText("Variaza dell'umidità: "+String.valueOf((float)varU) + "%");
+	       MediaHum2.setText("Media dell'umidità: " +(float)mediaU+ "%");
+	}
+	   }
+	   	   
+	   nameCityLabel2.setText("Meteo di " + SelectCity2.getSelectedItem());
        nameCityLabel1.setText("Meteo di " + SelectCity1.getSelectedItem());
-       MediaTemp1.setText("Temperatura media: "  +"° ");
-       VarTemp1.setText("Varianza della temperatura: " +"° ");
-       MediaPr1.setText("Pressione media: " +"Pa");
-       VarPr1.setText("Varianza della pressione: " + "Pa");
-       MediaPr1.setText("Media della pressione: "+ "Pa");
-       VarHum1.setText("Variaza dell'umidità: " + "%");
-       MediaHum1.setText("Media dell'umidità: " + "%");
-       MediaTemp2.setText("Temperatura media: "  +"° ");
-       VarTemp2.setText("Varianza della temperatura: " +"° ");
-       MediaPr2.setText("Pressione media: " +"Pa");
-       VarPr2.setText("Varianza della pressione: " + "Pa");
-       MediaPr2.setText("Media della pressione: "+ "Pa");
-       VarHum2.setText("Variaza dell'umidità: " + "%");
-       MediaHum2.setText("Media dell'umidità: " + "%");
    
    }                                  
 

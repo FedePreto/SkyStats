@@ -244,7 +244,52 @@ public class Main {
 		Date[] date = { inizio, fine };
 		return date;
 	}
+/**
+ * menuDate senza il bisogno di inserire i valori
+ * @author Diego
+ * @param type: si intende il tipo di data che si vuol usare
+ * @return ritorna gli estremi delle date di interesse
+ */
+	public static Date[] menuDate(String type) {
+		
+		// System.out.println("Inserisci la citta da prendere in considerazione : ");
+		// String citta = in.next();
+		Date inizio = new Date();
+		Date fine = new Date();
+		LocalDate l;
 
+		
+		switch (type) {
+		case "Giornaliero":
+			fine = new Date();
+			l = LocalDate.now().minusDays(1);
+			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+			// stampaStat(inizio,fine,citta);
+			break;
+		case "Settimanale":
+			fine = new Date();
+			l = LocalDate.now().minusDays(7);
+			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+			// stampaStat(inizio,fine,citta);
+			break;
+		case "Mensile":
+			fine = new Date();
+			l = LocalDate.now().minusDays(30);
+			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+			// stampaStat(inizio,fine,citta);
+			break;
+		case "Annuale":
+			fine = new Date();
+			l= LocalDate.now().minusDays(365);
+			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+			// stampaStat(inizio,fine,citta);
+			break;
+		
+		}
+		Date[] date = { inizio, fine };
+		return date;
+	}
+	
 	/**
 	 * Meteo per zona geografica
 	 * @author Nicolò

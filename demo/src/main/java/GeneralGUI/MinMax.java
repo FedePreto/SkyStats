@@ -1,4 +1,11 @@
 package GeneralGUI;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+
+import com.example.*;
+import com.example.demo.model.Citta;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,8 +18,7 @@ package GeneralGUI;
  * @author Diego
  */
 public class MinMax extends javax.swing.JFrame {
-       private int clicked = 0;
-       private float temp1= 37;
+
     /**
      * Creates new form SingleCity
      */
@@ -358,9 +364,16 @@ public class MinMax extends javax.swing.JFrame {
     }                                        
 
     private void CercaMeteoMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        // TODO add your handling code here:
-        MaxHumCity.setText("città1");
-        MaxHumValue.setText("val1");
+    	//Si prende la data che ci interessa dal selettore
+    	Date[] date = new Date[2];
+    	date=menuDate((String)TimeSpan.getSelectedItem());
+    	System.out.println(date[0]+" "+ date[1]);
+    	ArrayList<Citta> citta = new ArrayList<Citta>();
+ 
+  
+    	
+        MaxHumCity.setText("asd");
+        MaxHumValue.setText("asd");
         MaxPressCity.setText("città1");
         MaxPressValue.setText("Val1");
         MaxVarHumCity.setText("città1");
@@ -379,6 +392,41 @@ public class MinMax extends javax.swing.JFrame {
                 
     }                                       
 
+    public static Date[] menuDate(String time) {
+   	 Date inizio = new Date();
+   	 Date fine = new Date();
+   	 LocalDate l;
+   		switch (time) {
+   		case "Giornaliero":
+   			fine = new Date();
+   			l = LocalDate.now().minusDays(1);
+   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+   			// stampaStat(inizio,fine,citta);
+   			break;
+   		case "Settimanale":
+   			fine = new Date();
+   			l = LocalDate.now().minusDays(7);
+   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+   			// stampaStat(inizio,fine,citta);
+   			break;
+   		case "Mensile":
+   			fine = new Date();
+   			l = LocalDate.now().minusDays(30);
+   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+   			// stampaStat(inizio,fine,citta);
+   			break;
+   		case "Annuale":
+   			fine = new Date();
+   			l = LocalDate.now().minusDays(365);
+   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+   			// stampaStat(inizio,fine,citta);
+   			break;
+   		}
+   				
+   		Date[] date = {inizio, fine};
+   		return date;
+   	}
+    
     /**
      * @param args the command line arguments
      */
