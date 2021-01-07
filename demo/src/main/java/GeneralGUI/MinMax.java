@@ -392,40 +392,6 @@ public class MinMax extends javax.swing.JFrame {
                 
     }                                       
 
-    public static Date[] menuDate(String time) {
-   	 Date inizio = new Date();
-   	 Date fine = new Date();
-   	 LocalDate l;
-   		switch (time) {
-   		case "Giornaliero":
-   			fine = new Date();
-   			l = LocalDate.now().minusDays(1);
-   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-   			// stampaStat(inizio,fine,citta);
-   			break;
-   		case "Settimanale":
-   			fine = new Date();
-   			l = LocalDate.now().minusDays(7);
-   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-   			// stampaStat(inizio,fine,citta);
-   			break;
-   		case "Mensile":
-   			fine = new Date();
-   			l = LocalDate.now().minusDays(30);
-   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-   			// stampaStat(inizio,fine,citta);
-   			break;
-   		case "Annuale":
-   			fine = new Date();
-   			l = LocalDate.now().minusDays(365);
-   			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-   			// stampaStat(inizio,fine,citta);
-   			break;
-   		}
-   				
-   		Date[] date = {inizio, fine};
-   		return date;
-   	}
     
     /**
      * @param args the command line arguments
