@@ -251,7 +251,11 @@ public class MultiCity extends javax.swing.JFrame {
    private void SelectCity1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
        // TODO add your handling code here:
    }                                           
-
+   /**
+    * Ricerca il meteo di due città quando viene premuto il pulsante
+    * @param evt
+    * @return i dati ottenuti sono della media e varianza di temperatura, pressione e umidità
+    */
    private void CercaMousePressed(java.awt.event.MouseEvent evt) {                                   
        // TODO add your handling code here:
 	   String DataType=new String();
@@ -296,7 +300,7 @@ public class MultiCity extends javax.swing.JFrame {
 		   VarTemp1.setText("Varianza della temperatura: " +String.valueOf((float)varT)+"° ");
 	       VarPr1.setText("Varianza della pressione: " +String.valueOf((float)varP)+ "Pa");
 	       MediaPr1.setText("Media della pressione: "+String.valueOf((float)mediaP)+ "Pa");
-	       VarHum1.setText("Variaza dell'umidità: "+String.valueOf((float)varU) + "%");
+	       VarHum1.setText("Varianza dell'umidità: "+String.valueOf((float)varU) + "%");
 	       MediaHum1.setText("Media dell'umidità: " +(float)mediaU+ "%");
 		
 	}
@@ -305,7 +309,7 @@ public class MultiCity extends javax.swing.JFrame {
 		   VarTemp2.setText("Varianza della temperatura: " +String.valueOf((float)varT)+"° ");
 	       VarPr2.setText("Varianza della pressione: " +String.valueOf((float)varP)+ "Pa");
 	       MediaPr2.setText("Media della pressione: "+String.valueOf((float)mediaP)+ "Pa");
-	       VarHum2.setText("Variaza dell'umidità: "+String.valueOf((float)varU) + "%");
+	       VarHum2.setText("Varianza dell'umidità: "+String.valueOf((float)varU) + "%");
 	       MediaHum2.setText("Media dell'umidità: " +(float)mediaU+ "%");
 	}
 	   }
