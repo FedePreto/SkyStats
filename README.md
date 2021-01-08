@@ -3,7 +3,7 @@
 <h3>Componenti gruppo:</h3><br>
 Nicolò Raccichini <b>s1092919</b><br>
 Federico Pretini <b>...</b><br>
-Diego Vaccarini <b>... </b><br>
+Diego Vaccarini <b>S1093271 </b><br>
 
 <h1>Spiegazione progetto<h1><br>
   Il progetto consiste nella gestione delle Call da SpringBoot che rimandino indietro info riguardanti il meteo:<br>
