@@ -285,11 +285,11 @@ public class Stat {
 		Convertitore conv = new Convertitore();
 		ArrayList<Citta> citta = conv.JsonToCitta(inizio,fine);
 	/*
-	  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
-		0-Umidità massima
-		1-Pressione massima
-		2-Varianza di umidità massima
-		3-Varianza di pressione massima
+	  Array volto alla memorizzazione dei vari valori minimi con la seguente logica di indici:
+		0-Umidità minima
+		1-Pressione minima
+		2-Varianza di umidità minima
+		3-Varianza di pressione minima
 	*/
 		double min_val[] = new double[4];
 		
@@ -310,13 +310,13 @@ public class Stat {
 			   dei valori permettendo così di non dover svolgere gli stessi calcoli due volte 
 			   con il conseguente risparmio notevole di tempo in fase di esecuzione			 
 			 */				
-				//Permette di memorizzare il valore massimo di umidità e l'indice della città che lo contiene
+				//Permette di memorizzare il valore minimo di umidità e l'indice della città che lo contiene
 				if ( citta.get(i).getUmidita() < min_val[0]) {
 					min_val[0] = citta.get(i).getUmidita();
 					min_index[0] = i;
 				}
 				
-				//Permette di memorizzare il valore massimo di pressione e l'indice della citta che lo contiene
+				//Permette di memorizzare il valore minimo di pressione e l'indice della citta che lo contiene
 				if (citta.get(i).getPressione() < min_val[1]) {
 					min_val[1] = citta.get(i).getPressione();
 					min_index[1] = i;
@@ -341,13 +341,13 @@ public class Stat {
 					break;
 			   }
 			}
-				//Permette di memorizzare il valore massimo di varianza di Umidita e l'indice della città su cui è stato calcolato
+				//Permette di memorizzare il valore minimo di varianza di Umidita e l'indice della città su cui è stato calcolato
 				if (getVarU < min_val[2]) {					
 					min_val[2] = getVarU;
 					min_index[2] = i;
 				}
 				
-				//Permette di memorizzare il valore massimo di varianza di pressione e l'indice della città su cui è stato calcolato
+				//Permette di memorizzare il valore minimo di varianza di pressione e l'indice della città su cui è stato calcolato
 				if (getVarP < min_val[3]) {
 					min_val[3] = getVarP;
 					min_index[3] = i;
