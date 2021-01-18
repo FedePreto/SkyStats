@@ -11,6 +11,7 @@ import com.example.demo.model.Citta;
 import com.example.demo.services.Favoriti;
 import com.example.demo.src.Convertitore;
 import com.example.demo.src.Main;
+import com.example.demo.statistiche.Stat;
 import com.google.gson.JsonObject;
 
 /*
@@ -375,8 +376,8 @@ public class MinMax extends javax.swing.JFrame {
     	date=Main.menuDate((String)TimeSpan.getSelectedItem());
     	System.out.println(date[0]+" "+ date[1]);
     	ArrayList<Citta> citta = new ArrayList<Citta>();
- 
-    	Convertitore conv = new Convertitore();
+    	Stat stat= new Stat();
+    	//Convertitore conv = new Convertitore();
 		
 		
 	/*
@@ -429,9 +430,9 @@ public class MinMax extends javax.swing.JFrame {
 			 m.jb.setValue(i);
 			for(int j=0; j<citta.size(); j++) {
 				if(favoriti.get(i).equals(citta.get(j).getNome())) {
-					getVarU= getVarianza(citta,true);
+					getVarU= stat.getVarianza(citta,true);
 					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP=getVarianza(citta,false);
+					getVarP=stat.getVarianza(citta,false);
 					break;
 				}
 			}
