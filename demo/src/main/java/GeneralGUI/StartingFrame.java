@@ -1,6 +1,5 @@
 package GeneralGUI;
 
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,10 +31,8 @@ public class StartingFrame extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         Label1 = new javax.swing.JLabel();
         Label2 = new javax.swing.JLabel();
-        Label3 = new javax.swing.JLabel();
         SingleCityJoinButton = new javax.swing.JButton();
         MultiCityJoinButton = new javax.swing.JButton();
-        GeoZoneCityJoinButton = new javax.swing.JButton();
         Label4 = new javax.swing.JLabel();
         GeoZoneCityJoinButton1 = new javax.swing.JButton();
 
@@ -44,8 +41,6 @@ public class StartingFrame extends javax.swing.JFrame {
         Label1.setText("Meteo per Città Singola");
 
         Label2.setText("Meteo per Città Multiple");
-
-        Label3.setText("Meteo per Zona Geografica");
 
         SingleCityJoinButton.setText("Entra");
         SingleCityJoinButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,18 +53,6 @@ public class StartingFrame extends javax.swing.JFrame {
         MultiCityJoinButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MultiCityJoinButtonMouseClicked(evt);
-            }
-        });
-
-        GeoZoneCityJoinButton.setText("Entra");
-        GeoZoneCityJoinButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                GeoZoneCityJoinButtonMouseClicked(evt);
-            }
-        });
-        GeoZoneCityJoinButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeoZoneCityJoinButtonActionPerformed(evt);
             }
         });
 
@@ -96,13 +79,11 @@ public class StartingFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Label4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SingleCityJoinButton)
                     .addComponent(MultiCityJoinButton)
-                    .addComponent(GeoZoneCityJoinButton)
                     .addComponent(GeoZoneCityJoinButton1))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
@@ -119,21 +100,13 @@ public class StartingFrame extends javax.swing.JFrame {
                     .addComponent(MultiCityJoinButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GeoZoneCityJoinButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(GeoZoneCityJoinButton1))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>                        
-
-    private void GeoZoneCityJoinButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
-        // TODO add your handling code here:
-    }                                                     
 
     private void SingleCityJoinButtonMouseClicked(java.awt.event.MouseEvent evt) {                                                  
         // TODO add your handling code here:
@@ -148,12 +121,6 @@ public class StartingFrame extends javax.swing.JFrame {
         new MultiCity().setVisible(true);
         dispose();
     }                                                
-
-    private void GeoZoneCityJoinButtonMouseClicked(java.awt.event.MouseEvent evt) {                                                   
-        // cambio screen
-        new GeoZoneCity().setVisible(true);
-        dispose();
-    }                                                  
 
     private void GeoZoneCityJoinButton1MouseClicked(java.awt.event.MouseEvent evt) {                                                    
         // TODO add your handling code here:
@@ -202,11 +169,9 @@ public class StartingFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton GeoZoneCityJoinButton;
     private javax.swing.JButton GeoZoneCityJoinButton1;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
-    private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
     private javax.swing.JButton MultiCityJoinButton;
     private javax.swing.JButton SingleCityJoinButton;
