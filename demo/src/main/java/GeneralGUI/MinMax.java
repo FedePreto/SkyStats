@@ -380,10 +380,10 @@ public class MinMax extends javax.swing.JFrame {
     	Stat stat= new Stat();
     	/*
   	  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
-  		0-Umidità massima
-  		1-Pressione massima
-  		2-Varianza di umidità massima
-  		3-Varianza di pressione massima
+  		0-Umidità massima/minima
+  		1-Pressione massima/minima
+  		2-Varianza di umidità massima/minima
+  		3-Varianza di pressione massima/minima
   	*/
   		double min_val[] = new double[4];
   		double max_val[] = new double[4];
@@ -414,7 +414,7 @@ public class MinMax extends javax.swing.JFrame {
   					min_val[0] = citta.get(i).getUmidita();
   					min_index[0] = i;
   				}
-  				
+  			//Permette di memorizzare il valore massimo di umidità e l'indice della città che lo contiene
   				if ( citta.get(i).getUmidita() > max_val[0]) {
   					max_val[0] = citta.get(i).getUmidita();
   					max_index[0] = i;
@@ -424,6 +424,7 @@ public class MinMax extends javax.swing.JFrame {
   					min_val[1] = citta.get(i).getPressione();
   					min_index[1] = i;
   				}
+  			//Permette di memorizzare il valore massimo di pressione e l'indice della citta che lo contiene
   				if (citta.get(i).getPressione() > max_val[1]) {
   					max_val[1] = citta.get(i).getPressione();
   					max_index[1] = i;
@@ -453,7 +454,7 @@ public class MinMax extends javax.swing.JFrame {
   					min_val[2] = getVarU;
   					min_index[2] = i;
   				}
-  				
+  			//Permette di memorizzare il valore massimo di varianza di Umidita e l'indice della città su cui è stato calcolato
   				if (getVarU > max_val[2]) {					
   					max_val[2] = getVarU;
   					max_index[2] = i;
@@ -463,6 +464,7 @@ public class MinMax extends javax.swing.JFrame {
   					min_val[3] = getVarP;
   					min_index[3] = i;
   				}	
+  			//Permette di memorizzare il valore massimo di varianza di pressione e l'indice della città su cui è stato calcolato
   				if (getVarP > max_val[3]) {
   					max_val[3] = getVarP;
   					max_index[3] = i;
