@@ -6,14 +6,14 @@ Federico Pretini <b>...</b><br>
 Diego Vaccarini <b>S1093271 </b><br>
 
 <h1>Spiegazione progetto<h1><br>
-  Il progetto consiste nella gestione delle Call da SpringBoot che rimandino indietro info riguardanti il meteo:<br>
+  Il progetto consiste nella gestione delle Call da SpringBoot che restituiscano informazioni riguardanti il meteo:<br>
   
   <b>Elenco delle Call:</b><br>
   
   <h2>Weather(Get)</h2><br>
   <i>localhost:8080/Weather?<b>Citta</b>=Soggetto?<b>Aggiornamento</b>=si</i><br>
-  <b>Citta</b> = è l'oggetto della richiesta cioè il nome della Città oppure il suo ID ( di Default è "Roma")<br>
-  <b>Aggiornamento</b> = E un flag per dire alla call se si vuole aggiornare il Database quando si fa la Call ( di Default è "Si")  <br>
+  <b>Citta</b> = è un parametro della richiesta che rappresenta nome della Città oppure il suo ID ( di Default è "Roma")<br>
+  <b>Aggiornamento</b> = è un flag per dire alla call se si vuole prelevare i dati dal Database oppure da OpenWeather ( di Default è "Si")  <br>
   
   <h3><i>Esempi:</i></h3><br>
   <i>localhost:8080/Weather?<b>Citta</b>=Roma?<b>Aggiornamento</b>=Si</i><br>
@@ -103,3 +103,16 @@ L'attributo <b>type</b> può valere: <br>
   -Annuale: Il range delle statistiche sarà da 365 giorni prima della call alla stessa ora al momento attuale<br>
   -gg/mm/yyyy,gg/mm/yyyy : Il range di date customizzato<br>
   
+<h2>Fav(Get)</h2>
+<i>localhost:8080/Fav?action="Aggiungi"&name="Ancona"</i>
+<br>
+<h3>Parametri</h3><br>
+Il parametro <b>action</b> può assumere i seguenti valori: <br>
+-Aggiungi = Aggiunge <b>name</b> alla lista dei favoriti<br>
+-Rimuovi = Rimuove <b>name</b> dalla lista dei favoriti<br>
+-Stampa = Restituisce un JsonObject contenente la lista dei favoriti<br><br>
+
+Il parametro <b>name</b> contiente l'oggetto dell'azione da eseguire sull'array di favoriti.
+
+
+
