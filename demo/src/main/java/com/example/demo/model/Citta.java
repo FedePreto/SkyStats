@@ -5,8 +5,8 @@ package com.example.demo.model;
 
 import java.util.Date;
 /**
- * Classe rappresentativa della citta
- * @author Nicolò
+ *Classe rappresentativa della citta
+ *@author Nicolò
  *@param id id della citta
  *@param nome nome della citta
  *@param meteo Stringa riassuntiva del meteo di questa citta nella data <b>data</b>
@@ -26,15 +26,15 @@ public class Citta {
 	private String posizione;
 	private Date data;
 
-	public Citta(int id, String nome, String meteo, double umidita, double pressione, double temperatura, Date data) {
+	public Citta(int id, String nome, String meteo, double umidita, double pressione, double temperatura, String posizione, Date data) {
 		this.id = id;
 		this.nome = nome;
 		this.meteo = meteo;
 		this.umidita = umidita;
 		this.pressione = pressione;
 		this.temperatura = temperatura;
+		this.posizione = posizione;
 		this.data = data;
-
 	}
 
 	public Citta() {

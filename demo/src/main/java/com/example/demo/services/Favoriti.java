@@ -45,22 +45,8 @@ public class Favoriti {
 		favoriti = new ArrayList<String>();
 		aggiornaArray();
 	}
-	/**
-	 * Fa una call ad OpenWeather per ogni città in Favoriti
-	 * @author Federico
-	 */
-	public void salvataggio() {
-		String url = "";
-		ArrayList<Citta> city = new ArrayList<Citta>();
-		Convertitore conv = new Convertitore();
-		Gson gson = new Gson();
-		for (String x : favoriti) {
-			url = "http://api.openweathermap.org/data/2.5/weather?q=" + x + "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";						
-			//city.add(conv.getClassFromCall(CercaMeteo.getMeteo(url)));
-			conv.salva(gson.toJson(conv.getClassFromCall(CercaMeteo.getMeteo(url))));
-		}
+	
 
-	}
 	/**
 	 * Metodo che va ad aggiornare favoriti con i favoriti scirtti sul file <b>config</>
 	 * @author Nicolò

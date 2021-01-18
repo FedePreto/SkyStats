@@ -30,26 +30,27 @@ import com.google.gson.JsonObject;
 import log.Log;
 
  /**
-  *  Classe che gestisce le call a SpringBoot
+  * Classe che gestisce le chiamate al nostro Server
   * @author Federico
   * @author Nicolò
   *
   */
  
  @RestController public class Controller {
- 
- String url = "";//"C:\\Users\\OEM\\Downloads\\demo\\Esempio chiamata.txt";
-
+	 
  /**
-  * Call che restituisce il meteo di una citta
+  * Call che restituisce il meteo di una citta prelevandolo dal DB oppure direttamente da OpenWeather(dipende dalla richiesta dell'utente)
+  * 
   * @author Federico
   * 
-  * @param city	 Citta di cui abbiamo chiesto il meteo
-  * @param agg Se si fa direttamente una call ad Open Weather se no prima cerca nel database se c'è un dato utilizzabile
-  * @return JsonObject contenente tutte le informazioni riguardanti il meteo
+  * @param city	 parametro che permette di scegliere il nome della citta della quale si vuole conoscere il meteo
+  * @param agg  parametro che permette di scegliere se prelevare il meteo dal DB oppure da OpenWeather
+  *  
+  * @return c  parametro che contiene il meteo della città scelta
   */
  @GetMapping("/Weather")
- public Citta getWeather(@RequestParam(name = "Citta", defaultValue = "Rome") String city,@RequestParam(name = "Aggiornamento", defaultValue = "Si")String agg) {
+ public Citta getWeather(@RequestParam(name = "Citta", defaultValue = "Rome") String city,@RequestParam(name = "Aggiornato", defaultValue = "Si")String agg) {
+	 String url = "";
 	 Citta c = new Citta();
 	 Convertitore conv = new Convertitore(); 
 	 if(agg.equals("Si")) {
@@ -62,9 +63,6 @@ import log.Log;
 		 	}	 
 			String meteo = CercaMeteo.getMeteo(url);
 			c = conv.getClassFromCall(meteo);
-			//Aggiunto autosalvataggio
-			Gson gson = new Gson();
-			conv.salva(gson.toJson(c));
 			return c;
 	 }
 	 else if(agg.equals("No")){	
@@ -75,28 +73,28 @@ import log.Log;
  }
 
 /**
- * Call che restituisce tutte le statistiche di una citta 
+ * Call che restituisce le statistiche di una citta 
  * 
  * @author Federico
  * @author Nicolò
  * 
- * @param body JsonObject contenente tutti i dati necessari al funzionamento
- * @param city Citta oggetto della ricerca
- * @param type Tipo di range di tempo (Giornaliero,Settimanale,Mensile,Annuale o Custom)
- * @param range Range di date nel caso in cui type = Custom
- * @return JsonObject contenente tutte le info  riguardanti le statistiche
+ * @param body JsonObject contenente le specifiche della statistica che si vuole eseguire
+ 
+ * @return JsonObject contenente tutte le informazioni riguardanti le statistiche
+ * 
  */
 
 @PostMapping("/Stat")
  public JsonObject getStat(@RequestBody JsonObject body) {
-	Convertitore conv = new Convertitore();
-	ArrayList<Filtro> f = getFilterFromJson(body);
-	ArrayList<Citta> citta = conv.JsonToCitta();
+	Convertitore conv = new Convertitore(); 
+	Stat s = new Stat();
+	ArrayList<Filtro> f = getFilterFromJson(body); //Legge i filtri da applicare dal JsonObject e li memorizza nell'ArrayList 
+	ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
 	
 	for(int i = 0; i<f.size();i++) {
 		System.out.println("=========================================================");
 		System.out.println(i);
-		citta = f.get(i).filtra(citta);
+		citta = f.get(i).filtra(citta); //Filtra tutte le citta lette applicando i filtri specificati
 		for(Citta x:citta) {
 			System.out.println(x.getNome());
 			System.out.println(x.getData());
@@ -107,23 +105,11 @@ import log.Log;
 		System.out.println(x.getNome());
 		System.out.println(x.getData());
 	}
-		
-	/*
-	 String city =  body.get("city").getAsString();
-     String type = body.get("type").getAsString();
-     Date[] date = new Date[2];
-     if(type.equals("Customizzato")) {
-		 JsonArray range = body.getAsJsonArray("range");
-		 String inizio = range.get(0).getAsString();
-		 String fine = range.get(1).getAsString();
-		 date = menuDate(inizio,fine);
-		 }
-     else {
-    	 date = menuDate(type);
-    	 }*/
-	 Stat s = new Stat();
 	
 	 Double[][] dati = s.getValues(citta);
+	 System.out.println(dati[0]);
+	 System.out.println(dati[1]);
+	 System.out.println(dati[2]);
 	 double mediaP = s.getMedia(dati[0]);
 	 double mediaU = s.getMedia(dati[1]);
 	 double mediaT = s.getMedia(dati[2]);
@@ -155,7 +141,7 @@ import log.Log;
  * @param type Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
  *
  * @return JsonObject contenente tutti le citta con i valori massimi nel Database
- */
+ *//*
  @PostMapping("/Max")
  public JsonObject getMax(@RequestBody JsonObject body) {
 	 
@@ -183,7 +169,7 @@ import log.Log;
   * @param type Range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
   * @param range Nel caso in cui type=Customizzato allora range contiente la data di inizio e di fine del range di tempo
   * @return JsonObject contenente tutte le citta con i valori minimi di pressione, umidità e temperatura nel Database
-  */
+  *//*
  @PostMapping("/Min")
  public JsonObject getMin(@RequestBody JsonObject body) {
      String type = body.get("type").getAsString();
@@ -283,7 +269,7 @@ import log.Log;
  * @author Nicolò		
  * @param time
  * @return
- */
+ *//*
  public static Date[] menuDate(String time) {
 	 Date inizio = new Date();
 	 Date fine = new Date();
@@ -318,7 +304,7 @@ import log.Log;
 		Date[] date = {inizio, fine};
 		return date;
 	}
- 
+
  /**
   * Converte un range di date da String a Date
   * @author Federico
@@ -326,7 +312,7 @@ import log.Log;
   * @param start Inizio range
   * @param end Fine range
   * @return Array di Date contenente le date di inizio e fine
-  */
+  *//*
  public static  Date[] menuDate(String start,String end) {
 	 Date inizio = new Date();
 	 Date fine = new Date();
@@ -347,21 +333,21 @@ import log.Log;
 	 return date;
 		}
  
- 
+ */
  public ArrayList<Filtro> getFilterFromJson(JsonObject body){
 	 ArrayList<Filtro> f = new ArrayList<Filtro>();
 	 	JsonObject jo = body.get("filtri").getAsJsonObject();
-		JsonObject jobject = jo.get("tempo").getAsJsonObject();
+		JsonObject jobject = jo.get("nome").getAsJsonObject();
+		if(jobject.get("attivo").getAsBoolean()) {
+			f.add(new NomeId(jobject.get("filtro").getAsString()));
+		}
+		jobject = jo.get("tempo").getAsJsonObject();
 		if(jobject.get("attivo").getAsBoolean()) {
 			f.add(new Tempo(jobject.get("filtro").getAsString()));
 		}
 		jobject = jo.get("ZoneGeografiche").getAsJsonObject();
 		if(jobject.get("attivo").getAsBoolean()) {
 			f.add(new ZoneGeografiche(jobject.get("filtro").getAsString()));
-		}
-		jobject = jo.get("nome").getAsJsonObject();
-		if(jobject.get("attivo").getAsBoolean()) {
-			f.add(new NomeId(jobject.get("filtro").getAsString()));
 		}
 		return f;
 	}

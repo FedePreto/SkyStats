@@ -18,25 +18,27 @@ import java.util.ArrayList;
  *	@author Federico
  */
 public class Stat {
-	public Double[][] getValues(ArrayList<Citta> c){
-		ArrayList<Double> dati1 = new ArrayList<Double>();
-		ArrayList<Double> dati2 = new ArrayList<Double>();
-		ArrayList<Double> dati3 = new ArrayList<Double>();
-		Double[][] dati = new Double[3][c.size()];
+	
+	/**
+	 * 
+	 * Prende in input un ArrayList di Citta e ritorna una matrice che su ogni riga 
+	 * contiene Pressione, Umidità e Temperatura per ogni città dell'Arraylist
+	 * 
+	 * @author Federico
+	 * 
+	 * @return
+	 */
+	
+	public Double[][] getValues(ArrayList<Citta>c){
 		
-		for (int i = 0; i < c.size(); i++) {
-			dati[0][i] = c.get(i).getPressione();
-			dati[1][i] = c.get(i).getUmidita();
-			dati[2][i] = c.get(i).getTemperatura();
-			/*dati1.add(c.get(i).getPressione());
-			dati2.add(c.get(i).getUmidita());
-			dati3.add(c.get(i).getTemperatura());*/
-		}
-		//Double[][] tmp = new Double[3][dati1.size()];
-		//tmp[0] = (Double[]) dati1.toArray();
-		//tmp[1] = (Double[])dati2.toArray();
-		//tmp[2] = (Double[])dati3.toArray();
+		Double[][] dati = new Double[c.size()][3];
 		
+		for (int i = 0; i < c.size(); i++) {			
+			dati[i][0] = c.get(i).getPressione();
+			dati[i][1] = c.get(i).getUmidita();
+			dati[i][2] = c.get(i).getTemperatura();
+		}	
+				
 		return dati;
 	}
 	/**

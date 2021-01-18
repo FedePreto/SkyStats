@@ -12,6 +12,11 @@ import log.Log;
 
 import java.util.Date;
 import java.util.Scanner;
+/**
+ * 
+ * @deprecated
+ *
+ */
 
 @RestController
 public class HomeController{
@@ -25,7 +30,7 @@ public class HomeController{
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+			Log.report("ERRORE FILE NON TROVATO",e.getMessage());
 		}
 		 
 		 return html;

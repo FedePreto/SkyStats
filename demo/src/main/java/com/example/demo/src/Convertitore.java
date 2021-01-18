@@ -22,32 +22,29 @@ public class Convertitore {
 	String nomeFile = "Storico.json";
 
 	/**
-	 * Legge tutto il database nomeFile e lo manda indietro in un ArrayList
-	 * @author Nicolò
+	 * Metodo che legge il DB completo  al contrario partendo dalla fine del file fino all'inizio
+	 * 
+	 * @author Federico
+	 * 
 	 * @return ArrayList contenente tutti i valori nel DB
 	 */
 	public ArrayList<Citta> JsonToCitta() {
 			ArrayList<Citta> c = new ArrayList<Citta>();
-			Stream<String> file;
-			int i = 0;
 			Gson gson = new Gson();
 			try {
-				BufferedReader buf = new BufferedReader(new FileReader(nomeFile));
-				file = buf.lines();
-				while (true) {
-					String prova = buf.readLine();
-					if (prova.equals(""))
-						return c;
-	
-					c.add(gson.fromJson(prova, Citta.class));
-					i++;
+				ReversedLinesFileReader reader = new ReversedLinesFileReader(new File(nomeFile));
+				String DB_line = reader.readLine();
+				while(DB_line != null) {
+					c.add(gson.fromJson(DB_line, Citta.class));
+					DB_line = reader.readLine();
 				}
 			} catch (FileNotFoundException e) {
-				Log.report(new Date()+"-"+e.getMessage());
+				Log.report("NESSUN FILE TROVATO",e.getMessage());
+				return null;
 			} catch (IOException e) {
-				Log.report(new Date()+"-"+e.getMessage());
+				Log.report("ERRORE IN FASE DI LETTURA",e.getMessage());
+				return null;
 			} catch (Exception e) {
-				// System.out.println(i+" Exception");
 				return c;
 			}
 			return c;
@@ -65,8 +62,6 @@ public class Convertitore {
 		System.out.println("================================================================");
 		ArrayList<Citta> c = new ArrayList<Citta>();
 		Citta citta;
-		String file="";
-		int i = 0;
 		Gson gson = new Gson();
 		try {
 			ReversedLinesFileReader in = new ReversedLinesFileReader(new File(nomeFile));
