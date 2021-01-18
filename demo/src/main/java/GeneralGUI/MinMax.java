@@ -386,17 +386,22 @@ public class MinMax extends javax.swing.JFrame {
   		3-Varianza di pressione massima
   	*/
   		double min_val[] = new double[4];
-  		
+  		double max_val[] = new double[4];
   	/*
   	   Array volto alla memorizzazione dei vari indici dell'array citta contenenti le citta cercate
   	   (Sfrutta la stessa logica di posizionamento dell'arrey precedente)	
   	 */
   		int min_index[] = new int[4];
+  		int max_index[] = new int[4];
    //Inizializza i minimi al primo valore letto nell'array poi procederà con i confronti
   		 min_val[0] = citta.get(0).getUmidita();
   	     min_val[1] = citta.get(0).getPressione();
   	     min_val[2] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
   		 min_val[3] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
+  		 max_val[0] = citta.get(0).getUmidita();
+  	     max_val[1] = citta.get(0).getPressione();
+  	     max_val[2] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
+  		 max_val[3] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
   		 //Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
   		for (int i = 1; i < citta.size(); i++) {
   		   /*
@@ -410,10 +415,18 @@ public class MinMax extends javax.swing.JFrame {
   					min_index[0] = i;
   				}
   				
+  				if ( citta.get(i).getUmidita() > max_val[0]) {
+  					max_val[0] = citta.get(i).getUmidita();
+  					max_index[0] = i;
+  				}
   				//Permette di memorizzare il valore minimo di pressione e l'indice della citta che lo contiene
   				if (citta.get(i).getPressione() < min_val[1]) {
   					min_val[1] = citta.get(i).getPressione();
   					min_index[1] = i;
+  				}
+  				if (citta.get(i).getPressione() > max_val[1]) {
+  					max_val[1] = citta.get(i).getPressione();
+  					max_index[1] = i;
   				}
   		}
   		Favoriti fav = new Favoriti();
@@ -441,24 +454,32 @@ public class MinMax extends javax.swing.JFrame {
   					min_index[2] = i;
   				}
   				
+  				if (getVarU > max_val[2]) {					
+  					max_val[2] = getVarU;
+  					max_index[2] = i;
+  				}
   				//Permette di memorizzare il valore minimo di varianza di pressione e l'indice della città su cui è stato calcolato
   				if (getVarP < min_val[3]) {
   					min_val[3] = getVarP;
   					min_index[3] = i;
-  				}				
+  				}	
+  				if (getVarP > max_val[3]) {
+  					max_val[3] = getVarP;
+  					max_index[3] = i;
+  				}	
   			}
   		m.dispose();
 	
 		
     	
-        MaxHumCity.setText("asd");
-        MaxHumValue.setText("%");
-        MaxPressCity.setText("asd");
-        MaxPressValue.setText("hPa");
-        MaxVarHumCity.setText("sasd");
-        MaxVarHumValue.setText("asd");
-        MaxVarPressCity.setText("asd");
-        MaxVarPressValue.setText("asd");
+        MaxHumCity.setText(citta.get(max_index[0]).getNome());
+        MaxHumValue.setText(new DecimalFormat("#.##").format(max_val[0])+"%");
+        MaxPressCity.setText(citta.get(max_index [1]).getNome());
+        MaxPressValue.setText(new DecimalFormat("#.##").format(max_val[1])+" hPa");
+        MaxVarHumCity.setText(citta.get(max_index [2]).getNome());
+        MaxVarHumValue.setText(new DecimalFormat("#.##").format(max_val[2]));
+        MaxVarPressCity.setText(citta.get(max_index [3]).getNome());
+        MaxVarPressValue.setText(new DecimalFormat("#.##").format(max_val[3]));
         
         MinHumCity.setText(citta.get(min_index[0]).getNome());
         MinHumValue.setText(new DecimalFormat("#.##").format(min_val[0])+"%");
