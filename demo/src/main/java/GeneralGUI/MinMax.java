@@ -1,11 +1,17 @@
 package GeneralGUI;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
 import com.example.*;
+import com.example.demo.GUI.BarraProgresso;
 import com.example.demo.model.Citta;
+import com.example.demo.services.Favoriti;
+import com.example.demo.src.Convertitore;
+import com.example.demo.src.Main;
+import com.google.gson.JsonObject;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -366,20 +372,93 @@ public class MinMax extends javax.swing.JFrame {
     private void CercaMeteoMouseClicked(java.awt.event.MouseEvent evt) {                                        
     	//Si prende la data che ci interessa dal selettore
     	Date[] date = new Date[2];
-    	date=menuDate((String)TimeSpan.getSelectedItem());
+    	date=Main.menuDate((String)TimeSpan.getSelectedItem());
     	System.out.println(date[0]+" "+ date[1]);
     	ArrayList<Citta> citta = new ArrayList<Citta>();
  
-  
+    	Convertitore conv = new Convertitore();
+		
+		
+	/*
+	  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
+		0-Umidità massima
+		1-Pressione massima
+		2-Varianza di umidità massima
+		3-Varianza di pressione massima
+	*/
+		double max_val[] = new double[4];
+		
+	/*
+	   Array volto alla memorizzazione dei vari indici dell'array citta contenenti le citta cercate
+	   (Sfrutta la stessa logica di posizionamento dell'arrey precedente)	
+	 */
+		int max_index[] = new int[4];
+		
+		//Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
+		for (int i = 0; i < citta.size(); i++) {	
+			/*
+			   L'istanziamento delle seguenti variabili è volto alla memorizzazione
+			   dei valori permettendo così di non dover svolgere gli stessi calcoli due volte 
+			   con il conseguente risparmio notevole di tempo in fase di esecuzione			 
+			 */
+			
+			//Permette di memorizzare il valore massimo di umidità e l'indice della città che lo contiene
+				
+			if ( citta.get(i).getUmidita() > max_val[0]) {
+				max_val[0] = citta.get(i).getUmidita();
+				System.out.println(citta.get(i).getData());
+				System.out.println(i);
+				max_index[0] = i;
+				}
+			//Permette di memorizzare il valore massimo di pressione e l'indice della citta che lo contiene
+			if (citta.get(i).getPressione()> max_val[1]) {				
+				max_val[1] = citta.get(i).getPressione();
+				max_index[1] = i;
+				}
+		}		
+		Favoriti fav = new Favoriti();
+		ArrayList<String> favoriti = fav.getFavoriti();
+		double getVarU=0;
+		double getVarP=0;
+		//Crea una barra che permette all'utente di visualizzare lo stato di avanzamento
+			BarraProgresso m=new BarraProgresso(0,favoriti.size());  
+			m.setVisible(true);  
+			m.setTitle("Calcolo della varianza");  //Titolo della barra
+		for(int i=0; i<favoriti.size(); i++) {
+			 m.paint(m.getGraphics()); 
+			 m.jb.setValue(i);
+			for(int j=0; j<citta.size(); j++) {
+				if(favoriti.get(i).equals(citta.get(j).getNome())) {
+					getVarU= getVarianza(citta,true);
+					//getVarP memorizza la varianza della pressione per una determinata citta
+					getVarP=getVarianza(citta,false);
+					break;
+				}
+			}
+					//Permette di memorizzare il valore massimo di varianza di Umidita e l'indice della città su cui è stato calcolato
+				if (getVarU > max_val[2]) {
+					max_val[2] = getVarU;
+					max_index[2] = i;
+					}
+				
+				//Permette di memorizzare il valore massimo di varianza di pressione e l'indice della città su cui è stato calcolato
+				if (getVarP > max_val[3]) {
+					max_val[3] = getVarP;
+					max_index[3] = i;
+					}
+		}
+		m.dispose();
+	
+		
     	
-        MaxHumCity.setText("asd");
-        MaxHumValue.setText("asd");
-        MaxPressCity.setText("città1");
-        MaxPressValue.setText("Val1");
-        MaxVarHumCity.setText("città1");
-        MaxVarHumValue.setText("val1");
-        MaxVarPressCity.setText("città1");
-        MaxVarPressValue.setText("val1");
+        MaxHumCity.setText(citta.get(max_index[0]).getNome());
+        MaxHumValue.setText(new DecimalFormat("#.##").format(max_val[0])+"%");
+        MaxPressCity.setText(citta.get(max_index [1]).getNome());
+        MaxPressValue.setText(new DecimalFormat("#.##").format(max_val[1])+" hPa");
+        MaxVarHumCity.setText(citta.get(max_index [2]).getNome());
+        MaxVarHumValue.setText(new DecimalFormat("#.##").format(max_val[2]));
+        MaxVarPressCity.setText(citta.get(max_index [3]).getNome());
+        MaxVarPressValue.setText(new DecimalFormat("#.##").format(max_val[3]));
         
         MinHumCity.setText("città1");
         MinHumValue.setText("val1");
