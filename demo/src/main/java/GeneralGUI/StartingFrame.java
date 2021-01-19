@@ -1,12 +1,5 @@
 package GeneralGUI;
 
-<<<<<<< HEAD
-import java.util.Date;
-
-import log.Log;
-
-=======
->>>>>>> branch 'Federico3' of https://github.com/Raccispini/ProgettoEsame
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

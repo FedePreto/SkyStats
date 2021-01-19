@@ -90,9 +90,7 @@ import log.Log;
 	Convertitore conv = new Convertitore(); 
 	Stat s = new Stat();
 	ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
-	citta = Filtra(body, citta);
-	 
-	
+	citta = Filtra(body, citta);	
 	 Double[][] dati = s.getValues(citta);
 	 System.out.println(dati[0]);
 	 System.out.println(dati[1]);
