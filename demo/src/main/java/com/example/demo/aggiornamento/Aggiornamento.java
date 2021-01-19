@@ -2,6 +2,7 @@ package com.example.demo.aggiornamento;
 
 import java.util.TimerTask;
 
+import com.example.demo.DemoApplication;
 import com.example.demo.services.CercaMeteo;
 import com.example.demo.services.Favoriti;
 import com.example.demo.src.Convertitore;
@@ -28,7 +29,7 @@ public class Aggiornamento extends TimerTask {
 			Convertitore conv = new Convertitore();
 			Gson gson = new Gson();
 			for (String x : r.getFavoriti()) {
-				url = "http://api.openweathermap.org/data/2.5/weather?q=" + x + "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";						
+				url = "http://api.openweathermap.org/data/2.5/weather?q=" + x + "&appid="+DemoApplication.key+"&units=metric&lang=it";						
 				conv.salva(gson.toJson(conv.getClassFromCall(CercaMeteo.getMeteo(url))));
 			}
 	}

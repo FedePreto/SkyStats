@@ -8,6 +8,8 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
+import com.example.demo.DemoApplication;
 import com.example.demo.exception.*;
 
 
@@ -27,6 +29,7 @@ import com.example.demo.src.Convertitore;
 import com.example.demo.statistiche.Stat;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import log.Log;
@@ -50,30 +53,47 @@ import log.Log;
   *  
   * @return c  parametro che contiene il meteo della città scelta
   */
- @GetMapping("/Weather")
- public Citta getWeather(@RequestParam(name = "Citta", defaultValue = "Rome") String city,@RequestParam(name = "Aggiornato", defaultValue = "Si")String agg) {
+
+ public JsonElement getWeather(String city,int i) {
 	 String url = "";
 	 Citta c = new Citta();
 	 Convertitore conv = new Convertitore(); 
-	 if(agg.equals("Si")) {
+	 if(i<=60) {
 		 try { 
 			 int ID = Integer.parseInt(city);
-			 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it";
+			 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid="+DemoApplication.key+"&units=metric&lang=it";
 				 
 		 	}catch (NumberFormatException e) {
-			 url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",IT&appid=907bf98c6e55b2f5321b46b5edb794de&units=metric&lang=it"; 
+			 url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",IT&appid="+DemoApplication.key+"&units=metric&lang=it"; 
 		 	}	 
 			String meteo = CercaMeteo.getMeteo(url);
 			c = conv.getClassFromCall(meteo);
-			return c;
-	 }
-	 else if(agg.equals("No")){	
+			
+	 }else {
+		 
 		 c = conv.findInJson(city);
-		 return c;
+		 
 	 }
-	 else return null;
+	 Gson gson = new Gson();
+	 //String json = gson.toJson(c,Citta.class);
+	 
+	 return gson.toJsonTree(c);
+	 
  }
 
+ @PostMapping("/Weather")
+ public JsonObject getWeather(@RequestBody JsonObject body)throws Data_Exception {
+	 JsonArray citta = body.get("citta").getAsJsonArray();
+	 JsonArray ret = new JsonArray();
+	 for (int i = 0; i < citta.size(); i++) {
+		
+		ret.add(getWeather(citta.get(i).getAsString(),i));
+	}
+	JsonObject jo = new JsonObject();
+	jo.add("meteo", ret);
+	return jo;
+ }
+ 
 /**
  * Call che restituisce le statistiche di una citta 
  * 
