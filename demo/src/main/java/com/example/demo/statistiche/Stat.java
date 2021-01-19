@@ -31,12 +31,12 @@ public class Stat {
 	
 	public Double[][] getValues(ArrayList<Citta>c){
 		
-		Double[][] dati = new Double[c.size()][3];
+		Double[][] dati = new Double[3][c.size()];
 		
 		for (int i = 0; i < c.size(); i++) {			
-			dati[i][0] = c.get(i).getPressione();
-			dati[i][1] = c.get(i).getUmidita();
-			dati[i][2] = c.get(i).getTemperatura();
+			dati[0][i] = c.get(i).getPressione();
+			dati[1][i] = c.get(i).getUmidita();
+			dati[2][i] = c.get(i).getTemperatura();
 		}	
 				
 		return dati;

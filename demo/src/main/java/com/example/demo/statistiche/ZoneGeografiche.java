@@ -8,11 +8,12 @@ public class ZoneGeografiche implements Filtro {
 	
 	public ArrayList<Citta> filtra(ArrayList<Citta> c, String filtro) {
 		
-		ArrayList<Citta> tmp = new ArrayList<Citta>();
+		ArrayList<Citta> citta_geo = new ArrayList<Citta>();
 		for (int i = 0; i < c.size(); i++) {
 			if(c.get(i).getPosizione().equals(filtro))
-				tmp.add(c.get(i));
+				citta_geo.add(c.get(i));
 		}
-		return tmp;
+		citta_geo.get(0).setNome(filtro);
+		return citta_geo;
 	}
 }
