@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import com.example.demo.exception.*;
 
 
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam; 
  import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.exception.Data_Exception;
 import com.example.demo.model.Citta;
 import com.example.demo.services.*;
 import com.example.demo.src.Convertitore;
@@ -85,38 +87,31 @@ import log.Log;
  */
 
 @PostMapping("/Stat")
- public JsonObject getStat(@RequestBody JsonObject body) {
+ public JsonObject getStat(@RequestBody JsonObject body)throws Data_Exception {
 	
 	Convertitore conv = new Convertitore(); 
 	Stat s = new Stat();
 	ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
 	citta = Filtra(body, citta);	
-	 Double[][] dati = s.getValues(citta);
-	 System.out.println(dati[0]);
-	 System.out.println(dati[1]);
-	 System.out.println(dati[2]);
-	 double mediaP = s.getMedia(dati[0]);
-	 double mediaU = s.getMedia(dati[1]);
-	 double mediaT = s.getMedia(dati[2]);
-	 double varianzaP = s.getVarianza(dati[0]);
-	 double varianzaU = s.getVarianza(dati[1]);
-	 double varianzaT = s.getVarianza(dati[2]);
-	 JsonObject JsonReturn = new JsonObject();
-	 if(dati == null) {
-		 JsonReturn.addProperty("Nessun valore trovato nel range di tempo specificato","");
-		 return JsonReturn;
-	 }
-	 else {
-		 JsonReturn.addProperty("Nome", citta.get(0).getNome());
-		 JsonReturn.addProperty("Media Umidità", new DecimalFormat("#.##").format(mediaU));
-		 JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
-		 JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(mediaP));
-		 JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
-		 JsonReturn.addProperty("Media Temperatura",  new DecimalFormat("#.##").format(mediaT));
-		 JsonReturn.addProperty("Varianza Temperatura",  new DecimalFormat("#.##").format(varianzaT));
-		 return JsonReturn;
-		 }
- }
+	Double[][] dati = s.getValues(citta);
+	if(dati==null)
+		throw new Data_Exception();
+	double mediaP = s.getMedia(dati[0]);
+	double mediaU = s.getMedia(dati[1]);
+	double mediaT = s.getMedia(dati[2]);
+	double varianzaP = s.getVarianza(dati[0]);
+	double varianzaU = s.getVarianza(dati[1]);
+	double varianzaT = s.getVarianza(dati[2]);
+	JsonObject JsonReturn = new JsonObject();
+	JsonReturn.addProperty("Nome", citta.get(0).getNome());
+	JsonReturn.addProperty("Media Umidità", new DecimalFormat("#.##").format(mediaU));
+	JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
+	JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(mediaP));
+	JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
+	JsonReturn.addProperty("Media Temperatura",  new DecimalFormat("#.##").format(mediaT));
+	JsonReturn.addProperty("Varianza Temperatura",  new DecimalFormat("#.##").format(varianzaT));
+	return JsonReturn;
+	}
 
 /**
  * Dato un body in JsonObject, "/Max" è una call in Post che restituisce un JsonObject contentente le citta con i valori massimi di temperatura, umidita e pressione nel database
@@ -126,7 +121,7 @@ import log.Log;
  * @param type Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
  *
  * @return JsonObject contenente tutti le citta con i valori massimi nel Database
- *//*
+ */
  @PostMapping("/Max")
  public JsonObject getMax(@RequestBody JsonObject body) {
 	 
