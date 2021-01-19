@@ -86,25 +86,12 @@ import log.Log;
 
 @PostMapping("/Stat")
  public JsonObject getStat(@RequestBody JsonObject body) {
+	
 	Convertitore conv = new Convertitore(); 
 	Stat s = new Stat();
-	ArrayList<Filtro> f = getFilterFromJson(body); //Legge i filtri da applicare dal JsonObject e li memorizza nell'ArrayList 
 	ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
-	
-	for(int i = 0; i<f.size();i++) {
-		System.out.println("=========================================================");
-		System.out.println(i);
-		citta = f.get(i).filtra(citta); //Filtra tutte le citta lette applicando i filtri specificati
-		for(Citta x:citta) {
-			System.out.println(x.getNome());
-			System.out.println(x.getData());
-		}
-		System.out.println("==========================================================");
-	}
-	for(Citta x:citta) {
-		System.out.println(x.getNome());
-		System.out.println(x.getData());
-	}
+	citta = Filtra(body, citta);
+	 
 	
 	 Double[][] dati = s.getValues(citta);
 	 System.out.println(dati[0]);
@@ -334,23 +321,38 @@ import log.Log;
 		}
  
  */
- public ArrayList<Filtro> getFilterFromJson(JsonObject body){
-	 ArrayList<Filtro> f = new ArrayList<Filtro>();
-	 	JsonObject jo = body.get("filtri").getAsJsonObject();
-		JsonObject jobject = jo.get("nome").getAsJsonObject();
-		if(jobject.get("attivo").getAsBoolean()) {
-			f.add(new NomeId(jobject.get("filtro").getAsString()));
+ /**
+  * Metodo utile per la lettura mediante JsonObject dei filtri da applicare al DataBase locale,
+  * il filtraggio può essere effettuato per città, periodo temporale e zone geografiche
+  * 
+  * @author Nicolò
+  * 
+  * @param body {@link JsonObject} contenente il Body per la gestione dei filtri da applicare
+  * 
+  * @return {@link ArrayList} di oggeti di tipo {@link Filtro} contenente i filtri da applicare alle statistiche
+  */
+ public static ArrayList<Citta> Filtra(JsonObject body,ArrayList<Citta>citta){
+	 JsonObject jo = body.get("filtri").getAsJsonObject();
+	 JsonObject jobject = jo.get("tempo").getAsJsonObject();
+	 if(jobject.get("attivo").getAsBoolean()) {
+		  Tempo t = new Tempo();
+		  citta = t.filtra(citta, jobject.get("filtro").getAsString());
+		}	 
+	 jobject = jo.get("nome").getAsJsonObject();
+	 if(jobject.get("attivo").getAsBoolean()) {
+		NomeId n = new NomeId();
+		citta = n.filtra(citta, jobject.get("filtro").getAsString());
+		return citta; //Se viene effettuato il filtraggio per nome non può essere effettuato anche il filtraggio per ZoneGeo
 		}
-		jobject = jo.get("tempo").getAsJsonObject();
-		if(jobject.get("attivo").getAsBoolean()) {
-			f.add(new Tempo(jobject.get("filtro").getAsString()));
-		}
-		jobject = jo.get("ZoneGeografiche").getAsJsonObject();
-		if(jobject.get("attivo").getAsBoolean()) {
-			f.add(new ZoneGeografiche(jobject.get("filtro").getAsString()));
-		}
-		return f;
+	 jobject = jo.get("ZoneGeografiche").getAsJsonObject();
+	 if(jobject.get("attivo").getAsBoolean()) {
+		 ZoneGeografiche z = new ZoneGeografiche();
+		 citta = z.filtra(citta, jobject.get("filtro").getAsString());
+		 }
+	 return citta;
 	}
+ 
+ 
  }
  
  

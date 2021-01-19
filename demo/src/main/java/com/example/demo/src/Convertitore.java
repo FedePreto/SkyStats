@@ -13,7 +13,7 @@ import com.google.gson.*;
 
 import log.Log;
 /**
- * Classe contenente metodi per la conversione di Java to Json o viceversa
+ * Classe contenente metodi per la lettura del DataBase, conversione di Java to Json o viceversa
  * @author Nicolò
  * @author Federico
  *
@@ -22,7 +22,7 @@ public class Convertitore {
 	String nomeFile = "Storico.json";
 
 	/**
-	 * Metodo che legge il DB completo  al contrario partendo dalla fine del file fino all'inizio
+	 * Metodo che legge il DB completo  al contrario partendo dall'ultima riga del File fino alla prima
 	 * 
 	 * @author Federico
 	 * 
@@ -45,6 +45,7 @@ public class Convertitore {
 				Log.report("ERRORE IN FASE DI LETTURA",e.getMessage());
 				return null;
 			} catch (Exception e) {
+				Log.report("ERRORE GENERICO AVVENUTO NELLA CLASSE \"Convertitore\"",e.getMessage());
 				return c;
 			}
 			return c;
@@ -74,7 +75,7 @@ public class Convertitore {
 					}
 			}while(citta.getData().after(inizio));
 		}catch(IOException e) {
-			Log.report(new Date()+"-"+e.getMessage());
+		//	Log.report(new Date()+"-"+e.getMessage());
 		}
 		catch(NullPointerException e) {
 			System.out.println();
@@ -141,7 +142,7 @@ public class Convertitore {
 			}
 			buf.close();
 		}catch(IOException e) {
-			Log.report(new Date()+"-"+e.getMessage());
+		//	Log.report(new Date()+"-"+e.getMessage());
 		}
 		
 	}
@@ -157,7 +158,7 @@ public class Convertitore {
 			buf.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+		//	Log.report(new Date()+"-"+e.getMessage());
 		}
 	}
 	/**
@@ -185,21 +186,21 @@ public class Convertitore {
 			c.setPosizione(c.getLocation(coord.get("lat").getAsDouble()));
 			
 			}catch(JsonParseException e) {
-				Log.report(new Date()+"-"+e.getMessage());
+			//	Log.report(new Date()+"-"+e.getMessage());
 				System.out.println("ERRORE DI PARSING DELLA STRINGA");
 				e.printStackTrace();
 				System.out.println(e);
 				return null;
 				
 			}catch(ClassCastException e){
-				Log.report(new Date()+"-"+e.getMessage());
+			//	Log.report(new Date()+"-"+e.getMessage());
 				System.out.println("ERRORE DI CASTING");
 				e.printStackTrace();
 				System.out.println(e);
 				return null;
 			
 			}catch(Exception e) {
-				Log.report(new Date()+"-"+e.getMessage());
+			//	Log.report(new Date()+"-"+e.getMessage());
 				System.out.println("ERRORE GENERICO IN FASE DI CREAZIONE DELLA CLASSE");
 				e.printStackTrace();
 				System.out.println(e);

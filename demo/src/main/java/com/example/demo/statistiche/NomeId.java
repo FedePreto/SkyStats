@@ -2,13 +2,10 @@ package com.example.demo.statistiche;
 import java.util.ArrayList;
 
 import com.example.demo.model.Citta;
-public class NomeId extends Filtro{
+public class NomeId implements Filtro{
 	
-	public NomeId(String filtro) {
-		super(filtro);
-	}
-	public ArrayList<Citta> filtra(ArrayList<Citta> c){
-		String filtro = super.filtro;
+	public ArrayList<Citta> filtra(ArrayList<Citta> c, String filtro){
+		
 		ArrayList<Citta> tmp = new ArrayList<Citta>();
 		for (int i = 0; i < c.size(); i++) {
 			try {

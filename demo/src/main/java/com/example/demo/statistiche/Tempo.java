@@ -12,21 +12,30 @@ import com.example.demo.model.Citta;
 
 import log.Log;
 
-public class Tempo extends Filtro{
-	public Tempo(String filtro) {
-		super(filtro);
-	}
-	
-	public ArrayList<Citta> filtra(ArrayList<Citta> c){
-		String filtro = super.filtro;
-		ArrayList<Citta> tmp = new ArrayList<Citta>();
+/**
+ * La classe si occupa della gestione del filtraggio del DataBase in base ad un
+ * periodo temporale che può essere: Giornaliero,Settimanale,Mensile,Annuale oppure
+ * Customizzato, cioè un perido selezionabile liberamente dall'utente. La classe estende 
+ * la classe madre astratta {@link Filtro}
+ * 
+ * 
+ * @author Federico
+ * @author Nicolò
+ *
+ */
+
+public class Tempo implements Filtro{
+
+	public ArrayList<Citta> filtra(ArrayList<Citta> c,String filtro){
+		ArrayList<Citta> citta_tempo = new ArrayList<Citta>();
 		Date[] date = new Date[2];
 		date = getDateFromString(filtro);
+		System.out.println(date[0] + " " + date[1]);
 		for (int i = 0; i < c.size(); i++) {
 			if(c.get(i).getData().before(date[1]) && c.get(i).getData().after(date[0]))
-				tmp.add(c.get(i));
+				citta_tempo.add(c.get(i));
 		}
-		return tmp;
+		return citta_tempo;
 	}
 	
 	public static Date[] getDateFromString(String time) {
@@ -47,7 +56,7 @@ public class Tempo extends Filtro{
 				break;
 				
 			case "Mensile":
-				l = LocalDate.now().minusDays(30);
+				l = LocalDate.now().minusDays(31);
 				inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
 				break;
 				
@@ -55,19 +64,17 @@ public class Tempo extends Filtro{
 				l = LocalDate.now().minusDays(365);
 				inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
 				break;
-				
-			default:
+			
+			case "Customizzato":
 				try {
 				String[] d = time.split(",");
 				DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ITALY);
 				inizio = df.parse(d[0]);
 				fine = df.parse(d[1]);
 				}catch(PatternSyntaxException e) {
-					System.out.println("Errore : Separatore date non trovato!");
-					Log.report(new Date()+"-"+e.getMessage());
+					Log.report("SEPARATORE DATE NON TROVATO",e.getMessage());
 				} catch (ParseException e) {
-					System.out.println("Errore : Formattazione delle date non corretto [dd/MM/yy]]");
-					Log.report(new Date()+"-"+e.getMessage());
+					Log.report("FORMATTAZIONE DATE NON CORRETTO, INSERIRE NELLA SEGUENTE MANIERA [dd/MM/yy]",e.getMessage());
 				}
 				
 			}

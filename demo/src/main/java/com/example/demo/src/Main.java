@@ -79,7 +79,7 @@ public class Main {
 				stampaStat(date[0], date[1], citta);
 				break;
 			case 3:
-				r.salvataggio();
+				//r.salvataggio();
 				break;
 			case 4:
 				System.out.println("Inserisci il Nome della citta da aggiungere ai preferiti");

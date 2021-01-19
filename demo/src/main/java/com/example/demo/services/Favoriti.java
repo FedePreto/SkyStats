@@ -65,13 +65,13 @@ public class Favoriti {
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+			//Log.report(new Date()+"-"+e.getMessage());
 		} catch (JsonSyntaxException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+			//Log.report(new Date()+"-"+e.getMessage());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+			//Log.report(new Date()+"-"+e.getMessage());
 		}
 
 	}
@@ -90,7 +90,7 @@ public class Favoriti {
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+		//	Log.report(new Date()+"-"+e.getMessage());
 		}
 		Gson gson = new Gson();
 		file.set(0, "{\"favoriti\":" + gson.toJson(favoriti, new TypeToken<ArrayList<String>>(){}.getType()) + "}");
@@ -103,7 +103,7 @@ public class Favoriti {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+			//Log.report(new Date()+"-"+e.getMessage());
 		}
 
 	}
@@ -129,7 +129,7 @@ public class Favoriti {
 			jo = JsonParser.parseReader(buf).getAsJsonObject(); 		
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			Log.report(new Date()+"-"+e.getMessage());
+		//	Log.report(new Date()+"-"+e.getMessage());
 		}
 		return jo;
 	}
