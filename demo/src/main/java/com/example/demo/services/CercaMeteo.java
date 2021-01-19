@@ -17,10 +17,10 @@ import log.Log;
  */
 public class CercaMeteo {
 	/**
-	 * Metodo che dato un URL manda indietro la risposta della Call dell'API
+	 * Metodo che dato un URL personalizzato, richiede il meteo di una specifica città all'Api OpenWeather
 	 * @author Federico
-	 * @param url Url per la call
-	 * @return Stringa di risposta 
+	 * @param url Stringa personalizzata per la richiesta di uno specifico meteo
+	 * @return Stringa contenete il meteo di una Citta sotto forma di JsonObject 
 	 */
 	public static String getMeteo(String url) {
 
@@ -32,10 +32,11 @@ public class CercaMeteo {
 			Scanner in = new Scanner(new BufferedReader(new InputStreamReader(openConnection.getInputStream())));
 			meteo_citta = in.nextLine();
 			in.close();
+			
 		} catch (IOException e) {
-			Log.report(new Date()+"-"+e.getMessage());
+			Log.report("ERRORE DURANTE LA RICHIESTA METEO",e.getMessage());
 		} catch (Exception e) {
-			Log.report(new Date()+"-"+e.getMessage());
+			Log.report("ERRORE GENERICO NELLA CLASSE \"CercaMeteo\"",e.getMessage());
 		}		
 		return meteo_citta;
 
