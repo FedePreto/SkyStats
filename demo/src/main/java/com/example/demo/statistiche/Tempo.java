@@ -35,6 +35,7 @@ public class Tempo implements Filtro{
 			if(c.get(i).getData().before(date[1]) && c.get(i).getData().after(date[0]))
 				citta_tempo.add(c.get(i));
 		}
+		citta_tempo.get(0).setNome(filtro);
 		return citta_tempo;
 	}
 	
@@ -65,7 +66,7 @@ public class Tempo implements Filtro{
 				inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
 				break;
 			
-			case "Customizzato":
+			default:
 				try {
 				String[] d = time.split(",");
 				DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ITALY);

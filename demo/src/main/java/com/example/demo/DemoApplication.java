@@ -45,7 +45,7 @@ public class DemoApplication {
 		 builder.headless(false).run(args);
 		 Timer timer = new Timer();
 		 Aggiornamento agg = new Aggiornamento();
-		 timer.schedule(agg, getDelay(), 5 * 3600000);
+		// timer.schedule(agg, getDelay(), 5 * 3600000);
 		
 	}
 	
