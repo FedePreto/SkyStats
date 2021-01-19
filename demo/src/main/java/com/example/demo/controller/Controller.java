@@ -115,17 +115,24 @@ import log.Log;
 
 /**
  * Dato un body in JsonObject, "/Max" è una call in Post che restituisce un JsonObject contentente le citta con i valori massimi di temperatura, umidita e pressione nel database
- * @author Federico 
- * @author Diego
+ * @author Federico  * 
  * @param body
  * @param type Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
  *
  * @return JsonObject contenente tutti le citta con i valori massimi nel Database
  */
- @PostMapping("/Max")
- public JsonObject getMax(@RequestBody JsonObject body) {
+ @GetMapping("/Max")
+ public JsonObject getMax(@RequestParam(name = "Periodo", defaultValue = "Giornaliero") String period) {
 	 
-     String type = body.get("type").getAsString();
+	 Convertitore conv = new Convertitore(); 
+	 Stat s = new Stat();
+	 ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
+	 Tempo t = new Tempo();
+	 t.filtra(citta, period);
+	 return s.getMax(citta);
+	 
+	 
+    /* String type = body.get("type").getAsString();
      Date[] date = new Date[2];
      if(type.equals("Customizzato")) {
 		 JsonArray range = body.getAsJsonArray("range");
@@ -138,20 +145,28 @@ import log.Log;
     	 };
 	 Stat s = new Stat();
 	 System.out.println(date[0] + " " + date[1]);
-	 return s.getMax(date[0],date[1]);
+	 return s.getMax(date[0],date[1]);*/
  }
  /**
   * Dato un body in JsonObject, "/Min" è una call in Post che restituisce tutte le citta con i valori minimi di pressione, umidità e Temperatura nel database
   * @author Federico
-  * @author Diego
+  * 
   * 
   * @param body
   * @param type Range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
   * @param range Nel caso in cui type=Customizzato allora range contiente la data di inizio e di fine del range di tempo
   * @return JsonObject contenente tutte le citta con i valori minimi di pressione, umidità e temperatura nel Database
-  *//*
- @PostMapping("/Min")
- public JsonObject getMin(@RequestBody JsonObject body) {
+  */
+ @GetMapping("/Min")
+ public JsonObject getMin(@RequestParam(name = "Periodo", defaultValue = "Giornaliero") String period) {
+     Convertitore conv = new Convertitore(); 
+	 Stat s = new Stat();
+	 ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
+	 Tempo t = new Tempo();
+	 t.filtra(citta, period);
+	 return s.getMax(citta);
+ }
+ /*
      String type = body.get("type").getAsString();
      Date[] date = new Date[2];
      if(type.equals("Customizzato")) {
