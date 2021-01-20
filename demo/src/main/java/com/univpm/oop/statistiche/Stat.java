@@ -234,37 +234,24 @@ public class Stat {
 		double getVarP=0;
 		double getVarU=0;
 		double getVarT=0;
-		
-		for(int i=0; i<citta.size(); i++)
-			System.out.println(citta.get(i).getNome());
 		for(int i=0; i<favoriti.size(); i++) {
-			 System.out.println(favoriti.get(i));
 			 getVarP = getVarianza(citta, favoriti.get(i),0);
-			 System.out.println(getVarP);
 			 getVarU = getVarianza(citta,favoriti.get(i) ,1);
-			 System.out.println(getVarU);
 			 getVarT = getVarianza(citta, favoriti.get(i) ,2);
-			 System.out.println(getVarT);
 			//Permette di memorizzare il valore massimo di varianza di pressione e l'indice della città su cui è stato calcolato
 			if (getVarP > max_val[3]) {				
-				System.out.println("Minore Pressione =" + max_val[3] + ", Maggiore Pressione = " + getVarP);
 				max_val[3] = getVarP;
 				max_index[3] = i;
-				System.out.println(favoriti.get(max_index[3]));
 				}
 			//Permette di memorizzare il valore massimo di varianza di Umidita e l'indice della città su cui è stato calcolato
 			if (getVarU > max_val[4]) {
-				System.out.println("Minore Umidita=" + max_val[4] + ", Maggiore Umidita= " + getVarU);
 				max_val[4] = getVarU;
 				max_index[4] = i;
-				System.out.println(favoriti.get(max_index[4]));
 			}
 			//Permette di memorizzare il valore massimo di varianza di temperatura e l'indice della città su cui è stato calcolato
 			if (getVarT > max_val[5]) {
-				System.out.println("Minore Temperatura=" + max_val[5] + ", Maggiore Temperatura= " + getVarT);
 				max_val[5] = getVarT;
 				max_index[5] = i;
-				System.out.println(favoriti.get(max_index[5]));
 				}
 				
 				
@@ -331,6 +318,7 @@ public class Stat {
 	     min_val[3] = getVarianza(citta,citta.get(0).getNome(),0);
 		 min_val[4] = getVarianza(citta,citta.get(0).getNome(),1);
 		 min_val[5] = getVarianza(citta,citta.get(0).getNome(),2);
+		 System.out.println(min_val[3] + "  " + min_val[4] + "  " + min_val[5]);
 		 //Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
 		for (int i = 1; i < citta.size(); i++) {
 			//Permette di memorizzare il valore minimo di pressione e l'indice della citta che lo contiene
@@ -349,46 +337,44 @@ public class Stat {
 				min_index[2] = i;
 			}
 				
-				
 		}
 		Favoriti fav = new Favoriti();
 		ArrayList<String> favoriti = fav.getFavoriti();
 		double getVarP=0;
 		double getVarU=0;
 		double getVarT=0;
-		//Crea una barra che permette all'utente di visualizzare lo stato di avanzamento
-			BarraProgresso m=new BarraProgresso(0,favoriti.size());  
-			m.setVisible(true);  
-		    m.setTitle("Calcolo dell varianza");  //Titolo della barra
-		for(int i=1; i<favoriti.size(); i++) {
-			m.paint(m.getGraphics()); 
-			m.jb.setValue(i);
-						
+		for(int i=0; i<favoriti.size(); i++) {
+			System.out.println(favoriti.get(i));
 		    //getVarP memorizza la varianza della pressione per una determinata citta
 			getVarP = getVarianza(citta,favoriti.get(i),0);
+			System.out.println(getVarP);
 			getVarU = getVarianza(citta,favoriti.get(i),1);
-			getVarT = getVarianza(citta,favoriti.get(i),2);					
-					
-			  
-			
+			System.out.println(getVarU);
+			getVarT = getVarianza(citta,favoriti.get(i),2);	
+			System.out.println(getVarT);
 			//Permette di memorizzare il valore minimo di varianza di pressione e l'indice della città su cui è stato calcolato
-			if (getVarP < min_val[3]) {
+			if (getVarP <= min_val[3]) {
+				System.out.println(min_val[3] + " " + getVarP);
 				min_val[3] = getVarP;
 				min_index[3] = i;
+				System.out.println(favoriti.get(min_index[3]));
+			}
 				//Permette di memorizzare il valore minimo di varianza di Umidita e l'indice della città su cui è stato calcolato
-				if (getVarU < min_val[4]) {					
-					min_val[4] = getVarU;
-					min_index[4] = i;
+			if (getVarU <= min_val[4]) {	
+				System.out.println(min_val[4] + " " + getVarU);
+				min_val[4] = getVarU;
+				min_index[4] = i;
+				System.out.println(favoriti.get(min_index[4]));
 				}
 				//Permette di memorizzare il valore minimo di varianza di pressione e l'indice della città su cui è stato calcolato
-				if (getVarT < min_val[5]) {
-					min_val[5] = getVarT;
-					min_index[5] = i;
-				
-				}				
-			}
+			if (getVarT <= min_val[5]) {
+				System.out.println(min_val[5] + " " + getVarT);
+				min_val[5] = getVarT;
+				min_index[5] = i;
+				System.out.println(favoriti.get(min_index[5]));
+			}				
 		}
-		m.dispose();
+		
 		JsonObject JsonReturn = new JsonObject();
 		if(min_val[0] == 0 && min_val[1] == 0 && min_val[2] == 0 && min_val[3]==0) {
 			JsonReturn.addProperty("Nessun valore trovato nel range di tempo specficato","");
@@ -406,15 +392,15 @@ public class Stat {
 		Min_Umidity.addProperty("Valore", new DecimalFormat("#.##").format(min_val[1])+"%");
 		Min_Temperature.addProperty("Nome", citta.get(min_index[2]).getNome());
 		Min_Temperature.addProperty("Valore", new DecimalFormat("#.##").format(min_val[2])+"°C");
-		Min_Var_Pr.addProperty("Nome", favoriti.get(min_index [3]));
+		Min_Var_Pr.addProperty("Nome", favoriti.get(min_index[3]));
 		Min_Var_Pr.addProperty("Valore", new DecimalFormat("#.##").format(min_val[3]));
-		Min_Var_Um.addProperty("Nome", favoriti.get(min_index [4]));
+		Min_Var_Um.addProperty("Nome", favoriti.get(min_index[4]));
 		Min_Var_Um.addProperty("Valore", new DecimalFormat("#.##").format(min_val[4]));
-		Min_Var_Temp.addProperty("Nome", favoriti.get(min_index [5]));
+		Min_Var_Temp.addProperty("Nome", favoriti.get(min_index[5]));
 		Min_Var_Temp.addProperty("Valore", new DecimalFormat("#.##").format(min_val[5]));
 		JsonReturn.add("Pressione Minima", Min_Pression);
 		JsonReturn.add("Umidità Minima", Min_Umidity);
-		JsonReturn.add("Temperatura Minima", Min_Var_Temp);
+		JsonReturn.add("Temperatura Minima", Min_Temperature);
 		JsonReturn.add("Varianza di Pressione Minima", Min_Var_Pr);
 		JsonReturn.add("Varianza di Umidità Minima", Min_Var_Um);
 		JsonReturn.add("Varianza di Temperatura Minima", Min_Var_Temp);
