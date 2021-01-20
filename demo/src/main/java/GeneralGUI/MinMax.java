@@ -5,15 +5,13 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.example.*;
 import com.google.gson.JsonObject;
-import com.univpm.oop.GUI.BarraProgresso;
 import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 import com.univpm.oop.services.Convertitore;
 import com.univpm.oop.services.Favoriti;
-import com.univpm.oop.src.Main;
 import com.univpm.oop.statistiche.Stat;
+import com.univpm.oop.statistiche.Tempo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -374,7 +372,7 @@ public class MinMax extends javax.swing.JFrame {
     private void CercaMeteoMouseClicked(java.awt.event.MouseEvent evt) {                                        
     	//Si prende la data che ci interessa dal selettore
     	Date[] date = new Date[2];
-    	date=Main.menuDate((String)TimeSpan.getSelectedItem());
+    	date=Tempo.getDateFromString((String)TimeSpan.getSelectedItem());
     	System.out.println(date[0]+" "+ date[1]);
     	Convertitore conv = new Convertitore();
     	ArrayList<Citta> citta = conv.JsonToCitta(date[0], date[1]);
@@ -436,12 +434,11 @@ public class MinMax extends javax.swing.JFrame {
   		double getVarU=0;
   		double getVarP=0;
   		//Crea una barra che permette all'utente di visualizzare lo stato di avanzamento
-  			BarraProgresso m=new BarraProgresso(0,favoriti.size());  
-  			m.setVisible(true);  
-  		    m.setTitle("Calcolo dell varianza");  //Titolo della barra
+  			
+  			
+  		    
   		for(int i=1; i<favoriti.size(); i++) {
-  			m.paint(m.getGraphics()); 
-  			m.jb.setValue(i);
+  			
   			for(int j=1; j<citta.size(); j++) {
   				if(favoriti.get(i).equals(citta.get(j).getNome())) {					
   					getVarU= stat.getVarianza(stat.getValues(citta, citta.get(j).getNome(), false));
@@ -471,7 +468,7 @@ public class MinMax extends javax.swing.JFrame {
   					max_index[3] = i;
   				}	
   			}
-  		m.dispose();
+  		
 	
 		
     	
@@ -514,16 +511,16 @@ public class MinMax extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Log.report(new Date()+"-"+ex.getMessage());
+            Log.report(String.valueOf(new Date()),ex.getMessage());
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Log.report(new Date()+"-"+ex.getMessage());
+            Log.report(String.valueOf(new Date()),ex.getMessage());
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Log.report(new Date()+"-"+ex.getMessage());
+            Log.report(String.valueOf(new Date()),ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Log.report(new Date()+"-"+ex.getMessage());
+            Log.report(String.valueOf(new Date()),ex.getMessage());
         }
         //</editor-fold>
         

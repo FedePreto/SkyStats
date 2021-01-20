@@ -7,7 +7,7 @@ import java.util.Date;
 import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 import com.univpm.oop.services.Convertitore;
-import com.univpm.oop.src.Main;
+import com.univpm.oop.statistiche.Tempo;
 import com.univpm.oop.statistiche.Stat;
 
 /**
@@ -15,8 +15,7 @@ import com.univpm.oop.statistiche.Stat;
 * @author Diego
 */
 public class SingleCity extends javax.swing.JFrame {
-      private int clicked = 0;
-      private float temp1= 37;
+    
    /**
     * Creates new form SingleCity
     */
@@ -169,11 +168,11 @@ public class SingleCity extends javax.swing.JFrame {
        // TODO add your handling code here:
 	   String DataType=new String();
 	   DataType= "Giornaliero";
-	  
+	  Tempo t= new Tempo();
 	   String citta= (String)jComboBox1.getSelectedItem();
 	  if(String.valueOf(citta)=="L'aquila"|| String.valueOf(citta)=="L'Aquila")citta="Comune di L\u0027Aquila";
 	   System.out.println(citta);
-	   Date[] date = Main.menuDate(DataType);
+	   Date[] date = Tempo.getDateFromString(DataType);
 	   Stat stat = new Stat();
 	   Convertitore conv = new Convertitore();
 		Double[] valP ;
@@ -186,9 +185,9 @@ public class SingleCity extends javax.swing.JFrame {
 			 valT = stat.getDataByLocation(c, citta,2);
 			
 		}else {
-			 valP = stat.getValues(c, citta,true);
-			 valU = stat.getValues(c, citta,false);
-			 valT = stat.getValues(c, citta);
+			 valP = stat.getValues(c, citta,0);
+			 valU = stat.getValues(c, citta,1);
+			 valT = stat.getValues(c, citta,2);
 		}
 		
 		double mediaP = stat.getMedia(valP);
@@ -231,16 +230,16 @@ public class SingleCity extends javax.swing.JFrame {
            }
        } catch (ClassNotFoundException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(new Date()+"-"+ex.getMessage());
+           Log.report(String.valueOf(new Date()),ex.getMessage());
        } catch (InstantiationException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(new Date()+"-"+ex.getMessage());
+           Log.report(String.valueOf(new Date()),ex.getMessage());
        } catch (IllegalAccessException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(new Date()+"-"+ex.getMessage());
+           Log.report(String.valueOf(new Date()),ex.getMessage());
        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(new Date()+"-"+ex.getMessage());
+           Log.report(String.valueOf(new Date()),ex.getMessage());
        }
        //</editor-fold>
        
