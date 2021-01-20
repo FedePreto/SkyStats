@@ -10,17 +10,23 @@ Diego Vaccarini <b>S1093271 </b><br>
   
   <b>Elenco delle Call:</b><br>
   
-  <h2>Weather(Get)</h2><br>
-  <i>localhost:8080/Weather?<b>Citta</b>=Soggetto?<b>Aggiornamento</b>=si</i><br>
-  <b>Citta</b> = è un parametro della richiesta che rappresenta nome della Città oppure il suo ID ( di Default è "Roma")<br>
-  <b>Aggiornamento</b> = è un flag per dire alla call se si vuole prelevare i dati dal Database oppure da OpenWeather ( di Default è "Si")  <br>
+  <h2>Weather(Post)</h2><br>
+  <i>localhost:8080/Weather</i><br>
+  <h3>Body da passare in post:</h3><br>
   
-  <h3><i>Esempi:</i></h3><br>
-  <i>localhost:8080/Weather?<b>Citta</b>=Roma?<b>Aggiornamento</b>=Si</i><br>
+  ```json
+  
+  {
+    "citta":["Fermo",3171179,"Ancona","Palermo","Ferrara","Firenze"]
+  }
+  
+  ```
+  
+  Nel JsonArray citta inserire il numero di citta delle quali si vorrà richiedere il meteo.<br>
   
   <h2>Stat(Post):</h2><br>
   <i>localhost:8080/Stat</i><br>
-  <h3>Body da passare per post:</h3><br>
+  <h3>Body da passare in post:</h3><br>
   
   ```json
   
