@@ -58,7 +58,7 @@ import log.Log;
 	 String url = "";
 	 Citta c = new Citta();
 	 Convertitore conv = new Convertitore(); 
-	 if(i<=60) {
+	 if(i<=1) {
 		 try { 
 			 int ID = Integer.parseInt(city);
 			 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid="+DemoApplication.key+"&units=metric&lang=it";
