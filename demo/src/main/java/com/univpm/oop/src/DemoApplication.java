@@ -26,7 +26,7 @@ import com.univpm.oop.services.Aggiornamento;
  */
 @SpringBootApplication
 public class DemoApplication {
-	public static String key = "907bf98c6e55b2f5321b46b5edb794de";
+	public static String key ;
 	/**
 	 * Avvia SpringBoot inizializzando Headles a false in modo da poter instanziare AWT permettendo così la
 	 * visualizzazione delle icone, inoltre fa anche partire l'aggiornamento automatico ogni 5h dello storico
@@ -42,14 +42,14 @@ public class DemoApplication {
 		 * Solitamente SpringBoot setta l'Headless a true, in questo modo l'applicazione non consente l'utilizzo di interfacce 
 		 * con le seguenti 2 righe di codice l'Headless viene settato a false prima di far partire l'applicazione
 		*/	
-		//Scanner s = new Scanner(System.in);
-	    //System.out.print("Inserisci la key di OpenWeather: ");
-	    //DemoApplication.key = s.next();
+		Scanner s = new Scanner(System.in);
+	    System.out.print("Inserisci la key di OpenWeather: ");
+	    DemoApplication.key = s.next();
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(DemoApplication.class);
 		builder.headless(false).run(args);
-		 //Timer timer = new Timer();
-		 //Aggiornamento agg = new Aggiornamento();
-		// timer.schedule(agg, getDelay(), 5 * 3600000);
+		Timer timer = new Timer();
+		Aggiornamento agg = new Aggiornamento();
+		timer.schedule(agg, getDelay(), 5 * 3600000);
 		
 		 
 	}

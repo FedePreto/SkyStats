@@ -7,7 +7,7 @@ import com.univpm.oop.src.DemoApplication;
 
 /**
  * La classe estende la classe astratta {@link TimerTask}. Essa esegue l'aggiornamento del DB locale
- * salvando solamente il meteo delle città i cui nomi sono specificati nel file config.json
+ * salvando solamente il meteo delle città i cui nomi sono specificati nel file <b>config.json</b>
  * 
  * @author Federico
  *
@@ -21,11 +21,11 @@ public class Aggiornamento extends TimerTask {
 	 * @author Federico
 	 */
 	public void run() {
+			Favoriti fav = new Favoriti();
 			String url = "";
-			Favoriti r = new Favoriti();
 			Convertitore conv = new Convertitore();
 			Gson gson = new Gson();
-			for (String x : r.getFavoriti()) {
+			for (String x : Favoriti.favoriti) {
 				url = "http://api.openweathermap.org/data/2.5/weather?q=" + x + "&appid="+DemoApplication.key+"&units=metric&lang=it";						
 				conv.salva(gson.toJson(conv.getClassFromCall(CercaMeteo.getMeteo(url))));
 			}

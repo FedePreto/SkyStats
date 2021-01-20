@@ -18,7 +18,7 @@ public class Log {
 	
 	/**
 	 * Metodo che prende le due stringhe che sono state passate e le utilizza per creare un 
-	 * messaggio di errore che sarà poi scritto nel file Log.<b>nome</b>
+	 * messaggio di errore che sarà poi scritto nel file Log <b>nome</b>.
 	 * 
 	 * @author Nicolò
 	 * @author Federico
@@ -35,7 +35,7 @@ public class Log {
 		
 		try {
 						       
-			BufferedWriter buf = new BufferedWriter(new FileWriter(new File(nome)));
+			BufferedWriter buf = new BufferedWriter(new FileWriter(new File(nome),true));
 			buf.write(error);
 			buf.close();
 			

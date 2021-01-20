@@ -20,7 +20,7 @@ public class CercaMeteo {
 	 * Metodo che dato un URL personalizzato, richiede il meteo di una specifica città all'Api OpenWeather
 	 * @author Federico
 	 * @param url Stringa personalizzata per la richiesta di uno specifico meteo
-	 * @return Stringa contenete il meteo di una Citta sotto forma di JsonObject 
+	 * @return Stringa contenete il meteo di una Citta sotto forma di Json 
 	 */
 	public static String getMeteo(String url) {
 

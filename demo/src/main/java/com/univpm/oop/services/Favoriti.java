@@ -27,14 +27,20 @@ import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 
 /**
- * Classe che contiene tutti i metodi per la gestione del Favoriti ( Array di Stringhe che contengono i nomi delle citta Preferite dall'utente
+ * Classe che contiene tutti i metodi per la gestione del Favoriti ( Array di Stringhe che contiene i nomi delle citta Preferite dall'utente)
  * @author Federico
  * @author Nicolò
  *
  */
 public class Favoriti {
-	private ArrayList<String> favoriti;
-	String config = "config.json";
+	/**
+	 * Lista di nomi di citta Favorite
+	 */
+	public static ArrayList<String> favoriti;
+	/**
+	 * Path del file del Database
+	 */
+	public static String config = "config.json";
 	
 	/**
 	 * Costruttore che inizializza la classe Favoriti aggiornando favoriti dal file <b>config</b>
@@ -47,6 +53,7 @@ public class Favoriti {
 
 	/**
 	 * Metodo che va ad aggiornare favoriti con i favoriti scirtti sul file <b>config</>
+	 * 
 	 * @author Nicolò
 	 * 
 	 * 
@@ -62,14 +69,11 @@ public class Favoriti {
 			buf.close();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			//Log.report(new Date()+"-"+e.getMessage());
+			Log.report("FILE "+config+" NON TROVATO", e.getMessage());
 		} catch (JsonSyntaxException e) {
-			// TODO Auto-generated catch block
-			//Log.report(new Date()+"-"+e.getMessage());
+			Log.report("SINTASSI JSON ERRATA", e.getMessage());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			//Log.report(new Date()+"-"+e.getMessage());
+			Log.report("ERRORE LETTURA FILE", e.getMessage());
 		}
 
 	}
@@ -87,8 +91,7 @@ public class Favoriti {
 			buf.close();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-		//	Log.report(new Date()+"-"+e.getMessage());
+			Log.report("FILE "+config+" NON TROVATO", e.getMessage());
 		}
 		Gson gson = new Gson();
 		file.set(0, "{\"favoriti\":" + gson.toJson(favoriti, new TypeToken<ArrayList<String>>(){}.getType()) + "}");
@@ -100,8 +103,7 @@ public class Favoriti {
 			buf.close();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			//Log.report(new Date()+"-"+e.getMessage());
+			Log.report("ERRORE SCRITTURA FILE", e.getMessage());
 		}
 
 	}
@@ -126,20 +128,13 @@ public class Favoriti {
 			BufferedReader buf = new BufferedReader(new FileReader(new File(config)));
 			jo = JsonParser.parseReader(buf).getAsJsonObject(); 		
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-		//	Log.report(new Date()+"-"+e.getMessage());
+			Log.report("FILE "+config+" NON TROVATO", e.getMessage());
+		}catch(IOException e) {
+			Log.report("ERRORE LETTURA FILE", e.getMessage());
 		}
 		return jo;
 	}
-	/**
-	 * Stampa di debug dei favoriti
-	 * @author Nicolò
-	 */
-	public void stampaPreferiti() {
-		for (int i = 0; i < favoriti.size(); i++) {
-			System.out.println(favoriti.get(i));
-		}
-	}
+	
 
 	/**
 	 * Cancella il favorito <b>val</> dai favoriti
@@ -150,12 +145,5 @@ public class Favoriti {
 		favoriti.remove(val);
 		salvaArray();
 	}
-	/**
-	 * Ritorna i favoriti
-	 * @author Nicolò
-	 * @return ArrayList dei favoriti
-	 */
-	public ArrayList<String> getFavoriti() {
-		return favoriti;
-	}
+	
 }

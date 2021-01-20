@@ -61,3 +61,25 @@
 {"id":3183087,"nome":"Ancona","meteo":"poche nuvole","umidita":81.0,"pressione":1024.0,"temperatura":6.73,"posizione":"Centro","data":"Jan 19, 2021, 7:56:46 PM"}
 {"id":6541874,"nome":"Fermo","meteo":"cielo sereno","umidita":10.0,"pressione":985.0,"temperatura":4.45,"posizione":"Centro","data":"Jan 19, 2021, 7:56:46 PM"}
 {"id":6542055,"nome":"Comune di Como","meteo":"cielo coperto","umidita":70.0,"pressione":1021.0,"temperatura":1.47,"posizione":"Nord","data":"Jan 19, 2021, 7:56:46 PM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"cielo coperto","umidita":100.0,"pressione":1020.0,"temperatura":4.29,"posizione":"Centro","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3170027,"nome":"Potenza","meteo":"nubi sparse","umidita":89.0,"pressione":1022.0,"temperatura":7.22,"posizione":"Sud","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo coperto","umidita":76.0,"pressione":1025.0,"temperatura":7.7,"posizione":"Sud","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3172394,"nome":"Napoli","meteo":"pioggia leggera","umidita":76.0,"pressione":1023.0,"temperatura":11.23,"posizione":"Sud","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3181927,"nome":"Bologna","meteo":"foschia","umidita":93.0,"pressione":1020.0,"temperatura":2.57,"posizione":"Nord","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3165185,"nome":"Trieste","meteo":"nubi sparse","umidita":93.0,"pressione":1020.0,"temperatura":7.36,"posizione":"Nord","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":4219762,"nome":"Rome","meteo":"poche nuvole","umidita":46.0,"pressione":1027.0,"temperatura":7.99,"posizione":"Sud","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3176217,"nome":"Genova","meteo":"foschia","umidita":93.0,"pressione":1018.0,"temperatura":7.5,"posizione":"Nord","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3173435,"nome":"Milano","meteo":"foschia","umidita":100.0,"pressione":1020.0,"temperatura":2.32,"posizione":"Nord","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"poche nuvole","umidita":62.0,"pressione":1020.0,"temperatura":9.98,"posizione":"Centro","data":"Jan 20, 2021, 5:51:10 PM"}
+{"id":3180990,"nome":"Campobasso","meteo":"pioggia leggera","umidita":80.0,"pressione":1017.0,"temperatura":6.93,"posizione":"Sud","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":3165523,"nome":"Torino","meteo":"cielo coperto","umidita":56.0,"pressione":1019.0,"temperatura":3.62,"posizione":"Nord","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"poche nuvole","umidita":66.0,"pressione":1023.0,"temperatura":11.36,"posizione":"Sud","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":2525471,"nome":"Cagliari","meteo":"cielo sereno","umidita":88.0,"pressione":1019.0,"temperatura":13.17,"posizione":"Sud","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":2523918,"nome":"Palermo","meteo":"nubi sparse","umidita":66.0,"pressione":1023.0,"temperatura":11.69,"posizione":"Sud","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":3176959,"nome":"Firenze","meteo":"nubi sparse","umidita":87.0,"pressione":1020.0,"temperatura":8.56,"posizione":"Centro","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":3165243,"nome":"Trento","meteo":"nubi sparse","umidita":71.0,"pressione":1022.0,"temperatura":-0.33,"posizione":"Nord","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":3171179,"nome":"Perugia","meteo":"nubi sparse","umidita":71.0,"pressione":1021.0,"temperatura":8.71,"posizione":"Centro","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":3182996,"nome":"Aosta","meteo":"cielo coperto","umidita":60.0,"pressione":1010.0,"temperatura":-0.44,"posizione":"Nord","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":3164603,"nome":"Venezia","meteo":"pioggia leggera","umidita":87.0,"pressione":1020.0,"temperatura":3.53,"posizione":"Nord","data":"Jan 20, 2021, 5:51:11 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":33.0,"pressione":988.0,"temperatura":8.89,"posizione":"Centro","data":"Jan 20, 2021, 5:51:12 PM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"pioggia leggera","umidita":87.0,"pressione":1014.0,"temperatura":1.67,"posizione":"Nord","data":"Jan 20, 2021, 5:51:12 PM"}

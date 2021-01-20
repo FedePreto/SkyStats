@@ -13,7 +13,7 @@ import java.util.Date;
  *@param umidita umidita in questa citta nella data <b>data</b>
  *@param pressione pressione in questa citta nella data <b>data</b>
  *@param temperatura temperatura in questa citta nella data <b>data</b>
- *@param posizione posizione di questa citta ( Nord, Centro o Sud)
+ *@param posizione posizione relativa all'italia( Nord, Centro o Sud)
  *@param data orario di quando questi dati sono stati presi
  */
 public class Citta {
@@ -112,6 +112,7 @@ public class Citta {
 	}
 	/**
 	 * Data la latitudine associa la citta ad una posizione geografica (Nord, Centro o Sud)
+	 * @author Nicolò
 	 * @param latitudine
 	 * @return posizione geografica
 	 */

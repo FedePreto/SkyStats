@@ -24,7 +24,9 @@ import com.univpm.oop.model.Citta;
  */
 
 public class Tempo implements Filtro{
-
+	/**
+	 * {@inheritDoc}
+	 */
 	public ArrayList<Citta> filtra(ArrayList<Citta> c,String filtro){
 		ArrayList<Citta> citta_tempo = new ArrayList<Citta>();
 		Date[] date = new Date[2];
@@ -36,7 +38,13 @@ public class Tempo implements Filtro{
 		
 		return citta_tempo;
 	}
-	
+	/**Metodo che data una stringa la converte in un range di date 
+	 * @author Nicolò
+	 * @author Federico
+	 * 
+	 * @param time
+	 * @return array di 2 date che rappresenta il range di tempo descritto dalla stringa
+	 */
 	public static Date[] getDateFromString(String time) {
 		 Date inizio = new Date();
 		 LocalDate l = LocalDate.now().minusDays(0);

@@ -29,7 +29,7 @@ import com.univpm.oop.services.Favoriti;
 import com.univpm.oop.statistiche.*;
 
  /**
-  * Classe che gestisce le chiamate al nostro Server
+  * Classe che gestisce le chiamate al nostro Server SpringBoot
   * @author Federico
   * @author Nicolò
   *
@@ -48,7 +48,7 @@ import com.univpm.oop.statistiche.*;
   * @return c  parametro che contiene il meteo della città scelta
   */
  @PostMapping("/Weather")
- public ArrayList<Citta> getWeather(@RequestBody JsonObject body)throws Data_Exception {
+ public ArrayList<Citta> getWeather(@RequestBody JsonObject body)throws CityNotFoundException {
 	 JsonArray citta = body.get("citta").getAsJsonArray();
 	 ArrayList<Citta> city = new ArrayList<Citta>();
 	 Convertitore conv = new Convertitore(); 
@@ -71,7 +71,7 @@ import com.univpm.oop.statistiche.*;
 			 
 			 c = conv.findInJson(citta.get(i).getAsString());
 			 if(c==null) {
-				 Log.report(citta.get(i).getAsString() + " NON E' PRESENTE NELLO STORICO", "E' STATO RAGGIUNTO IL LIMITE MASSIMO DI 60 CALL PER MINUTO");
+				 throw new CityNotFoundException(citta.get(i).getAsString());
 			 }
 			 
 		 }
@@ -83,12 +83,12 @@ import com.univpm.oop.statistiche.*;
  }
  
 /**
- * Call che restituisce le statistiche di una citta 
+ * Call che restituisce le statistiche delle città filtrate dai filtri passati per Post
  * 
  * @author Federico
  * @author Nicolò
  * 
- * @param body JsonObject contenente le specifiche della statistica che si vuole eseguire
+ * @param body JsonObject contenente i filtri da applicare alle città da usare per calcolare le statistiche
  
  * @return JsonObject contenente tutte le informazioni riguardanti le statistiche
  * 
@@ -122,7 +122,7 @@ import com.univpm.oop.statistiche.*;
 	}
 
 /**
- * Dato un body in JsonObject, "/Max" è una call in Post che restituisce un JsonObject contentente le citta con i valori massimi di temperatura, umidita e pressione nel database
+ * In base al periodo specificato dall'attributo <b>Periodo</b> la call restituisce le città che assumono i massimi valori in questo range di tempo
  * @author Federico  * 
  * @param body
  * @param type Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
@@ -138,24 +138,11 @@ import com.univpm.oop.statistiche.*;
 	 Tempo t = new Tempo();
 	 return s.getMax(t.filtra(citta, period));
 	 
-	 
-    /* String type = body.get("type").getAsString();
-     Date[] date = new Date[2];
-     if(type.equals("Customizzato")) {
-		 JsonArray range = body.getAsJsonArray("range");
-		 String inizio = range.get(0).getAsString();
-		 String fine = range.get(1).getAsString();
-		 date = menuDate(inizio,fine);
-		 }
-     else {
-    	 date = menuDate(type);
-    	 };
-	 Stat s = new Stat();
-	 System.out.println(date[0] + " " + date[1]);
-	 return s.getMax(date[0],date[1]);*/
  }
+ 
+ 
  /**
-  * Dato un body in JsonObject, "/Min" è una call in Post che restituisce tutte le citta con i valori minimi di pressione, umidità e Temperatura nel database
+  * In base al periodo specificato dall'attributo <b>Periodo</b> la call restituisce le città che assumono i minimi valori in questo range di tempo
   * @author Federico
   * 
   * 
@@ -173,70 +160,7 @@ import com.univpm.oop.statistiche.*;
 	 t.filtra(citta, period);
 	 return s.getMin(citta);
  }
- /*
-     String type = body.get("type").getAsString();
-     Date[] date = new Date[2];
-     if(type.equals("Customizzato")) {
-		 JsonArray range = body.getAsJsonArray("range");
-		 String inizio = range.get(0).getAsString();
-		 String fine = range.get(1).getAsString();
-		 date = menuDate(inizio,fine);
-		 }
-     else {
-    	 date = menuDate(type);
-    	 };
-	 Stat s = new Stat();
-	 return s.getMin(date[0],date[1]);
-}
-
  
-/**
- * Call che dato un JsonBody in post restituisce un altro JsonBody contenente tutte le informazioni riguardanti le citta con valori minimi di umidita, pressione e temperatura
- * @author Federico
- *  
- * @param body
- * @param zone zona geografica
- * @param type Range di tempo (Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
- * @param range Nel caso in cui type = Customizzato allora range conterrà il range di date 
- * @return JsonObject contenente le città con i valori minimi di umidità, pressione e temperatura
- */
- /*
-@PostMapping("/ZoneGeo")
- public JsonObject getZoneGeo(@RequestBody JsonObject body) {
-	 String zone = body.get("zone").getAsString();
-     String type = body.get("type").getAsString();
-     Date[] date = new Date[2];
-     if(type.equals("Customizzato")) {
-		 JsonArray range = body.getAsJsonArray("range");
-		 String inizio = range.get(0).getAsString();
-		 String fine = range.get(1).getAsString();
-		 date = menuDate(inizio,fine);
-		 }
-     else {
-    	 date = menuDate(type);
-    	 };
-	 Stat stat = new Stat();
-	 Double[] valP =  stat.getDataByLocation(date[0], date[1], zone, true);
-	 Double[] valU = stat.getDataByLocation(date[0], date[1], zone, false);
-	 double mediaP = stat.getMedia(valP);
-	 double mediaU = stat.getMedia(valU);
-	 double varianzaU = stat.getVarianza(valU);
-	 double varianzaP = stat.getVarianza(valP);
-	 JsonObject JsonReturn = new JsonObject();
-	 if(valP == null && valU == null) {
-		 JsonReturn.addProperty("Nessun valore trovato nel range di tempo specificato","");
-		 return JsonReturn;
-	 }
-	 else {
-		 JsonReturn.addProperty("Zona", zone);
-		 JsonReturn.addProperty("Media Umidità", new DecimalFormat("#.##").format(mediaU));
-		 JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
-		 JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(mediaP));
-		 JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
-		 return JsonReturn;
-		 }		
- }
- */
 /**
  * Call per gestire i favoriti
  * @author Federico
@@ -267,87 +191,10 @@ import com.univpm.oop.statistiche.*;
 
  }
  
-/**
- * @author Nicolò		
- * @param time
- * @return
- *//*
- public static Date[] menuDate(String time) {
-	 Date inizio = new Date();
-	 Date fine = new Date();
-	 LocalDate l;
-		switch (time) {
-		case "Giornaliero":
-			fine = new Date();
-			l = LocalDate.now().minusDays(1);
-			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-			// stampaStat(inizio,fine,citta);
-			break;
-		case "Settimanale":
-			fine = new Date();
-			l = LocalDate.now().minusDays(7);
-			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-			// stampaStat(inizio,fine,citta);
-			break;
-		case "Mensile":
-			fine = new Date();
-			l = LocalDate.now().minusDays(30);
-			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-			// stampaStat(inizio,fine,citta);
-			break;
-		case "Annuale":
-			fine = new Date();
-			l = LocalDate.now().minusDays(365);
-			inizio = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-			// stampaStat(inizio,fine,citta);
-			break;
-		}
-				
-		Date[] date = {inizio, fine};
-		return date;
-	}
+
 
  /**
-  * Converte un range di date da String a Date
-  * @author Federico
-  * 
-  * @param start Inizio range
-  * @param end Fine range
-  * @return Array di Date contenente le date di inizio e fine
-  *//*
- public static  Date[] menuDate(String start,String end) {
-	 Date inizio = new Date();
-	 Date fine = new Date();
-	 try {
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy HH:mm");
-			inizio = formato.parse(start);
-			fine = formato.parse(end);
-		}catch (ParseException e1) {
-			try {
-				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");
-				inizio = formato.parse(start);
-				fine = formato.parse(end);					
-				}catch (ParseException e2) {
-					Log.report(new Date()+"-"+e2.getMessage());
-				}
-		}
-	 Date[] date = {inizio, fine};
-	 return date;
-		}
- 
- */
- @GetMapping("/Prova")
- public ArrayList<Citta> prova(){
-	 Citta c1 = new Citta(12333,"Prova1","Sole",21,1080,3,"Centro",null);
-	 Citta c2 = new Citta(12333,"Prova2","Sole",21,1080,3,"Centro",null);
-	 ArrayList<Citta> city = new ArrayList<Citta>();
-	 city.add(c1);
-	 city.add(c2);
-	 return city;
- }
- /**
-  * Metodo utile per la lettura mediante JsonObject dei filtri da applicare al DataBase locale,
-  * il filtraggio può essere effettuato per città, periodo temporale e zone geografiche
+  *Metodo che dato un Array di Citta e un Array di filtri restituisce in Array di citta che rispettano quei filtri
   * 
   * @author Nicolò
   * @author Federico
