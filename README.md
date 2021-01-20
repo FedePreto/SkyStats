@@ -2,7 +2,7 @@
 
 <h3>Componenti gruppo:</h3><br>
 Nicolò Raccichini <b>s1092919</b><br>
-Federico Pretini <b>...</b><br>
+Federico Pretini <b>s1092769</b><br>
 Diego Vaccarini <b>S1093271 </b><br>
 
 <h1>Spiegazione progetto<h1><br>
@@ -17,12 +17,42 @@ Diego Vaccarini <b>S1093271 </b><br>
   ```json
   
   {
-    "citta":["Fermo",3171179,"Ancona","Palermo","Ferrara","Firenze"]
+    "citta":["Fermo",3171179]
   }
   
   ```
   
-  Nel JsonArray citta inserire il numero di citta delle quali si vorrà richiedere il meteo.<br>
+  Nel JsonArray citta inserire le citta delle quali si vorrà richiedere il meteo.<br>
+  
+  Ritorna un ArrayList contenente le città richieste: <br>
+  
+  ```json
+  
+  [
+    {
+        "id": 6541874,
+        "nome": "Fermo",
+        "meteo": "nubi sparse",
+        "umidita": 54.0,
+        "pressione": 1024.0,
+        "temperatura": 10.94,
+        "posizione": "Centro",
+        "data": "Jan 20, 2021, 11:23:03 AM"
+    },
+    {
+        "id": 3171179,
+        "nome": "Perugia",
+        "meteo": "cielo coperto",
+        "umidita": 93.0,
+        "pressione": 1024.0,
+        "temperatura": 8.05,
+        "posizione": "Centro",
+        "data": "Jan 20, 2021, 11:23:03 AM"
+    }
+]
+  
+  ```
+  
   
   <h2>Stat(Post):</h2><br>
   <i>localhost:8080/Stat</i><br>
@@ -110,7 +140,7 @@ L'attributo <b>type</b> può valere: <br>
   -gg/mm/yyyy,gg/mm/yyyy : Il range di date customizzato<br>
   
 <h2>Fav(Get)</h2>
-<i>localhost:8080/Fav?action="Aggiungi"&name="Ancona"</i>
+<i>localhost:8080/Fav?Action="Aggiungi"&name="Ancona"</i>
 <br>
 <h3>Parametri</h3><br>
 Il parametro <b>action</b> può assumere i seguenti valori: <br>
