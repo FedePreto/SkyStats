@@ -47,9 +47,6 @@ public class DemoApplication {
 		 //Timer timer = new Timer();
 		 //Aggiornamento agg = new Aggiornamento();
 		// timer.schedule(agg, getDelay(), 5 * 3600000);
-		 Timer timer = new Timer();
-		 Aggiornamento agg = new Aggiornamento();
-		 timer.schedule(agg, getDelay(), 5 * 3600000);
 		 Scanner s = new Scanner(System.in);
 		System.out.println("Inserisci la key di OpenWeather: ");
 		DemoApplication.key = s.next();
