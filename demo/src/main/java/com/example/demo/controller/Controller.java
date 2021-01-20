@@ -129,7 +129,7 @@ import log.Log;
 
 /**
  * Dato un body in JsonObject, "/Max" è una call in Post che restituisce un JsonObject contentente le citta con i valori massimi di temperatura, umidita e pressione nel database
- * @author Federico  * 
+ * @author Federico  
  * @param body
  * @param type Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
  *
