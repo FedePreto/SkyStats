@@ -136,8 +136,7 @@ import com.univpm.oop.statistiche.*;
 	 Stat s = new Stat();
 	 ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
 	 Tempo t = new Tempo();
-	 t.filtra(citta, period);
-	 return s.getMax(citta);
+	 return s.getMax(t.filtra(citta, period));
 	 
 	 
     /* String type = body.get("type").getAsString();

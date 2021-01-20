@@ -31,7 +31,7 @@ public class Tempo implements Filtro{
 		date = getDateFromString(filtro);
 		System.out.println(date[0] + " " + date[1]);
 		System.out.println(c.get(0).getNome());
-		System.out.println(c.get(c.size()-1));
+		System.out.println(c.get(c.size()-1).getNome());
 		for (int i = 0; i < c.size(); i++) {
 			if(c.get(i).getData().before(date[1]) && c.get(i).getData().after(date[0]))
 				citta_tempo.add(c.get(i));

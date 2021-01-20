@@ -92,8 +92,11 @@ public class Stat {
 				if (c.get(i).getId() == idCitta) {
 					switch(scelta) {
 					case 0: val.add(c.get(i).getPressione());
+					        break;
 					case 1: val.add(c.get(i).getUmidita());
+					        break;
 					case 2: val.add(c.get(i).getTemperatura());
+					        break;
 					}
 					
 				}
@@ -105,8 +108,11 @@ public class Stat {
 				if (c.get(i).getNome().equals(citta)) {
 					switch(scelta) {
 					case 0: val.add(c.get(i).getPressione());
+					        break;
 					case 1: val.add(c.get(i).getUmidita());
+					        break;
 					case 2: val.add(c.get(i).getTemperatura());
+					        break;
 					}
 				}
 			}
@@ -140,10 +146,9 @@ public class Stat {
 	 * @param media	Media dei valori	
 	 * @return	Varianza
 	 */
-	public double getVarianza(ArrayList<Citta> c, int  scelta) {
-		Double[] val = getValues(c,c.get(0).getNome(), scelta);
-		double media = getMedia(val);
-		
+	public double getVarianza(ArrayList<Citta> city, String c,int  scelta) {
+		Double[] val = getValues(city,c,scelta);
+		double media = getMedia(val);		
 		if(val==null) return 0;
 		else {
 			double var = 0;
@@ -236,29 +241,33 @@ public class Stat {
 		for(int i=0; i<favoriti.size(); i++) {
 			 m.paint(m.getGraphics()); 
 			 m.jb.setValue(i);
-			for(int j=0; j<citta.size(); j++) {
-				if(favoriti.get(i).equals(citta.get(j).getNome())) {
-					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP = getVarianza(citta, 0);
-					getVarU = getVarianza(citta, 1);
-					getVarT = getVarianza(citta, 2);
-					break;
-				}
-			}
+			 System.out.println(favoriti.get(i));
+			 getVarP = getVarianza(citta, favoriti.get(i),0);
+			 System.out.println(getVarP);
+			 getVarU = getVarianza(citta,favoriti.get(i) ,1);
+			 System.out.println(getVarU);
+			 getVarT = getVarianza(citta, favoriti.get(i) ,2);
+			 System.out.println(getVarT);
 			//Permette di memorizzare il valore massimo di varianza di pressione e l'indice della città su cui è stato calcolato
-			if (getVarP > max_val[3]) {
+			if (getVarP > max_val[3]) {				
+				System.out.println("Minore Pressione =" + max_val[3] + ", Maggiore Pressione = " + getVarP);
 				max_val[3] = getVarP;
 				max_index[3] = i;
+				System.out.println(favoriti.get(max_index[3]));
 				}
 			//Permette di memorizzare il valore massimo di varianza di Umidita e l'indice della città su cui è stato calcolato
 			if (getVarU > max_val[4]) {
+				System.out.println("Minore Umidita=" + max_val[4] + ", Maggiore Umidita= " + getVarU);
 				max_val[4] = getVarU;
 				max_index[4] = i;
+				System.out.println(favoriti.get(max_index[4]));
 			}
 			//Permette di memorizzare il valore massimo di varianza di temperatura e l'indice della città su cui è stato calcolato
 			if (getVarT > max_val[5]) {
+				System.out.println("Minore Temperatura=" + max_val[5] + ", Maggiore Temperatura= " + getVarT);
 				max_val[5] = getVarT;
 				max_index[5] = i;
+				System.out.println(favoriti.get(max_index[5]));
 				}
 				
 				
@@ -281,11 +290,11 @@ public class Stat {
 		Max_Umidity.addProperty("Valore", new DecimalFormat("#.##").format(max_val[1])+"%");
 		Max_Temperature.addProperty("Nome",citta.get(max_index [2]).getNome());
 		Max_Temperature.addProperty("Valore", new DecimalFormat("#.##").format(max_val[2])+"°C");	
-		Max_Var_Pr.addProperty("Nome", citta.get(max_index [3]).getNome());
+		Max_Var_Pr.addProperty("Nome", favoriti.get(max_index [3]));
 		Max_Var_Pr.addProperty("Valore", new DecimalFormat("#.##").format(max_val[3]));
-		Max_Var_Um.addProperty("Nome", citta.get(max_index [4]).getNome());
+		Max_Var_Um.addProperty("Nome", favoriti.get(max_index [4]));
 		Max_Var_Um.addProperty("Valore", new DecimalFormat("#.##").format(max_val[4]));
-		Max_Var_Temp.addProperty("Nome", citta.get(max_index [5]).getNome());
+		Max_Var_Temp.addProperty("Nome", favoriti.get(max_index [5]));
 		Max_Var_Temp.addProperty("Valore", new DecimalFormat("#.##").format(max_val[5]));
 		JsonReturn.add("Pressione Massima", Max_Pression);
 		JsonReturn.add("Umidità Massima", Max_Umidity);
