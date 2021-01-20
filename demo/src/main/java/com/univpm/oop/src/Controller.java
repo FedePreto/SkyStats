@@ -1,5 +1,4 @@
-package com.example.demo.controller;
-import com.example.demo.statistiche.*;
+package com.univpm.oop.src;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,11 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import com.example.demo.DemoApplication;
-import com.example.demo.exception.*;
-
-
-
 //Classe non utilizzata momentaneamente (Serve per gestire le call da Postaman alla nostra API)
 
  import org.springframework.web.bind.annotation.GetMapping;
@@ -22,17 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam; 
  import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.exception.Data_Exception;
-import com.example.demo.model.Citta;
-import com.example.demo.services.*;
-import com.example.demo.src.Convertitore;
-import com.example.demo.statistiche.Stat;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
-import log.Log;
+import com.univpm.oop.exception.*;
+import com.univpm.oop.log.Log;
+import com.univpm.oop.model.Citta;
+import com.univpm.oop.services.CercaMeteo;
+import com.univpm.oop.services.Convertitore;
+import com.univpm.oop.services.Favoriti;
+import com.univpm.oop.statistiche.*;
 
  /**
   * Classe che gestisce le chiamate al nostro Server

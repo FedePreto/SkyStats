@@ -1,4 +1,4 @@
-package log;
+package com.univpm.oop.log;
 
 import java.io.BufferedWriter;
 import java.io.File;

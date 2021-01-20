@@ -6,15 +6,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.example.*;
-import com.example.demo.GUI.BarraProgresso;
-import com.example.demo.model.Citta;
-import com.example.demo.services.Favoriti;
-import com.example.demo.src.Convertitore;
-import com.example.demo.src.Main;
-import com.example.demo.statistiche.Stat;
 import com.google.gson.JsonObject;
-
-import log.Log;
+import com.univpm.oop.GUI.BarraProgresso;
+import com.univpm.oop.log.Log;
+import com.univpm.oop.model.Citta;
+import com.univpm.oop.services.Convertitore;
+import com.univpm.oop.services.Favoriti;
+import com.univpm.oop.src.Main;
+import com.univpm.oop.statistiche.Stat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

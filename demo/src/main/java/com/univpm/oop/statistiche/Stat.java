@@ -1,11 +1,12 @@
-package com.example.demo.statistiche;
+package com.univpm.oop.statistiche;
 
-import com.example.demo.GUI.BarraProgresso;
-import com.example.demo.model.Citta;
-import com.example.demo.services.Favoriti;
-import com.example.demo.src.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.univpm.oop.GUI.BarraProgresso;
+import com.univpm.oop.model.Citta;
+import com.univpm.oop.services.Convertitore;
+import com.univpm.oop.services.Favoriti;
+import com.univpm.oop.src.*;
 
 import javax.swing.*;  
 import java.util.Date;

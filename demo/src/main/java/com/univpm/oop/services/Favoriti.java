@@ -2,7 +2,7 @@
 //Classe che serve per fare il salvataggio automatico del meteo dei capoluoghi di regione
 //(Il nome della classe è completamente fuori luogo da cambiare) 
 
-package com.example.demo.services;
+package com.univpm.oop.services;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,8 +16,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
-import com.example.demo.model.Citta;
-import com.example.demo.src.Convertitore;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -25,8 +23,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-
-import log.Log;
+import com.univpm.oop.log.Log;
+import com.univpm.oop.model.Citta;
 
 /**
  * Classe che contiene tutti i metodi per la gestione del Favoriti ( Array di Stringhe che contengono i nomi delle citta Preferite dall'utente
@@ -36,7 +34,7 @@ import log.Log;
  */
 public class Favoriti {
 	private ArrayList<String> favoriti;
-	String config = ".\\src\\main\\java\\com\\example\\demo\\config/" + "config.json";
+	String config = "config.json";
 	
 	/**
 	 * Costruttore che inizializza la classe Favoriti aggiornando favoriti dal file <b>config</b>

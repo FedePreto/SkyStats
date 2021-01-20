@@ -3,12 +3,11 @@ package GeneralGUI;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.example.demo.model.Citta;
-import com.example.demo.src.Convertitore;
-import com.example.demo.src.Main;
-import com.example.demo.statistiche.Stat;
-
-import log.Log;
+import com.univpm.oop.log.Log;
+import com.univpm.oop.model.Citta;
+import com.univpm.oop.services.Convertitore;
+import com.univpm.oop.src.Main;
+import com.univpm.oop.statistiche.Stat;
 
 /**
 *

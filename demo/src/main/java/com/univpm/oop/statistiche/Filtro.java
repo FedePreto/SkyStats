@@ -1,6 +1,7 @@
-package com.example.demo.statistiche;
-import com.example.demo.model.Citta;
+package com.univpm.oop.statistiche;
 import java.util.ArrayList;
+
+import com.univpm.oop.model.Citta;
 
 public interface Filtro {
 
