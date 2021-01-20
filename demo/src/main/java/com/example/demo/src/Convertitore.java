@@ -20,7 +20,8 @@ import log.Log;
  */
 public class Convertitore {
 	String nomeFile = "Storico.json";
-
+	private String key;
+	
 	/**
 	 * Metodo che legge il DB completo  al contrario partendo dall'ultima riga del File fino alla prima
 	 * 
@@ -48,6 +49,7 @@ public class Convertitore {
 				Log.report("ERRORE GENERICO AVVENUTO NELLA CLASSE \"Convertitore\"",e.getMessage());
 				return c;
 			}
+			
 			return c;
 		}
 	
@@ -227,13 +229,27 @@ public class Convertitore {
 		ArrayList<Citta> c;
 		c = JsonToCitta();
 		Citta city = new Citta();
-		for(Citta x : c) {
-			if(val.equals(x.getNome())) {
-				return city;
+		try {
+			int i = Integer.parseInt(val);
+			for(Citta x : c) {
+				if(x.getId()==i) {
+					
+					return x;
+				}
+				
+			}
+			
+		}catch(NumberFormatException e) {
+			for(Citta x : c) {
+				if(val.equals(x.getNome())) {
+					return x;
+				}
+				
 			}
 			
 		}
 		return null;
+		
 	}
 
 }
