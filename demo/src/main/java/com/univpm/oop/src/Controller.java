@@ -171,7 +171,7 @@ import com.univpm.oop.statistiche.*;
 	 ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
 	 Tempo t = new Tempo();
 	 t.filtra(citta, period);
-	 return s.getMax(citta);
+	 return s.getMin(citta);
  }
  /*
      String type = body.get("type").getAsString();
@@ -361,6 +361,7 @@ import com.univpm.oop.statistiche.*;
 	 if(jobject.get("attivo").getAsBoolean()) {
 		  Tempo t = new Tempo();
 		  citta = t.filtra(citta, jobject.get("filtro").getAsString());
+		  citta.get(0).setNome(jobject.get("filtro").getAsString());// Serve a far si che ci sia un nome appropiato quando si stampano i risulotati
 		}	 
 	 jobject = jo.get("nome").getAsJsonObject();
 	 if(jobject.get("attivo").getAsBoolean()) {
@@ -372,6 +373,7 @@ import com.univpm.oop.statistiche.*;
 	 if(jobject.get("attivo").getAsBoolean()) {
 		 ZoneGeografiche z = new ZoneGeografiche();
 		 citta = z.filtra(citta, jobject.get("filtro").getAsString());
+		 citta.get(0).setNome(jobject.get("filtro").getAsString()); // Serve a far si che ci sia un nome appropiato quando si stampano i risulotati
 		 }
 	 return citta;
 	}

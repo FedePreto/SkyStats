@@ -13,7 +13,7 @@ public class ZoneGeografiche implements Filtro {
 			if(c.get(i).getPosizione().equals(filtro))
 				citta_geo.add(c.get(i));
 		}
-		citta_geo.get(0).setNome(filtro);
+		
 		return citta_geo;
 	}
 }

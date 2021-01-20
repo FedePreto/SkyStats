@@ -234,13 +234,10 @@ public class Stat {
 		double getVarP=0;
 		double getVarU=0;
 		double getVarT=0;
-		//Crea una barra che permette all'utente di visualizzare lo stato di avanzamento
-			BarraProgresso m=new BarraProgresso(0,favoriti.size());  
-			m.setVisible(true);  
-			m.setTitle("Calcolo della varianza");  //Titolo della barra
+		
+		for(int i=0; i<citta.size(); i++)
+			System.out.println(citta.get(i).getNome());
 		for(int i=0; i<favoriti.size(); i++) {
-			 m.paint(m.getGraphics()); 
-			 m.jb.setValue(i);
 			 System.out.println(favoriti.get(i));
 			 getVarP = getVarianza(citta, favoriti.get(i),0);
 			 System.out.println(getVarP);
@@ -272,7 +269,6 @@ public class Stat {
 				
 				
 		}
-		m.dispose();
 		JsonObject JsonReturn = new JsonObject();
 		if(max_val[0] == 0) {
 			JsonReturn.addProperty("Nessun valore trovato nel range di tempo specficato","");
@@ -332,9 +328,9 @@ public class Stat {
 		 min_val[0] = citta.get(0).getPressione();
 	     min_val[1] = citta.get(0).getUmidita();
 	     min_val[2] = citta.get(0).getTemperatura();
-	     min_val[3] = getVarianza(citta,0);
-		 min_val[4] = getVarianza(citta,1);
-		 min_val[5] = getVarianza(citta,2);
+	     min_val[3] = getVarianza(citta,citta.get(0).getNome(),0);
+		 min_val[4] = getVarianza(citta,citta.get(0).getNome(),1);
+		 min_val[5] = getVarianza(citta,citta.get(0).getNome(),2);
 		 //Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
 		for (int i = 1; i < citta.size(); i++) {
 			//Permette di memorizzare il valore minimo di pressione e l'indice della citta che lo contiene
@@ -367,15 +363,14 @@ public class Stat {
 		for(int i=1; i<favoriti.size(); i++) {
 			m.paint(m.getGraphics()); 
 			m.jb.setValue(i);
-			for(int j=1; j<citta.size(); j++) {
-				if(favoriti.get(i).equals(citta.get(j).getNome())) {					
-					//getVarP memorizza la varianza della pressione per una determinata citta
-					getVarP = getVarianza(citta,0);
-					getVarU = getVarianza(citta,1);
-					getVarT = getVarianza(citta,2);					
-					break;
-			   }
-			}
+						
+		    //getVarP memorizza la varianza della pressione per una determinata citta
+			getVarP = getVarianza(citta,favoriti.get(i),0);
+			getVarU = getVarianza(citta,favoriti.get(i),1);
+			getVarT = getVarianza(citta,favoriti.get(i),2);					
+					
+			  
+			
 			//Permette di memorizzare il valore minimo di varianza di pressione e l'indice della città su cui è stato calcolato
 			if (getVarP < min_val[3]) {
 				min_val[3] = getVarP;
@@ -411,11 +406,11 @@ public class Stat {
 		Min_Umidity.addProperty("Valore", new DecimalFormat("#.##").format(min_val[1])+"%");
 		Min_Temperature.addProperty("Nome", citta.get(min_index[2]).getNome());
 		Min_Temperature.addProperty("Valore", new DecimalFormat("#.##").format(min_val[2])+"°C");
-		Min_Var_Pr.addProperty("Nome", citta.get(min_index [3]).getNome());
+		Min_Var_Pr.addProperty("Nome", favoriti.get(min_index [3]));
 		Min_Var_Pr.addProperty("Valore", new DecimalFormat("#.##").format(min_val[3]));
-		Min_Var_Um.addProperty("Nome", citta.get(min_index [4]).getNome());
+		Min_Var_Um.addProperty("Nome", favoriti.get(min_index [4]));
 		Min_Var_Um.addProperty("Valore", new DecimalFormat("#.##").format(min_val[4]));
-		Min_Var_Temp.addProperty("Nome", citta.get(min_index [5]).getNome());
+		Min_Var_Temp.addProperty("Nome", favoriti.get(min_index [5]));
 		Min_Var_Temp.addProperty("Valore", new DecimalFormat("#.##").format(min_val[5]));
 		JsonReturn.add("Pressione Minima", Min_Pression);
 		JsonReturn.add("Umidità Minima", Min_Umidity);
