@@ -283,9 +283,9 @@ public class MultiCity extends javax.swing.JFrame {
 			 valT = stat.getDataByLocation(c, citta,2);
 			
 		}else {
-			 valP = stat.getValues(c, citta,true);
-			 valU = stat.getValues(c, citta,false);
-			 valT = stat.getValues(c, citta);
+			 valP = stat.getValues(c, citta,0);
+			 valU = stat.getValues(c, citta,1);
+			 valT = stat.getValues(c, citta,2);
 		}
 		
 		double mediaP = stat.getMedia(valP);

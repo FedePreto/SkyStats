@@ -395,12 +395,12 @@ public class MinMax extends javax.swing.JFrame {
    //Inizializza i minimi al primo valore letto nell'array poi procederà con i confronti
   		 min_val[0] = citta.get(0).getUmidita();
   	     min_val[1] = citta.get(0).getPressione();
-  	     min_val[2] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
-  		 min_val[3] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
+  	     min_val[2] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome(),1));
+  		 min_val[3] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome(),0));
   		 max_val[0] = citta.get(0).getUmidita();
   	     max_val[1] = citta.get(0).getPressione();
-  	     max_val[2] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
-  		 max_val[3] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome()));
+  	     max_val[2] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome(),1));
+  		 max_val[3] = stat.getVarianza(stat.getValues(citta, citta.get(0).getNome(),0));
   		 //Ciclo for che permette di analizzare tutte le citta presenti nell'arrayList
   		for (int i = 1; i < citta.size(); i++) {
   		   /*
@@ -441,9 +441,9 @@ public class MinMax extends javax.swing.JFrame {
   			
   			for(int j=1; j<citta.size(); j++) {
   				if(favoriti.get(i).equals(citta.get(j).getNome())) {					
-  					getVarU= stat.getVarianza(stat.getValues(citta, citta.get(j).getNome(), false));
+  					getVarU= stat.getVarianza(stat.getValues(citta, citta.get(j).getNome(), 1));
   					//getVarP memorizza la varianza della pressione per una determinata citta
-  					getVarP=stat.getVarianza(stat.getValues(citta, citta.get(j).getNome(), true));
+  					getVarP=stat.getVarianza(stat.getValues(citta, citta.get(j).getNome(), 0));
   					break;
   			   }
   			}
