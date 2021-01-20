@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.univpm.oop.exception"},{"l":"com.univpm.oop.log"},{"l":"com.univpm.oop.model"},{"l":"com.univpm.oop.services"},{"l":"com.univpm.oop.src"},{"l":"com.univpm.oop.statistiche"}];updateSearchResults();

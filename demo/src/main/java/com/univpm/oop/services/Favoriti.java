@@ -145,5 +145,12 @@ public class Favoriti {
 		favoriti.remove(val);
 		salvaArray();
 	}
-	
+	/**
+	 * Ritorna i favoriti
+	 * @author Nicolò
+	 * @return ArrayList dei favoriti
+	 */
+	public ArrayList<String> getFavoriti() {
+		return favoriti;
+	}
 }

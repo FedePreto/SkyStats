@@ -14,6 +14,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.univpm.oop.GeneralGUI.StartingFrame;
 import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 import com.univpm.oop.services.Aggiornamento;
@@ -50,6 +51,7 @@ public class DemoApplication {
 		Timer timer = new Timer();
 		Aggiornamento agg = new Aggiornamento();
 		timer.schedule(agg, getDelay(), 5 * 3600000);
+		new StartingFrame().setVisible(true);
 		
 		 
 	}

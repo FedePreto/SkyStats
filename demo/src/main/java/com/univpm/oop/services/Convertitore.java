@@ -55,6 +55,42 @@ public class Convertitore {
 			return c;
 		}
 	
+	
+	 /**
+		 * Override del metodo precedente che permette di filtrare in base ad un range di date dato in input
+		 * @author Federico
+		 * @author Nicolò
+		 * @param inizio Data di inizio del range di tempo
+		 * @param fine Data di fine del range di tempo
+		 * @return ArrayList di Citta che sono del db e che si trovano tra la data di inizio e quella di fine
+		 */
+		public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
+			System.out.println("================================================================");
+			ArrayList<Citta> c = new ArrayList<Citta>();
+			Citta citta;
+			String file="";
+			int i = 0;
+			Gson gson = new Gson();
+			try {
+				ReversedLinesFileReader in = new ReversedLinesFileReader(new File(nomeFile));
+				citta = gson.fromJson(in.readLine(), Citta.class);
+				 do{
+					citta = gson.fromJson(in.readLine(), Citta.class);
+					if(citta!=null)
+						if(citta.getData().before(fine)) {
+							c.add(citta);
+						}
+				}while(citta.getData().after(inizio));
+			}catch(IOException e) {
+				
+			}
+			catch(NullPointerException e) {
+				System.out.println();
+			}
+			if(c.isEmpty())
+				return null;
+			return c;
+	}
     
 	/**
 	 * Metodo che salva le Citta contenute in c in nomeFile
