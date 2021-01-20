@@ -159,6 +159,7 @@ public class Stat {
 	 * @return JsonObject che contiene tutte le con i valori massimi nel database nel range di tempo indicato
 	 */
 	public JsonObject getMax(ArrayList<Citta> citta) {	
+		Favoriti fav = new Favoriti();
 	/*
 	  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
 		0- Pressione massima
@@ -204,6 +205,7 @@ public class Stat {
 		double getVarP=0;
 		double getVarU=0;
 		double getVarT=0;
+		
 		for(int i=0; i<favoriti.size(); i++) {
 			 getVarP = getVarianza(citta, favoriti.get(i),0);
 			 getVarU = getVarianza(citta,favoriti.get(i) ,1);
@@ -267,6 +269,7 @@ public class Stat {
 	 * @return JsonObject che contiente tutte le citta con i valori minimi nel database contenute nel range di tempo definito da inizio e fine
 	 */
 	public JsonObject getMin(ArrayList<Citta>citta) {
+		Favoriti fav = new Favoriti();
 		/*
 		  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
 			0- Pressione minima
