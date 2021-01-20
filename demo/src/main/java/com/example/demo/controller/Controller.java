@@ -40,6 +40,10 @@ import log.Log;
  
  @RestController public class Controller {
 	 
+	 public Controller() {
+		 
+	 }
+	 
  /**
   * Call che restituisce il meteo di una citta prelevandolo dal DB oppure direttamente da OpenWeather(dipende dalla richiesta dell'utente)
   * 

@@ -72,16 +72,18 @@ public class Stat {
 		}
 	}*/
 	/**
-	 * Metodo che manda indietro i dati utili alla ricerca sottoforma di Array Double
+	 * Metodo che manda indietro i dati di una città che possono essere temperatura, umidità o pressione 
+	 * in base alla scelta effettuata
 	 * @author Federico
-	 * @param inizio Data di inizio del range di tempo
-	 * @param fine	Data di fine del range di tempo
-	 * @param citta	Città soggetta a statistiche
-	 * @param isPressione	Flag utilizzato per decidere di avere indietro o l'umidità oppure la pressione
-	 * @return Array di Double contenente i valori richiesti
+	 * @param c {@link ArrayList} di città contenente i dati da cercare 
+	 * @param citta {@link String} contenente il nome o l'Id della città da cercare 
+	 * @param scelta parametro che serve a selezionare il tipo di dato cercato
+	 *              (0 = pressione,
+	 *               1 = umidità,
+	 *               2 = temperatura) 
+	 * @return Array di tipo Double contenente i valori cercati
 	 */
 	public Double[] getValues(ArrayList<Citta> c, String citta, int scelta) {
-		Convertitore conv = new Convertitore();
 		ArrayList<Double> val = new ArrayList<Double>();
 		try {
 			int idCitta = Integer.parseInt(citta);
