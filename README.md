@@ -50,8 +50,8 @@ Diego Vaccarini <b>S1093271 </b><br>
 ```
 
 Ogni filtro ha 2 Attributi : Attivo e Filtro.<br>
-Attivo è un Boolean che se è True attiva il seguente filtro mentre se false il filtro viene saltato<br>
-Mentre per ogni genere di fitro il parametro filtro varia.<br>
+Attivo è un Boolean che se è True attiva il seguente filtro mentre se false il filtro viene saltato,<br>
+E per ogni genere di fitro il parametro filtro varia.<br>
 <h3>Filtro Tempo</h3><br>
 Possibili opzioni:<br>
   -Giornaliero : Il range delle statistiche sarà da il giorno prima della call alla stessa ora al momento attuale<br>
