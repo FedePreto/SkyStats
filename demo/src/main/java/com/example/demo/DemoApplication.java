@@ -50,6 +50,7 @@ public class DemoApplication {
 		// Scanner s = new Scanner(System.in);
 		//System.out.print("Inserisci la key di OpenWeather: ");
 		//DemoApplication.key = s.next();
+		 
 	}
 	
 	/**

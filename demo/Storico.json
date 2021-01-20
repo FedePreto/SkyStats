@@ -1876,3 +1876,26 @@
 {"id":3183087,"nome":"Ancona","meteo":"poche nuvole","umidita":81.0,"pressione":1024.0,"temperatura":6.73,"posizione":"Centro","data":"Jan 19, 2021, 7:56:46 PM"}
 {"id":6541874,"nome":"Fermo","meteo":"cielo sereno","umidita":10.0,"pressione":985.0,"temperatura":4.45,"posizione":"Centro","data":"Jan 19, 2021, 7:56:46 PM"}
 {"id":6542055,"nome":"Comune di Como","meteo":"cielo coperto","umidita":70.0,"pressione":1021.0,"temperatura":1.47,"posizione":"Nord","data":"Jan 19, 2021, 7:56:46 PM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"poche nuvole","umidita":93.0,"pressione":1021.0,"temperatura":2.3,"posizione":"Centro","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":3170027,"nome":"Potenza","meteo":"nubi sparse","umidita":85.0,"pressione":1025.0,"temperatura":8.99,"posizione":"Sud","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"nubi sparse","umidita":87.0,"pressione":1028.0,"temperatura":8.49,"posizione":"Sud","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":3172394,"nome":"Napoli","meteo":"nubi sparse","umidita":82.0,"pressione":1026.0,"temperatura":11.5,"posizione":"Sud","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":3181927,"nome":"Bologna","meteo":"foschia","umidita":100.0,"pressione":1023.0,"temperatura":1.7,"posizione":"Nord","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":3165185,"nome":"Trieste","meteo":"nubi sparse","umidita":100.0,"pressione":1022.0,"temperatura":6.13,"posizione":"Nord","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":4219762,"nome":"Rome","meteo":"cielo sereno","umidita":81.0,"pressione":1025.0,"temperatura":6.16,"posizione":"Sud","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":3176217,"nome":"Genova","meteo":"pioggia leggera","umidita":80.0,"pressione":1020.0,"temperatura":7.33,"posizione":"Nord","data":"Jan 20, 2021, 10:01:31 AM"}
+{"id":3173435,"nome":"Milano","meteo":"pioggia moderata","umidita":93.0,"pressione":1022.0,"temperatura":2.18,"posizione":"Nord","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3183087,"nome":"Ancona","meteo":"nubi sparse","umidita":100.0,"pressione":1023.0,"temperatura":9.16,"posizione":"Centro","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3180990,"nome":"Campobasso","meteo":"poche nuvole","umidita":95.0,"pressione":1019.0,"temperatura":4.66,"posizione":"Sud","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3165523,"nome":"Torino","meteo":"nubi sparse","umidita":80.0,"pressione":1021.0,"temperatura":1.43,"posizione":"Nord","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"cielo sereno","umidita":66.0,"pressione":1026.0,"temperatura":10.63,"posizione":"Sud","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":2525471,"nome":"Cagliari","meteo":"poche nuvole","umidita":100.0,"pressione":1023.0,"temperatura":4.18,"posizione":"Sud","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":2523918,"nome":"Palermo","meteo":"nubi sparse","umidita":1.0,"pressione":1024.0,"temperatura":10.71,"posizione":"Sud","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3176959,"nome":"Firenze","meteo":"foschia","umidita":93.0,"pressione":1023.0,"temperatura":6.71,"posizione":"Centro","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3165243,"nome":"Trento","meteo":"nubi sparse","umidita":77.0,"pressione":1017.0,"temperatura":-2.4,"posizione":"Nord","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3171179,"nome":"Perugia","meteo":"cielo coperto","umidita":100.0,"pressione":1024.0,"temperatura":6.75,"posizione":"Centro","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3182996,"nome":"Aosta","meteo":"poche nuvole","umidita":93.0,"pressione":1022.0,"temperatura":-4.17,"posizione":"Nord","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3164603,"nome":"Venezia","meteo":"nubi sparse","umidita":86.0,"pressione":1023.0,"temperatura":1.42,"posizione":"Nord","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":3183087,"nome":"Ancona","meteo":"nubi sparse","umidita":100.0,"pressione":1023.0,"temperatura":9.16,"posizione":"Centro","data":"Jan 20, 2021, 10:01:32 AM"}
+{"id":6541874,"nome":"Fermo","meteo":"nubi sparse","umidita":68.0,"pressione":1025.0,"temperatura":7.78,"posizione":"Centro","data":"Jan 20, 2021, 10:01:33 AM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"cielo coperto","umidita":79.0,"pressione":1020.0,"temperatura":1.89,"posizione":"Nord","data":"Jan 20, 2021, 10:01:33 AM"}
