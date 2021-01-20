@@ -14,6 +14,9 @@ import java.util.Date;
  *
  */
 public class Log {
+	/**
+	 * Path del file di log
+	 */
 	public static String nome = "log.txt";
 	
 	/**

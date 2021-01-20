@@ -42,8 +42,7 @@ import com.univpm.oop.statistiche.*;
   * 
   * @author Federico
   * 
-  * @param city	 parametro che permette di scegliere il nome della citta della quale si vuole conoscere il meteo
-  * @param agg  parametro che permette di scegliere se prelevare il meteo dal DB oppure da OpenWeather
+  * @param body JsonObject contenente i filtri
   *  
   * @return c  parametro che contiene il meteo della città scelta
   */
@@ -123,9 +122,9 @@ import com.univpm.oop.statistiche.*;
 
 /**
  * In base al periodo specificato dall'attributo <b>Periodo</b> la call restituisce le città che assumono i massimi valori in questo range di tempo
- * @author Federico  * 
- * @param body
- * @param type Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
+ * @author Federico  
+ * 
+ * @param period Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
  *
  * @return JsonObject contenente tutti le citta con i valori massimi nel Database
  */
@@ -146,9 +145,7 @@ import com.univpm.oop.statistiche.*;
   * @author Federico
   * 
   * 
-  * @param body
-  * @param type Range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
-  * @param range Nel caso in cui type=Customizzato allora range contiente la data di inizio e di fine del range di tempo
+  * @param period Range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
   * @return JsonObject contenente tutte le citta con i valori minimi di pressione, umidità e temperatura nel Database
   */
  @GetMapping("/Min")

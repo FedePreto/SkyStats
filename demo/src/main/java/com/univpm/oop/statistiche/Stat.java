@@ -26,8 +26,8 @@ public class Stat {
 	 * 
 	 * @author Federico
 	 * @author Nicolò
-	 * 
-	 * @return
+	 * @param c Array di citta
+	 * @return dati raccolti
 	 */
 	
 	public static Double[][] getValues(ArrayList<Citta>c){
@@ -114,8 +114,9 @@ public class Stat {
 	/**
 	 * Metodo che, dati in input i valori e la media di questi, calcola la varianza
 	 * @author Federico	
-	 * @param val	Valori usati per calcolare la varianza
-	 * @param media	Media dei valori	
+	 * @param city Array contenente le citta dalle quali prelevare i dati per calcolare la varianza
+	 * @param c Nome della citta da cercare nell parametro city
+	 * @param scelta 0-Pressione,1-Umidità,2- Temperatura
 	 * @return	Varianza
 	 */
 	public double getVarianza(ArrayList<Citta> city, String c,int  scelta) {
@@ -264,8 +265,7 @@ public class Stat {
 	/**
 	 * Date in input un Array di Citta,il metodo cerca nel database le citta con i valori minimi per ogni parametro e le ritorna sotto forma di JsonObject
 	 * @author Federico
-	 * @param inizio Data di inizio del range
-	 * @param fine Data di fine del range
+	 * @param citta Citta da confrontare
 	 * @return JsonObject che contiente tutte le citta con i valori minimi nel database contenute nel range di tempo definito da inizio e fine
 	 */
 	public JsonObject getMin(ArrayList<Citta>citta) {

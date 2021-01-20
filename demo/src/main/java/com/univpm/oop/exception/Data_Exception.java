@@ -7,7 +7,9 @@ import com.univpm.oop.log.Log;
  *
  */
 public class Data_Exception extends Exception{
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Data_Exception() {
 		super();
 		Log.report("NON SONO DISPONIBILI DATI CON I FILTRI SPECIFICATI", getLocalizedMessage());

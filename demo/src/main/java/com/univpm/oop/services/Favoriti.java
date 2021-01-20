@@ -52,7 +52,7 @@ public class Favoriti {
 	
 
 	/**
-	 * Metodo che va ad aggiornare favoriti con i favoriti scirtti sul file <b>config</>
+	 * Metodo che va ad aggiornare favoriti con i favoriti scirtti sul file <b>config</b>
 	 * 
 	 * @author Nicolò
 	 * 
@@ -78,7 +78,7 @@ public class Favoriti {
 
 	}
 	/**
-	 * Scrive sul file <b>config</> i favoriti in modo da salvarli
+	 * Scrive sul file <b>config</b> i favoriti in modo da salvarli
 	 * @author Nicolò
 	 */
 	public void salvaArray() {
@@ -120,7 +120,7 @@ public class Favoriti {
 	 * Ritorna JsonObject contentente tutte le citta nei favoriti
 	 * @author Federico
 	 * 
-	 * @return
+	 * @return jsonObject contenente i favoriti
 	 */
 	public JsonObject stampaFavoriti() {
 		JsonObject jo = new JsonObject();
@@ -137,7 +137,7 @@ public class Favoriti {
 	
 
 	/**
-	 * Cancella il favorito <b>val</> dai favoriti
+	 * Cancella il favorito <b>val</b> dai favoriti
 	 * @author Nicolò
 	 * @param val Valore dal eliminare
 	 */
