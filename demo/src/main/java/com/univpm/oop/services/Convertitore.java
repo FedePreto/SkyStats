@@ -1,4 +1,4 @@
-package com.example.demo.src;
+package com.univpm.oop.services;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,10 +8,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 import org.apache.commons.io.input.ReversedLinesFileReader;
 
-import com.example.demo.model.Citta;
 import com.google.gson.*;
-
-import log.Log;
+import com.univpm.oop.log.Log;
+import com.univpm.oop.model.Citta;
 /**
  * Classe contenente metodi per la lettura del DataBase, conversione di Java to Json o viceversa
  * @author Nicolò

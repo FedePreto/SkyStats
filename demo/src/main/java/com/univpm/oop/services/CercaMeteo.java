@@ -1,4 +1,4 @@
-package com.example.demo.services;
+package com.univpm.oop.services;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -9,7 +9,7 @@ import java.net.URLConnection;
 import java.util.Date;
 import java.util.Scanner;
 
-import log.Log;
+import com.univpm.oop.log.Log;
 /**
  * Classe per fare le call alle api di OpenWeather
  * @author Federico

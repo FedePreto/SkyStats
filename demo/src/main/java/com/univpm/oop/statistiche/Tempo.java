@@ -1,4 +1,4 @@
-package com.example.demo.statistiche;
+package com.univpm.oop.statistiche;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -8,9 +8,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.regex.PatternSyntaxException;
 
-import com.example.demo.model.Citta;
-
-import log.Log;
+import com.univpm.oop.log.Log;
+import com.univpm.oop.model.Citta;
 
 /**
  * La classe si occupa della gestione del filtraggio del DataBase in base ad un

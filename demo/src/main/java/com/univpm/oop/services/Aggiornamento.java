@@ -1,12 +1,9 @@
-package com.example.demo.aggiornamento;
+package com.univpm.oop.services;
 
 import java.util.TimerTask;
 
-import com.example.demo.DemoApplication;
-import com.example.demo.services.CercaMeteo;
-import com.example.demo.services.Favoriti;
-import com.example.demo.src.Convertitore;
 import com.google.gson.Gson;
+import com.univpm.oop.src.DemoApplication;
 
 /**
  * La classe estende la classe astratta {@link TimerTask}. Essa esegue l'aggiornamento del DB locale

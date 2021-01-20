@@ -1,6 +1,6 @@
-package com.example.demo.exception;
+package com.univpm.oop.exception;
 
-import log.Log;
+import com.univpm.oop.log.Log;
 
 public class Data_Exception extends Exception{
 	

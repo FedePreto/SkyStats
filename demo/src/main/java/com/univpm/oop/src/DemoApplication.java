@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.univpm.oop.src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,11 +12,11 @@ import org.apache.commons.io.input.ReversedLinesFileReader;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import com.example.demo.aggiornamento.Aggiornamento;
-import com.example.demo.model.Citta;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import log.Log;
+import com.univpm.oop.log.Log;
+import com.univpm.oop.model.Citta;
+import com.univpm.oop.services.Aggiornamento;
 
 /**
  * La seguente classe si occupa di gestire ed avviare tutti i componenti dell'applicazione

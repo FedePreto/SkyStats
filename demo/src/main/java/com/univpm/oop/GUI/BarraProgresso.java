@@ -1,4 +1,4 @@
-package com.example.demo.GUI;
+package com.univpm.oop.GUI;
 import javax.swing.*;  
 
 /**

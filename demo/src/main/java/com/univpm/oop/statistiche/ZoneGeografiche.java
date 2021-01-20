@@ -1,8 +1,8 @@
-package com.example.demo.statistiche;
+package com.univpm.oop.statistiche;
 
 import java.util.ArrayList;
 
-import com.example.demo.model.Citta;
+import com.univpm.oop.model.Citta;
 
 public class ZoneGeografiche implements Filtro {
 	
