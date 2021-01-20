@@ -26,7 +26,7 @@ import log.Log;
  */
 @SpringBootApplication
 public class DemoApplication {
-	public static String key;
+	public static String key = "907bf98c6e55b2f5321b46b5edb794de";
 	/**
 	 * Avvia SpringBoot inizializzando Headles a false in modo da poter instanziare AWT permettendo così la
 	 * visualizzazione delle icone, inoltre fa anche partire l'aggiornamento automatico ogni 5h dello storico
@@ -47,9 +47,9 @@ public class DemoApplication {
 		 //Timer timer = new Timer();
 		 //Aggiornamento agg = new Aggiornamento();
 		// timer.schedule(agg, getDelay(), 5 * 3600000);
-		 Scanner s = new Scanner(System.in);
-		System.out.println("Inserisci la key di OpenWeather: ");
-		DemoApplication.key = s.next();
+		// Scanner s = new Scanner(System.in);
+		//System.out.print("Inserisci la key di OpenWeather: ");
+		//DemoApplication.key = s.next();
 	}
 	
 	/**

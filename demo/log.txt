@@ -1,3 +1,3 @@
-Errore avvenuto in data :Wed Jan 20 09:58:35 CET 2021
-     Causa: ERRORE DURANTE LA RICHIESTA METEO
-     Dettagli: Server returned HTTP response code: 401 for URL: http://api.openweathermap.org/data/2.5/weather?q=Ancona,IT&appid=null&units=metric&lang=it
+Errore avvenuto in data :Wed Jan 20 10:57:58 CET 2021
+     Causa: Mantova NON E' PRESENTE NELLO STORICO
+     Dettagli: E' STATO RAGGIUNTO IL LIMITE MASSIMO DI 60 CALL PER MINUTO

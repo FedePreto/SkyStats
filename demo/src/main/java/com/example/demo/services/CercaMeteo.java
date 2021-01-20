@@ -30,7 +30,7 @@ public class CercaMeteo {
 
 			URLConnection openConnection = (URLConnection) new URL(url).openConnection();
 			Scanner in = new Scanner(new BufferedReader(new InputStreamReader(openConnection.getInputStream())));
-			meteo_citta = in.nextLine();
+			meteo_citta += in.nextLine();
 			in.close();
 			
 		} catch (IOException e) {

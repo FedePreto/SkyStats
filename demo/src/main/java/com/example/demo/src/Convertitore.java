@@ -197,8 +197,8 @@ public class Convertitore {
 			}catch(ClassCastException e){
 			//	Log.report(new Date()+"-"+e.getMessage());
 				System.out.println("ERRORE DI CASTING");
-				e.printStackTrace();
-				System.out.println(e);
+				//e.printStackTrace();
+				//System.out.println(e);
 				return null;
 			
 			}catch(Exception e) {
@@ -226,21 +226,18 @@ public class Convertitore {
 	 * @return Citta trovata oppure null se non trovata
 	 */
 	public Citta findInJson(String val) {
-		ArrayList<Citta> c;
-		c = JsonToCitta();
-		Citta city = new Citta();
+		ArrayList<Citta> city = JsonToCitta();
 		try {
-			int i = Integer.parseInt(val);
-			for(Citta x : c) {
-				if(x.getId()==i) {
-					
-					return x;
+			int ID = Integer.parseInt(val);
+			for(Citta x : city) {
+				if(x.getId()==ID) {
+					 return x;
 				}
 				
 			}
 			
 		}catch(NumberFormatException e) {
-			for(Citta x : c) {
+			for(Citta x : city) {
 				if(val.equals(x.getNome())) {
 					return x;
 				}
@@ -249,7 +246,6 @@ public class Convertitore {
 			
 		}
 		return null;
-		
 	}
 
 }

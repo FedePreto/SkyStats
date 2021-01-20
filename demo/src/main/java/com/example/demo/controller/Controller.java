@@ -53,45 +53,39 @@ import log.Log;
   *  
   * @return c  parametro che contiene il meteo della città scelta
   */
-
- public JsonElement getWeather(String city,int i) {
-	 String url = "";
-	 Citta c = new Citta();
-	 Convertitore conv = new Convertitore(); 
-	 if(i<=60) {
-		 try { 
-			 int ID = Integer.parseInt(city);
-			 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid="+DemoApplication.key+"&units=metric&lang=it";
-				 
-		 	}catch (NumberFormatException e) {
-			 url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",IT&appid="+DemoApplication.key+"&units=metric&lang=it"; 
-		 	}	 
-			String meteo = CercaMeteo.getMeteo(url);
-			c = conv.getClassFromCall(meteo);
-			
-	 }else {
-		 
-		 c = conv.findInJson(city);
-		 
-	 }
-	 Gson gson = new Gson();
-	 //String json = gson.toJson(c,Citta.class);
-	 
-	 return gson.toJsonTree(c);
-	 
- }
-
  @PostMapping("/Weather")
- public JsonObject getWeather(@RequestBody JsonObject body)throws Data_Exception {
+ public ArrayList<Citta> getWeather(@RequestBody JsonObject body)throws Data_Exception {
 	 JsonArray citta = body.get("citta").getAsJsonArray();
-	 JsonArray ret = new JsonArray();
+	 ArrayList<Citta> city = new ArrayList<Citta>();
+	 Convertitore conv = new Convertitore(); 
+	 Citta c = new Citta();
+	 String url="";
 	 for (int i = 0; i < citta.size(); i++) {
+		 if(i<=60) {
+			 try { 
+				 int ID = Integer.parseInt(citta.get(i).getAsString());
+				
+				 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid="+DemoApplication.key+"&units=metric&lang=it";
+					 
+			 	}catch (NumberFormatException e) {
+				 url = "http://api.openweathermap.org/data/2.5/weather?q=" + citta.get(i).getAsString() + ",IT&appid="+DemoApplication.key+"&units=metric&lang=it"; 
+			 	}	 
+				String meteo = CercaMeteo.getMeteo(url);
+				c = conv.getClassFromCall(meteo);
+				
+		 }else {
+			 
+			 c = conv.findInJson(citta.get(i).getAsString());
+			 if(c==null) {
+				 Log.report(citta.get(i).getAsString() + " NON E' PRESENTE NELLO STORICO", "E' STATO RAGGIUNTO IL LIMITE MASSIMO DI 60 CALL PER MINUTO");
+			 }
+			 
+		 }
+		 
+		 city.add(c);
 		
-		ret.add(getWeather(citta.get(i).getAsString(),i));
 	}
-	JsonObject jo = new JsonObject();
-	jo.add("meteo", ret);
-	return jo;
+	return city;
  }
  
 /**
@@ -349,12 +343,21 @@ import log.Log;
 		}
  
  */
+ @GetMapping("/Prova")
+ public ArrayList<Citta> prova(){
+	 Citta c1 = new Citta(12333,"Prova1","Sole",21,1080,3,"Centro",null);
+	 Citta c2 = new Citta(12333,"Prova2","Sole",21,1080,3,"Centro",null);
+	 ArrayList<Citta> city = new ArrayList<Citta>();
+	 city.add(c1);
+	 city.add(c2);
+	 return city;
+ }
  /**
   * Metodo utile per la lettura mediante JsonObject dei filtri da applicare al DataBase locale,
   * il filtraggio può essere effettuato per città, periodo temporale e zone geografiche
   * 
   * @author Nicolò
-  * 
+  * @author Federico
   * @param body {@link JsonObject} contenente il Body per la gestione dei filtri da applicare
   * 
   * @return {@link ArrayList} di oggeti di tipo {@link Filtro} contenente i filtri da applicare alle statistiche
