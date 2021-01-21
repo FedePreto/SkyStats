@@ -76,7 +76,6 @@ public class Tempo implements Filtro{
 				DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ITALY);
 				inizio = df.parse(d[0]);
 				fine = df.parse(d[1]);
-				System.out.println(d[0] + " " +  d[1]);
 				}catch(PatternSyntaxException e) {
 					Log.report("SEPARATORE DATE NON TROVATO",e.getMessage());
 				} catch (ParseException e) {
