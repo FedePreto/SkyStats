@@ -13,10 +13,9 @@ import com.univpm.oop.model.Citta;
 import com.univpm.oop.src.Controller;
 import com.univpm.oop.statistiche.Stat;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.univpm.oop.exception.*;
 
-class Test_getValues {
+class classTest {
 	private Stat s = new Stat();
 	private ArrayList<Citta> city = new ArrayList<Citta>();	
 	private Citta c1,c2;
@@ -53,11 +52,7 @@ class Test_getValues {
 		filtri.add("ZoneGeografiche", tempo);
 		filtri.add("nome",tempo);
 		body.add("filtri",filtri);
-		
-		for(Citta x : city)
-		System.out.println(x);
-		System.out.println(body);
-		assertThrows(NullPointerException.class, ()->{Controller.Filtra(body,city);});
+		assertThrows(MalformedException.class, ()->{Controller.Filtra(body,city);});
 	
 	}
 
