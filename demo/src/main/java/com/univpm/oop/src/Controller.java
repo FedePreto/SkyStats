@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.univpm.oop.exception.*;
 import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
@@ -94,15 +95,21 @@ import com.univpm.oop.statistiche.*;
  */
 
 @PostMapping("/Stat")
- public JsonObject getStat(@RequestBody JsonObject body)throws Data_Exception {
+ public JsonObject getStat(@RequestBody JsonObject body)throws DataException {
 	
 	Convertitore conv = new Convertitore(); 
 	Stat s = new Stat();
 	ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
-	citta = Filtra(body, citta);	
+	JsonObject error = new JsonObject();
+	try {
+		citta = Filtra(body, citta);
+	} catch (MalformedException e) {
+		error.addProperty("Error","Sintassi del body errata");
+		return error;	
+	}
 	Double[][] dati = s.getValues(citta);
 	if(dati==null)
-		throw new Data_Exception();
+		throw new DataException();
 	double mediaP = s.getMedia(dati[0]);
 	double mediaU = s.getMedia(dati[1]);
 	double mediaT = s.getMedia(dati[2]);
@@ -199,27 +206,35 @@ import com.univpm.oop.statistiche.*;
   * 
   * @return {@link ArrayList} di oggeti di tipo {@link Filtro} contenente i filtri da applicare alle statistiche
   */
- public static ArrayList<Citta> Filtra(JsonObject body,ArrayList<Citta>citta){
-	 JsonObject jo = body.get("filtri").getAsJsonObject();
-	 JsonObject jobject = jo.get("tempo").getAsJsonObject();
-	 if(jobject.get("attivo").getAsBoolean()) {
-		  Tempo t = new Tempo();
-		  citta = t.filtra(citta, jobject.get("filtro").getAsString());
-		  citta.get(0).setNome(jobject.get("filtro").getAsString());// Serve a far si che ci sia un nome appropiato quando si stampano i risulotati
+ public static ArrayList<Citta> Filtra(JsonObject body,ArrayList<Citta>citta)throws MalformedException{
+	 String s = "";
+	 try{
+		 JsonObject jo = body.get("filtri").getAsJsonObject();
+		 JsonObject jobject = jo.get("tempo").getAsJsonObject();
+		 if(jobject.get("attivo").getAsBoolean()) {
+			 s = "tempo";
+			 Tempo t = new Tempo();
+			 citta = t.filtra(citta, jobject.get("filtro").getAsString());
+			 citta.get(0).setNome(jobject.get("filtro").getAsString());// Serve a far si che ci sia un nome appropiato quando si stampano i risulotati		 
 		}	 
-	 jobject = jo.get("nome").getAsJsonObject();
-	 if(jobject.get("attivo").getAsBoolean()) {
-		NomeId n = new NomeId();
-		citta = n.filtra(citta, jobject.get("filtro").getAsString());
-		return citta; //Se viene effettuato il filtraggio per nome non può essere effettuato anche il filtraggio per ZoneGeo
-		}
-	 jobject = jo.get("ZoneGeografiche").getAsJsonObject();
-	 if(jobject.get("attivo").getAsBoolean()) {
-		 ZoneGeografiche z = new ZoneGeografiche();
-		 citta = z.filtra(citta, jobject.get("filtro").getAsString());
-		 citta.get(0).setNome(jobject.get("filtro").getAsString()); // Serve a far si che ci sia un nome appropiato quando si stampano i risulotati
+		 jobject = jo.get("nome").getAsJsonObject();
+		 if(jobject.get("attivo").getAsBoolean()) {
+			 s = "nome";
+			 NomeId n = new NomeId();
+			 citta = n.filtra(citta, jobject.get("filtro").getAsString());
+			 return citta; //Se viene effettuato il filtraggio per nome non può essere effettuato anche il filtraggio per ZoneGeo
+			 }
+		 jobject = jo.get("ZoneGeografiche").getAsJsonObject();
+		 if(jobject.get("attivo").getAsBoolean()) {
+			 s = "ZoneGeografiche";
+			 ZoneGeografiche z = new ZoneGeografiche();
+			 citta = z.filtra(citta, jobject.get("filtro").getAsString());
+			 citta.get(0).setNome(jobject.get("filtro").getAsString()); // Serve a far si che ci sia un nome appropiato quando si stampano i risulotati
+			 }
+		 }catch(NullPointerException e) {
+			 throw new MalformedException(s);
 		 }
-	 return citta;
+	 return citta; 
 	}
  
  

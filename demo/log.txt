@@ -1,3 +1,18 @@
 Errore avvenuto in data :Wed Jan 20 14:23:30 CET 2021
      Causa: ERRORE GENERICO AVVENUTO NELLA CLASSE "Convertitore"
      Dettagli: java.io.EOFException: End of input at line 1 column 161 path $.data
+Errore avvenuto in data :Thu Jan 21 11:57:36 CET 2021
+     Causa: PARAMETRI MANCANTI
+     Dettagli: Cannot invoke "com.google.gson.JsonElement.getAsString()" because the return value of "com.google.gson.JsonObject.get(String)" is null
+Errore avvenuto in data :Thu Jan 21 12:26:41 CET 2021
+     Causa: JSON NON FORMATTATO CORRETTAMENTE
+     Dettagli: ZoneGeografiche
+Errore avvenuto in data :Thu Jan 21 12:27:43 CET 2021
+     Causa: JSON NON FORMATTATO CORRETTAMENTE
+     Dettagli: ZoneGeografiche
+Errore avvenuto in data :Thu Jan 21 12:33:10 CET 2021
+     Causa: JSON NON FORMATTATO CORRETTAMENTE
+     Dettagli: ZoneGeografiche
+Errore avvenuto in data :Thu Jan 21 12:34:23 CET 2021
+     Causa: JSON NON FORMATTATO CORRETTAMENTE
+     Dettagli: ZoneGeografiche

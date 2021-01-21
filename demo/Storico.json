@@ -83,3 +83,25 @@
 {"id":3164603,"nome":"Venezia","meteo":"pioggia leggera","umidita":87.0,"pressione":1020.0,"temperatura":3.53,"posizione":"Nord","data":"Jan 20, 2021, 5:51:11 PM"}
 {"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":33.0,"pressione":988.0,"temperatura":8.89,"posizione":"Centro","data":"Jan 20, 2021, 5:51:12 PM"}
 {"id":6542055,"nome":"Comune di Como","meteo":"pioggia leggera","umidita":87.0,"pressione":1014.0,"temperatura":1.67,"posizione":"Nord","data":"Jan 20, 2021, 5:51:12 PM"}
+{"id":6541999,"nome":"Comune di L\u0027Aquila","meteo":"poche nuvole","umidita":66.0,"pressione":1017.0,"temperatura":9.73,"posizione":"Centro","data":"Jan 21, 2021, 12:09:23 PM"}
+{"id":3170027,"nome":"Potenza","meteo":"cielo coperto","umidita":62.0,"pressione":1022.0,"temperatura":10.0,"posizione":"Sud","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":2525059,"nome":"Catanzaro","meteo":"cielo coperto","umidita":48.0,"pressione":1022.0,"temperatura":14.85,"posizione":"Sud","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":3172394,"nome":"Napoli","meteo":"nubi sparse","umidita":72.0,"pressione":1021.0,"temperatura":14.4,"posizione":"Sud","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":3181927,"nome":"Bologna","meteo":"foschia","umidita":93.0,"pressione":1016.0,"temperatura":4.4,"posizione":"Nord","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":3165185,"nome":"Trieste","meteo":"pioggia leggera","umidita":87.0,"pressione":1016.0,"temperatura":8.81,"posizione":"Nord","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":4219762,"nome":"Rome","meteo":"cielo coperto","umidita":87.0,"pressione":1017.0,"temperatura":5.24,"posizione":"Sud","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":3176217,"nome":"Genova","meteo":"cielo coperto","umidita":86.0,"pressione":1014.0,"temperatura":7.62,"posizione":"Nord","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":3173435,"nome":"Milano","meteo":"pioggia leggera","umidita":100.0,"pressione":1016.0,"temperatura":3.21,"posizione":"Nord","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":3183087,"nome":"Ancona","meteo":"cielo coperto","umidita":100.0,"pressione":1016.0,"temperatura":11.33,"posizione":"Centro","data":"Jan 21, 2021, 12:09:24 PM"}
+{"id":3180990,"nome":"Campobasso","meteo":"cielo coperto","umidita":92.0,"pressione":1014.0,"temperatura":10.51,"posizione":"Sud","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":3165523,"nome":"Torino","meteo":"foschia","umidita":87.0,"pressione":1016.0,"temperatura":3.67,"posizione":"Nord","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":6542001,"nome":"Comune di Bari","meteo":"cielo sereno","umidita":44.0,"pressione":1020.0,"temperatura":15.68,"posizione":"Sud","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":2525471,"nome":"Cagliari","meteo":"cielo sereno","umidita":72.0,"pressione":1017.0,"temperatura":15.71,"posizione":"Sud","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":2523918,"nome":"Palermo","meteo":"cielo coperto","umidita":48.0,"pressione":1018.0,"temperatura":14.6,"posizione":"Sud","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":3176959,"nome":"Firenze","meteo":"poche nuvole","umidita":71.0,"pressione":1015.0,"temperatura":11.98,"posizione":"Centro","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":3165243,"nome":"Trento","meteo":"cielo coperto","umidita":94.0,"pressione":1011.0,"temperatura":-0.68,"posizione":"Nord","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":3171179,"nome":"Perugia","meteo":"nubi sparse","umidita":67.0,"pressione":1016.0,"temperatura":12.56,"posizione":"Centro","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":3182996,"nome":"Aosta","meteo":"cielo coperto","umidita":95.0,"pressione":1034.0,"temperatura":-1.41,"posizione":"Nord","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":3164603,"nome":"Venezia","meteo":"cielo coperto","umidita":81.0,"pressione":1016.0,"temperatura":5.85,"posizione":"Nord","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":6541874,"nome":"Fermo","meteo":"cielo coperto","umidita":13.0,"pressione":992.0,"temperatura":11.11,"posizione":"Centro","data":"Jan 21, 2021, 12:09:25 PM"}
+{"id":6542055,"nome":"Comune di Como","meteo":"cielo coperto","umidita":93.0,"pressione":1010.0,"temperatura":3.15,"posizione":"Nord","data":"Jan 21, 2021, 12:09:26 PM"}

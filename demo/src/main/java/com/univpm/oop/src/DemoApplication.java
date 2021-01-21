@@ -43,11 +43,13 @@ public class DemoApplication {
 		 * Solitamente SpringBoot setta l'Headless a true, in questo modo l'applicazione non consente l'utilizzo di interfacce 
 		 * con le seguenti 2 righe di codice l'Headless viene settato a false prima di far partire l'applicazione
 		*/	
+		
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(DemoApplication.class);
+		builder.headless(false).run(args);
 		Scanner s = new Scanner(System.in);
 	    System.out.print("Inserisci la key di OpenWeather: ");
 	    DemoApplication.key = s.next();
-		SpringApplicationBuilder builder = new SpringApplicationBuilder(DemoApplication.class);
-		builder.headless(false).run(args);
+	    s.close();
 		Timer timer = new Timer();
 		Aggiornamento agg = new Aggiornamento();
 		timer.schedule(agg, getDelay(), 5 * 3600000);

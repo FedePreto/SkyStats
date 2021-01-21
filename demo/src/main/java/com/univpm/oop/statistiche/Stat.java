@@ -30,7 +30,7 @@ public class Stat {
 	 * @return dati raccolti
 	 */
 	
-	public static Double[][] getValues(ArrayList<Citta>c){
+	public Double[][] getValues(ArrayList<Citta>c){
 		
 		Double[][] dati = new Double[3][c.size()];
 		
