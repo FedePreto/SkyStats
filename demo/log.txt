@@ -29,3 +29,23 @@ Errore avvenuto in data :Thu Jan 21 12:44:58 CET 2021
 Errore avvenuto in data :Thu Jan 21 16:05:06 CET 2021
      Causa: JSON NON FORMATTATO CORRETTAMENTE
      Dettagli: FILTRO tempo ERRATO
+
+Errore avvenuto in data :Thu Jan 21 23:47:32 CET 2021
+     Causa: ERRORE GENERICO AVVENUTO NELLA CLASSE "Convertitore"
+     Dettagli: JanJan 19, 2021, 2:00:15 AM{
+
+Errore avvenuto in data :Thu Jan 21 23:48:28 CET 2021
+     Causa: ERRORE GENERICO AVVENUTO NELLA CLASSE "Convertitore"
+     Dettagli: JanJan 19, 2021, 2:00:15 AM{
+
+Errore avvenuto in data :Thu Jan 21 23:48:48 CET 2021
+     Causa: ERRORE GENERICO AVVENUTO NELLA CLASSE "Convertitore"
+     Dettagli: JanJan 19, 2021, 2:00:15 AM{
+
+Errore avvenuto in data :Thu Jan 21 23:49:00 CET 2021
+     Causa: ERRORE GENERICO AVVENUTO NELLA CLASSE "Convertitore"
+     Dettagli: JanJan 19, 2021, 2:00:15 AM{
+
+Errore avvenuto in data :Thu Jan 21 23:51:53 CET 2021
+     Causa: ERRORE GENERICO AVVENUTO NELLA CLASSE "Convertitore"
+     Dettagli: JanJan 19, 2021, 2:00:15 AM{

@@ -16,11 +16,13 @@ public class Aggiornamento extends TimerTask {
 	 * Il metodo si occupa di effettuare le chiamate a OpenWeather e salvare i dati nel DB 
 	 * @author Federico
 	 */
+	@SuppressWarnings("static-access")
 	public void run() {
 			String url = "";
 			Convertitore conv = new Convertitore();
 			Gson gson = new Gson();
-			for (String x : Favoriti.favoriti) {
+			Favoriti fav = new Favoriti();
+			for (String x : fav.favoriti) {
 				url = "http://api.openweathermap.org/data/2.5/weather?q=" + x + "&appid="+DemoApplication.key+"&units=metric&lang=it";						
 				conv.salva(gson.toJson(conv.getClassFromCall(CercaMeteo.getMeteo(url))));
 			}
