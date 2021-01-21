@@ -214,16 +214,12 @@ public class SingleCity extends javax.swing.JFrame {
            }
        } catch (ClassNotFoundException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(String.valueOf(new Date()),ex.getMessage());
        } catch (InstantiationException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(String.valueOf(new Date()),ex.getMessage());
        } catch (IllegalAccessException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(String.valueOf(new Date()),ex.getMessage());
        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
            java.util.logging.Logger.getLogger(SingleCity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-           Log.report(String.valueOf(new Date()),ex.getMessage());
        }
        //</editor-fold>
        

@@ -7,7 +7,7 @@ public class MalformedException extends Exception {
 	
 	public MalformedException(String s){
 		super();
-		Log.report("JSON NON FORMATTATO CORRETTAMENTE",s + "ERRATO");
+		Log.report("JSON NON FORMATTATO CORRETTAMENTE","FILTRO " + s + " ERRATO");
 	}
 
 }

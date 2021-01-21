@@ -19,3 +19,9 @@ Errore avvenuto in data :Thu Jan 21 12:34:23 CET 2021
 Errore avvenuto in data :Thu Jan 21 12:38:58 CET 2021
      Causa: JSON NON FORMATTATO CORRETTAMENTE
      Dettagli: tempoERRATO
+Errore avvenuto in data :Thu Jan 21 12:44:25 CET 2021
+     Causa: JSON NON FORMATTATO CORRETTAMENTE
+     Dettagli: tempoERRATO
+Errore avvenuto in data :Thu Jan 21 12:44:58 CET 2021
+     Causa: JSON NON FORMATTATO CORRETTAMENTE
+     Dettagli: tempoERRATO
