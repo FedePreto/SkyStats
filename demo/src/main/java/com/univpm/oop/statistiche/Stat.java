@@ -19,7 +19,7 @@ public class Stat {
 	 * @author Federico
 	 * @author Nicolò
 	 * @param c {@link ArrayList} di tipo {@link Citta} da cui andare a prelevare i dati
-	 * @return {@link Double[][]} contenente: <br>riga 0 = Pressione</br> riga 1 = Umidità <br>riga 2 = Temperatura</br>                                                    
+	 * @return {@link Double[][]} contenente: <br>riga 0 = Pressione <br>riga 1 = Umidita <br>riga 2 = Temperatura                                                 
 	 */
 	
 	public Double[][] getValues(ArrayList<Citta>c){
@@ -42,7 +42,7 @@ public class Stat {
 	 * @param c {@link ArrayList} di città contenente i dati da cercare 
 	 * @param citta {@link String} contenente il nome o l'Id della città da cercare 
 	 * @param scelta parametro che serve a selezionare il tipo di dato cercato
-	 *              <br>0 = pressione</br> 1 = umidità <br>2 = temperatura</br>
+	 *              <br>0 = pressione <br>1 = umidità <br>2 = temperatura
 	 * @return {@link ArrayList} di tipo {@link double} contenente i valori cercati
 	 */
 	public Double[] getValues(ArrayList<Citta> c, String citta, int scelta) {

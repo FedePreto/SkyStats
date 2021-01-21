@@ -125,7 +125,7 @@ public class Favoriti {
 	/**
 	 * Cancella il favorito <b>val</b> dai favoriti
 	 * @author Nicolò
-	 * @param val {@link String} nome della citta da eliminare
+	 * @param name {@link String} nome della citta da eliminare
 	 */
 	public void removeFavoriti(String name) {
 		favoriti.remove(name);

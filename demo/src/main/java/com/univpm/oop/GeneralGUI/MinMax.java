@@ -39,7 +39,7 @@ public class MinMax extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        MenùReturn = new javax.swing.JButton();
+        menuReturn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -78,8 +78,8 @@ public class MinMax extends javax.swing.JFrame {
 
         jLabel1.setText("Record dei Massimi e Minimi delle città");
 
-        MenùReturn.setText("Ritorna al menù");
-        MenùReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuReturn.setText("Ritorna al menù");
+        menuReturn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MenùReturnMouseClicked(evt);
             }
@@ -307,7 +307,7 @@ public class MinMax extends javax.swing.JFrame {
                         .addComponent(CercaMeteo))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(MenùReturn)
+                            .addComponent(menuReturn)
                             .addGap(32, 32, 32))
                         .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -337,7 +337,7 @@ public class MinMax extends javax.swing.JFrame {
                     .addComponent(MaxCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MinCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MenùReturn)
+                .addComponent(menuReturn)
                 .addGap(34, 34, 34))
         );
 
@@ -568,7 +568,7 @@ public class MinMax extends javax.swing.JFrame {
     /**
      * Pulsante per il ritorno al menu principale
      */
-    private javax.swing.JButton MenùReturn;
+    private javax.swing.JButton menuReturn;
     /**
      * Pannello contenente le città e i loro minimi
      */
