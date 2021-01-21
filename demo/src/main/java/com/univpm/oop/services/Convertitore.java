@@ -3,11 +3,7 @@ package com.univpm.oop.services;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
 import org.apache.commons.io.input.ReversedLinesFileReader;
-
 import com.google.gson.*;
 import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
@@ -68,8 +64,6 @@ public class Convertitore {
 			System.out.println("================================================================");
 			ArrayList<Citta> c = new ArrayList<Citta>();
 			Citta citta;
-			String file="";
-			int i = 0;
 			Gson gson = new Gson();
 			try {
 				ReversedLinesFileReader in = new ReversedLinesFileReader(new File(nomeFile));
@@ -100,7 +94,6 @@ public class Convertitore {
 	public void salva(ArrayList<Citta> c) {
 		Gson gson = new Gson();
 		BufferedWriter buf;
-		Scanner in;
 		try {
 			buf = new BufferedWriter(new FileWriter(nomeFile));
 			for(int i = 0;i<c.size();i++) {

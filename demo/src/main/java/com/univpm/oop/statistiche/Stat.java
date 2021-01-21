@@ -1,15 +1,8 @@
 package com.univpm.oop.statistiche;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.univpm.oop.model.Citta;
-import com.univpm.oop.services.Convertitore;
 import com.univpm.oop.services.Favoriti;
-import com.univpm.oop.src.*;
-
-import javax.swing.*;  
-import java.util.Date;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 /**
@@ -160,7 +153,6 @@ public class Stat {
 	 * @return JsonObject che contiene tutte le con i valori massimi nel database nel range di tempo indicato
 	 */
 	public JsonObject getMax(ArrayList<Citta> citta) {	
-		Favoriti fav = new Favoriti();
 	/*
 	  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
 		0- Pressione massima
@@ -269,7 +261,6 @@ public class Stat {
 	 * @return JsonObject che contiente tutte le citta con i valori minimi nel database contenute nel range di tempo definito da inizio e fine
 	 */
 	public JsonObject getMin(ArrayList<Citta>citta) {
-		Favoriti fav = new Favoriti();
 		/*
 		  Array volto alla memorizzazione dei vari valori massimi con la seguente logica di indici:
 			0- Pressione minima

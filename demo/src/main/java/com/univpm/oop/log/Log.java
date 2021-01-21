@@ -32,7 +32,7 @@ public class Log {
 	 */
 	public static void report(String customError, String detail) {
 		
-		String error = "Errore avvenuto in data :" + new Date() +
+		String error = "\nErrore avvenuto in data :" + new Date() +
 			            "\n     Causa: " + customError +
 			            "\n     Dettagli: " + detail + "\n";		
 		

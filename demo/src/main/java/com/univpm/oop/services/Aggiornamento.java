@@ -21,7 +21,6 @@ public class Aggiornamento extends TimerTask {
 	 * @author Federico
 	 */
 	public void run() {
-			Favoriti fav = new Favoriti();
 			String url = "";
 			Convertitore conv = new Convertitore();
 			Gson gson = new Gson();

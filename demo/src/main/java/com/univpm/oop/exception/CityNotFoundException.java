@@ -8,6 +8,8 @@ import com.univpm.oop.log.Log;
  * @author Federico
  *
  */
+
+@SuppressWarnings("serial")
 public class CityNotFoundException extends Exception{
 	/**
 	 * {@inheritDoc}

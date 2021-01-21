@@ -12,19 +12,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.univpm.oop.log.Log;
-import com.univpm.oop.model.Citta;
 
 /**
  * Classe che contiene tutti i metodi per la gestione del Favoriti ( Array di Stringhe che contiene i nomi delle citta Preferite dall'utente)
@@ -127,10 +123,8 @@ public class Favoriti {
 		try {
 			BufferedReader buf = new BufferedReader(new FileReader(new File(config)));
 			jo = JsonParser.parseReader(buf).getAsJsonObject(); 		
-		} catch (FileNotFoundException e) {
+		}catch (FileNotFoundException e) {
 			Log.report("FILE "+config+" NON TROVATO", e.getMessage());
-		}catch(IOException e) {
-			Log.report("ERRORE LETTURA FILE", e.getMessage());
 		}
 		return jo;
 	}

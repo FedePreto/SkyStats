@@ -6,6 +6,7 @@ import com.univpm.oop.log.Log;
  * @author Federico
  *
  */
+@SuppressWarnings("serial")
 public class DataException extends Exception{
 	/**
 	 * {@inheritDoc}

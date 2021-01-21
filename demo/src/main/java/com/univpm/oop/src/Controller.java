@@ -1,13 +1,6 @@
 package com.univpm.oop.src;
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
-
 //Classe non utilizzata momentaneamente (Serve per gestire le call da Postaman alla nostra API)
 
  import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam; 
  import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
+
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.univpm.oop.exception.*;
-import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 import com.univpm.oop.services.CercaMeteo;
 import com.univpm.oop.services.Convertitore;
