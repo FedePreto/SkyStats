@@ -177,7 +177,8 @@ import com.univpm.oop.statistiche.*;
   * in base alle specifiche di filtraggio passate nel parametro <b>body</b> 
   * @author Federico
   * @author Nicolò
-  * @param body {@link JsonObject} contenente i filtri da applicare  * 
+  * @param body {@link JsonObject} contenente i filtri da applicare
+  * @param citta {@link ArrayList} contenente le città da filtrare
   * @return {@link ArrayList} di tipo {@link Citta} contenente le città filtrate
   * @throws MalformedException eccezione personalizzata lanciata nel caso in cui il filtro non è formattato correttamente
   */

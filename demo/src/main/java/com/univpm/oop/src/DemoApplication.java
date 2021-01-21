@@ -27,6 +27,9 @@ import com.univpm.oop.services.Aggiornamento;
  */
 @SpringBootApplication
 public class DemoApplication {
+	/**
+	 * Parametro dove viene memorizzata la key per OpenWeather
+	 */
 	public static String key ;
 	/**
 	 * Avvia SpringBoot inizializzando Headles a false in modo da poter instanziare AWT permettendo così la
@@ -35,7 +38,7 @@ public class DemoApplication {
 	 * 
 	 * @author Federico
 	 * 
-	 * @param args
+	 * @param args adove possono essere passati argomenti all'avvio
 	 */
 	public static void main(String[] args) {
 		

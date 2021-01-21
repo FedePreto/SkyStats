@@ -91,8 +91,8 @@ public class Citta {
 		return temperatura;
 	}
 	/**
-	 * Setter
-	 * @param temperatura
+	 * Metodo setter che si occupa di memorizzare una nuova temperatura della città
+	 * @param temperatura {@link double} contenente la nuova temperatura della città
 	 */
 	public void setTemperatura(double temperatura) {
 		this.temperatura = temperatura;
@@ -105,8 +105,8 @@ public class Citta {
 		return id;
 	}
 	/**
-	 * Setter
-	 * @param id
+	 * Metodo setter che si occupa di memorizzare un nuovo ID della città
+	 * @param id {@link int} contenente il nuovo ID della città
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -119,8 +119,8 @@ public class Citta {
 		return nome;
 	}
 	/**
-	 * Setter
-	 * @param nome
+	 * Metodo setter che si occupa di memorizzare un nuovo nome della città
+	 * @param nome {@link String} contenente il nuovo nome della città
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -133,8 +133,8 @@ public class Citta {
 		return meteo;
 	}
 	/**
-	 * Setter
-	 * @param meteo
+	 * Metodo setter che si occupa di memorizzare un nuovo meteo della città
+	 * @param meteo {@link String} contenente il meteo della città
 	 */
 	public void setMeteo(String meteo) {
 		this.meteo = meteo;
@@ -147,8 +147,8 @@ public class Citta {
 		return umidita;
 	}
 	/**
-	 * 
-	 * @param umidita
+	 * Metodo setter che si occupa di memorizzare una nuova umidita della città
+	 * @param umidita {@link double} contenente una nuova umidita della città
 	 */
 	public void setUmidita(double umidita) {
 		this.umidita = umidita;
@@ -161,8 +161,8 @@ public class Citta {
 		return pressione;
 	}
 	/**
-	 * Setter
-	 * @param pressione
+	 * Metodo setter che si occupa di memorizzare una nuova pressione della città
+	 * @param pressione {@link double} contenente la nuova pressione della città
 	 */
 	public void setPressione(double pressione) {
 		this.pressione = pressione;
@@ -175,8 +175,8 @@ public class Citta {
 		return data;
 	}
 	/**
-	 * Setter
-	 * @param data
+	 * Metodo setter che si occupa di memorizzare una nuova data della città
+	 * @param data {@link Date} contenente la nuova data della città
 	 */
 	public void setData(Date data) {
 		this.data = data;

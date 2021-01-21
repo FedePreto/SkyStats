@@ -40,7 +40,7 @@ public class Tempo implements Filtro{
 	 * @author Nicolò
 	 * @author Federico
 	 * 
-	 * @param time
+	 * @param time {@link String} contenente il tipo di filtraggio da effettuare (Giornaliero,Settimanale,Menisle,Annuale,Customizzato)
 	 * @return array di 2 date che rappresenta il range di tempo descritto dalla stringa
 	 */
 	public static Date[] getDateFromString(String time) {
