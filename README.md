@@ -88,7 +88,7 @@ Possibili opzioni:<br>
   -Settimanale : Il range delle statistiche sarà da 7 giorni prima della call alla stessa ora al momento attuale<br>
   -Mensile: Il range delle statistiche sarà da 30 giorni prima della call alla stessa ora al momento attuale<br>
   -Annuale: Il range delle statistiche sarà da 365 giorni prima della call alla stessa ora al momento attuale<br>
-  -gg/mm/yyyy,gg/mm/yyyy : Il range di date customizzato<br>
+  -gg/mm/yy,gg/mm/yy : Il range di date customizzato<br>
   
 <h3>Filtro ZoneGeografiche</h3><br>
 Possibili opzioni:<br>
@@ -108,7 +108,7 @@ L'attributo <b>Periodo</b> può valere: <br>
   -Settimanale : Il range delle statistiche sarà da 7 giorni prima della call alla stessa ora al momento attuale<br>
   -Mensile: Il range delle statistiche sarà da 30 giorni prima della call alla stessa ora al momento attuale<br>
   -Annuale: Il range delle statistiche sarà da 365 giorni prima della call alla stessa ora al momento attuale<br>
-  -gg/mm/yyyy,gg/mm/yyyy : Il range di date customizzato<br>
+  -gg/mm/yy,gg/mm/yy : Il range di date customizzato<br>
   
 <h2>Min(Post)</h2><br>
 <i>localhost:8080/Min?Periodo=Giornaliero</i><br>
@@ -135,3 +135,45 @@ Il parametro <b>name</b> contiente l'oggetto dell'azione da eseguire sull'array 
 <h2>Diagramma di casi d'uso:</h2><br>
 <img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/casiduso.PNG">
 
+<h2>Diagramma delle classi</h2>
+
+<h3>com.univpm.oop.statistiche</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/statistiche.PNG">
+
+<h3>com.univpm.oop.exception</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/exception.PNG">
+
+<h3>com.univpm.oop.filtri</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/filtri.PNG">
+
+<h3>com.univpm.oop.generalGui</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/generalGui.PNG">
+
+<h3>com.univpm.oop.log</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/log.PNG">
+
+<h3> com.univpm.oop.model</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/model.PNG">
+
+<h3> com.univpm.oop.services</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/services.PNG">
+
+<h3>com.univpm.oop.src</h3>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/src.PNG">
+
+<h2>Diagramma delle sequenze</h2>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/diagrammadellesequenze.PNG">
+
+<h2>Spiegazione delle sequenze:</h2>
+Come si può notare per un fattore di sicurezza l'utente non interagisce mai con le classi esterne ma bensi solo con una, la classe Controller, che gestice tutte le rotte.
+<h3>/Weather</h3><br>
+Quando l'utente fa la call /Weather interagisce solo con la classe controller che a sua volta chide al database se esso ha il meteo richiesto aggiornato, altrimenti fa una call ad OpenWeather che rimanda tutto indietro a Controller e che a sua volta lo restistuisce all'utente.<br>
+
+<h3>/Stat</h3><br>
+Quando l'utente fa la call /Stat passandogli per Post gli eventuali filtri desisderati in JSon, inizialmente la classe controller converte il Json contenente i filtri in filtri veri e propri, poi una volta ottenuto il range di valori che rispettano i filtri essi vengono processati dalla classe Stat che poi restituisce alla controller e poi a sua volta all'utente.<br>
+
+<h3>/Max e /Min</h3><br>
+Quando l'utente fa una call /Max oppure /Min passandogli come parametri Get il periodo temporale sul quale calcolare questi valori, la classe Controller fa richiesta dei dati al Database per poi processarli nella classe Stat. Una volta processati sono ritornati alla classe Controller per essere mandati all'utente.<br>
+
+<h3>/Fav</h3><br>
+Quando l'utente fa una call /Fav passandogli come parametri le azioni da eseguire e gli eventuali oggetti di queste azioni. La classe Controller nel caso in cui l'azione sia un semplice Stampa chiede al Database l'array Favoriti per poi mandarlo all'utente. Mentre per le altre azioni come Aggiungi o Rimuovi la classe Controller va solo a modificare il contenuto dell'array favoriti nel Database.
