@@ -2,8 +2,7 @@ package com.univpm.oop.exception;
 
 import com.univpm.oop.log.Log;
 /**
- * Eccezione personalizzata per gestire l'errore dei dati non trovati nel Database
- * 
+ * Eccezione personalizzata per gestire l'errore dei dati non trovati nel Database 
  * @author Nicolò
  * @author Federico
  *
@@ -12,8 +11,8 @@ import com.univpm.oop.log.Log;
 @SuppressWarnings("serial")
 public class CityNotFoundException extends Exception{
 	/**
-	 * {@inheritDoc}
-	 * @param city 
+	 * Costruttore dell'eccezione che si occupa di aggiornare il file <b>log.txt</b>
+	 * @param city {@link String} contenente il nome della città che non è stato possibile trovare nel DB
 	 */
 	public CityNotFoundException(String city) {
 		super();

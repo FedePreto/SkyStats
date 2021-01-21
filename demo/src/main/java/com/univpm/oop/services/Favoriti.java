@@ -1,7 +1,3 @@
-
-//Classe che serve per fare il salvataggio automatico del meteo dei capoluoghi di regione
-//(Il nome della classe è completamente fuori luogo da cambiare) 
-
 package com.univpm.oop.services;
 
 import java.io.BufferedReader;
@@ -23,18 +19,17 @@ import com.google.gson.reflect.TypeToken;
 import com.univpm.oop.log.Log;
 
 /**
- * Classe che contiene tutti i metodi per la gestione del Favoriti ( Array di Stringhe che contiene i nomi delle citta Preferite dall'utente)
+ * Classe che contiene tutti i metodi per la gestione del Favoriti ({@link ArrayList} di tipo {@link String} contenente i nomi delle citta preferite dall'utente)
  * @author Federico
  * @author Nicolò
- *
  */
 public class Favoriti {
 	/**
-	 * Lista di nomi di citta Favorite
+	 * {@link ArrayList} in cui verranno memorizzati i nomi delle città contenute nel file <b>config.json</b>
 	 */
 	public static ArrayList<String> favoriti;
 	/**
-	 * Path del file del Database
+	 * Path del file contenente il DB
 	 */
 	public static String config = "config.json";
 	
@@ -48,11 +43,9 @@ public class Favoriti {
 	
 
 	/**
-	 * Metodo che va ad aggiornare favoriti con i favoriti scirtti sul file <b>config</b>
-	 * 
-	 * @author Nicolò
-	 * 
-	 * 
+	 * Metodo che va a leggere i nomi delle città scritti nel file <b>config.json</b> e li memorizza
+	 * nell' {@link ArrayList} dei favoriti
+	 * @author Nicolò 
 	 */
 	public void aggiornaArray() {
 		favoriti.clear();
@@ -105,18 +98,17 @@ public class Favoriti {
 	}
 	/**
 	 * Aggiunge fav alla lista dei favoriti
-	 * @param fav elemento da aggiungere
-	 */
+	 * @param fav {@link String} nome della città da aggiungere ai favoriti
+	*/
 	public void addFavoriti(String fav) {
 		favoriti.add(fav);
 		salvaArray();
 	}
 	
 	/**
-	 * Ritorna JsonObject contentente tutte le citta nei favoriti
+	 * Ritorna un JsonObject contentente tutte le citta nei favoriti
 	 * @author Federico
-	 * 
-	 * @return jsonObject contenente i favoriti
+	 * @return {@link JsonObject} contenente i nomi dei favoriti
 	 */
 	public JsonObject stampaFavoriti() {
 		JsonObject jo = new JsonObject();
@@ -133,18 +125,10 @@ public class Favoriti {
 	/**
 	 * Cancella il favorito <b>val</b> dai favoriti
 	 * @author Nicolò
-	 * @param val Valore dal eliminare
+	 * @param val {@link String} nome della citta da eliminare
 	 */
-	public void removeFavoriti(String val) {
-		favoriti.remove(val);
+	public void removeFavoriti(String name) {
+		favoriti.remove(name);
 		salvaArray();
-	}
-	/**
-	 * Ritorna i favoriti
-	 * @author Nicolò
-	 * @return ArrayList dei favoriti
-	 */
-	public ArrayList<String> getFavoriti() {
-		return favoriti;
 	}
 }

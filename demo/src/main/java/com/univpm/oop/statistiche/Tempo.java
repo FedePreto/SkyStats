@@ -12,12 +12,10 @@ import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 
 /**
- * La classe si occupa della gestione del filtraggio del DataBase in base ad un
+ * La classe si occupa della gestione del filtraggio dell' {@link ArrayList} che gli viene passato in base ad un
  * periodo temporale che può essere: Giornaliero,Settimanale,Mensile,Annuale oppure
  * Customizzato, cioè un perido selezionabile liberamente dall'utente. La classe estende 
- * la classe madre astratta {@link Filtro}
- * 
- * 
+ * la classe madre astratta {@link Filtro} 
  * @author Federico
  * @author Nicolò
  *
@@ -28,15 +26,15 @@ public class Tempo implements Filtro{
 	 * {@inheritDoc}
 	 */
 	public ArrayList<Citta> filtra(ArrayList<Citta> c,String filtro){
-		ArrayList<Citta> citta_tempo = new ArrayList<Citta>();
+		ArrayList<Citta> cittaTempo = new ArrayList<Citta>();
 		Date[] date = new Date[2];
 		date = getDateFromString(filtro);
 		for (int i = 0; i < c.size(); i++) {
 			if(c.get(i).getData().before(date[1]) && c.get(i).getData().after(date[0]))
-				citta_tempo.add(c.get(i));
+				cittaTempo.add(c.get(i));
 		}
 		
-		return citta_tempo;
+		return cittaTempo;
 	}
 	/**Metodo che data una stringa la converte in un range di date 
 	 * @author Nicolò

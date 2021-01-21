@@ -16,7 +16,6 @@ import com.univpm.oop.statistiche.*;
  /**
   * Classe che gestisce le chiamate al nostro Server SpringBoot
   * @author Federico
-  * @author Nicolò
   *
   */
  
@@ -172,9 +171,9 @@ import com.univpm.oop.statistiche.*;
 
  /**
   * Metodo che dato un {@link ArrayList} di {@link Citta} filtra tutto l' {@link ArrayList}
-  * in base alle specifiche di filtraggio passate nel parametro <b>body</b>  * 
-  * @author Nicolò
+  * in base alle specifiche di filtraggio passate nel parametro <b>body</b> 
   * @author Federico
+  * @author Nicolò
   * @param body {@link JsonObject} contenente i filtri da applicare  * 
   * @return {@link ArrayList} di tipo {@link Citta} contenente le città filtrate
   * @throws MalformedException eccezione personalizzata lanciata nel caso in cui il filtro non è formattato correttamente
@@ -209,9 +208,7 @@ import com.univpm.oop.statistiche.*;
 			 throw new MalformedException(s);
 		 }
 	 return citta; 
-	}
- 
- 
+	} 
  }
  
  

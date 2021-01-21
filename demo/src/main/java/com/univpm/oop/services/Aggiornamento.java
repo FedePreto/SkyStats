@@ -7,17 +7,13 @@ import com.univpm.oop.src.DemoApplication;
 
 /**
  * La classe estende la classe astratta {@link TimerTask}. Essa esegue l'aggiornamento del DB locale
- * salvando solamente il meteo delle città i cui nomi sono specificati nel file <b>config.json</b>
- * 
+ * salvando solamente il meteo delle città i cui nomi sono specificati nel file <b>config.json</b> 
  * @author Federico
- *
  */
 
-public class Aggiornamento extends TimerTask {
-	
+public class Aggiornamento extends TimerTask {	
 	/**
-	 * {@inheritDoc}
-	 * 
+	 * Il metodo si occupa di effettuare le chiamate a OpenWeather e salvare i dati nel DB 
 	 * @author Federico
 	 */
 	public void run() {

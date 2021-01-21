@@ -14,13 +14,12 @@ public class Stat {
 	
 	/**
 	 * 
-	 * Prende in input un ArrayList di Citta e ritorna una matrice che su ogni riga 
-	 * contiene Pressione, Umidità e Temperatura per ogni città dell'Arraylist
-	 * 
+	 * Prende in input un {@link ArrayList} di {@link Citta} e ritorna una matrice che su ogni riga 
+	 * contiene Pressione, Umidità e Temperatura per ogni città sull'ArrayList  
 	 * @author Federico
 	 * @author Nicolò
-	 * @param c Array di citta
-	 * @return dati raccolti
+	 * @param c {@link ArrayList} di tipo {@link Citta} da cui andare a prelevare i dati
+	 * @return {@link Double[][]} contenente: <br>riga 0 = Pressione</br> riga 1 = Umidità <br>riga 2 = Temperatura</br>                                                    
 	 */
 	
 	public Double[][] getValues(ArrayList<Citta>c){
@@ -43,10 +42,8 @@ public class Stat {
 	 * @param c {@link ArrayList} di città contenente i dati da cercare 
 	 * @param citta {@link String} contenente il nome o l'Id della città da cercare 
 	 * @param scelta parametro che serve a selezionare il tipo di dato cercato
-	 *              (0 = pressione,
-	 *               1 = umidità,
-	 *               2 = temperatura) 
-	 * @return Array di tipo Double contenente i valori cercati
+	 *              <br>0 = pressione</br> 1 = umidità <br>2 = temperatura</br>
+	 * @return {@link ArrayList} di tipo {@link double} contenente i valori cercati
 	 */
 	public Double[] getValues(ArrayList<Citta> c, String citta, int scelta) {
 		ArrayList<Double> val = new ArrayList<Double>();
@@ -87,7 +84,7 @@ public class Stat {
 	}
 	
 	/**
-	 * Dati i valori ritorna la media
+	 * Metodo che dato dei valori ne ritorna la media
 	 * @author Nicolò
 	 * @param val	Valori per i quali calcolare la media
 	 * @return	Ritorna la media
@@ -147,7 +144,7 @@ public class Stat {
 
 	
 	/**
-	 * Date in input un Array di Citta,il metodo cerca nel database le citta con i valori massimi per ogni parametro e le ritorna sotto forma di JsonObject
+	 * Metodo che dato in input un {@link ArrayList} di città cerca nel database le citta con i valori massimi per ogni parametro e le ritorna sotto forma di JsonObject
 	 * @author Federico 
 	 * @param  citta {@link ArrayList} di tipo {@link Citta} contenente tutte le citta filtrate su cui fare statistiche
 	 * @return JsonObject che contiene tutte le con i valori massimi nel database nel range di tempo indicato
@@ -222,7 +219,7 @@ public class Stat {
 				
 		}
 		JsonObject JsonReturn = new JsonObject();
-		if(max_val[0] == 0) {
+		if(max_val[0] == 0 && max_val[1] == 0 && max_val[2] == 0 && max_val[3] == 0 && max_val[4] == 0 && max_val[5] == 0) {
 			JsonReturn.addProperty("Nessun valore trovato nel range di tempo specficato","");
 			return JsonReturn;
 		}
@@ -342,7 +339,7 @@ public class Stat {
 		}
 		
 		JsonObject JsonReturn = new JsonObject();
-		if(min_val[0] == 0 && min_val[1] == 0 && min_val[2] == 0 && min_val[3]==0) {
+		if(min_val[0] == 0 && min_val[1] == 0 && min_val[2] == 0 && min_val[3]==0 && min_val[4] == 0 && min_val[5] == 0){
 			JsonReturn.addProperty("Nessun valore trovato nel range di tempo specficato","");
 			return JsonReturn;
 		}

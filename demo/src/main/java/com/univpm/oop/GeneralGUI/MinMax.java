@@ -419,9 +419,7 @@ public class MinMax extends javax.swing.JFrame {
   					max_index[1] = i;
   				}
   		}
-  		
-  		Favoriti fav = new Favoriti();
-  		ArrayList<String> favoriti = fav.getFavoriti();
+  		ArrayList<String> favoriti = Favoriti.favoriti;
   	
   		double getVarU=0;
   		double getVarP=0;

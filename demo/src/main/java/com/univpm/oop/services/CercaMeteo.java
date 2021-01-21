@@ -9,16 +9,16 @@ import java.util.Scanner;
 
 import com.univpm.oop.log.Log;
 /**
- * Classe per fare le call alle api di OpenWeather
+ * Classe per fare le call all'API di OpenWeather, dove, dato un URL ritorna il meteo 
+ * sotto forma di stringa
  * @author Federico
- *
  */
 public class CercaMeteo {
 	/**
-	 * Metodo che dato un URL personalizzato, richiede il meteo di una specifica città all'Api OpenWeather
+	 * Metodo che dato un URL personalizzato, richiede il meteo di una specifica città all'API di OpenWeather
 	 * @author Federico
-	 * @param url Stringa personalizzata per la richiesta di uno specifico meteo
-	 * @return Stringa contenete il meteo di una Citta sotto forma di Json 
+	 * @param url {@link String} contenente la richiesta di uno specifico meteo
+	 * @return {@link String} contenete il meteo di una Citta sotto forma di Json 
 	 */
 	public static String getMeteo(String url) {
 

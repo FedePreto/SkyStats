@@ -11,21 +11,19 @@ import com.univpm.oop.model.Citta;
  * Classe contenente metodi per la lettura del DataBase, conversione da Java a Json o viceversa
  * @author Nicolò
  * @author Federico
- *
  */
 public class Convertitore {
 	/**
-	 * Nome del file del DataBase
+	 * Path del file json contenente il DB
 	 */
 	String nomeFile = "Storico.json";
 	
 	
 	/**
 	 * Metodo che legge il DB completo  al contrario partendo dall'ultima riga del File fino alla prima
-	 * 
-	 * @author Federico
-	 * 
-	 * @return ArrayList contenente tutti i valori nel DB
+	 * grazie all'utilizzo di {@link ReversedLinesFileReader} 
+	 * @author Federico 
+	 * @return {@link ArrayList} contenente tutte le città memorizzate nel DB
 	 */
 	public ArrayList<Citta> JsonToCitta() {
 			ArrayList<Citta> c = new ArrayList<Citta>();
@@ -51,17 +49,16 @@ public class Convertitore {
 			return c;
 		}
 	
-	
+	//Questo metodo viene utilizzato dal package general GUI
 	 /**
-		 * Override del metodo precedente che permette di filtrare in base ad un range di date dato in input
+		 * Override del metodo precedente che permette di filtrare il DB in base ad un range di date dato in input
 		 * @author Federico
 		 * @author Nicolò
-		 * @param inizio Data di inizio del range di tempo
-		 * @param fine Data di fine del range di tempo
-		 * @return ArrayList di Citta che sono del db e che si trovano tra la data di inizio e quella di fine
+		 * @param inizio {@link Date} contenente la data di inizio del range di tempo
+		 * @param fine {@link Date} contenente la data di fine del range di tempo
+		 * @return {@link ArrayList} di Citta che sono del db e che si trovano tra la data di inizio e quella di fine
 		 */
 		public ArrayList<Citta> JsonToCitta(Date inizio, Date fine) {
-			System.out.println("================================================================");
 			ArrayList<Citta> c = new ArrayList<Citta>();
 			Citta citta;
 			Gson gson = new Gson();
@@ -76,39 +73,17 @@ public class Convertitore {
 						}
 				}while(citta.getData().after(inizio));
 			}catch(IOException e) {
-				
-			}
-			catch(NullPointerException e) {
-				System.out.println();
+				Log.report("ERRORE IN FASE DI LETTURA",e.getMessage());
 			}
 			if(c.isEmpty())
 				return null;
 			return c;
 	}
-    
 	/**
-	 * Metodo che salva le Citta contenute in c in nomeFile
-	 * @author Federico
-	 * @param c ArrayList contenente tutte le Citta da salvare
-	 */
-	public void salva(ArrayList<Citta> c) {
-		Gson gson = new Gson();
-		BufferedWriter buf;
-		try {
-			buf = new BufferedWriter(new FileWriter(nomeFile));
-			for(int i = 0;i<c.size();i++) {
-				buf.write(gson.toJson(c.get(i)));
-			}
-			buf.close();
-		}catch(IOException e) {
-			Log.report("ERRORE SCRITTURA",e.getMessage());
-		}
-		
-	}
-	/**
-	 * Salva nel Database in append una sola riga
+	 * Metodo che salva nel Database in append una città passata come stringa
 	 * @author Nicolò
-	 * @param s Riga da scrivere
+	 * @author Federico
+	 * @param s {@link String} contenente la citta con i dati da scrivere nel DB
 	 */
 	public void salva(String s) {
 		try {
@@ -121,10 +96,12 @@ public class Convertitore {
 	}
 	
 	/**
-	 * Data una stringa s contenente Json ritorna la classe corrispondente
-	 * @author Nicolò
-	 * @param s Stringa Json
-	 * @return Classe Citta associata alla Stringa Json
+	 * Data una stringa s contenente il Json ritornato dalla call a OpenWeather,
+	 * preleva solo i dati di interesse ai fini del progetto
+	 * @author Federico
+	 * @author Nicolò 
+	 * @param s {@link String} contenente il meteo sotto forma di Json
+	 * @return {@link Citta} contenente i dati prelevati dalla stringa Json
 	 */
 	public Citta getClassFromCall(String s) {
 		
@@ -162,32 +139,27 @@ public class Convertitore {
 	
 	
 	/**
-	 * Controlla se <b>val</b> è contenuto nel DataBase e ritorna l 'ultimo valore
+	 * Metodo che controlla se la stringa val è contenuta nel DataBase e ne ritorna i dati più aggiornati
 	 * @author Nicolò
-	 * @param val nome della citta
-	 * @return Citta trovata oppure null se non trovata
+	 * @param name {@link String}  contenente il nome della citta
+	 * @return {@link Citta} contenente i dati della città trovati, oppure <b>null</b> se non viene trovato nulla nel DB
 	 */
-	public Citta findInJson(String val) {
+	public Citta findInJson(String name) {
 		ArrayList<Citta> city = JsonToCitta();
 		try {
-			int ID = Integer.parseInt(val);
+			int ID = Integer.parseInt(name);
 			for(Citta x : city) {
 				if(x.getId()==ID) {
 					 return x;
-				}
-				
-			}
-			
+				}				
+			}			
 		}catch(NumberFormatException e) {
 			for(Citta x : city) {
-				if(val.equals(x.getNome())) {
+				if(name.equals(x.getNome())) {
 					return x;
-				}
-				
-			}
-			
+				}				
+			}			
 		}
 		return null;
 	}
-
 }
