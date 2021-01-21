@@ -133,5 +133,5 @@ Il parametro <b>action</b> può assumere i seguenti valori: <br>
 Il parametro <b>name</b> contiente l'oggetto dell'azione da eseguire sull'array di favoriti.
 
 <h2>Diagramma di casi d'uso:</h2><br>
-<a href="https://postimg.cc/tYbVGmKB" target="_blank"><img src="https://i.postimg.cc/tYbVGmKB/casiduso.png" style="width:120%;height:120%" alt="casiduso"/></a><br/><br/>
+<img src="https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/casiduso.PNG">
 

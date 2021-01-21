@@ -343,13 +343,22 @@ public class MinMax extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    /**
+     * La funzione ritorna al menu principale
+     * @author Diego
+     * @param evt
+     */
     private void MenùReturnMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        // TODO add your handling code here:
+        // La funzione ritorna al menu principale
         new StartingFrame().setVisible(true);
         dispose();
     }                                       
 
-  
+  /**
+   * La funzione cerca i massimi e minimi del periodi di pressione ed umidità, in media e varianza
+   * @author Diego
+   * @param evt
+   */
     private void CercaMeteoMouseClicked(java.awt.event.MouseEvent evt) {                                        
     	//Si prende la data che ci interessa dal selettore
     	Date[] date = new Date[2];
@@ -515,41 +524,149 @@ public class MinMax extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify      
+    /**
+     * Pulsante di ricerca meteo
+     * 
+     */
     private javax.swing.JButton CercaMeteo;
+    /**
+     * Pannello contenente i valori massimi e le città max
+     */
     private javax.swing.JPanel MaxCity;
+    /**
+     * Città con il valore massimo di umidità
+     */
     private javax.swing.JLabel MaxHumCity;
+    /**
+     * Valore massimo di umidità
+     */
     private javax.swing.JLabel MaxHumValue;
+    /**
+     * Città con il valore massiomo di pressione
+     */
     private javax.swing.JLabel MaxPressCity;
+    /**
+     * Valore massimo di presisone
+     */
     private javax.swing.JLabel MaxPressValue;
+    /**
+     * Città con la varianza di umidità più alta
+     */
     private javax.swing.JLabel MaxVarHumCity;
+    /**
+     * Valore della varianza dell'umidità massima
+     */
     private javax.swing.JLabel MaxVarHumValue;
+    /**
+     * Città con la varianza di pressione massima
+     */
     private javax.swing.JLabel MaxVarPressCity;
+    /**
+     * Valore massimo della varianza di pressione
+     */
     private javax.swing.JLabel MaxVarPressValue;
+    /**
+     * Pulsante per il ritorno al menu principale
+     */
     private javax.swing.JButton MenùReturn;
+    /**
+     * Pannello contenente le città e i loro minimi
+     */
     private javax.swing.JPanel MinCity;
+    /**
+     *  Città con il minimo d'umidità
+     */
     private javax.swing.JLabel MinHumCity;
+    /**
+     * Valore minimo di umidità
+     */
     private javax.swing.JLabel MinHumValue;
+    /**
+     * Città con la pressione più bassa
+     */
     private javax.swing.JLabel MinPressCity;
+    /**
+     * Valore minimo di pressione
+     */
     private javax.swing.JLabel MinPressValue;
+    /**
+     * Città con la varianza minima di umidità
+     */
     private javax.swing.JLabel MinVarHumCity;
+    /**
+     * Valore di varianza minima per l'umidità
+     */
     private javax.swing.JLabel MinVarHumValue;
+    /**
+     * Città con la varianza di pressione minima
+     */
     private javax.swing.JLabel MinVarPressCity;
+    /**
+     * Valore di varianza minima per la pressione
+     */
     private javax.swing.JLabel MinVarPressValue;
+    /**
+     * Selezione del range di tempo
+     */
     private javax.swing.JComboBox<String> TimeSpan;
+    /**
+     * Label titolo del Frame
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Label identificativo di Umidità
+     */
     private javax.swing.JLabel jLabel10;
+    /**
+     * Label identificativo di Pressione
+     */
     private javax.swing.JLabel jLabel11;
+    /**
+     * Identificativo Varianza di pressione
+     */
     private javax.swing.JLabel jLabel12;
+    /**
+     * Identificativo periodo di tempo
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * Identificativo Varianza di Umidità
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * Identificativo Massimo
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * Identificativo minimo
+     */
     private javax.swing.JLabel jLabel5;
+    /**
+     * Identificativo Città per Massimi
+     */
     private javax.swing.JLabel jLabel6;
+    /**
+     * Identificativo Valore per Massimi
+     */
     private javax.swing.JLabel jLabel7;
+    /**
+     * Identificativo Città per Minimi
+     */
     private javax.swing.JLabel jLabel8;
+    /**
+     * Identificativo Valore per Minimi
+     */
     private javax.swing.JLabel jLabel9;
+    /**
+     * Contenitore per Label
+     */
     private javax.swing.JPanel jPanel2;
+    /**
+     * Contenitore per Label
+     */
     private javax.swing.JPanel jPanel4;
+   
+  
     // End of variables declaration                   
 }

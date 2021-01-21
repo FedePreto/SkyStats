@@ -10,7 +10,7 @@ import com.univpm.oop.statistiche.Stat;
 import com.univpm.oop.statistiche.Tempo;
 
 /**
-*
+* MultiCity permette di cercare il meteo, mettendo a confronto due città
 * @author Diego
 */
 @SuppressWarnings("serial")
@@ -226,8 +226,13 @@ public class MultiCity extends javax.swing.JFrame {
        pack();
    }// </editor-fold>                        
 
+   /**
+    * La funzione permette di ritornare al menu principale
+    * @author Diego
+    * @param evt
+    */
    private void MenùReturnMouseClicked(java.awt.event.MouseEvent evt) {                                        
-       // TODO add your handling code here:
+       // La funzione permette di ritornare al menu principale
        new StartingFrame().setVisible(true);
        dispose();
    }                                       
@@ -239,7 +244,7 @@ public class MultiCity extends javax.swing.JFrame {
     * @return i dati ottenuti sono della media e varianza di temperatura, pressione e umidità
     */
    private void CercaMousePressed(java.awt.event.MouseEvent evt) {                                   
-       // TODO add your handling code here:
+       // Cerca il meteo su più città
 	   String DataType=new String();
 	   DataType= (String) TimeSpan.getSelectedItem();
 	   String citta= new String();

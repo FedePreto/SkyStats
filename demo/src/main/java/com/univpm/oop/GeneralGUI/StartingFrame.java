@@ -11,7 +11,7 @@ import com.univpm.oop.log.Log;
  */
 
 /**
- *
+ * StartingFrame identifica il frame di partenza, dove verranno selezionati i vari tipi di meteo
  * @author Diego
  */
 @SuppressWarnings("serial")
@@ -107,23 +107,36 @@ public class StartingFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
-
+/**
+ * La funzione apre una finestra per il meteo su singola città
+ * @author Diego
+ * @param evt
+ */
     private void SingleCityJoinButtonMouseClicked(java.awt.event.MouseEvent evt) {                                                  
-        // TODO add your handling code here:
+    	// Apre la finestra del meteo su singola città
         
         new SingleCity().setVisible(true);
         dispose();
     }                                                 
-
+/**
+ * La funzione apre una finestra per il meteo con città a contfronto
+ * @author Diego
+ * @param evt
+ */
     private void MultiCityJoinButtonMouseClicked(java.awt.event.MouseEvent evt) {                                                 
-        // TODO add your handling code here:
+    	// Apre la finestra del meteo su due città, per confronto
        
         new MultiCity().setVisible(true);
         dispose();
     }                                                
 
+    /**
+     * La funzione apre una finestra per il meteo sui massimi e minimi delle città
+     * @author Diego
+     * @param evt
+     */
     private void GeoZoneCityJoinButton1MouseClicked(java.awt.event.MouseEvent evt) {                                                    
-        // TODO add your handling code here:
+        // Apre la finestra dei record massimi e minimi delle città
         new MinMax().setVisible(true);
         dispose();
     }                                                   

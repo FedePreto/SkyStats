@@ -11,7 +11,7 @@ import com.univpm.oop.statistiche.Tempo;
 import com.univpm.oop.statistiche.Stat;
 
 /**
-*
+* SingleCity è un frame che si occupa di valutare il meteo su singola città
 * @author Diego
 */
 @SuppressWarnings("serial")
@@ -141,8 +141,13 @@ public class SingleCity extends javax.swing.JFrame {
        pack();
    }// </editor-fold>                        
 
+   /**
+    * La funzione permette di ritornare al menu principale
+    * @author Diego
+    * @param evt
+    */
    private void MenùReturnMouseClicked(java.awt.event.MouseEvent evt) {                                        
-       // TODO add your handling code here:
+       // La funzione permette di ritornare al menu principale
        new StartingFrame().setVisible(true);
        dispose();
    }                                       
@@ -155,7 +160,7 @@ public class SingleCity extends javax.swing.JFrame {
     * @return i dati ottenuti sono della media e varianza di temperatura, pressione e umidità
     */
    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {                                      
-       // TODO add your handling code here:
+       // Ricerca del meteo su singola città
 	   String DataType=new String();
 	   DataType= "Giornaliero";
 	   String citta= (String)jComboBox1.getSelectedItem();
@@ -230,18 +235,54 @@ public class SingleCity extends javax.swing.JFrame {
        });
    }
 
-   // Variables declaration - do not modify                     
+   // Variables declaration - do not modify     
+   /**
+    * Media dell'umidità
+    */
    private javax.swing.JLabel MediaHum;
+   /**
+    * Media della pressione
+    */
    private javax.swing.JLabel MediaPres;
+   /**
+    * Media della temperatura
+    */
    private javax.swing.JLabel MediaTemp;
+   /**
+    * Pulsante per il ritorno al menu
+    */
    private javax.swing.JButton MenùReturn;
+   /**
+    * NameCity
+    */
    private javax.swing.JLabel NameCity;
+   /**
+    * Varianza dell'umidità
+    */
    private javax.swing.JLabel VarHum;
+   /**
+    * Varianza della pressione
+    */
    private javax.swing.JLabel VarPres;
+   /**
+    * Varianza della temperatura
+    */
    private javax.swing.JLabel VarTemp;
+   /**
+    * Pulsante per la ricerca meteo
+    */
    private javax.swing.JButton jButton1;
+   /**
+    * Selezione della città
+    */
    private javax.swing.JComboBox<String> jComboBox1;
+   /**
+    * Titolo frame
+    */
    private javax.swing.JLabel jLabel1;
+   /**
+    * Titolo selezione città
+    */
    private javax.swing.JLabel jLabel2;
    // End of variables declaration                   
 }
