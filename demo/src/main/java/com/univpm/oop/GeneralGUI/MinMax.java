@@ -2,12 +2,13 @@ package com.univpm.oop.GeneralGUI;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.univpm.oop.filtri.Tempo;
 import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 import com.univpm.oop.services.Convertitore;
 import com.univpm.oop.services.Favoriti;
 import com.univpm.oop.statistiche.Stat;
-import com.univpm.oop.statistiche.Tempo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

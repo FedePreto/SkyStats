@@ -3,11 +3,11 @@ package com.univpm.oop.GeneralGUI;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.univpm.oop.filtri.Tempo;
 import com.univpm.oop.log.Log;
 import com.univpm.oop.model.Citta;
 import com.univpm.oop.services.Convertitore;
 import com.univpm.oop.statistiche.Stat;
-import com.univpm.oop.statistiche.Tempo;
 
 /**
 * MultiCity permette di cercare il meteo, mettendo a confronto due città
