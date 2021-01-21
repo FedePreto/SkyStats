@@ -131,3 +131,6 @@ Il parametro <b>action</b> può assumere i seguenti valori: <br>
 -Stampa = Restituisce un JsonObject contenente la lista dei favoriti<br><br>
 
 Il parametro <b>name</b> contiente l'oggetto dell'azione da eseguire sull'array di favoriti.
+
+<h2>Diagramma di casi d'uso:</h2><br>
+![Diagramma](https://github.com/Raccispini/ProgettoEsame/blob/Federico3/img/casiduso.PNG)
