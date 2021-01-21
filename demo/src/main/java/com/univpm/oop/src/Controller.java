@@ -1,22 +1,16 @@
 package com.univpm.oop.src;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-//Classe non utilizzata momentaneamente (Serve per gestire le call da Postaman alla nostra API)
-
- import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam; 
- import org.springframework.web.bind.annotation.RestController;
-
-
+import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.univpm.oop.exception.*;
 import com.univpm.oop.model.Citta;
-import com.univpm.oop.services.CercaMeteo;
-import com.univpm.oop.services.Convertitore;
-import com.univpm.oop.services.Favoriti;
+import com.univpm.oop.services.*;
 import com.univpm.oop.statistiche.*;
 
  /**
@@ -27,146 +21,136 @@ import com.univpm.oop.statistiche.*;
   */
  
  @RestController public class Controller {
-
+	 
+/**
+ * Oggetto Convertitore creato per poter accedere ai sui metodi
+ */	 
+   Convertitore conv = new Convertitore();
  /**
-  * Call che restituisce il meteo di una citta prelevandolo dal DB oppure direttamente da OpenWeather(dipende dalla richiesta dell'utente)
+  * Oggetto Stat creato per poter accedere ai suoi metodi  
+  */
+   Stat s = new Stat();
+  
+ /**
+  * Call che restituisce il meteo di una citta richiesta dall'utente prelevando i dati in tempo reale da OpenWeather.
+  * Se vengono richieste più di 60 città contemporaneamente, visto che OpenWeather impone un limite di 60 chiamate al 
+  * minuto dalla 61° citta in poi, i dati saranno prelevatai dal DB.
   * 
-  * @author Federico
-  * 
-  * @param body JsonObject contenente i filtri
-  *  
-  * @return c  parametro che contiene il meteo della città scelta
+  * @author Federico 
+  * @param body {@link JsonObject} contenente un array di citta delle quali si vuole conoscere il meteo 
+  * @return c  {@link ArrayList} di {@link Citta} contenente il meteo della città richieste
+  * @throws CityNotFoundException eccezione personalizzata che viene lanciata nel caso in cui la città cercata non è presente nel DB
   */
  @PostMapping("/Weather")
  public ArrayList<Citta> getWeather(@RequestBody JsonObject body)throws CityNotFoundException {
 	 JsonArray citta = body.get("citta").getAsJsonArray();
-	 ArrayList<Citta> city = new ArrayList<Citta>();
-	 Convertitore conv = new Convertitore(); 
+	 ArrayList<Citta> city = new ArrayList<Citta>();                              
 	 Citta c = new Citta();
 	 String url="";
 	 for (int i = 0; i < citta.size(); i++) {
 		 if(i<=60) {
 			 try { 
 				 int ID = Integer.parseInt(citta.get(i).getAsString());
-				
-				 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid="+DemoApplication.key+"&units=metric&lang=it";
+				    // Stringa nel caso in cui venga fatta una richiesta per ID
+				 url = "http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid=" + DemoApplication.key + "&units=metric&lang=it";
 					 
 			 	}catch (NumberFormatException e) {
-				 url = "http://api.openweathermap.org/data/2.5/weather?q=" + citta.get(i).getAsString() + ",IT&appid="+DemoApplication.key+"&units=metric&lang=it"; 
+			 		// Stringa nel caso in cui venga fatta una richiesta per nome
+				 url = "http://api.openweathermap.org/data/2.5/weather?q=" + citta.get(i).getAsString() + ",IT&appid=" + DemoApplication.key +"&units=metric&lang=it"; 
 			 	}	 
 				String meteo = CercaMeteo.getMeteo(url);
-				c = conv.getClassFromCall(meteo);
-				
-		 }else {
-			 
+				c = conv.getClassFromCall(meteo);				
+		 }else {			 
 			 c = conv.findInJson(citta.get(i).getAsString());
 			 if(c==null) {
-				 throw new CityNotFoundException(citta.get(i).getAsString());
-			 }
-			 
-		 }
-		 
-		 city.add(c);
-		
+				  throw new CityNotFoundException(citta.get(i).getAsString());
+			 }			 
+		 }		 
+		 city.add(c);		
 	}
 	return city;
  }
  
 /**
- * Call che restituisce le statistiche delle città filtrate dai filtri passati per Post
- * 
+ * Call che restituisce le statistiche in base a dei filtri che vengo applicati nel body 
+ * passato durante la chiamata.
  * @author Federico
- * @author Nicolò
- * 
- * @param body JsonObject contenente i filtri da applicare alle città da usare per calcolare le statistiche
- 
- * @return JsonObject contenente tutte le informazioni riguardanti le statistiche
- * 
+ * @author Nicolò 
+ * @param body {@link JsonObject} contenente i filtri da applicare al DB in maniera da
+ *        prelevare solamente le città che corrispondono alle richieste dei filtri. 
+ * @return Jsonreturn {@link JsonObject} contenente tutte le informazioni riguardanti le statistiche
+ * @throws DataException eccezione personalizzata che viene lanciata quando non è possibile trovare
+ *         dati con i filtri specificati 
  */
-
 @PostMapping("/Stat")
- public JsonObject getStat(@RequestBody JsonObject body)throws DataException {
-	
-	Convertitore conv = new Convertitore(); 
-	Stat s = new Stat();
-	ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
-	JsonObject error = new JsonObject();
+ public JsonObject getStat(@RequestBody JsonObject body)throws DataException {	
+	ArrayList<Citta> citta = conv.JsonToCitta();
 	try {
 		citta = Filtra(body, citta);
 	} catch (MalformedException e) {
+		JsonObject error = new JsonObject();
 		error.addProperty("Error","Sintassi del body errata");
 		return error;	
 	}
 	Double[][] dati = s.getValues(citta);
-	if(dati==null)
+	if(dati==null) {
 		throw new DataException();
-	double mediaP = s.getMedia(dati[0]);
-	double mediaU = s.getMedia(dati[1]);
-	double mediaT = s.getMedia(dati[2]);
-	double varianzaP = s.getVarianza(dati[0]);
-	double varianzaU = s.getVarianza(dati[1]);
-	double varianzaT = s.getVarianza(dati[2]);
+	}
 	JsonObject JsonReturn = new JsonObject();
 	JsonReturn.addProperty("Nome", citta.get(0).getNome());
-	JsonReturn.addProperty("Media Umidità", new DecimalFormat("#.##").format(mediaU));
-	JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(varianzaU));
-	JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(mediaP));
-	JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(varianzaP));
-	JsonReturn.addProperty("Media Temperatura",  new DecimalFormat("#.##").format(mediaT));
-	JsonReturn.addProperty("Varianza Temperatura",  new DecimalFormat("#.##").format(varianzaT));
+	JsonReturn.addProperty("Media Umidità", new DecimalFormat("#.##").format(s.getMedia(dati[1])));
+	JsonReturn.addProperty("Varianza Umidità", new DecimalFormat("#.##").format(s.getVarianza(dati[1])));
+	JsonReturn.addProperty("Media Pressione",new DecimalFormat("#.##").format(s.getMedia(dati[0])));
+	JsonReturn.addProperty("Varianza Pressione", new DecimalFormat("#.##").format(s.getVarianza(dati[0])));
+	JsonReturn.addProperty("Media Temperatura",  new DecimalFormat("#.##").format( s.getMedia(dati[2])));
+	JsonReturn.addProperty("Varianza Temperatura",  new DecimalFormat("#.##").format(s.getVarianza(dati[2])));
 	return JsonReturn;
 	}
 
 /**
- * In base al periodo specificato dall'attributo <b>Periodo</b> la call restituisce le città che assumono i massimi valori in questo range di tempo
- * @author Federico  
- * 
- * @param period Tipo di range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato) 
- *
- * @return JsonObject contenente tutti le citta con i valori massimi nel Database
+ * Call che in base al periodo specificato dal parametro <b>period</b> restituisce le città e i loro valori assunti,
+ * che sono i maggiori nel range di tempo specificato.
+ * @author Federico 
+ * @param period {@link String} contenente il range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
+ * con cui andare a filtrare il DB
+ * @return {@link JsonObject} contenente tutte le citta con i valori minimi di pressione, umidità e temperatura nel range di tempo specificato
  */
  @GetMapping("/Max")
  public JsonObject getMax(@RequestParam(name = "Periodo", defaultValue = "Giornaliero") String period) {
-	 
-	 Convertitore conv = new Convertitore(); 
-	 Stat s = new Stat();
-	 ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
+	 ArrayList<Citta> citta = conv.JsonToCitta(); 
 	 Tempo t = new Tempo();
 	 return s.getMax(t.filtra(citta, period));
-	 
  }
- 
- 
+  
  /**
-  * In base al periodo specificato dall'attributo <b>Periodo</b> la call restituisce le città che assumono i minimi valori in questo range di tempo
-  * @author Federico
-  * 
-  * 
-  * @param period Range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
-  * @return JsonObject contenente tutte le citta con i valori minimi di pressione, umidità e temperatura nel Database
-  */
+ * Call che in base al periodo specificato dal parametro <b>period</b> restituisce le città e i loro valori assunti,
+ * che sono i minori nel range di tempo specificato.
+ * @author Federico
+ * @param period {@link String} contenente il range di tempo(Giornaliero, Settimanale, Mensile, Annuale o Customizzato)
+ * con cui andare a filtrare il DB
+ * @return {@link JsonObject} contenente tutte le citta con i valori minimi di pressione, umidità e temperatura nel range di tempo specificato
+ */
  @GetMapping("/Min")
  public JsonObject getMin(@RequestParam(name = "Periodo", defaultValue = "Giornaliero") String period) {
-     Convertitore conv = new Convertitore(); 
-	 Stat s = new Stat();
-	 ArrayList<Citta> citta = conv.JsonToCitta(); //Legge tutto lo storico e lo memorizza nell'ArrayList
+	 ArrayList<Citta> citta = conv.JsonToCitta();
 	 Tempo t = new Tempo();
 	 t.filtra(citta, period);
 	 return s.getMin(citta);
  }
  
 /**
- * Call per gestire i favoriti
- * @author Federico
- * 
- * @param action 	<br>Se "Aggiungi" : aggiunge ai favoriti <b>name</b>
- * 					<br>Se "Rimuovi" : rimuove dai favoriti <b>name</b>
- * 					<br>Se "Stampa" : ritorna i favoriti
- * @param name Oggetto di action
- * @return ritorna JsonObject con i log di alcune azioni
+ * Call che si occupa della gestione del file <b>config.json</b>
+ * @author Federico * 
+ * @param action {@link String} contenente l'azione da performare che può essere:
+ *               	<br>"Aggiungi" : aggiunge ai favoriti <b>name</b>
+ * 					<br>"Rimuovi" : rimuove dai favoriti <b>name</b>
+ * 					<br>"Stampa" : ritorna i favoriti
+ * @param name {@link String} contenente il nome di una città nel caso i cui si voglia eliminare o aggiungere al file <b>config.json</b>
+ * @return {@link JsonObject} contenente le città presenti nel file <b>config.json</b>
+ * @throws IllegalRequestException eccezione personalizzata che viene lanciata nel caso in cui l'azione da performare non è consentita
  */
  @GetMapping("/Fav")
- public JsonObject Favoriti(@RequestParam(name = "Action")String action,@RequestParam(name = "Name", defaultValue = "")String name) {
+ public JsonObject Favoriti(@RequestParam(name = "Action")String action,@RequestParam(name = "Name")String name)throws IllegalRequestException{
 	 Favoriti fav = new Favoriti();
 	 switch(action) {
 	 case "Aggiungi":
@@ -177,10 +161,9 @@ import com.univpm.oop.statistiche.*;
 		 return fav.stampaFavoriti();
 	 case "Stampa":
 		return fav.stampaFavoriti();
-	default:
-		JsonObject errObj = new JsonObject();
-		errObj.addProperty("La scelta selezionata non è consentita","");
-		return errObj;		 
+	default:		
+		throw new IllegalRequestException(action);
+				 
 	 }
 
  }
@@ -188,16 +171,17 @@ import com.univpm.oop.statistiche.*;
 
 
  /**
-  *Metodo che dato un Array di Citta e un Array di filtri restituisce in Array di citta che rispettano quei filtri
-  * 
+  * Metodo che dato un {@link ArrayList} di {@link Citta} filtra tutto l' {@link ArrayList}
+  * in base alle specifiche di filtraggio passate nel parametro <b>body</b>  * 
   * @author Nicolò
   * @author Federico
-  * @param body {@link JsonObject} contenente il Body per la gestione dei filtri da applicare
-  * 
-  * @return {@link ArrayList} di oggeti di tipo {@link Filtro} contenente i filtri da applicare alle statistiche
+  * @param body {@link JsonObject} contenente i filtri da applicare  * 
+  * @return {@link ArrayList} di tipo {@link Citta} contenente le città filtrate
+  * @throws MalformedException eccezione personalizzata lanciata nel caso in cui il filtro non è formattato correttamente
   */
  public static ArrayList<Citta> Filtra(JsonObject body,ArrayList<Citta>citta)throws MalformedException{
-	 String s = "";
+	 //Stringa che serve in caso di errore a poter stampare nel file log.txt su quale filtro è il problema
+	 String s = ""; 
 	 try{
 		 JsonObject jo = body.get("filtri").getAsJsonObject();
 		 JsonObject jobject = jo.get("tempo").getAsJsonObject();
